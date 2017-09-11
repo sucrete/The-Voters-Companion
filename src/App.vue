@@ -9,18 +9,24 @@
 </template>
 
 <script>
+
+
+
 export default {
   name: 'app'
 }
 </script>
 
 <style>
+
+@import "shed-css/dist/index.css";
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+
   width: 800px;
   margin: auto;
   margin-top: 60px;
@@ -32,7 +38,5 @@ export default {
   width: 100;
   height: auto;
 }
-#toungey.blur-me {
-  filter: blur(20px);
-}
+
 </style>

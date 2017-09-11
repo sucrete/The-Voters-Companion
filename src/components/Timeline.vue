@@ -1,45 +1,54 @@
 <template>
-  <div class="timeline">
+  <div>
+    <b-alert show>Default Alpßert</b-alert>
 
-    <h2>Timeline Here</h2>
+    <b-alert variant="success" show>Success Alert</b-alert>
 
-    <h6>{{ msg }}</h6>
+    <b-alert variant="danger"
+             dismissible
+             :show="showDismissibleAlert"
+             @dismissed="showDismissibleAlert=false">
+      Dismissible burt!
+    </b-alert>
 
+    <b-alert :show="dismissCountDown"
+             dismissible
+             variant="warning"
+             @dismissed="dismissCountdown=0"
+             @dismiss-count-down="countDownChanged">
+      <p>This alert will dismiss after {{dismissCountDown}} seconds...</p>
+      <b-progress variant="warning"
+                  :max="dismissSecs"
+                  :value="dismissCountDown"
+                  height="4px">
+      </b-progress>
+    </b-alert>
+
+    <b-btn v-on:click="showAlert" variant="info" class="m-1">
+      Show alert with count-down timer
+    </b-btn>
+    <b-btn v-on:click="showDismissibleAlert=true" variant="info" class="m-1">
+      Show dismissible alert ({{showDismissibleAlert?'visible':'hidden'}})
+    </b-btn>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'timeline',
-  data () {
-    return {
-      msg: 'Where you at? (this is your data "message" object inserted into the DOM)'
+  data: {
+    dismissSecs: 10,
+    dismissCountDown: 0,
+    showDismissibleAlert: false
+  },
+  methods: {
+    countDownChanged (dismissCountDown) {
+      this.dismissCountDown = dismissCountDown
+    },
+    showAlert () {
+      this.dismissCountDown = this.dismissSecs
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.timeline {
-  background-color: teal;
-}
-h1, h2, h6 {
-  font-weight: normal;
-  color: white;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
+<!-- alert.vue -->
