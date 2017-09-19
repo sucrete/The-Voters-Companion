@@ -1,17 +1,18 @@
 <template>
-  <div class="hello">
+  <div class="overview">
     <h1>{{ msg }}</h1>
+    <img id="toungey"  class="animated-gif w:2of8" style="width: 100; height: auto;" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
 
-    </ul>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'hello',
+  name: 'overview',
   data () {
     return {
-      msg: 'This is your main component. This can be linked away from.'
+      msg: 'This is your main component. This can be navigated away from.'
     }
   }
 }

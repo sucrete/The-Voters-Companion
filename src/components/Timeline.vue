@@ -35,10 +35,12 @@
 
 <script>
 export default {
-  data: {
-    dismissSecs: 10,
-    dismissCountDown: 0,
-    showDismissibleAlert: false
+  data () {
+    return {
+      dismissSecs: 10,
+      dismissCountDown: 0,
+      showDismissibleAlert: false
+    }
   },
   methods: {
     countDownChanged (dismissCountDown) {
