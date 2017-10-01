@@ -1,5 +1,4 @@
 
-/* eslint-disable */
 <template>
   <div id="app" class="mb-5">
     <div id="delimiter">
@@ -8,46 +7,82 @@
     <div id="addyButtonGroup" class="input-group mt-3">
       <input id="yrAddy" type="text" class="form-control mt-3" placeholder="yr addy" v-model="addy">
       <span class="input-group-btn">
-        <button v-on:click="bolstar" class="btn btn-info mt-3" type="button">Go!</button>
+        <button v-on:click="bolstar addressValidator" class="btn btn-primary mt-3" type="button">Go!</button>
       </span>
 
     </div>
 
-    <h1> {{ addy }} </h1>
-    <h1 hidden id="bolstar"> {{ bolstarMsg }} </h1>
-    <h2><router-link to="/timeline">Link to yr TIMELINE</router-link></h2>
-    <h2><router-link to="/overview">Hello component</router-link></h2>
-    <h2><router-link id="yogabba" to="/district">District vue</router-link></h2>
-
+    <h1 id="hiddenAddy"> {{ addy }} </h1>
+    <h1 id="bolstarmessenger" hidden> {{ bolstarMsg }} </h1>
+    <div id="bulk">
+      <h2><router-link id="daletPeh" to="/timeline">Link to yr TIMELINE</router-link></h2>
+      <h2><router-link id="daletShin" to="/overview">Hello component</router-link></h2>
+      <h2><router-link id="yogabba" to="/district">District vue</router-link></h2>
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 // import axios from 'axios'
+import addressValidator from 'address-validator'
+import underscore from 'underscore'
+
+var Address = addressValidator.Address;
+var _ = require('underscore');
+
+//any of the props in this object are optional, also spelling does not have to be exact.
+var address = new Address({
+    street: '100 North Washington St',
+    city: 'Boston',
+    state: 'Mass',
+    country: 'US'
+});
 
 export default {
   name: 'app',
   data () {
     return {
       addy: '',
-      bolstarMsg: 'you did it kiddo'
+      bolstarMsg: 'you did it kiddo',
+      civicData: '',
+      params: ''
     }
   },
-  created () {
-    bolstar: function () {
-      document.getElementById("bolstar").style.visibility = "";
-    }
+  methods: {
+    bolstar () {
+      var x = document.getElementById('#bulk')
+      if (x.style.visibility === 'hidden') {
+        x.style.visibility = 'visible'
+      } else {
+        x.style.visibility = 'hidden'
+      }
+    },
+    addressValidator () {
+      address = addy;
+      addressValidator.validate(addy, addressValidator.match.streetAddress, function(err, exact, inexact){
+      console.log('input: ', addy.toString())
+      console.log('match: ', _.map(exact, function(a) {
+        return a.toString();
+      }));
+      console.log('did you mean: ', _.map(inexact, function(a) {
+        return a.toString();
+      }));
+
+      //access some props on the exact match
+      var first = exact[0];
+      console.log(first.streetNumber + ' '+ first.street);
+  });
+    // dataGrabber () {
+    //   axios.get('https://www.googleapis.com/civicinfo/v2/representatives')
+    // }
   }
 }
 
 </script>
 
 <style>
-#delimiter {
-  width: 100;
-  height: auto;
-}
+
 #toungey {
   width: 100;
   height: auto;
