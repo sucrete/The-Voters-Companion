@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Overview from '@/components/Overview'
 import Timeline from '@/components/Timeline'
 import District from '@/components/District'
+import Landing from '@/components/Landing'
 
 Vue.use(Router)
 
@@ -14,6 +15,11 @@ Vue.use(Router)
 //     }
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'Landing',
+      component: Landing
+    },
     {
       path: '/overview',
       name: 'Overview',

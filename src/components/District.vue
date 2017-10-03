@@ -1,9 +1,10 @@
 <template>
   <div class="district">
+    <button class="mui-btn"><router-link id="lefty" to="overview">Overview</router-link></button>
+    <button class="mui-btn"><router-link id="righty" to="timeline">timeline</router-link></button>
+    <h1>district</h1>
 
-    <h1>district Here</h1>
-
-    <h3>{{ msg }}</h3>
+    <h2>{{ msg }}</h2>
 
   </div>
 </template>

@@ -1,6 +1,7 @@
 <template>
   <div class="fullwidth">
-
+    <button class="mui-btn"><router-link id="lefty" to="overview">Overview</router-link></button>
+    <button class="mui-btn"><router-link id="righty" to="district">District</router-link></button>
     <div class="timeline group">
 
       <div class="item">
