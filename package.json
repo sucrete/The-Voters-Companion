@@ -18,6 +18,8 @@
     "jquery": "^3.2.1",
     "request": "^2.83.0",
     "vue": "^2.4.2",
+    "vue-gmaps": "^0.2.2",
+    "vue-places": "^1.1.0",
     "vue-router": "^2.7.0",
     "vuex": "^2.4.0"
   },

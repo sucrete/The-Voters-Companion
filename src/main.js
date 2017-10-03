@@ -5,17 +5,21 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
+import VueGmaps from 'vue-gmaps'
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.use(BootstrapVue);
 
+Vue.use(VueGmaps, {
+  key: 'AIzaSyCJSHi0YcEsa1YqAvMqifmJNDj0VCaL5hQ'
+})
+
 Vue.config.productionTip = false;
 
 new Vue({
   el: '#app',
-
   router,
   template: '<App/>',
   components: { App }
