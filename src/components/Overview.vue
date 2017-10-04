@@ -3,8 +3,8 @@
     <button class="mui-btn"><router-link id="lefty" to="timeline">timeline</router-link></button>
     <button class="mui-btn"><router-link id="righty" to="district">District</router-link></button>
 
-    <img id="toungey"  class="animated-gif w:2of8" style="width: 100; height: auto;" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
-    <h1>{{ msg }}</h1>
+    <img id="toungey" class="animated-gif w:2of8" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
+    <h1 class="mt-2">{{ msg }}</h1>
   </div>
 </template>
 
@@ -22,6 +22,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+#toungey {
+  width: 200px !important;
+  height: auto !important;
+}
 h1, h2 {
   font-weight: normal;
   color: black;

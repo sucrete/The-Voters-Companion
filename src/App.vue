@@ -42,6 +42,13 @@ export default {
 
 <style>
 
+a {
+  text-decoration:none !important;
+  display: block;
+}
+router-link:hover {
+  text-decoration: none !important;
+}
 
 input {
   line-height: 18px !important;
@@ -130,6 +137,7 @@ input {
 
 .mui-btn {
   font-weight: 500;
+  text-decoration: none;
   font-size: 14px;
   line-height: 18px;
   text-transform: uppercase;
@@ -165,6 +173,7 @@ input {
 .mui-btn:hover, .mui-btn:focus, .mui-btn:active {
   color: rgba(0, 0, 0, 0.87);
   background-color: white;
+  text-decoration: none !important;
 }
 
 .mui-btn[disabled]:hover, .mui-btn[disabled]:focus, .mui-btn[disabled]:active {
