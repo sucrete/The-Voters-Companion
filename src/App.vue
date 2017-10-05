@@ -1,6 +1,6 @@
 
 <template>
-  <div id="app" class="mb-3 mt-3">
+  <div id="app" class="mb-5">
     <router-view></router-view>
   </div>
 </template>
@@ -50,10 +50,6 @@ router-link:hover {
   text-decoration: none !important;
 }
 
-input {
-  line-height: 18px !important;
-}
-
 input::-webkit-input-placeholder {
   color: white !important;
 }
@@ -78,7 +74,6 @@ input::-ms-input-placeholder {
   color: white !important;
 }
 
-
 .input-group {
   width: 700px;
   margin: 0 auto;
@@ -96,9 +91,10 @@ input::-ms-input-placeholder {
   font-weight: 300;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
-  height: 700px;
   padding: 10px 24px;
   position: relative;
+  min-height: 700px;
+  height: 100%;
 }
 
 
@@ -120,7 +116,6 @@ h1, h2 {
   font-weight: 300;
   line-height: 40px;
   margin: 0;
-  margin-bottom: 16px;
   padding: 0;
 }
 
@@ -136,6 +131,7 @@ input {
 }
 
 .mui-btn {
+  color: black;
   font-weight: 500;
   text-decoration: none;
   font-size: 14px;
@@ -150,7 +146,6 @@ input {
   padding: 0 26px;
   margin: 6px 0;
   border: none;
-  border-radius: 2px;
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;

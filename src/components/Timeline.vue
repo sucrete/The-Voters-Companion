@@ -1,7 +1,8 @@
 <template>
   <div class="fullwidth">
-    <button class="mui-btn"><router-link id="lefty" to="overview">Overview</router-link></button>
     <button class="mui-btn"><router-link id="righty" to="district">District</router-link></button>
+    <button class="mui-btn"><router-link id="lefty" to="overview">Overview</router-link></button>
+
     <div class="timeline group">
 
       <div class="item">
@@ -89,24 +90,14 @@
 // }
 </script>
 
-<style>
-@import url(https://fonts.googleapis.com/css?family=Lato:400,900);
-*, *:before, *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<style scoped>
 
-html, body {
-  width: 100%;
-  height: 100%;
-}
+@import url('https://fonts.googleapis.com/css?family=Yrsa');
 
-body {
-  font-family: 'Lato', sans-serif;
-  line-height: 160%;
-  font-size: 100%;
-
+.fullwidth {
+  font-family: 'Yrsa', serif !important;
+  line-height: 95%;
+  font-size: 125%;
 }
 
 .group:after {
@@ -117,7 +108,7 @@ body {
 
 .fullwidth {
   width: 100%;
-  padding-top: 4rem;
+  height: 100%
 
 }
 
