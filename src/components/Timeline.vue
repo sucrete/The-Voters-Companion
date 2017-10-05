@@ -94,8 +94,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Yrsa');
 
+#app {
+  background: white !important;
+}
+
 .fullwidth {
-  font-family: 'Yrsa', serif !important;
+  font-family: serif !important;
   line-height: 95%;
   font-size: 125%;
 }

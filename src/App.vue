@@ -86,7 +86,7 @@ input::-ms-input-placeholder {
   width: 800px;
   margin: auto;
   margin-top: 25px;
-  background: white;
+  background: #d3aa7d;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   text-align: center;
