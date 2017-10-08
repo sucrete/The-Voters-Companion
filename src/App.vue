@@ -1,6 +1,6 @@
 
 <template>
-  <div id="app" class="mb-5">
+  <div id="app" class="mb-5 brown-or-naw">
     <router-view></router-view>
   </div>
 </template>
@@ -26,21 +26,38 @@ export default {
     }
   },
   methods: {
+    doItAlready () {
+      var toppy = document.getElementById('app')
+      toppy.style.background = '#bba382'
+    },
     pushIt () {
-
+      var charBar = document.getElementById('app')
+      charBar.style.background = '#F5F4EA'
     }
+  },
     // dataGrabber () {
     //   axios.get('https://www.googleapis.com/civicinfo/v2/representatives')
     // }
-  },
   components: {
     Places
+  },
+  mounted () {
+    this.doItAlready()
+  },
+  beforeDestroy () {
+    this.pushIt()
   }
 }
 
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
+@import url('https://fonts.googleapis.com/css?family=Rasa');
+
+.brown-or-naw {
+
+}
 
 a {
   text-decoration:none !important;
@@ -75,7 +92,7 @@ input::-ms-input-placeholder {
 }
 
 .input-group {
-  width: 700px;
+  width: 675px;
   margin: 0 auto;
 }
 
@@ -83,17 +100,18 @@ input::-ms-input-placeholder {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  width: 800px;
+  width: 750px;
   margin: auto;
   margin-top: 25px;
-  background: #d3aa7d;
-  font-family: 'Roboto', sans-serif;
+  /* background color called 'brown paper bag': #B29772*/
+  background: #F5F4EA;
+  font-family: 'Rasa', serif;
   font-weight: 300;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
   padding: 10px 24px;
   position: relative;
-  min-height: 700px;
+  min-height: 800px;
   height: 100%;
 }
 
@@ -101,7 +119,7 @@ input::-ms-input-placeholder {
 body {
   margin: 0;
   padding: 0;
-  background: #ebebeb;
+  background: #E1DCDC;
 }
 
 a {
@@ -138,7 +156,7 @@ input {
   line-height: 18px;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #FFF;
+  background-color: #fbfbf7;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   display: inline-block;

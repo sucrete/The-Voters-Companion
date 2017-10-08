@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 
 export default {
   name: 'overview',
@@ -16,6 +17,23 @@ export default {
     return {
       msg: 'This is your main component. This can be navigated away from.'
     }
+  },
+  methods: {
+    blancher () {
+      var california = location.pathname
+      if (california > 1) {
+        $('#app').css(
+          'background', '#F5F4EA'
+        )
+      } else {
+        $('#app').css(
+          'backround', '#B29772'
+        )
+      }
+    }
+  },
+  mounted () {
+    this.blancher()
   }
 }
 </script>

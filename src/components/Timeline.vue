@@ -92,14 +92,9 @@
 
 <style scoped>
 
-@import url('https://fonts.googleapis.com/css?family=Yrsa');
-
-#app {
-  background: white !important;
-}
 
 .fullwidth {
-  font-family: serif !important;
+  font-family: 'Rasa', serif;
   line-height: 95%;
   font-size: 125%;
 }

@@ -11,7 +11,7 @@
       <input
         id="helloooo"
         type="search"
-        style="background: #7A7A78; border: 0px; border-radius: 1.5px; color: white;"
+        style="background: #4f4f4f; border: 0px; border-radius: 1.5px; color: white;"
         class="form-control"
         placeholder="What is your address?"
         v-model="addy">
@@ -61,11 +61,17 @@ export default {
         x.style.visibility = 'hidden'
       }
     }
+  },
+  computed: {
+    pushIt () {
+      var charBar = document.getElementById('app')
+      charBar.style.background = '#F5F4EA'
+    }
+  },
 
     // dataGrabber () {
     //   axios.get('https://www.googleapis.com/civicinfo/v2/representatives')
     // }
-  },
   components: {
     Places
   }
@@ -74,7 +80,11 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
+
+
+#app {
+  background: #F5F4EA;
+}
 
 #submitButton {
 
@@ -83,10 +93,10 @@ export default {
 #brownType {
 
   color: #654321;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', serif !important;
   text-align: left;
   font-size: 700%;
-  line-height: 100%;
+  line-height: 95%;
 }
 
 .input-group {
