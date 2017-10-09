@@ -44,6 +44,7 @@
   align-items: baseline;
 }
 
+
 #righty, #lefty {
   display: flex;
 }
