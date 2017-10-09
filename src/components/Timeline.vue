@@ -1,8 +1,10 @@
 <template>
   <div class="fullwidth">
-    <button class="mui-btn"><router-link id="righty" to="district">District</router-link></button>
-    <button class="mui-btn"><router-link id="lefty" to="overview">Overview</router-link></button>
-
+    <div class="simple-navigation-header mt-2 mb-2">
+      <button class="mui-btn"><router-link id="righty" to="district">District</router-link></button>
+      <span class="mt-1" style="display: flex;">The Voter's Companion</span>
+      <button class="mui-btn"><router-link id="lefty" to="overview">Overview</router-link></button>
+    </div>
     <div class="timeline group">
 
       <div class="item">
@@ -92,6 +94,12 @@
 
 <style scoped>
 
+.simple-navigation-header {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  margin: auto;
+}
 
 .fullwidth {
   font-family: 'Rasa', serif;

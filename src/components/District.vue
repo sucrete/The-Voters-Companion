@@ -1,7 +1,10 @@
 <template>
   <div class="district">
-    <button class="mui-btn"><router-link id="lefty" to="overview">Overview</router-link></button>
-    <button class="mui-btn"><router-link id="righty" to="timeline">timeline</router-link></button>
+    <div class="simple-navigation-header">
+      <button class="mui-btn"><router-link id="lefty" to="overview">Overview</router-link></button>
+      <button class="mui-btn"><router-link id="righty" to="timeline">timeline</router-link></button>
+    </div>
+
     <h1>district</h1>
 
     <h2>{{ msg }}</h2>
@@ -23,6 +26,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+.simple-navigation-header {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  margin: auto;
+}
 
 ul {
   list-style-type: none;

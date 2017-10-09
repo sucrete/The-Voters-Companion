@@ -1,6 +1,6 @@
 
 <template>
-  <div id="app" class="mb-5 brown-or-naw">
+  <div id="app" class="mb-5">
     <router-view></router-view>
   </div>
 </template>
@@ -27,8 +27,14 @@ export default {
   },
   methods: {
     doItAlready () {
+      var urlPath = location.pathname
       var toppy = document.getElementById('app')
-      toppy.style.background = '#bba382'
+      if (urlPath.length > 5) {
+        toppy.style.background = '#F5F4EA'
+        return false
+      } else {
+        toppy.style.background = '#B29772'
+      }
     },
     pushIt () {
       var charBar = document.getElementById('app')
@@ -55,9 +61,6 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
 @import url('https://fonts.googleapis.com/css?family=Rasa');
 
-.brown-or-naw {
-
-}
 
 a {
   text-decoration:none !important;
@@ -156,7 +159,7 @@ input {
   line-height: 18px;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #fbfbf7;
+  background-color: #F5F4EA;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   display: inline-block;

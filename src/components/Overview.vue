@@ -1,9 +1,10 @@
 <template>
   <div class="overview">
-    <button class="mui-btn"><router-link id="lefty" to="timeline">timeline</router-link></button>
-    <button class="mui-btn"><router-link id="righty" to="district">District</router-link></button>
-
-    <img id="toungey" class="animated-gif w:2of8" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
+    <div class="simple-navigation-header">
+      <button class="mui-btn float-left"><router-link id="lefty" to="timeline">timeline</router-link></button>
+      <button class="mui-btn float-right"><router-link id="righty" to="district">District</router-link></button>
+    </div>
+    <img id="toungey" class="animated-gif" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
     <h1 class="mt-2">{{ msg }}</h1>
   </div>
 </template>
@@ -20,16 +21,9 @@ export default {
   },
   methods: {
     blancher () {
-      var california = location.pathname
-      if (california > 1) {
-        $('#app').css(
-          'background', '#F5F4EA'
-        )
-      } else {
-        $('#app').css(
-          'backround', '#B29772'
-        )
-      }
+      $('#app').css(
+        'background', '#F5F4EA'
+      )
     }
   },
   mounted () {
@@ -41,6 +35,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+.simple-navigation-header {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  margin: auto;
+}
+
+.overview {
+  display: block;
+  width: 700;
+  height: auto;
+}
 #toungey {
   width: 200px !important;
   height: auto !important;

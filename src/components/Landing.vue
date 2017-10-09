@@ -3,15 +3,15 @@
   <div id="landing">
 
     <div id="facingTitleBlock">
-      <div class="ml-5" id="logoBlock">
-        <h1 id="brownType">The<br>Voter's<br>Companion</h1>
+      <div class="ml-5 mt-4 mb-3" id="logoBlock">
+        <h1 class="mb-3" id="brownType">The<br>Voter's<br>Companion</h1>
       </div>
     </div>
     <div id="bigInput" class="input-group mt-3">
       <input
         id="helloooo"
         type="search"
-        style="background: #4f4f4f; border: 0px; border-radius: 1.5px; color: white;"
+        style="background-color: #4f4f4f; border: 0px; border-radius: 1.5px; color: white;"
         class="form-control"
         placeholder="What is your address?"
         v-model="addy">
@@ -86,6 +86,11 @@ export default {
   background: #F5F4EA;
 }
 
+#helloooo {
+  background-image: url("https://s1.postimg.org/4eruqhil67/ticks.png");
+  background-repeat: repeat;
+}
+
 #submitButton {
 
 }
@@ -96,7 +101,7 @@ export default {
   font-family: 'Playfair Display', serif !important;
   text-align: left;
   font-size: 700%;
-  line-height: 95%;
+  line-height: 90%;
 }
 
 .input-group {
