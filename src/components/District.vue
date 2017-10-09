@@ -1,7 +1,8 @@
 <template>
   <div class="district">
-    <div class="simple-navigation-header">
+    <div class="simple-navigation-header mt-2 mb-2">
       <button class="mui-btn"><router-link id="lefty" to="overview">Overview</router-link></button>
+      <span class="mt-1" style="display: flex;">The Voter's Companion</span>
       <button class="mui-btn"><router-link id="righty" to="timeline">timeline</router-link></button>
     </div>
 
@@ -31,16 +32,12 @@ export default {
   justify-content: space-between;
   width: 700px;
   margin: auto;
+  line-height: 95%;
+  font-size: 125%;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
+#righty, #lefty {
+  display: flex;
 }
 
 </style>

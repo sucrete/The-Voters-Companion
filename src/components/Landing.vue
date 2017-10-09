@@ -2,7 +2,7 @@
 <template>
   <div id="landing">
 
-    <div id="facingTitleBlock">
+    <div class="mb-5" id="facingTitleBlock">
       <div class="ml-5 mt-4 mb-3" id="logoBlock">
         <h1 class="mb-3" id="brownType">The<br>Voter's<br>Companion</h1>
       </div>
@@ -20,9 +20,7 @@
       </span>
     </div>
     <h1 id="hiddenAddy"> {{ addy }} </h1>
-    <div id="delimiter">
-      <img class="mt-3 mb-2" src="http://38.media.tumblr.com/f89af1dea2c8b2b7c3a54bedd8bfd425/tumblr_mon0aipzfH1rmu6i5o1_250.gif" id="toungey">
-    </div>
+
     <h1 id="bolstarmessenger" hidden> {{ bolstarMsg }} </h1>
     <div id="bulk">
 

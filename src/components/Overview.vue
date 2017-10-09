@@ -1,7 +1,8 @@
 <template>
   <div class="overview">
-    <div class="simple-navigation-header">
+    <div class="simple-navigation-header mt-2 mb-2">
       <button class="mui-btn float-left"><router-link id="lefty" to="timeline">timeline</router-link></button>
+      <span class="mt-1" style="display: flex;">The Voter's Companion</span>
       <button class="mui-btn float-right"><router-link id="righty" to="district">District</router-link></button>
     </div>
     <img id="toungey" class="animated-gif" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
@@ -40,6 +41,8 @@ export default {
   justify-content: space-between;
   width: 700px;
   margin: auto;
+  line-height: 95%;
+  font-size: 125%;
 }
 
 .overview {
@@ -56,18 +59,6 @@ h1, h2 {
   color: black;
 }
 
-.hello {
-  background-color: olive;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 
 
 </style>

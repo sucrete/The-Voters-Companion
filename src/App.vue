@@ -34,6 +34,7 @@ export default {
         return false
       } else {
         toppy.style.background = '#B29772'
+        return false
       }
     },
     pushIt () {
@@ -49,9 +50,6 @@ export default {
   },
   mounted () {
     this.doItAlready()
-  },
-  beforeDestroy () {
-    this.pushIt()
   }
 }
 
