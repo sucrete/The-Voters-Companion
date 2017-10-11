@@ -55,15 +55,30 @@ export default {
 
 </script>
 
+
 <style>
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
 @import url('https://fonts.googleapis.com/css?family=Rasa');
 
 
+.simple-navigation-header {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  width: 700px;
+  align-items: center;
+  font-size: 125%;
+}
+
+#righty, #lefty {
+  display: flex;
+
+}
+
 a {
   text-decoration:none !important;
-  display: block;
 }
+
 router-link:hover {
   text-decoration: none !important;
 }
@@ -100,7 +115,6 @@ input::-ms-input-placeholder {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   width: 750px;
   margin: auto;
   margin-top: 25px;
@@ -111,7 +125,7 @@ input::-ms-input-placeholder {
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
   padding: 10px 24px;
-  position: relative;
+
   min-height: 800px;
   height: 100%;
 }
@@ -124,11 +138,12 @@ body {
 }
 
 a {
-  color: #4285f4;
+  color: black;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
+a:visited {
+  color: #716E10;
 }
+
 
 h1, h2 {
   font-size: 34px;
@@ -148,11 +163,9 @@ p {
 input {
   color: #fbf9f7;
 }
-
+/*#F5F4EA*/
 .mui-btn {
-  color: black;
   font-weight: 500;
-  text-decoration: none;
   font-size: 14px;
   line-height: 18px;
   text-transform: uppercase;
@@ -165,6 +178,7 @@ input {
   padding: 0 26px;
   margin: 6px 0;
   border: none;
+  border-radius: 2px;
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
@@ -262,8 +276,5 @@ input {
   box-shadow: none;
 }
 
-.mui-btn + .mui-btn {
-  margin-left: 8px;
-}
 
 </style>

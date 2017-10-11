@@ -6,8 +6,10 @@
       <div class="ml-5 mt-4 mb-3" id="logoBlock">
         <h1 class="mb-3" id="brownType">The<br>Voter's<br>Companion</h1>
       </div>
+
     </div>
-    <div id="bigInput" class="input-group mt-3">
+    <hr>
+    <div id="bigInput" class="input-group mt-3" style="position: relative;">
       <input
         id="helloooo"
         type="search"
@@ -16,17 +18,23 @@
         placeholder="What is your address?"
         v-model="addy">
       <span class="input-group-btn">
-        <button id="submitButton" class="btn mui-btn" type="button" style="border-radius: 1.5px;" v-on:click="pushIt">Submit</button>
+        <button id="submitButton" class="mui-btn" type="button" style="border-radius: 1.5px; z-index: 2;" v-on:click="pushIt">Submit</button>
       </span>
+      <div id="background-div" style="position: absolute;"></div>
     </div>
+    <div id="bulk">
+      <h2><router-link to="overview">Hello component</router-link></h2>
+    </div>
+    <div id="subtitleBlock">
+      <div>
+        <img id="USVoteImage" src="https://www.usvotefoundation.org/sites/all/themes/usvote_bootstrap_subtheme/logo.png">
+      </div>
+    </div>
+
     <h1 id="hiddenAddy"> {{ addy }} </h1>
 
     <h1 id="bolstarmessenger" hidden> {{ bolstarMsg }} </h1>
-    <div id="bulk">
 
-      <h2><router-link to="overview">Hello component</router-link></h2>
-
-    </div>
   </div>
 </template>
 
@@ -58,6 +66,17 @@ export default {
       } else {
         x.style.visibility = 'hidden'
       }
+    },
+    doItAlready () {
+      var urlPath = location.pathname
+      var toppy = document.getElementById('app')
+      if (urlPath.length > 5) {
+        toppy.style.background = '#F5F4EA'
+        return false
+      } else {
+        toppy.style.background = '#B29772'
+        return false
+      }
     }
   },
   computed: {
@@ -65,6 +84,9 @@ export default {
       var charBar = document.getElementById('app')
       charBar.style.background = '#F5F4EA'
     }
+  },
+  mounted () {
+    this.doItAlready()
   },
 
     // dataGrabber () {
@@ -79,27 +101,22 @@ export default {
 
 <style scoped>
 
+#background-div {
+  background-image: url("https://s1.postimg.org/4eruqhil67/ticks.png");
+  background-repeat: repeat;
+  z-index: 5;
+}
 
 #app {
   background: #F5F4EA;
 }
 
-#helloooo {
-  background-image: url("https://s1.postimg.org/4eruqhil67/ticks.png");
-  background-repeat: repeat;
-}
-
-#submitButton {
-
-}
-
 #brownType {
-
   color: #654321;
   font-family: 'Playfair Display', serif !important;
   text-align: left;
   font-size: 700%;
-  line-height: 90%;
+  line-height: 85%;
 }
 
 .input-group {
