@@ -15,6 +15,8 @@
   "dependencies": {
     "address-validator": "^0.2.2",
     "bootstrap-vue": "^1.0.0-beta.7",
+    "bulma": "^0.6.0",
+    "bulma-timeline": "0.0.3",
     "jquery": "^3.2.1",
     "request": "^2.83.0",
     "vue": "^2.4.2",

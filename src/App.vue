@@ -60,7 +60,9 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
 @import url('https://fonts.googleapis.com/css?family=Rasa');
 
-
+html {
+  background-color: #E1DCDC;
+}
 .simple-navigation-header {
   display: flex;
   text-align: center;
@@ -70,9 +72,22 @@ export default {
   font-size: 125%;
 }
 
+#header-plus-line {
+  /*not just yet
+  position: fixed;*/
+}
+
 #righty, #lefty {
   display: flex;
+}
 
+#takeMeOmh {
+  position: relative;
+  bottom: 3px;
+}
+
+#takeMeOmh:visited {
+  color: black;
 }
 
 a {
@@ -81,35 +96,6 @@ a {
 
 router-link:hover {
   text-decoration: none !important;
-}
-
-input::-webkit-input-placeholder {
-  color: white !important;
-}
-
-input:-moz-placeholder {
-  /* Firefox 18- */
-  color: white !important;
-}
-
-input::-moz-placeholder {
-  /* Firefox 19+ */
-  color: white !important;
-}
-
-input:-ms-input-placeholder {
-  /* IE 10+ */
-  color: white !important;
-}
-
-input::-ms-input-placeholder {
-  /* Edge */
-  color: white !important;
-}
-
-.input-group {
-  width: 675px;
-  margin: 0 auto;
 }
 
 #app {
@@ -125,11 +111,9 @@ input::-ms-input-placeholder {
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
   padding: 10px 24px;
-
   min-height: 800px;
   height: 100%;
 }
-
 
 body {
   margin: 0;

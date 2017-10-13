@@ -1,9 +1,12 @@
 <template>
   <div class="district">
-    <div class="simple-navigation-header mt-2 mb-2">
-      <button id="lefty" type="button" class="mui-btn"><router-link to="overview">Overview</router-link></button>
-      <div class="mt-1" style="display: flex;">The Voter's Companion</div>
-      <button id="righty" type="button" class="mui-btn"><router-link to="timeline">timeline</router-link></button>
+    <div id="header-plus-line">
+      <div class="simple-navigation-header mt-2 mb-2">
+        <button id="lefty" type="button" class="mui-btn"><router-link to="overview">Overview</router-link></button>
+        <a id="takeMeOmh" class="mt-1" style="display: flex;" href="/"><p>The Voter's Companion</p></a>
+        <button id="righty" type="button" class="mui-btn"><router-link to="timeline">timeline</router-link></button>
+      </div>
+      <hr style="position: relative; bottom: 10px;">
     </div>
 
     <h1>district</h1>

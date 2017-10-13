@@ -7,6 +7,7 @@ import App from './App'
 import router from './router'
 import VueGmaps from 'vue-gmaps'
 
+import '../node_modules/bulma/css/bulma.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
 

@@ -100,12 +100,40 @@ export default {
 </script>
 
 <style scoped>
+input::-webkit-input-placeholder {
+  color: white !important;
+}
 
-#background-div {
+input:-moz-placeholder {
+  /* Firefox 18- */
+  color: white !important;
+}
+
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: white !important;
+}
+
+input:-ms-input-placeholder {
+  /* IE 10+ */
+  color: white !important;
+}
+
+input::-ms-input-placeholder {
+  /* Edge */
+  color: white !important;
+}
+
+.input-group {
+  width: 675px;
+  margin: 0 auto;
+}
+
+/*#background-div {
   background-image: url("https://s1.postimg.org/4eruqhil67/ticks.png");
   background-repeat: repeat;
   z-index: 5;
-}
+}*/
 
 #app {
   background: #F5F4EA;
