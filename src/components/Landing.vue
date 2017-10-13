@@ -3,7 +3,7 @@
   <div id="landing">
 
     <div class="mb-5" id="facingTitleBlock">
-      <div class="ml-5 mt-4 mb-3" id="logoBlock">
+      <div class="ml-5 mt-5 mb-3" id="logoBlock">
         <h1 class="mb-3" id="brownType">The<br>Voter's<br>Companion</h1>
       </div>
 

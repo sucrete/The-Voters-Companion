@@ -71,6 +71,9 @@
 </script>
 
 <style scoped>
+.tag {
+  background-color: #33825e !important;
+}
 
 #yourTimeline {
   position: relative;
@@ -290,7 +293,7 @@ p {
     border-color: #f5f5f5 !important
 }
 
-.timeline .timeline-item .timeline-marker.is-light.is-icon>i {
+.timeline .timeline-item .timeline-marker.is-light.is-icon {
     color: #363636 !important
 }
 
@@ -347,17 +350,17 @@ p {
 }
 
 .timeline .timeline-item .timeline-marker.is-primary {
-    background-color: #00d1b2 !important;
-    border-color: #00d1b2 !important
+    background-color: #33825e !important;
+    border-color: #33825e !important
 }
 
 .timeline .timeline-item .timeline-marker.is-primary .image {
-    border-color: #00d1b2 !important
+    border-color: #33825e !important
 }
 
 .timeline .timeline-item .timeline-marker.is-primary.is-icon {
-    background-color: #00d1b2 !important;
-    border-color: #00d1b2 !important
+    background-color: #33825e !important;
+    border-color: #33825e !important
 }
 
 .timeline .timeline-item .timeline-marker.is-primary.is-icon>i {
@@ -366,7 +369,7 @@ p {
 
 .timeline .timeline-item .timeline-marker.is-primary.is-outlined {
     background-color: #fff !important;
-    border-color: #00d1b2 !important
+    border-color: #33825e !important
 }
 
 .timeline .timeline-item .timeline-marker.is-primary.is-outlined .image {
@@ -378,7 +381,7 @@ p {
 }
 
 .timeline .timeline-item .timeline-marker.is-primary.is-outlined.is-icon>i {
-    color: #00d1b2 !important
+    color: #33825e !important
 }
 
 .timeline .timeline-item .timeline-marker.is-info {
@@ -547,7 +550,7 @@ p {
 }
 
 .timeline .timeline-item.is-primary {
-    border-left-color: #00d1b2
+    border-left-color: #33825e
 }
 
 .timeline .timeline-item.is-info {
