@@ -33,7 +33,7 @@ export default {
         toppy.style.background = '#F5F4EA'
         return false
       } else {
-        toppy.style.background = '#B29772'
+        toppy.style.background = '#BBA382'
         return false
       }
     },

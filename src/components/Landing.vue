@@ -8,12 +8,13 @@
       </div>
 
     </div>
-    <hr>
-    <div id="bigInput" class="input-group mt-3" style="position: relative;">
+    <!-- <hr> -->
+    <input type="text" class="address mb-4" placeholder="What is your address?">
+    <!-- <div id="bigInput" class="input-group mt-4" style="position: relative;">
       <input
         id="helloooo"
         type="search"
-        style="background-color: #4f4f4f; border: 0px; border-radius: 1.5px; color: white;"
+        style="background-color: #B29772; border: 0px; border-radius: 1.5px; color: white;"
         class="form-control"
         placeholder="What is your address?"
         v-model="addy">
@@ -21,13 +22,16 @@
         <button id="submitButton" class="mui-btn" type="button" style="border-radius: 1.5px; z-index: 2;" v-on:click="pushIt">Submit</button>
       </span>
       <div id="background-div" style="position: absolute;"></div>
-    </div>
+    </div> -->
     <div id="bulk">
-      <h2><router-link to="overview">Hello component</router-link></h2>
+      <h2 class="mb-5"><router-link  to="overview">Hello component</router-link></h2>
     </div>
-    <div id="subtitleBlock">
-      <div>
-        <img id="USVoteImage" src="https://www.usvotefoundation.org/sites/all/themes/usvote_bootstrap_subtheme/logo.png">
+    <div style="text-align: left;"id="subtitleBlock">
+      <h1 id="partnership">
+        In Partnership with<br/>The
+      </h1>
+      <div style="position: inline;">
+        <a href="https://www.usvotefoundation.org/"><img id="USVoteImage" src="https://www.usvotefoundation.org/sites/all/themes/usvote_bootstrap_subtheme/logo.png"></a>
       </div>
     </div>
 
@@ -74,7 +78,7 @@ export default {
         toppy.style.background = '#F5F4EA'
         return false
       } else {
-        toppy.style.background = '#B29772'
+        toppy.style.background = '#BBA382'
         return false
       }
     }
@@ -100,32 +104,79 @@ export default {
 </script>
 
 <style scoped>
+#partnership {
+  font-size: 600%;
+  color: #771F1F;
+}
+.address {
+  width: 610px;
+  margin: 0 auto;
+  display: block;
+  font-size: 16px;
+  padding: 10px 0;
+  padding-left: 20px;
+  border: none;
+  border-bottom: solid 2px #654321;
+  color: #383838;
+  background-color: #BBA382;
+  background-image: linear-gradient(to bottom, transparent 98%, #654321 98%);
+  background-repeat: no-repeat;
+  background-size: 610px 100%;
+  background-position: -610px 0;
+  transition: background-position 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  position: relative;
+  left: 7px;
+}
+
+.address:focus {
+background-position: 0 0;
+outline: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #654321;
+  border-bottom: 1px solid #654321;
+  width: 600px;
+  size: 3px;
+  text-align: center !important;
+  margin: 0 auto;
+}
+
+/*input {
+  width: 100%;
+  border-top: none;
+  box-shadow: inset 2px 2px 2px rgba(0,0,0,.39);
+  outline: 0;
+  padding: 8px 6px;
+}*/
+
 input::-webkit-input-placeholder {
-  color: white !important;
+  color: #697E8D !important;
 }
 
 input:-moz-placeholder {
   /* Firefox 18- */
-  color: white !important;
+  color: #697E8D !important;
 }
 
 input::-moz-placeholder {
   /* Firefox 19+ */
-  color: white !important;
+  color: #697E8D !important;
 }
 
 input:-ms-input-placeholder {
   /* IE 10+ */
-  color: white !important;
+  color: #697E8D !important;
 }
 
 input::-ms-input-placeholder {
   /* Edge */
-  color: white !important;
+  color: #697E8D !important;
 }
 
 .input-group {
-  width: 675px;
+  width: 600px;
   margin: 0 auto;
 }
 

@@ -18,20 +18,19 @@
           <div class="timeline-marker is-primary"></div>
           <div class="timeline-content">
             <p class="heading">January 2016</p>
-            <p class="timeline-item-content"> IS-PRIMARY = GREEN? - Can include any HTML element</p>
+            <p class="timeline-item-content"> IS-PRIMARY = GREEN?Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+            </p>
           </div>
         </li>
-        <li class="timeline-item is-warning">
-          <div class="timeline-marker is-warning is-image is-32x32">
+        <li class="timeline-item is-primary">
+          <div class="timeline-marker is-image is-primary is-32x32">
             <img src="http://bulma.io/images/placeholders/32x32.png">
           </div>
           <div class="timeline-content">
             <p class="heading">February 2016</p>
             <p class="timeline-item-content"> IS-WARNING = YELLOW? - Can include any HTML element</p>
           </div>
-        </li>
-        <li class="timeline-header">
-          <span class="tag is-primary">2017</span>
         </li>
         <li class="timeline-item is-danger">
           <div class="timeline-marker is-danger is-icon">
@@ -71,6 +70,7 @@
 </script>
 
 <style scoped>
+
 .tag {
   background-color: #33825e !important;
 }
@@ -95,12 +95,12 @@ p {
 }
 
 .heading {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    font-weight: lighter;
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: lighter;
 }
 
 .timeline .timeline-header {
@@ -569,6 +569,13 @@ p {
     border-left-color: #b60000
 }
 
+li.timeline-item:nth-child(odd) {
+  background: #eaebf5 !important;
+}
+
+li.timeline-content:nth-child(even) {
+  background: #fff !important;
+}
 </style>
 
 <!-- alert.vue -->
