@@ -12,37 +12,48 @@
     <div id="yourTimeline">
       <ul style="width: 650px;" class="timeline">
         <li class="timeline-header">
-          <span class="tag is-medium is-primary">Start</span>
+          <span class="tag is-medium is-primary">Future</span>
         </li>
         <li class="timeline-item is-primary">
           <div class="timeline-marker is-primary"></div>
           <div class="timeline-content">
             <p class="heading">January 2016</p>
             <p class="timeline-item-content"> IS-PRIMARY = GREEN?Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
             </p>
           </div>
         </li>
         <li class="timeline-item is-primary">
-          <div class="timeline-marker is-image is-primary is-32x32">
-            <img src="http://bulma.io/images/placeholders/32x32.png">
+          <div class="timeline-marker is-image is-primary is-icon">
           </div>
           <div class="timeline-content">
             <p class="heading">February 2016</p>
             <p class="timeline-item-content"> IS-WARNING = YELLOW? - Can include any HTML element</p>
           </div>
         </li>
-        <li class="timeline-item is-danger">
-          <div class="timeline-marker is-danger is-icon">
-            <i class="fa fa-flag"></i>
+        <li class="timeline-item is-past">
+          <div class="timeline-marker is-past">
+            <span class="icon has-text-success">
+              <i class="fa fa-check-square"></i>
+            </span>
           </div>
           <div class="timeline-content">
             <p class="heading">March 2017</p>
-            <p class="timeline-item-content">IS-DANGER = RED? - Can include any HTML element</p>
+            <p class="timeline-item-content">is-past = RED? - Can include any HTML element</p>
+          </div>
+        </li>
+        <li class="timeline-item is-past">
+          <div class="timeline-marker is-past">
+            <span class="icon has-text-success">
+              <i class="fa fa-check-square"></i>
+            </span>
+          </div>
+          <div class="timeline-content">
+            <p class="heading">March 2017</p>
+            <p class="timeline-item-content">more lorem => simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
           </div>
         </li>
         <li class="timeline-header">
-          <span class="tag is-medium is-primary">End</span>
+          <span class="tag is-medium is-primary">Past</span>
         </li>
       </ul>
     </div>
@@ -73,6 +84,10 @@
 
 .tag {
   background-color: #33825e !important;
+}
+
+.tag-past {
+  background-color: #b60000;
 }
 
 #yourTimeline {
@@ -310,7 +325,7 @@ p {
     background-color: #fff !important
 }
 
-.timeline .timeline-item .timeline-marker.is-light.is-outlined.is-icon>i {
+.timeline .timeline-item .timeline-marker.is-light.is-outlined.is-icon {
     color: #f5f5f5 !important
 }
 
@@ -489,38 +504,38 @@ p {
     color: #ffdd57 !important
 }
 
-.timeline .timeline-item .timeline-marker.is-danger {
+.timeline .timeline-item .timeline-marker.is-past {
     background-color: #b60000 !important;
     border-color: #b60000 !important
 }
 
-.timeline .timeline-item .timeline-marker.is-danger .image {
+.timeline .timeline-item .timeline-marker.is-past .image {
     border-color: #b60000 !important
 }
 
-.timeline .timeline-item .timeline-marker.is-danger.is-icon {
+.timeline .timeline-item .timeline-marker.is-past.is-icon {
     background-color: #b60000 !important;
     border-color: #b60000 !important
 }
 
-.timeline .timeline-item .timeline-marker.is-danger.is-icon>i {
+.timeline .timeline-item .timeline-marker.is-past.is-icon>i {
     color: #fff !important
 }
 
-.timeline .timeline-item .timeline-marker.is-danger.is-outlined {
+.timeline .timeline-item .timeline-marker.is-past.is-outlined {
     background-color: #fff !important;
     border-color: #b60000 !important
 }
 
-.timeline .timeline-item .timeline-marker.is-danger.is-outlined .image {
+.timeline .timeline-item .timeline-marker.is-past.is-outlined .image {
     background-color: #fff !important
 }
 
-.timeline .timeline-item .timeline-marker.is-danger.is-outlined.is-icon {
+.timeline .timeline-item .timeline-marker.is-past.is-outlined.is-icon {
     background-color: #fff !important
 }
 
-.timeline .timeline-item .timeline-marker.is-danger.is-outlined.is-icon>i {
+.timeline .timeline-item .timeline-marker.is-past.is-outlined.is-icon>i {
     color: #b60000 !important
 }
 
@@ -565,7 +580,7 @@ p {
     border-left-color: #ffdd57
 }
 
-.timeline .timeline-item.is-danger {
+.timeline .timeline-item.is-past {
     border-left-color: #b60000
 }
 

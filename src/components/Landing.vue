@@ -26,12 +26,15 @@
     <div id="bulk">
       <h2 class="mb-5"><router-link  to="overview">Hello component</router-link></h2>
     </div>
-    <div style="text-align: left;"id="subtitleBlock">
-      <h1 id="partnership">
-        In Partnership with<br/>The
-      </h1>
-      <div style="position: inline;">
+    <div id="subtitleBlock">
+      <div class="partnership">
+        A
+      </div>
+      <div>
         <a href="https://www.usvotefoundation.org/"><img id="USVoteImage" src="https://www.usvotefoundation.org/sites/all/themes/usvote_bootstrap_subtheme/logo.png"></a>
+      </div>
+      <div class="partnership">
+      PARTNER
       </div>
     </div>
 
@@ -104,16 +107,30 @@ export default {
 </script>
 
 <style scoped>
-#partnership {
-  font-size: 600%;
-  color: #771F1F;
+
+#subtitleBlock {
+
+  text-align: left;
+
 }
+
+#USVoteImage {
+  /*position: relative;
+  bottom: 20px;*/
+}
+
+.partnership {
+  font-size: 400%;
+  color: #002247;
+}
+
 .address {
   width: 610px;
   margin: 0 auto;
   display: block;
-  font-size: 16px;
+  font-size: 120%;
   padding: 10px 0;
+  padding-bottom: 1px;
   padding-left: 20px;
   border: none;
   border-bottom: solid 2px #654321;
@@ -152,27 +169,27 @@ hr {
 }*/
 
 input::-webkit-input-placeholder {
-  color: #697E8D !important;
+  color: #F5F4EA !important;
 }
 
 input:-moz-placeholder {
   /* Firefox 18- */
-  color: #697E8D !important;
+  color: #F5F4EA !important;
 }
 
 input::-moz-placeholder {
   /* Firefox 19+ */
-  color: #697E8D !important;
+  color: #F5F4EA !important;
 }
 
 input:-ms-input-placeholder {
   /* IE 10+ */
-  color: #697E8D !important;
+  color: #F5F4EA !important;
 }
 
 input::-ms-input-placeholder {
   /* Edge */
-  color: #697E8D !important;
+  color: #F5F4EA !important;
 }
 
 .input-group {
