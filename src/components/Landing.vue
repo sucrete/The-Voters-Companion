@@ -2,9 +2,9 @@
 <template>
   <div id="landing">
 
-    <div class="mb-5" id="facingTitleBlock">
-      <div class="ml-5 mt-5 mb-3" id="logoBlock">
-        <h1 class="mb-3" id="brownType">The<br>Voter's<br>Companion</h1>
+    <div class="mb-3" id="facingTitleBlock">
+      <div class="ml-5 mt-5 mb-1" id="logoBlock">
+        <h1 class="mb-1" id="brownType">The<br>Voter's<br>Companion</h1>
       </div>
 
     </div>
@@ -24,7 +24,7 @@
       <div id="background-div" style="position: absolute;"></div>
     </div> -->
     <div id="bulk">
-      <h2 class="mb-5"><router-link  to="overview">Hello component</router-link></h2>
+      <h2 class="mt-5 mb-5"><router-link  to="overview">Hello component</router-link></h2>
     </div>
     <div id="subtitleBlock">
       <div class="partnership">
@@ -67,14 +67,6 @@ export default {
     }
   },
   methods: {
-    bolstar () {
-      var x = document.getElementById('#bolstarmessenger')
-      if (x.style.visibility === 'hidden') {
-        x.style.visibility = 'visible'
-      } else {
-        x.style.visibility = 'hidden'
-      }
-    },
     doItAlready () {
       var urlPath = location.pathname
       var toppy = document.getElementById('app')
@@ -94,21 +86,28 @@ export default {
         }, {
           type: dynamics.easeInOut,
           duration: 1413,
-          friction: 629
+          friction: 300
         })
-        el.attr('placeholder', 'What is your address?')
       }, 2000)
-    }
-  },
-  computed: {
-    pushIt () {
-      var charBar = document.getElementById('app')
-      charBar.style.background = '#F5F4EA'
+    },
+    injectPlaceholder () {
+      setTimeout(function () {
+        var bethMem = document.getElementById('addressbar')
+        bethMem.placeholder = 'What is your address?'
+      }, 3413)
+    },
+    changeBackgroundTransparency () {
+      setTimeout(function () {
+        var daletAyin = document.getElementById('addressbar')
+        daletAyin.style.background = 'inherit'
+      }, 2000)
     }
   },
   mounted () {
     this.doItAlready()
     this.animateAddressBar()
+    this.injectPlaceholder()
+    this.changeBackgroundTransparency()
   }
 }
 </script>
@@ -116,9 +115,7 @@ export default {
 <style scoped>
 
 #subtitleBlock {
-
   text-align: left;
-
 }
 
 #USVoteImage {
@@ -129,6 +126,10 @@ export default {
 .partnership {
   font-size: 400%;
   color: #002247;
+}
+
+#addressbar {
+  background: transparent;
 }
 
 .address {
@@ -220,6 +221,7 @@ input::-ms-input-placeholder {
   text-align: left;
   font-size: 700%;
   line-height: 85%;
+  z-index: 4;
 }
 
 .input-group {
