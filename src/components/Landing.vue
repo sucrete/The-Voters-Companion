@@ -9,7 +9,7 @@
 
     </div>
     <!-- <hr> -->
-    <input type="text" class="address mb-4" placeholder="What is your address?">
+    <input id="addressbar" type="text" class="address mb-4" placeholder="">
     <!-- <div id="bigInput" class="input-group mt-4" style="position: relative;">
       <input
         id="helloooo"
@@ -41,13 +41,14 @@
     <h1 id="hiddenAddy"> {{ addy }} </h1>
 
     <h1 id="bolstarmessenger" hidden> {{ bolstarMsg }} </h1>
-
   </div>
+
 </template>
 
 <script>
 // import axios from 'axios'
-import Places from 'vue-places'
+// import Places from 'vue-places'
+import dynamics from 'dynamics.js'
 
 export default {
   name: 'landing',
@@ -84,6 +85,19 @@ export default {
         toppy.style.background = '#BBA382'
         return false
       }
+    },
+    animateAddressBar () {
+      setTimeout(function () {
+        var el = document.getElementById('addressbar')
+        dynamics.animate(el, {
+          translateY: 50
+        }, {
+          type: dynamics.easeInOut,
+          duration: 1413,
+          friction: 629
+        })
+        el.attr('placeholder', 'What is your address?')
+      }, 2000)
     }
   },
   computed: {
@@ -94,16 +108,9 @@ export default {
   },
   mounted () {
     this.doItAlready()
-  },
-
-    // dataGrabber () {
-    //   axios.get('https://www.googleapis.com/civicinfo/v2/representatives')
-    // }
-  components: {
-    Places
+    this.animateAddressBar()
   }
 }
-
 </script>
 
 <style scoped>
