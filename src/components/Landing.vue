@@ -4,27 +4,16 @@
 
     <div class="mb-3" id="facingTitleBlock">
       <div class="ml-5 mt-5 mb-1" id="logoBlock">
-        <h1 class="mb-1" id="brownType">The<br>Voter's<br>Companion</h1>
+        <h1 class="mb-1" id="brownType" style="background-image: url('../../textures/paper-2.png');">The<br>Voter's<br>Companion</h1>
       </div>
 
     </div>
 
-    <input id="addressbar" type="text" class="address mb-4" placeholder="">
-    <!-- <div id="bigInput" class="input-group mt-4" style="position: relative;">
-      <input
-        id="helloooo"
-        type="search"
-        style="background-color: #B29772; border: 0px; border-radius: 1.5px; color: white;"
-        class="form-control"
-        placeholder="What is your address?"
-        v-model="addy">
-      <span class="input-group-btn">
-        <button id="submitButton" class="mui-btn" type="button" style="border-radius: 1.5px; z-index: 2;" v-on:click="pushIt">Submit</button>
-      </span>
-      <div id="background-div" style="position: absolute;"></div>
-    </div> -->
+    <input id="addressbar" type="text" class="address mb-4" v-model="addy" placeholder="">
+
+    <h1 class="mt-5" id="hiddenAddy"> {{ addy }} </h1>
     <div id="bulk">
-      <h2 class="mt-5 mb-5"><router-link  to="overview">Hello component</router-link></h2>
+      <h2 class="mb-5"><router-link  to="overview">Hello component</router-link></h2>
     </div>
     <div id="subtitleBlock">
       <div class="partnership">
@@ -38,8 +27,6 @@
       </div>
     </div>
 
-    <h1 id="hiddenAddy"> {{ addy }} </h1>
-
     <h1 id="bolstarmessenger" hidden> {{ bolstarMsg }} </h1>
   </div>
 
@@ -48,6 +35,7 @@
 <script>
 // import axios from 'axios'
 // import Places from 'vue-places'
+
 import dynamics from 'dynamics.js'
 
 export default {
@@ -103,9 +91,8 @@ export default {
     changeAddressBarBack () {
       setTimeout(function () {
         var daletAyin = document.getElementById('addressbar')
-        daletAyin.setAttribute('style', 'width: 610px; margin: 0 auto; display: block; font-size: 120%; padding: 10px 0; padding-bottom: 1px; padding-left: 20px; border: none; border-bottom: solid 2px #654321; color: #383838; background-color: #BBA382; background-image: linear-gradient(to bottom, transparent 98%, #654321 98%); background-repeat: no-repeat; background-size: 610px 100%; background-position: -610px 0; transition: background-position 0.2s cubic-bezier(0.64, 0.09, 0.08, 1); position: relative; left: 7px;')
         daletAyin.style.removeProperty('background')
-      }, 3413)
+      }, 3000)
     },
     focusHelper () {
       setTimeout(function () {
@@ -128,7 +115,10 @@ export default {
 <style scoped>
 
 #subtitleBlock {
-  text-align: left;
+  text-align: center;
+  display: flex;
+  border-width: thick;
+  line-height: 200%;
 }
 
 #USVoteImage {
@@ -153,18 +143,18 @@ export default {
   border-bottom: solid 2px #654321;
   color: #383838;
   background-color: #BBA382;
-  background-image: linear-gradient(to bottom, transparent 98%, #654321 98%);
+  /*background-image: linear-gradient(to bottom, transparent 98%, #654321 98%);
   background-repeat: no-repeat;
   background-size: 610px 100%;
   background-position: -610px 0;
-  transition: background-position 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  transition: background-position 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);*/
   position: relative;
   left: 7px;
 }
 
 .address:focus {
-background-position: 0 0;
-outline: none;
+  background-position: 0 0;
+  outline: none;
 }
 
 hr {
@@ -177,16 +167,8 @@ hr {
   margin: 0 auto;
 }
 
-/*input {
-  width: 100%;
-  border-top: none;
-  box-shadow: inset 2px 2px 2px rgba(0,0,0,.39);
-  outline: 0;
-  padding: 8px 6px;
-}*/
-
 input::-webkit-input-placeholder {
-  color: #F5F4EA !important;
+  color: #2e4045 !important;
 }
 
 input:-moz-placeholder {
@@ -196,17 +178,17 @@ input:-moz-placeholder {
 
 input::-moz-placeholder {
   /* Firefox 19+ */
-  color: #F5F4EA !important;
+  color: #2e4045 !important;
 }
 
 input:-ms-input-placeholder {
   /* IE 10+ */
-  color: #F5F4EA !important;
+  color: #2e4045 !important;
 }
 
 input::-ms-input-placeholder {
   /* Edge */
-  color: #F5F4EA !important;
+  color: #2e4045 !important;
 }
 
 .input-group {
@@ -233,8 +215,5 @@ input::-ms-input-placeholder {
   z-index: 4;
 }
 
-.input-group {
-  height: 36px !important;
-}
 
 </style>
