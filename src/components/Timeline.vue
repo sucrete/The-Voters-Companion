@@ -1,83 +1,67 @@
 <template>
   <div class="fullwidth">
-    <div id="header-plus-line">
-      <div class="simple-navigation-header mt-2 mb-2">
-        <button id="lefty" type="button" class="mui-btn"><router-link to="district">district</router-link></button>
-        <a id="takeMeOmh" class="mt-1" style="display: flex;" href="/"><p>The Voter's Companion</p></a>
-        <button id="righty" type="button" class="mui-btn"><router-link to="overview">overview</router-link></button>
-      </div>
-      <hr style="position: relative; bottom: 10px;">
+    <!-- simple nav header -->
+    <div class="simple-navigation-header mt-2 mb-2">
+      <button id="lefty" type="button" class="mui-btn"><router-link to="district">district</router-link></button>
+      <a id="takeMeOmh" class="mt-1" style="display: flex;" href="/"><p>The Voter's Companion</p></a>
+      <button id="righty" type="button" class="mui-btn"><router-link to="overview">overview</router-link></button>
     </div>
-
-    <div id="yourTimeline">
-      <ul style="width: 650px;" class="timeline">
-        <li class="timeline-header">
-          <span class="tag is-medium is-primary">Future</span>
-        </li>
-        <li class="timeline-item is-primary">
-          <div class="timeline-marker is-primary"></div>
-          <div class="timeline-content">
-            <p class="heading">January 2016</p>
-            <p class="timeline-item-content"> IS-PRIMARY = GREEN?Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-          </div>
-        </li>
-        <li class="timeline-item is-primary">
-          <div class="timeline-marker is-image is-primary is-icon">
-          </div>
-          <div class="timeline-content">
-            <p class="heading">February 2016</p>
-            <p class="timeline-item-content"> IS-WARNING = YELLOW? - Can include any HTML element</p>
-          </div>
-        </li>
-        <li class="timeline-item is-past">
-          <div class="timeline-marker is-past">
-            <span class="icon has-text-success">
-              <i class="fa fa-check-square"></i>
-            </span>
-          </div>
-          <div class="timeline-content">
-            <p class="heading">March 2017</p>
-            <p class="timeline-item-content">is-past = RED? - Can include any HTML element</p>
-          </div>
-        </li>
-        <li class="timeline-item is-past">
-          <div class="timeline-marker is-past">
-            <span class="icon has-text-success">
-              <i class="fa fa-check-square"></i>
-            </span>
-          </div>
-          <div class="timeline-content">
-            <p class="heading">March 2017</p>
-            <p class="timeline-item-content">more lorem => simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-          </div>
-        </li>
-        <li class="timeline-header">
-          <span class="tag is-medium is-primary">Past</span>
-        </li>
-      </ul>
+    <!-- body -->
+    <div class="hotBod">
+      <div id="yourTimeline">
+        <ul style="width: 650px;" class="timeline">
+          <li class="timeline-header">
+            <span class="tag is-medium is-primary">Future</span>
+          </li>
+          <li class="timeline-item is-primary">
+            <div class="timeline-marker is-primary"></div>
+            <div class="timeline-content">
+              <p class="heading">January 2016</p>
+              <p class="timeline-item-content"> IS-PRIMARY = GREEN?Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+            </div>
+          </li>
+          <li class="timeline-item is-primary">
+            <div class="timeline-marker is-image is-primary is-icon">
+            </div>
+            <div class="timeline-content">
+              <p class="heading">February 2016</p>
+              <p class="timeline-item-content"> IS-WARNING = YELLOW? - Can include any HTML element</p>
+            </div>
+          </li>
+          <li class="timeline-item is-past">
+            <div class="timeline-marker is-past">
+              <span class="icon has-text-success">
+                <i class="fa fa-check-square"></i>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <p class="heading">March 2017</p>
+              <p class="timeline-item-content">is-past = RED? - Can include any HTML element</p>
+            </div>
+          </li>
+          <li class="timeline-item is-past">
+            <div class="timeline-marker is-past">
+              <span class="icon has-text-success">
+                <i class="fa fa-check-square"></i>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <p class="heading">March 2017</p>
+              <p class="timeline-item-content">more lorem => simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+            </div>
+          </li>
+          <li class="timeline-header">
+            <span class="tag is-medium is-primary">Past</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// export default {
-//   data () {
-//     return {
-//       dismissSecs: 10,
-//       dismissCountDown: 0,
-//       showDismissibleAlert: false
-//     }
-//   },
-//   methods: {
-//     countDownChanged (dismissCountDown) {
-//       this.dismissCountDown = dismissCountDown
-//     },
-//     showAlert () {
-//       this.dismissCountDown = this.dismissSecs
-//     }
-//   }
-// }
+
 </script>
 
 <style scoped>

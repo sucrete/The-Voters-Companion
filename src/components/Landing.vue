@@ -8,7 +8,7 @@
       </div>
 
     </div>
-    <!-- <hr> -->
+
     <input id="addressbar" type="text" class="address mb-4" placeholder="">
     <!-- <div id="bigInput" class="input-group mt-4" style="position: relative;">
       <input
@@ -67,6 +67,10 @@ export default {
     }
   },
   methods: {
+    changeAddressBarTransparent () {
+      var bethLamed = document.getElementById('addressbar')
+      bethLamed.style.cssText = 'background: transparent'
+    },
     doItAlready () {
       var urlPath = location.pathname
       var toppy = document.getElementById('app')
@@ -96,18 +100,27 @@ export default {
         bethMem.placeholder = 'What is your address?'
       }, 3413)
     },
-    changeBackgroundTransparency () {
+    changeAddressBarBack () {
       setTimeout(function () {
         var daletAyin = document.getElementById('addressbar')
-        daletAyin.style.background = 'inherit'
-      }, 2000)
+        daletAyin.setAttribute('style', 'width: 610px; margin: 0 auto; display: block; font-size: 120%; padding: 10px 0; padding-bottom: 1px; padding-left: 20px; border: none; border-bottom: solid 2px #654321; color: #383838; background-color: #BBA382; background-image: linear-gradient(to bottom, transparent 98%, #654321 98%); background-repeat: no-repeat; background-size: 610px 100%; background-position: -610px 0; transition: background-position 0.2s cubic-bezier(0.64, 0.09, 0.08, 1); position: relative; left: 7px;')
+        daletAyin.style.removeProperty('background')
+      }, 3413)
+    },
+    focusHelper () {
+      setTimeout(function () {
+        var bethSamach = document.getElementById('addressbar')
+        bethSamach.focus()
+      }, 3500)
     }
   },
   mounted () {
     this.doItAlready()
     this.animateAddressBar()
     this.injectPlaceholder()
-    this.changeBackgroundTransparency()
+    this.changeAddressBarTransparent()
+    this.changeAddressBarBack()
+    this.focusHelper()
   }
 }
 </script>
@@ -126,10 +139,6 @@ export default {
 .partnership {
   font-size: 400%;
   color: #002247;
-}
-
-#addressbar {
-  background: transparent;
 }
 
 .address {

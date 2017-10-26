@@ -63,6 +63,7 @@ export default {
 html {
   background-color: #E1DCDC;
 }
+
 .simple-navigation-header {
   display: flex;
   text-align: center;
@@ -70,11 +71,8 @@ html {
   width: 700px;
   align-items: center;
   font-size: 125%;
-}
-
-#header-plus-line {
-  /*not just yet
-  position: fixed;*/
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
 }
 
 #righty, #lefty {
