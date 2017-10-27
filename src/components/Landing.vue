@@ -20,10 +20,10 @@
         A
       </div>
       <div>
-        <a href="https://www.usvotefoundation.org/"><img id="USVoteImage" src="https://www.usvotefoundation.org/sites/all/themes/usvote_bootstrap_subtheme/logo.png"></a>
+        <a href="https://www.usvotefoundation.org/"><img id="USVoteImage" src="../assets/logo.png"></a>
       </div>
       <div class="partnership">
-      PARTNER
+      U.S. VOTE FOUNDATION PARTNER
       </div>
     </div>
 
@@ -116,9 +116,10 @@ export default {
 
 #subtitleBlock {
   text-align: center;
-  display: flex;
+  display: inline-flex;
   border-width: thick;
   line-height: 200%;
+  font-family: 'Assistant', sans-serif;
 }
 
 #USVoteImage {
@@ -142,7 +143,7 @@ export default {
   border: none;
   border-bottom: solid 2px #654321;
   color: #383838;
-  background-color: #BBA382;
+  background-color: #c3a986;
   /*background-image: linear-gradient(to bottom, transparent 98%, #654321 98%);
   background-repeat: no-repeat;
   background-size: 610px 100%;

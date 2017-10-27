@@ -33,7 +33,7 @@ export default {
         toppy.style.background = '#F5F4EA'
         return false
       } else {
-        toppy.style.background = '#BBA382'
+        toppy.style.background = '#c3a986'
         return false
       }
     },
@@ -59,6 +59,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
 @import url('https://fonts.googleapis.com/css?family=Rasa');
+@import url('https://fonts.googleapis.com/css?family=Assistant:700');
 
 html {
   background-color: #E1DCDC;
@@ -103,7 +104,7 @@ router-link:hover {
   margin: auto;
   margin-top: 25px;
   /* background color called 'brown paper bag': #B29772*/
-  background: #F5F4EA;
+  background: #c3a986;
   font-family: 'Rasa', serif;
   font-weight: 300;
   text-align: center;
