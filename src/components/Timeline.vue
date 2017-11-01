@@ -65,6 +65,8 @@
 </script>
 
 <style scoped>
+.hotBod {
+}
 
 .tag {
   background-color: #33825e !important;
@@ -76,7 +78,6 @@
 
 #yourTimeline {
   position: relative;
-  left: 20px;
 }
 
 #takeMeOmh {

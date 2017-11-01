@@ -1,13 +1,15 @@
 
 <template>
-  <div id="app" class="mb-5">
+  <div id="app"  :style="{ 'background-image': 'url(' + grunge + ')' }">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 // import axios from 'axios'
-import Places from 'vue-places'
+// import Places from 'vue-places'
+
+import cocaCola from './assets/subtlegrunge.png'
 
 export default {
   name: 'app',
@@ -17,6 +19,7 @@ export default {
       bolstarMsg: 'you did it kiddo',
       civicData: '',
       params: '',
+      grunge: cocaCola,
       form: {
         country: {
           label: null,
@@ -45,9 +48,9 @@ export default {
     // dataGrabber () {
     //   axios.get('https://www.googleapis.com/civicinfo/v2/representatives')
     // }
-  components: {
-    Places
-  },
+  // components: {
+  //   Places
+  // },
   mounted () {
     this.doItAlready()
   }
@@ -65,15 +68,22 @@ html {
   background-color: #E1DCDC;
 }
 
+.hotBod {
+  position: relative;
+  overflow: scroll;
+}
+
 .simple-navigation-header {
   display: flex;
   text-align: center;
   justify-content: space-between;
-  width: 700px;
+  min-width: 700px;
   align-items: center;
   font-size: 125%;
-  overflow: hidden;
   position: fixed; /* Set the navbar to fixed position */
+  background-color: #F5F4EA;
+  z-index: 5;
+  box-shadow: 0 0 5px 10px #F5F4EA;
 }
 
 #righty, #lefty {
@@ -110,8 +120,8 @@ router-link:hover {
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
   padding: 10px 24px;
-  min-height: 800px;
-  height: 100%;
+  min-height: 93vh;
+  position: relative;
 }
 
 body {
