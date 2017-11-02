@@ -1,34 +1,29 @@
 
 <template>
 
-  <div id="landing">
-    <input id="addressbar" type="text" class="address mb-4" v-model="addy" placeholder="" hidden>
-
-    <h1 class="mt-5" id="hiddenAddy"> {{ addy }} </h1>
+  <div id="landing" class="mt-3">
+    <div id="darkOverlay" style="z-index: 4;" :style="{ 'background-image': 'url(' + dark + ')' }">
+    </div>
+    <div id="lightOverlay" style="z-index: 3;" :style="{ 'background-image': 'url(' + light + ')' }">
+    </div>
     <div id="bulk">
       <h2 class="mb-5" hidden><router-link  to="overview">Hello component</router-link></h2>
     </div>
     <div id="subtitleBlock">
-      <div class="partnership">
-        CREATED WITH COOPERATION FROM THE <br/>
+      <div id="partnership">
+        CREATED WITH COOPERATION FROM THE U.S. VOTE FOUNDATION
       </div>
-      <div>
-        <a href="https://www.usvotefoundation.org/"><img id="USVoteImage" src="../assets/logo.png" hidden></a>
-      </div>
-      <div class="partnership">
-       U.S. VOTE FOUNDATION
+      <div id="infobject">
+        A GUIDE TO ISSUES YOU CAN VOTE ON, YOUR VOTING DISTRICTS, AND WHERE TO PULL THAT LEVER
       </div>
     </div>
     <!-- example of syntax needed to insert image with vue -->
     <div :style="{ 'background-image': 'url(' + secondTester + ')' }" hidden>
       HAIRY BOYS
     </div>
+    <input id="addressbar" type="text" class="address mb-4" v-model="addy" placeholder="" hidden>
     <div id="logoBlock">
       <h1 id="brownType">The<br>Voter's<br>Companion</h1>
-    </div>
-    <div id="darkOverlay" style="z-index: 4;" :style="{ 'background-image': 'url(' + dark + ')' }">
-    </div>
-    <div id="lightOverlay" style="z-index: 3;" :style="{ 'background-image': 'url(' + light + ')' }">
     </div>
   </div>
 
@@ -125,38 +120,50 @@ export default {
 
 <style>
 
-#darkOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 750px;
-  height: 93vh;
-  opacity: .35;
-  left: -24px;
-  top: -57px;
-}
-
-#lightOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 750px;
-  height: 93vh;
-  opacity: .15;
-  left: -24px;
-  top: -57px;
-}
-
 #landing {
   position: relative;
 }
 
+#darkOverlay {
+  position: absolute;
+  width: 750px;
+  height: 93vh;
+  opacity: .5;
+  left: -24px;
+  top: -24px;
+}
+#lightOverlay {
+  position: absolute;
+  width: 750px;
+  height: 93vh;
+  opacity: .25;
+  left: -24px;
+  top: -24px;
+}
+
 #subtitleBlock {
-  text-align: center;
   display: inline-flex;
-  line-height: 200%;
   font-family: 'Assistant', sans-serif;
-  font-size: 110%;
+  width: 690px;
+  margin: 0 auto;
+  height: auto;
+  justify-content: space-between;
+  font-size: 85%;
+  line-height: 105%;
+}
+#partnership {
+  color: #3b2b1c;
+  width: 250px;
+  height: auto;
+  text-align: left;
+  float: left;
+}
+#infobject {
+  color: #3b2b1c;
+  width: 250px;
+  height: auto;
+  text-align: left;
+  float: right;
 }
 
 #brownType {
@@ -182,10 +189,6 @@ export default {
 #USVoteImage {
   width: 49px;
   height: auto;
-}
-
-.partnership {
-  color: #002247;
 }
 
 .address {

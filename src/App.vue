@@ -153,10 +153,7 @@ h2 {
 p {
   margin: 0;
 }
-input {
-  color: #fbf9f7;
-}
-/*#F5F4EA*/
+
 .mui-btn {
   font-weight: 500;
   font-size: 14px;
