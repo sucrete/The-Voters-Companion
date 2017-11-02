@@ -5,7 +5,7 @@
       <button id="lefty" type="button" class="mui-btn"><router-link to="district">district</router-link></button>
       <a id="takeMeOmh" class="mt-1" style="display: flex;" href="/"><p>The Voter's Companion</p></a>
       <button id="righty" type="button" class="mui-btn"><router-link to="overview">overview</router-link></button>
-    </div>
+    </div><br/>
     <!-- body -->
     <div class="hotBod">
       <div id="yourTimeline">

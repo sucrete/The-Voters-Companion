@@ -8,15 +8,15 @@
     <div id="bulk">
       <h2 class="mb-5" hidden><router-link  to="overview">Hello component</router-link></h2>
     </div>
-    <div id="subtitleBlock" hidden>
+    <div id="subtitleBlock">
       <div class="partnership">
-        CREATED WITH COOPERATION FROM THE
+        CREATED WITH COOPERATION FROM THE <br/>
       </div>
       <div>
-        <a href="https://www.usvotefoundation.org/"><img id="USVoteImage" src="../assets/logo.png"></a>
+        <a href="https://www.usvotefoundation.org/"><img id="USVoteImage" src="../assets/logo.png" hidden></a>
       </div>
       <div class="partnership">
-      U.S. VOTE FOUNDATION
+       U.S. VOTE FOUNDATION
       </div>
     </div>
     <!-- example of syntax needed to insert image with vue -->
@@ -26,7 +26,9 @@
     <div id="logoBlock">
       <h1 id="brownType">The<br>Voter's<br>Companion</h1>
     </div>
-    <div id="overlayerDiv" :style="{ 'background-image': 'url(' + grunge + ')' }">
+    <div id="darkOverlay" style="z-index: 4;" :style="{ 'background-image': 'url(' + dark + ')' }">
+    </div>
+    <div id="lightOverlay" style="z-index: 3;" :style="{ 'background-image': 'url(' + light + ')' }">
     </div>
   </div>
 
@@ -41,7 +43,8 @@
 
 import dynamics from 'dynamics.js'
 import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
-import simple from '../assets/subtlegrunge.png'
+import light from '../assets/rice-paper-2.png'
+import dark from '../assets/asfalt-dark.png'
 
 export default {
   name: 'landing',
@@ -51,8 +54,9 @@ export default {
       bolstarMsg: 'you did it, kiddo',
       civicData: '',
       params: '',
-      grunge: simple,
       secondTester: image,
+      dark: dark,
+      light: light,
       form: {
         country: {
           label: null,
@@ -121,15 +125,28 @@ export default {
 
 <style>
 
-#overlayerDiv {
+#darkOverlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 750px;
   height: 93vh;
-  z-index: 5;
-  opacity: .2;
+  opacity: .35;
+  left: -24px;
+  top: -57px;
 }
+
+#lightOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750px;
+  height: 93vh;
+  opacity: .15;
+  left: -24px;
+  top: -57px;
+}
+
 #landing {
   position: relative;
 }
@@ -157,7 +174,7 @@ export default {
   position: absolute;
   background-color: #3b2b1c;
   height: 500px;
-  bottom: 20;
+  bottom: -104px;
   position: inherit;
   border-radius: 2px;
 }
