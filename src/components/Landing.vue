@@ -10,11 +10,15 @@
       <h2 class="mb-5" hidden><router-link  to="overview">Hello component</router-link></h2>
     </div>
     <div id="subtitleBlock">
-      <div id="partnership">
-        CREATED WITH COOPERATION FROM THE U.S. VOTE FOUNDATION
-      </div>
       <div id="infobject">
-        A GUIDE TO ISSUES YOU CAN VOTE ON, YOUR VOTING DISTRICTS, AND WHERE TO PULL THAT LEVER
+        <span id="infobject-baby">
+          A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
+        </span>
+      </div>
+      <div id="partnership">
+        <span id="partnership-baby">
+        CREATED WITH COOPERATION FROM THE <bold>U.S. VOTE FOUNDATION</bold>
+        </span>
       </div>
     </div>
     <!-- example of syntax needed to insert image with vue -->
@@ -39,7 +43,7 @@
 import dynamics from 'dynamics.js'
 import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import light from '../assets/rice-paper-2.png'
-import dark from '../assets/asfalt-dark.png'
+import dark from '../assets/asfalt-dark-altered.png'
 
 export default {
   name: 'landing',
@@ -128,7 +132,6 @@ export default {
   position: absolute;
   width: 750px;
   height: 93vh;
-  opacity: .5;
   left: -24px;
   top: -24px;
 }
@@ -136,34 +139,44 @@ export default {
   position: absolute;
   width: 750px;
   height: 93vh;
-  opacity: .25;
+  opacity: .4;
   left: -24px;
   top: -24px;
 }
 
 #subtitleBlock {
-  display: inline-flex;
   font-family: 'Assistant', sans-serif;
   width: 690px;
   margin: 0 auto;
   height: auto;
   justify-content: space-between;
-  font-size: 85%;
+  font-size: 100%;
   line-height: 105%;
 }
 #partnership {
   color: #3b2b1c;
-  width: 250px;
-  height: auto;
-  text-align: left;
-  float: left;
-}
-#infobject {
-  color: #3b2b1c;
-  width: 250px;
+  width: 650px;
   height: auto;
   text-align: left;
   float: right;
+}
+#partnership-baby {
+  width: 300px;
+  float: right;
+}
+#infobject {
+  display: flex;
+  color: #3b2b1c;
+  width: 690px;
+  height: auto;
+  margin: 0 auto;
+  text-align: left;
+  float: left;
+  justify-content: flex-start;
+}
+#infobject-baby {
+  width: 300px;
+  float: left;
 }
 
 #brownType {
@@ -176,14 +189,14 @@ export default {
   bottom: 43px;
   position: absolute;
 }
-
 #logoBlock {
-  position: absolute;
+  position: fixed;
   background-color: #3b2b1c;
   height: 500px;
-  bottom: -104px;
+  bottom: -172px;
   position: inherit;
   border-radius: 2px;
+  box-shadow: 0 0 1px #3b2b1c;
 }
 
 #USVoteImage {

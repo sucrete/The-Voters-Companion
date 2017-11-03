@@ -71,6 +71,7 @@ html {
 .hotBod {
   position: relative;
   overflow: scroll;
+  top: 30px;
 }
 
 .simple-navigation-header {
@@ -80,7 +81,7 @@ html {
   min-width: 700px;
   align-items: center;
   font-size: 125%;
-  position: fixed; /* Set the navbar to fixed position */
+  position: fixed; /* Set the navbar to a fixed position */
   background-color: #F5F4EA;
   z-index: 5;
   box-shadow: 0 0 5px 10px #F5F4EA;
