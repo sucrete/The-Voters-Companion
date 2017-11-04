@@ -2,9 +2,9 @@
 <template>
 
   <div id="landing" class="mt-3">
-    <div id="darkOverlay" style="z-index: 4;" :style="{ 'background-image': 'url(' + dark + ')' }">
+    <div id="darkOverlay" style="z-index: 5;" :style="{ 'background-image': 'url(' + dark + ')' }">
     </div>
-    <div id="lightOverlay" style="z-index: 3;" :style="{ 'background-image': 'url(' + light + ')' }">
+    <div id="lightOverlay" style="z-index: 4;" :style="{ 'background-image': 'url(' + light + ')' }">
     </div>
     <div id="bulk">
       <h2 class="mb-5" hidden><router-link  to="overview">Hello component</router-link></h2>
@@ -17,7 +17,7 @@
       </div>
       <div id="partnership">
         <span id="partnership-baby">
-        CREATED WITH COOPERATION FROM THE <bold>U.S. VOTE FOUNDATION</bold>
+        CREATED WITH HELP FROM THE U.S. VOTE FOUNDATION
         </span>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div :style="{ 'background-image': 'url(' + secondTester + ')' }" hidden>
       HAIRY BOYS
     </div>
-    <input id="addressbar" type="text" class="address mb-4" v-model="addy" placeholder="" hidden>
+    <input id="addressbar" type="text" class="address" v-model="addy" placeholder="">
     <div id="logoBlock">
       <h1 id="brownType">The<br>Voter's<br>Companion</h1>
     </div>
@@ -39,8 +39,7 @@
 <script>
 // import axios from 'axios'
 // import Places from 'vue-places'
-
-import dynamics from 'dynamics.js'
+// import dynamics from 'dynamics.js'
 import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import light from '../assets/rice-paper-2.png'
 import dark from '../assets/asfalt-dark-altered.png'
@@ -65,10 +64,6 @@ export default {
     }
   },
   methods: {
-    changeAddressBarTransparent () {
-      var bethLamed = document.getElementById('addressbar')
-      bethLamed.style.cssText = 'background: transparent'
-    },
     doItAlready () {
       var urlPath = location.pathname
       var toppy = document.getElementById('app')
@@ -80,29 +75,9 @@ export default {
         return false
       }
     },
-    animateAddressBar () {
-      setTimeout(function () {
-        var el = document.getElementById('addressbar')
-        dynamics.animate(el, {
-          translateY: 50
-        }, {
-          type: dynamics.easeInOut,
-          duration: 1413,
-          friction: 300
-        })
-      }, 2000)
-    },
     injectPlaceholder () {
-      setTimeout(function () {
-        var bethMem = document.getElementById('addressbar')
-        bethMem.placeholder = 'What is your address?'
-      }, 3413)
-    },
-    changeAddressBarBack () {
-      setTimeout(function () {
-        var daletAyin = document.getElementById('addressbar')
-        daletAyin.style.removeProperty('background')
-      }, 3000)
+      var bethMem = document.getElementById('addressbar')
+      bethMem.placeholder = 'WHAT IS YOUR ADDRESS?'
     },
     focusHelper () {
       setTimeout(function () {
@@ -115,8 +90,6 @@ export default {
     this.doItAlready()
     this.animateAddressBar()
     this.injectPlaceholder()
-    this.changeAddressBarTransparent()
-    this.changeAddressBarBack()
     this.focusHelper()
   }
 }
@@ -150,32 +123,33 @@ export default {
   margin: 0 auto;
   height: auto;
   justify-content: space-between;
-  font-size: 100%;
+  font-size: 110%;
   line-height: 105%;
 }
 #partnership {
+  position: relative;
+  top: -30px;
   color: #3b2b1c;
   width: 650px;
   height: auto;
   text-align: left;
-  float: right;
+  margin-top: 1.7em;
 }
 #partnership-baby {
-  width: 300px;
+  width: 250px;
   float: right;
+
 }
 #infobject {
   display: flex;
   color: #3b2b1c;
-  width: 690px;
+  width: 650px;
   height: auto;
   margin: 0 auto;
   text-align: left;
-  float: left;
-  justify-content: flex-start;
 }
 #infobject-baby {
-  width: 300px;
+  width: 275px;
   float: left;
 }
 
@@ -190,13 +164,13 @@ export default {
   position: absolute;
 }
 #logoBlock {
-  position: fixed;
+  position: relative;
   background-color: #3b2b1c;
   height: 500px;
-  bottom: -172px;
-  position: inherit;
+  bottom: -40px;
   border-radius: 2px;
   box-shadow: 0 0 1px #3b2b1c;
+  z-index: 3;
 }
 
 #USVoteImage {
@@ -205,29 +179,18 @@ export default {
 }
 
 .address {
-  width: 610px;
+  width: 650px;
   margin: 0 auto;
   display: block;
-  font-size: 120%;
-  padding: 10px 0;
-  padding-bottom: 1px;
-  padding-left: 20px;
+  font-size: 110%;
   border: none;
-  border-bottom: solid 2px #654321;
-  color: #383838;
   background-color: #c3a986;
-  /*background-image: linear-gradient(to bottom, transparent 98%, #654321 98%);
-  background-repeat: no-repeat;
-  background-size: 610px 100%;
-  background-position: -610px 0;
-  transition: background-position 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);*/
-  position: relative;
-  left: 7px;
 }
 
 .address:focus {
   background-position: 0 0;
   outline: none;
+  background-color: #fe5e31;
 }
 
 hr {
@@ -240,33 +203,43 @@ hr {
   margin: 0 auto;
 }
 
+input {
+
+}
 input::-webkit-input-placeholder {
   color: #2e4045 !important;
+  font-family: 'Assistant', sans-serif;
+  font-weight: bold;
 }
-
 input:-moz-placeholder {
   /* Firefox 18- */
   color: #2e4045 !important;
+  font-family: 'Assistant', sans-serif;
+  font-weight: bold;
 }
-
 input::-moz-placeholder {
   /* Firefox 19+ */
   color: #2e4045 !important;
+  font-family: 'Assistant', sans-serif;
+  font-weight: bold;
 }
-
 input:-ms-input-placeholder {
   /* IE 10+ */
   color: #2e4045 !important;
+  font-family: 'Assistant', sans-serif;
+  font-weight: bold;
 }
-
 input::-ms-input-placeholder {
   /* Edge */
   color: #2e4045 !important;
+  font-family: 'Assistant', sans-serif;
+  font-weight: bold;
 }
 
 .input-group {
-  width: 600px;
+  width: 650px;
   margin: 0 auto;
+  height: auto;
 }
 
 /*#background-div {
