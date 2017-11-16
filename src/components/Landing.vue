@@ -21,20 +21,17 @@
       <input id="addressbar" type="text" class="address" v-model="addy" placeholder="">
     </div>
     <div id="subtitleBlock">
-      <div id="subtitleBlockOverlay" :style="{ 'background-image': 'url(' + bottomGrunge + ')' }">
-        <div id="subtitleBlockOverlayFlecks" :style="{ 'background-image': 'url(' + dark + ')' }"></div>
-      </div>
-      <div id="infobject">
-        <span id="infobject-baby">
-          A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
-        </span>
-      </div>
-      <div id="partnership">
-        <span id="partnership-baby">
-        CREATED WITH HELP FROM THE <a id="partnership-baby-baby" href="https://www.usvotefoundation.org/">U.S. VOTE FOUNDATION</a>
-        </span>
-      </div>
-
+      <div id="subtitleBlockOverlay" :style="{ 'background-image': 'url(' + bottomGrunge + ')' }"></div>
+    </div>
+    <div id="infobject">
+      <span id="infobject-baby">
+        A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
+      </span>
+    </div>
+    <div id="partnership">
+      <span id="partnership-baby">
+      CREATED WITH HELP FROM THE <a id="partnership-baby-baby" href="https://www.usvotefoundation.org/">U.S. VOTE FOUNDATION</a>
+      </span>
     </div>
 
   </div>
@@ -118,39 +115,25 @@ export default {
   position: absolute;
   width: 750px;
   height: 93vh;
-  opacity: .3;
+  opacity: .2;
   left: -24px;
   top: -26px;
   z-index: 7;
 }
 
 #subtitleBlock {
-  font-family: 'Assistant', sans-serif;
   width: 702px;
   position: relative;
-  height: 19.5vh;
+  height: 17.5vh;
   margin: 0 auto;
   margin-top: 2vh;
-  color: #c3a986;
   background-color: #6c785d;
-  justify-content: space-between;
-  font-size: 85%;
-  line-height: 105%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   box-shadow: 0 0 1px #6c785d;
-  z-index: 11;
-}
-#partnership {
-  position: relative;
-  width: 650px;
-  height: auto;
-  text-align: left;
-  margin-top: 1.7em;
-  top: -100px;
-  z-index: 8;
+  z-index: 6;
 }
 #partnership-baby {
   width: 250px;
@@ -160,14 +143,19 @@ export default {
 #partnership-baby-baby, #partnership-baby-baby:visited {
   color: inherit;
 }
-#infobject {
-  display: relative;
+#infobject, #partnership {
+  font-family: 'Assistant', sans-serif;
+  position: relative;
   width: 650px;
   height: auto;
-  top: 20px;
+  top: -100px;
   margin: 0 auto;
   text-align: left;
-  z-index: 8;
+  z-index: 99;
+  justify-content: space-between;
+  font-size: 85%;
+  line-height: 105%;
+  color: #c3a986;
 }
 #infobject-baby {
   width: 275px;
@@ -179,13 +167,6 @@ export default {
   position: relative;
   z-index: 3;
 }
-#subtitleBlockOverlayFlecks {
-  width: inherit;
-  height: inherit;
-  position: relative;
-  z-index: 4;
-}
-
 
 #brownType {
   color: #c3a986;
@@ -199,8 +180,8 @@ export default {
 }
 #logoBlock {
   position: relative;
-  background-color: #3b2b1c;
-  height: 65vh;
+  background-color: #463321;
+  height: 67vh;
   border-radius: 2px;
   box-shadow: 0 0 1px #3b2b1c;
   z-index: 6;
@@ -208,7 +189,7 @@ export default {
 #logoBlockOverlay {
   height: inherit;
   width: inherit;
-  opacity: .8;
+  opacity: .6;
 }
 
 #USVoteImage {
