@@ -2,14 +2,28 @@
 <template>
 
   <div id="landing" class="mt-3">
-    <div id="darkOverlay" style="z-index: 6;" :style="{ 'background-image': 'url(' + dark + ')' }">
+
+    <div id="darkOverlay" style="z-index: 6;" :style="{ 'background-image': 'url(' + dark + ')' }"></div>
+    <div id="lightOverlay" :style="{ 'background-image': 'url(' + light + ')' }"></div>
+
+    <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;"><router-link  to="overview">Hello component</router-link></h2>
+
+    <!-- example of syntax needed to insert image with vue -->
+    <div :style="{ 'background-image': 'url(' + secondTester + ')' }" hidden>
+      HAIRY BOYS
     </div>
-    <div id="lightOverlay" style="z-index: 5;" :style="{ 'background-image': 'url(' + light + ')' }">
+
+    <div id="logoBlock">
+      <div id="logoBlockOverlay" :style="{ 'background-image': 'url(' + grungey + ')' }" ></div>
+      <h1 id="brownType" >The<br>Voter's<br>Guidebook</h1>
     </div>
-    <div id="bulk">
-      <h2 class="mb-5" hidden><router-link  to="overview">Hello component</router-link></h2>
+    <div id="inputEverything" hidden>
+      <input id="addressbar" type="text" class="address" v-model="addy" placeholder="">
     </div>
     <div id="subtitleBlock">
+      <div id="subtitleBlockOverlay" :style="{ 'background-image': 'url(' + bottomGrunge + ')' }">
+        <div id="subtitleBlockOverlayFlecks" :style="{ 'background-image': 'url(' + dark + ')' }"></div>
+      </div>
       <div id="infobject">
         <span id="infobject-baby">
           A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
@@ -17,28 +31,13 @@
       </div>
       <div id="partnership">
         <span id="partnership-baby">
-        CREATED WITH HELP FROM THE U.S. VOTE FOUNDATION
+        CREATED WITH HELP FROM THE <a id="partnership-baby-baby" href="https://www.usvotefoundation.org/">U.S. VOTE FOUNDATION</a>
         </span>
       </div>
-    </div>
-    <!-- example of syntax needed to insert image with vue -->
-    <div :style="{ 'background-image': 'url(' + secondTester + ')' }" hidden>
-      HAIRY BOYS
-    </div>
-    <div id="inputEverything">
-      <input id="addressbar" type="text" class="address" v-model="addy" placeholder="" @focus="toggleShow" @blur="toggleShow">
-      <div id="focusOverlay" :style="{ 'background-image': 'url(' + focusOverlay + ')' }">
-      </div>
-    </div>
-    <div id="logoBlock">
-      <div id="logoBlockOverlay" :style="{ 'background-image': 'url(' + grungey + ')' }"></div>
-      <h1 id="brownType">The<br>Voter's<br>Companion</h1>
-    </div>
-  </div>
 
+    </div>
 
   </div>
-
 </template>
 
 <script>
@@ -46,10 +45,10 @@
 // import Places from 'vue-places'
 // import dynamics from 'dynamics.js'
 import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
-import light from '../assets/rice-paper-2.png'
-import dark from '../assets/asfalt-dark-altered.png'
-import grungey from '../assets/01-inverted-alpha-tan-background-2.png'
-import focusOverlay from '../assets/focus-overlay-tan.png'
+import light from '../assets/rice-paper-2-tan.png'
+import dark from '../assets/01-flecks-altered.png'
+import grungey from '../assets/01-inverted-alpha-background-tan-stuff.png'
+import bottomGrunge from '../assets/info-block-new-grunge.png'
 
 export default {
   name: 'landing',
@@ -63,7 +62,7 @@ export default {
       dark: dark,
       light: light,
       grungey: grungey,
-      focusOverlay: focusOverlay,
+      bottomGrunge: bottomGrunge,
       form: {
         country: {
           label: null,
@@ -107,16 +106,11 @@ export default {
   position: relative;
 }
 
-#logoBlockOverlay {
-  height: inherit;
-  width: inherit;
-  opacity: .7;
-}
+
 #darkOverlay {
   position: absolute;
   width: 750px;
   height: 93vh;
-  opacity: .5;
   left: -24px;
   top: -24px;
 }
@@ -126,45 +120,72 @@ export default {
   height: 93vh;
   opacity: .3;
   left: -24px;
-  top: -24px;
+  top: -26px;
+  z-index: 7;
 }
 
 #subtitleBlock {
   font-family: 'Assistant', sans-serif;
-  width: 690px;
+  width: 702px;
+  position: relative;
+  height: 19.5vh;
   margin: 0 auto;
-  height: auto;
+  margin-top: 2vh;
+  color: #c3a986;
+  background-color: #6c785d;
   justify-content: space-between;
-  font-size: 110%;
+  font-size: 85%;
   line-height: 105%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: 0 0 1px #6c785d;
+  z-index: 11;
 }
 #partnership {
   position: relative;
-  top: 50px;
-  color: #3b2b1c;
   width: 650px;
   height: auto;
   text-align: left;
   margin-top: 1.7em;
+  top: -100px;
+  z-index: 8;
 }
 #partnership-baby {
   width: 250px;
+  position: relative;
   float: right;
-
+}
+#partnership-baby-baby, #partnership-baby-baby:visited {
+  color: inherit;
 }
 #infobject {
   display: relative;
-  color: #3b2b1c;
   width: 650px;
   height: auto;
   top: 20px;
   margin: 0 auto;
   text-align: left;
+  z-index: 8;
 }
 #infobject-baby {
   width: 275px;
   float: left;
 }
+#subtitleBlockOverlay {
+  width: inherit;
+  height: inherit;
+  position: relative;
+  z-index: 3;
+}
+#subtitleBlockOverlayFlecks {
+  width: inherit;
+  height: inherit;
+  position: relative;
+  z-index: 4;
+}
+
 
 #brownType {
   color: #c3a986;
@@ -179,11 +200,15 @@ export default {
 #logoBlock {
   position: relative;
   background-color: #3b2b1c;
-  height: 500px;
-  bottom: -30px;
+  height: 65vh;
   border-radius: 2px;
   box-shadow: 0 0 1px #3b2b1c;
-  z-index: 3;
+  z-index: 6;
+}
+#logoBlockOverlay {
+  height: inherit;
+  width: inherit;
+  opacity: .8;
 }
 
 #USVoteImage {
@@ -201,15 +226,39 @@ hr {
   margin: 0 auto;
 }
 
+#inputEverything {
+  position: relative;
+  top: 10px
+}
+.address {
+  width: 700px;
+  margin: 0 auto;
+  height: 35px;
+  position: relative;
+  float: left;
+  display: block;
+  border: none;
+  background: transparent;
+  padding-left: 25px;
+  border-radius: 1.5px;
+  font-family: 'Assistant', sans-serif;
+  top: 35px;
+}
+/*.address:focus {
+  background-position: 0 0;
+  outline: none;
+  background-color: #FFFFF0 ;
+}*/
+/*
 @-webkit-keyframes background {
   0% {
     background: transparent;
   }
   66% {
-    background: #fe5e31;
+    background: #FFFFF0 ;
   }
   100% {
-    background: #fe5e31;
+    background: #FFFFF0 ;
   }
 }
 @-moz-keyframes background {
@@ -217,10 +266,10 @@ hr {
     background: transparent;
   }
   66% {
-    background: #fe5e31;
+    background: #FFFFF0 ;
   }
   100% {
-    background: #fe5e31;
+    background: #FFFFF0 ;
   }
 }
 @keyframes background {
@@ -228,82 +277,46 @@ hr {
     background: transparent;
   }
   66% {
-    background: #fe5e31;
+    background: #FFFFF0 ;
   }
   100% {
-    background: #fe5e31;
+    background: #FFFFF0 ;
   }
 }
-
 input:active, input:focus {
   -webkit-animation: background 0.55s ease-in;
   -moz-animation: background 0.55s ease-in;
   animation: background 0.55s ease-in;
-  background: #fe5e31;
-}
+  background: #FFFFF0 ;
+}*/
 input::-webkit-input-placeholder {
-  color: #2e4045 !important;
+  color: #3b2b1c !important;
   font-family: 'Assistant', sans-serif;
   font-weight: bold;
-  z-index: 8;
 }
 input:-moz-placeholder {
   /* Firefox 18- */
-  color: #2e4045 !important;
+  color: #3b2b1c !important;
   font-family: 'Assistant', sans-serif;
   font-weight: bold;
-  z-index: 8;
 }
 input::-moz-placeholder {
   /* Firefox 19+ */
-  color: #2e4045 !important;
+  color: #3b2b1c !important;
   font-family: 'Assistant', sans-serif;
   font-weight: bold;
-  z-index: 8;
 }
 input:-ms-input-placeholder {
   /* IE 10+ */
-  color: #2e4045 !important;
+  color: #3b2b1c !important;
   font-family: 'Assistant', sans-serif;
   font-weight: bold;
-  z-index: 8;
 }
 input::-ms-input-placeholder {
   /* Edge */
-  color: #2e4045 !important;
+  color: #3b2b1c !important;
   font-family: 'Assistant', sans-serif;
   font-weight: bold;
-  z-index: 8;
-}
-.address {
-  width: 700px;
-  margin: 0 auto;
-  height: 30px;
-  position: relative;
-  display: block;
-  font-size: 110%;
-  border: none;
-  background: transparent;
-  padding-left: 25px;
-  border-radius: 1.5px;
-  font-family: 'Assistant', sans-serif;
-  z-index: 7;
-  top: 40px;
-
-}
-.address:focus {
-  background-position: 0 0;
-  outline: none;
-  background-color: #fe5e31;
-}
-#focusOverlay {
-  width: 700px;
-  height: 30px;
-  margin: 0 auto;
-  position: relative;
-  top: 10px;
-  z-index: 8;
-  padding: 0;
 }
 
 /*#background-div {

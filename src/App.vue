@@ -1,6 +1,6 @@
 
 <template>
-  <div id="app"  :style="{ 'background-image': 'url(' + grunge + ')' }">
+  <div id="app">
     <router-view></router-view>
   </div>
 </template>
@@ -8,8 +8,6 @@
 <script>
 // import axios from 'axios'
 // import Places from 'vue-places'
-
-import cocaCola from './assets/subtlegrunge.png'
 
 export default {
   name: 'app',
@@ -19,7 +17,6 @@ export default {
       bolstarMsg: 'you did it kiddo',
       civicData: '',
       params: '',
-      grunge: cocaCola,
       form: {
         country: {
           label: null,
