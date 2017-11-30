@@ -1,27 +1,15 @@
 
 <template>
 
-  <div id="landing" class="mt-3">
+  <div id="landing">
 
-    <div id="darkOverlay" style="z-index: 6;" :style="{ 'background-image': 'url(' + dark + ')' }"></div>
-    <div id="lightOverlay" :style="{ 'background-image': 'url(' + light + ')' }"></div>
+    <div id="lightOverlay" :style="{ 'background-image': 'url(' + light + ')' }" hidden></div>
 
     <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;"><router-link  to="overview">Hello component</router-link></h2>
 
     <!-- example of syntax needed to insert image with vue -->
     <div :style="{ 'background-image': 'url(' + secondTester + ')' }" hidden>
       HAIRY BOYS
-    </div>
-
-    <div id="logoBlock">
-      <div id="logoBlockOverlay" :style="{ 'background-image': 'url(' + grungey + ')' }" ></div>
-      <h1 id="brownType" >The<br>Voter's<br>Guidebook</h1>
-    </div>
-    <div id="inputEverything" hidden>
-      <input id="addressbar" type="text" class="address" v-model="addy" placeholder="">
-    </div>
-    <div id="subtitleBlock">
-      <div id="subtitleBlockOverlay" :style="{ 'background-image': 'url(' + bottomGrunge + ')' }"></div>
     </div>
     <div id="infobject">
       <span id="infobject-baby">
@@ -33,6 +21,14 @@
       CREATED WITH HELP FROM THE <a id="partnership-baby-baby" href="https://www.usvotefoundation.org/">U.S. VOTE FOUNDATION</a>
       </span>
     </div>
+    <div id="logoBlock">
+      <div id="logoBlockOverlay" :style="{ 'background-image': 'url(' + grungey + ')' }" hidden></div>
+      <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
+    </div>
+    <div id="inputEverything">
+      <input id="addressbar" type="text" class="address" v-model="addy" placeholder="">
+    </div>
+
 
   </div>
 </template>
@@ -43,9 +39,7 @@
 // import dynamics from 'dynamics.js'
 import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import light from '../assets/rice-paper-2-tan.png'
-import dark from '../assets/01-flecks-altered.png'
 import grungey from '../assets/01-inverted-alpha-background-tan-stuff.png'
-import bottomGrunge from '../assets/info-block-new-grunge.png'
 
 export default {
   name: 'landing',
@@ -56,10 +50,8 @@ export default {
       civicData: '',
       params: '',
       secondTester: image,
-      dark: dark,
       light: light,
       grungey: grungey,
-      bottomGrunge: bottomGrunge,
       form: {
         country: {
           label: null,
@@ -75,7 +67,7 @@ export default {
       if (urlPath.length > 5) {
         toppy.style.background = '#F5F4EA'
       } else {
-        toppy.style.background = '#c3a986'
+        toppy.style.background = '#F5F5DC'
       }
     },
     injectPlaceholder () {
@@ -101,6 +93,7 @@ export default {
 
 #landing {
   position: relative;
+  margin-top: 1vh;
 }
 
 
@@ -124,16 +117,15 @@ export default {
 #subtitleBlock {
   width: 702px;
   position: relative;
-  height: 17.5vh;
+  height: 11.5vh;
   margin: 0 auto;
-  margin-top: 2vh;
+  margin-top: 1vh;
   background-color: #6c785d;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
   box-shadow: 0 0 1px #6c785d;
-  z-index: 6;
+  z-index:80;
+}
+#partnership {
+
 }
 #partnership-baby {
   width: 250px;
@@ -143,19 +135,19 @@ export default {
 #partnership-baby-baby, #partnership-baby-baby:visited {
   color: inherit;
 }
-#infobject, #partnership {
+#infobject {
   font-family: 'Assistant', sans-serif;
   position: relative;
   width: 650px;
   height: auto;
-  top: -100px;
+  top: -66px;
   margin: 0 auto;
   text-align: left;
   z-index: 99;
   justify-content: space-between;
   font-size: 85%;
   line-height: 105%;
-  color: #c3a986;
+  color: #F5F4EA;
 }
 #infobject-baby {
   width: 275px;
@@ -166,30 +158,34 @@ export default {
   height: inherit;
   position: relative;
   z-index: 3;
+  opacity: 0;
 }
 
 #brownType {
-  color: #c3a986;
+  color: #f2cbbc;
   font-family: 'Playfair Display', serif !important;
   text-align: left;
-  font-size: 700%;
-  line-height: 85%;
-  left: 40px;
-  bottom: 43px;
+  font-size: 5rem;
+  line-height: 80%;
+  left: 2rem;
+  bottom: 2rem;
   position: absolute;
 }
 #logoBlock {
   position: relative;
-  background-color: #463321;
-  height: 67vh;
-  border-radius: 2px;
-  box-shadow: 0 0 1px #3b2b1c;
+  background-color: #334431;
+  height: 27rem;
+  width: 42rem;
+  margin: 0 auto;
+  /*border-radius: 2px;
+  box-shadow: 0 0 1px #3b2b1c;*/
   z-index: 6;
+  bottom: -12rem;
 }
 #logoBlockOverlay {
   height: inherit;
   width: inherit;
-  opacity: .6;
+  opacity: .3;
 }
 
 #USVoteImage {
@@ -209,21 +205,26 @@ hr {
 
 #inputEverything {
   position: relative;
-  top: 10px
 }
 .address {
   width: 700px;
   margin: 0 auto;
-  height: 35px;
+  height: 30rem;
   position: relative;
   float: left;
-  display: block;
+  padding-bottom: 28rem;
   border: none;
-  background: transparent;
+  outline: none;
+  background-color: #903C3C;
   padding-left: 25px;
   border-radius: 1.5px;
   font-family: 'Assistant', sans-serif;
-  top: 35px;
+  bottom: 17rem;
+}
+
+input:focus, .address:focus {
+  outline: none;
+  border: none;
 }
 /*.address:focus {
   background-position: 0 0;
