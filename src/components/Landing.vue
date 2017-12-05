@@ -9,11 +9,16 @@
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
 
     <div id="info-div">
-      <div id="infobject">
+      <div id="infobject" :style="{ 'background-image': 'url(' + thirdTester + ')' }">
         A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
       </div>
       <div id="partnership">
-        Created with help from <a id="partnership-baby" href="https://www.usvotefoundation.org/"> THE U.S. VOTE FOUNDATION</a>
+        Created with help from <br/><a id="partnership-baby" href="https://www.usvotefoundation.org/"> THE U.S. VOTE FOUNDATION <div id="partnership-check" :style="{ 'background-image': 'url(' + secondTester + ')' }">
+
+        </div><div id="partnership-box">
+
+        </div></a>
+
       </div>
     </div>
     <div id="logoBlock">
@@ -30,6 +35,9 @@
 // import Places from 'vue-places'
 // import dynamics from 'dynamics.js'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
+// import marsh from '../assets/04.png'
+import zayin from '../assets/usvote-logo-small.png'
+import bethBeth from '../assets/img-noise-361x370.png'
 
 export default {
   name: 'landing',
@@ -39,6 +47,8 @@ export default {
       bolstarMsg: 'you did it, kiddo',
       civicData: '',
       params: '',
+      secondTester: zayin,
+      thirdTester: bethBeth,
       form: {
         country: {
           label: null,
@@ -53,8 +63,10 @@ export default {
       var toppy = document.getElementById('app')
       if (urlPath.length > 5) {
         toppy.style.background = '#F5F4EA'
+        return false
       } else {
-        toppy.style.background = '#F5F5DC'
+        toppy.style.cssText = 'background: #F5F5DC; background: -webkit-linear-gradient(315deg, white, #F5F5DC); background: linear-gradient(315deg, white, #F5F5DC);'
+        return false
       }
     },
     injectPlaceholder () {
@@ -81,14 +93,23 @@ export default {
 </script>
 
 <style scoped>
-
+@import url('https://fonts.googleapis.com/css?family=Chicle|Oranienbaum');
 
 #partnership {
   width: 250px;
+  border-width: 3px;
+  border-color: #49412c;
+  color: #49412c;
+  border-style: solid;
+  background-color: #b89f76;
   position: relative;
-  font-family: 'Libre Baskerville', serif;
-    /**/
-  line-height: 95%;
+  font-size: 125%;
+  padding: 5px;
+  padding-left: 6px;
+  font-family: 'Oranienbaum', serif;
+  font-weight: 600;
+  line-height: 115%;
+  margin-left: 1rem;
 }
 a#partnership-baby:visited {
   color: inherit;
@@ -99,7 +120,7 @@ a#partnership-baby:visited {
   position: relative;
   text-align: left;
   z-index: 99;
-  width: 44rem;
+  width: 43.5rem;
   display: inline-flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -110,19 +131,18 @@ a#partnership-baby:visited {
   padding: 7px;
   width: 14rem;
   height: 12rem;
-  font-size: 120%;
+  font-size: 130%;
   line-height: 105%;
   color: white;
-  background-color: #110f0f;
 }
 
 
 #brownType {
   color: #f2cbbc;
-  font-family: 'Playfair Display', serif !important;
+  font-family: 'Chicle', serif !important;
   text-align: left;
   font-size: 5rem;
-  line-height: 80%;
+  line-height: 85%;
   left: 2rem;
   bottom: 2rem;
   position: absolute;
@@ -133,10 +153,10 @@ a#partnership-baby:visited {
   height: 22rem;
   width: 42rem;
   margin: 0 auto;
-  border-radius: 2px;
-  box-shadow: 10px 10px 20px #334431;
+  border-radius: 1px;
+  /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 6;
-  top: 3.5rem;
+  top: 2.5rem;
 }
 
 #USVoteImage {
@@ -159,7 +179,7 @@ a#partnership-baby:visited {
   background-color: #903C3C;
   padding-left: 25px;
   border-radius: 1.5px;
-  font-family: 'Acme', sans-serif;
+  font-family: 'Oswald', sans-serif;
   bottom: 21.5rem;
   font-size: 110%;
 }
@@ -171,27 +191,27 @@ input:focus {
 }
 input::-webkit-input-placeholder {
   color: #3f0000 !important;
-  font-family: 'Acme', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 input:-moz-placeholder {
   /* Firefox 18- */
   color: #3f0000 !important;
-  font-family: 'Acme', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 input::-moz-placeholder {
   /* Firefox 19+ */
   color: #3f0000 !important;
-  font-family: 'Acme', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 input:-ms-input-placeholder {
   /* IE 10+ */
   color: #3f0000 !important;
-  font-family: 'Acme', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 input::-ms-input-placeholder {
   /* Edge */
   color: #3f0000 !important;
-  font-family: 'Acme', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 #landing {
