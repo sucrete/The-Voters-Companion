@@ -12,19 +12,14 @@
       <div id="infobject" :style="{ 'background-image': 'url(' + thirdTester + ')' }">
         A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
       </div>
-      <div id="partnershipWrapper">
-        <div class="p-block">
-          <div id="partnership">
-            Created with generous support from
-            <a id="partnership-baby" href="https://www.usvotefoundation.org/"> THE U.S. VOTE FOUNDATION</a>
-
-          </div>
+      <div id="p-wrapper">
+        <div id="partnership">
+          Created with support from <br />
+          <a id="partnership-baby" href="https://www.usvotefoundation.org/"> THE U.S. VOTE FOUNDATION</a>
         </div>
-        <div class="p-block">
-          <div id="check-div"></div>
-        </div>
-        <div id="partnership-check" :style="{ 'background-image': 'url(' + USVoteLogo + ')' }" href="https://www.usvotefoundation.org/"></div>
+        <div id="check-div"></div>
       </div>
+      <img id="partnership-graphic" :src=" USVoteLogo " href="https://www.usvotefoundation.org/">
     </div>
     <div id="logoBlock">
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
@@ -98,42 +93,11 @@ export default {
 </script>
 
 <style scoped>
+
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
-.p-block {
-  display: inline-block;
-}
-#partnership {
-  width: 15rem;
-  border-width: 3px;
-  border-style: solid;
-  border-color: #cba46a;
-  color: #49412c;
-  font-size: 190%;
-  padding: 5px;
-  padding-left: 6px;
-  font-family: 'Oswald', serif;
-  font-weight: 400;
-  line-height: 115%;
-  margin-left: 1rem;
-  height: 10rem;
-  display: block;
-  -moz-box-sizing:border-box;
-  -webkit-box-sizing:border-box;
-}
-a#partnership-baby:visited {
-  color: inherit;
-}
-#check-div {
-  height: 10rem;
-  width: 10rem;
-  border-width: 3px;
-  border-style: solid;
-  display: block;
-}
 #info-div {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.3rem;
   position: relative;
   text-align: left;
   z-index: 99;
@@ -142,21 +106,71 @@ a#partnership-baby:visited {
   align-items: flex-end;
   justify-content: flex-start;
 }
+
+#p-wrapper {
+  display: table;
+  margin-left: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+#p-wrapper:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+#partnership {
+  width: 18rem;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #654921;
+  color: #654921;
+  font-size: 150%;
+  background-color: #e0cb92;
+  border-right-width: 2px;
+  padding: 8px;
+  padding-left: 10px;
+  font-family: 'Oswald', serif;
+  font-weight: 400;
+  line-height: 126%;
+  display: table-cell;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+a#partnership-baby:visited {
+  color: inherit;
+}
+#check-div, #partnership {
+  height: 5rem;
+}
+#check-div {
+  width: 5rem;
+  border-width: 4px;
+  border-style: solid;
+  display: table-cell;
+  border-left-width: 2px;
+  border-color: #654921;
+  background-color: transparent;
+}
+#partnership-graphic {
+  position: relative;
+  z-index: 1000;
+  left: -.3rem;
+  bottom: .7rem;
+  -webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  -moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  -ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  -o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+}
 #infobject {
   font-family: 'Oswald', sans-serif;
   position: inherit;
   padding: .75rem;
-  width: 14rem;
-  height: 12rem;
-  font-size: 145%;
+  width: 18rem;
+  height: 12.7rem;
+  font-size: 175%;
   line-height: 105%;
   color: white;
   border-radius: 2px;
 }
-#partnership-check {
-  background: transparent;
-}
-
 
 #brownType {
   color: #f2cbbc;
@@ -164,20 +178,20 @@ a#partnership-baby:visited {
   text-align: left;
   font-size: 5.5rem;
   line-height: 89%;
-  left: 2rem;
+  left: 2.3rem;
   bottom: 2rem;
   position: absolute;
 }
 #logoBlock {
   position: relative;
   background-color: #334431;
-  height: 25rem;
+  height: 25.5rem;
   width: 42rem;
   margin: 0 auto;
   border-radius: 2px;
   /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 6;
-  bottom: -3.4vh;
+  bottom: -1rem;
 }
 
 #USVoteImage {
@@ -191,7 +205,6 @@ a#partnership-baby:visited {
 .address {
   width: 44rem;
   margin: 0 auto;
-  height: 25rem;
   position: relative;
   float: left;
   padding-bottom: 23rem;
