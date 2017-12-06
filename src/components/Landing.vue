@@ -3,7 +3,7 @@
 
   <div id="landing">
 
-    <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;"><router-link  to="overview">Hello component</router-link></h2>
+    <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;"><router-link  to="overview" hidden>Hello component</router-link></h2>
 
     <!-- example of syntax needed to insert image with vue -->
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
@@ -12,21 +12,26 @@
       <div id="infobject" :style="{ 'background-image': 'url(' + thirdTester + ')' }">
         A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
       </div>
-      <div id="partnership">
-        Created with help from <br/><a id="partnership-baby" href="https://www.usvotefoundation.org/"> THE U.S. VOTE FOUNDATION <div id="partnership-check" :style="{ 'background-image': 'url(' + secondTester + ')' }">
+      <div id="partnershipWrapper">
+        <div class="p-block">
+          <div id="partnership">
+            Created with generous support from
+            <a id="partnership-baby" href="https://www.usvotefoundation.org/"> THE U.S. VOTE FOUNDATION</a>
 
-        </div><div id="partnership-box">
-
-        </div></a>
-
+          </div>
+        </div>
+        <div class="p-block">
+          <div id="check-div"></div>
+        </div>
+        <div id="partnership-check" :style="{ 'background-image': 'url(' + USVoteLogo + ')' }" href="https://www.usvotefoundation.org/"></div>
       </div>
     </div>
     <div id="logoBlock">
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
     </div>
-    <div id="inputEverything">
-      <input id="addressbar" type="text" class="address" v-model="addy" placeholder="">
-    </div>
+    <!-- <div id="inputEverything">
+      <input id="addressbar" type="text" class="address" v-model="addy" placeholder="" hidden>
+    </div> -->
   </div>
 </template>
 
@@ -47,7 +52,7 @@ export default {
       bolstarMsg: 'you did it, kiddo',
       civicData: '',
       params: '',
-      secondTester: zayin,
+      USVoteLogo: zayin,
       thirdTester: bethBeth,
       form: {
         country: {
@@ -65,7 +70,7 @@ export default {
         toppy.style.background = '#F5F4EA'
         return false
       } else {
-        toppy.style.cssText = 'background: #F5F5DC; background: -webkit-linear-gradient(315deg, white, #F5F5DC); background: linear-gradient(315deg, white, #F5F5DC);'
+        toppy.style.cssText = 'background: #F5F5DC; background: -webkit-linear-gradient(315deg, #e8f4f8, #F5F5DC); background: linear-gradient(315deg, #e8f4f8, #F5F5DC);'
         return false
       }
     },
@@ -93,26 +98,38 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Chicle|Oranienbaum');
+@import url('https://fonts.googleapis.com/css?family=Chicle');
 
+.p-block {
+  display: inline-block;
+}
 #partnership {
-  width: 250px;
+  width: 15rem;
   border-width: 3px;
-  border-color: #49412c;
-  color: #49412c;
   border-style: solid;
-  background-color: #b89f76;
-  position: relative;
-  font-size: 125%;
+  border-color: #cba46a;
+  color: #49412c;
+  font-size: 190%;
   padding: 5px;
   padding-left: 6px;
-  font-family: 'Oranienbaum', serif;
-  font-weight: 600;
+  font-family: 'Oswald', serif;
+  font-weight: 400;
   line-height: 115%;
   margin-left: 1rem;
+  height: 10rem;
+  display: block;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
 }
 a#partnership-baby:visited {
   color: inherit;
+}
+#check-div {
+  height: 10rem;
+  width: 10rem;
+  border-width: 3px;
+  border-style: solid;
+  display: block;
 }
 #info-div {
   margin-top: 1rem;
@@ -120,7 +137,7 @@ a#partnership-baby:visited {
   position: relative;
   text-align: left;
   z-index: 99;
-  width: 43.5rem;
+  width: 41.5rem;
   display: inline-flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -128,12 +145,16 @@ a#partnership-baby:visited {
 #infobject {
   font-family: 'Oswald', sans-serif;
   position: inherit;
-  padding: 7px;
+  padding: .75rem;
   width: 14rem;
   height: 12rem;
-  font-size: 130%;
+  font-size: 145%;
   line-height: 105%;
   color: white;
+  border-radius: 2px;
+}
+#partnership-check {
+  background: transparent;
 }
 
 
@@ -141,8 +162,8 @@ a#partnership-baby:visited {
   color: #f2cbbc;
   font-family: 'Chicle', serif !important;
   text-align: left;
-  font-size: 5rem;
-  line-height: 85%;
+  font-size: 5.5rem;
+  line-height: 89%;
   left: 2rem;
   bottom: 2rem;
   position: absolute;
@@ -150,13 +171,13 @@ a#partnership-baby:visited {
 #logoBlock {
   position: relative;
   background-color: #334431;
-  height: 22rem;
+  height: 25rem;
   width: 42rem;
   margin: 0 auto;
-  border-radius: 1px;
+  border-radius: 2px;
   /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 6;
-  top: 2.5rem;
+  bottom: -3.4vh;
 }
 
 #USVoteImage {

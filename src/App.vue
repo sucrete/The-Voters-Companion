@@ -33,7 +33,7 @@ export default {
         toppy.style.background = '#F5F4EA'
         return false
       } else {
-        toppy.style.cssText = 'background: #F5F5DC; background: -webkit-linear-gradient(45deg, #F0FFF0, #F5F5DC); background: linear-gradient(45deg, #F0FFF0, #F5F5DC);'
+        toppy.style.cssText = 'background: #F5F5DC; background: -webkit-linear-gradient(315deg, #e8f4f8, #F5F5DC); background: linear-gradient(315deg, #e8f4f8, #F5F5DC)'
         return false
       }
     },
@@ -68,8 +68,8 @@ html {
 .hotBod {
   position: relative;
   overflow: scroll;
-  top: 4em;
-  padding-bottom: 4em;
+  top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .simple-navigation-header {
@@ -110,9 +110,9 @@ router-link:hover {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 750px;
+  width: 46rem;
   margin: auto;
-  margin-top: 1em;
+  margin-top: 1rem;
   /* background color called 'brown paper bag': #B29772*/
   background: #F5F4EA;
   font-family: 'Rasa', serif;
@@ -120,7 +120,7 @@ router-link:hover {
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
   padding: 10px 24px;
-  min-height: 95vh;
+  min-height: 43rem;
   position: relative;
 }
 
