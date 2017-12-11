@@ -57,9 +57,8 @@ export default {
 
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
 @import url('https://fonts.googleapis.com/css?family=Rasa');
-@import url('https://fonts.googleapis.com/css?family=Acme|Libre+Baskerville|Oswald:500,600');
+@import url('https://fonts.googleapis.com/css?family=Oswald:500,600');
 
 html {
   background-color: #E1DCDC;

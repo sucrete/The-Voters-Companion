@@ -12,14 +12,25 @@
       <div id="infobject" :style="{ 'background-image': 'url(' + thirdTester + ')' }">
         A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
       </div>
-      <div id="p-wrapper">
-        <div id="partnership">
-          Created with support from <br />
-          <a id="partnership-baby" href="https://www.usvotefoundation.org/"> THE U.S. VOTE FOUNDATION</a>
+      <div style="display: block;">
+        <div>
+          <h1 id="support"> Made with <br/>
+            support from</h1>
         </div>
-        <div id="check-div"></div>
+        <div style="display: block;">
+          <div id="p-wrapper">
+            <a rel="noopener noreferrer" target="_blank" href="https://www.usvotefoundation.org/">
+              <div id="partnership">
+                <a id="partnership-baby" rel="noopener noreferrer" target="_blank" href="https://www.usvotefoundation.org/"> THE U.S. VOTE FOUNDATION</a>
+              </div>
+              <div id="check-div"></div>
+              <img id="partnership-graphic" :src=" USVoteLogo ">
+              <img id="partnership-graphic-buddy" :src=" USVoteLogo " >
+            </a>
+          </div>
+        </div>
       </div>
-      <img id="partnership-graphic" :src=" USVoteLogo " href="https://www.usvotefoundation.org/">
+
     </div>
     <div id="logoBlock">
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
@@ -95,7 +106,17 @@ export default {
 <style scoped>
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
+@import url('https://fonts.googleapis.com/css?family=Alegreya:500i|Arapey|Crimson+Text:600i');
 
+#support {
+  font-family: 'Crimson Text', serif;
+  font-size: 3rem;
+  font-style: italic;
+  display: block;
+  margin: 1rem;
+  margin-left: 1.2rem;
+  margin-bottom: 1rem;
+}
 #info-div {
   margin-top: 1.3rem;
   position: relative;
@@ -114,34 +135,34 @@ export default {
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 #p-wrapper:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22);
 }
 #partnership {
-  width: 18rem;
+  width: 21rem;
   border-width: 4px;
   border-style: solid;
   border-color: #654921;
   color: #654921;
-  font-size: 150%;
+  font-size: 175%;
   background-color: #e0cb92;
   border-right-width: 2px;
   padding: 8px;
-  padding-left: 10px;
+  padding-left: 1.15rem;
   font-family: 'Oswald', serif;
   font-weight: 400;
-  line-height: 126%;
   display: table-cell;
   -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
+  z-index: 80;
 }
 a#partnership-baby:visited {
   color: inherit;
 }
 #check-div, #partnership {
-  height: 5rem;
+  height: 4rem;
 }
 #check-div {
-  width: 5rem;
+  width: 4rem;
   border-width: 4px;
   border-style: solid;
   display: table-cell;
@@ -150,23 +171,39 @@ a#partnership-baby:visited {
   background-color: transparent;
 }
 #partnership-graphic {
-  position: relative;
-  z-index: 1000;
-  left: -.3rem;
+    z-index: 150;
+}
+#partnership-graphic-buddy, #partnership-graphic {
+  position: absolute;
+  left: 35.4rem;
   bottom: .7rem;
+  width: 13%;
+  height: auto;
+}
+#partnership-graphic-buddy {
+  z-index: 70;
   -webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
   -moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
   -ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
   -o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
   filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
+#partnership-graphic-buddy:hover {
+  -webkit-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
+  -moz-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
+  -ms-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
+  -o-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
+  filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
+}
+
 #infobject {
   font-family: 'Oswald', sans-serif;
   position: inherit;
   padding: .75rem;
-  width: 18rem;
+  width: 13rem;
   height: 12.7rem;
-  font-size: 175%;
+  font-size: 160%;
   line-height: 105%;
   color: white;
   border-radius: 2px;
@@ -176,7 +213,7 @@ a#partnership-baby:visited {
   color: #f2cbbc;
   font-family: 'Chicle', serif !important;
   text-align: left;
-  font-size: 5.5rem;
+  font-size: 6rem;
   line-height: 89%;
   left: 2.3rem;
   bottom: 2rem;
@@ -192,11 +229,6 @@ a#partnership-baby:visited {
   /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 6;
   bottom: -1rem;
-}
-
-#USVoteImage {
-  width: 49px;
-  height: auto;
 }
 
 #inputEverything {
