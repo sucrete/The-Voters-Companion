@@ -14,12 +14,11 @@
       </div>
       <div style="display: block;">
         <div>
-          <h1 id="support"> Made with <br/>
-            support from</h1>
+          <h1 id="support"> Made with generous support from</h1>
         </div>
         <div style="display: block;">
           <div id="p-wrapper">
-            <a rel="noopener noreferrer" target="_blank" href="https://www.usvotefoundation.org/">
+            <a style="position: relative;" rel="noopener noreferrer" target="_blank" href="https://www.usvotefoundation.org/">
               <div id="partnership">
                 <a id="partnership-baby" rel="noopener noreferrer" target="_blank" href="https://www.usvotefoundation.org/"> THE U.S. VOTE FOUNDATION</a>
               </div>
@@ -76,7 +75,7 @@ export default {
         toppy.style.background = '#F5F4EA'
         return false
       } else {
-        toppy.style.cssText = 'background: #F5F5DC; background: -webkit-linear-gradient(315deg, #e8f4f8, #F5F5DC); background: linear-gradient(315deg, #e8f4f8, #F5F5DC);'
+        toppy.style.cssText = 'background: #F5F5DC;'
         return false
       }
     },
@@ -109,13 +108,14 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Alegreya:500i|Arapey|Crimson+Text:600i');
 
 #support {
-  font-family: 'Crimson Text', serif;
-  font-size: 3rem;
+  font-family: 'Oswald', serif;
+  font-size: 1.8rem;
   font-style: italic;
   display: block;
+  color: #423144;
   margin: 1rem;
-  margin-left: 1.2rem;
-  margin-bottom: 1rem;
+  margin-left: 1.6rem;
+  margin-bottom: .2rem;
 }
 #info-div {
   margin-top: 1.3rem;
@@ -131,19 +131,18 @@ export default {
 #p-wrapper {
   display: table;
   margin-left: 1rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 #p-wrapper:hover {
   box-shadow: 0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22);
 }
 #partnership {
-  width: 21rem;
+  width: 22rem;
   border-width: 4px;
   border-style: solid;
   border-color: #654921;
   color: #654921;
-  font-size: 175%;
+  font-size: 180%;
   background-color: #e0cb92;
   border-right-width: 2px;
   padding: 8px;
@@ -175,19 +174,20 @@ a#partnership-baby:visited {
 }
 #partnership-graphic-buddy, #partnership-graphic {
   position: absolute;
-  left: 35.4rem;
-  bottom: .7rem;
-  width: 13%;
+  left: 22.3rem;
+  top: -2.8rem;
+  width: 20%;
   height: auto;
 }
 #partnership-graphic-buddy {
-  z-index: 70;
-  -webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-  -moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-  -ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-  -o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  z-index: 50;
+  -webkit-filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
+  -moz-filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
+  -ms-filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
+  -o-filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
+  filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
+  -webkit-transition: 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: 0.3s cubic-bezier(.25,.8,.25,1);
 }
 #partnership-graphic-buddy:hover {
   -webkit-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
@@ -195,7 +195,12 @@ a#partnership-baby:visited {
   -ms-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
   -o-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
   filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
+  -webkit-transition: 0.3s cubic-bezier(.25,.8,.25,1);
+  -moz-transition: 0.3s cubic-bezier(.25,.8,.25,1);
+  -o-transition: 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: 0.3s cubic-bezier(.25,.8,.25,1);
 }
+
 
 #infobject {
   font-family: 'Oswald', sans-serif;
