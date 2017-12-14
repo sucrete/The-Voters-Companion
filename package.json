@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "address-validator": "^0.2.2",
+    "animejs": "^2.2.0",
     "bootstrap-vue": "^1.0.0-beta.7",
     "bulma": "^0.6.0",
     "bulma-timeline": "0.0.3",

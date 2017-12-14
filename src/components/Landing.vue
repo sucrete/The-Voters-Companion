@@ -13,6 +13,9 @@
         A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
       </div>
       <div style="display: block;">
+        <div id="stars">
+          ★  ★  ★  ★  ★
+        </div>
         <div>
           <h1 id="support"> Made with generous support from</h1>
         </div>
@@ -31,11 +34,13 @@
       </div>
 
     </div>
-    <div id="logoBlock">
+    <div class="logoBlock">
+      <span></span><div id="logoBlockSlider"></div></span>
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
     </div>
+
     <!-- <div id="inputEverything">
-      <input id="addressbar" type="text" class="address" v-model="addy" placeholder="" hidden>
+      <input id="addressbar" type="text" class="address" v-model="addy" placeholder="">
     </div> -->
   </div>
 </template>
@@ -43,7 +48,7 @@
 <script>
 // import axios from 'axios'
 // import Places from 'vue-places'
-// import dynamics from 'dynamics.js'
+import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 // import marsh from '../assets/04.png'
 import zayin from '../assets/usvote-logo-small.png'
@@ -79,25 +84,30 @@ export default {
         return false
       }
     },
-    injectPlaceholder () {
-      var bethMem = document.getElementById('addressbar')
-      bethMem.placeholder = 'What is your address?'
-    },
+    // injectPlaceholder () {
+    //   var bethMem = document.getElementById('addressbar')
+    //   bethMem.placeholder = 'What is your address?'
+    // },
     focusHelper () {
       setTimeout(function () {
         var bethSamach = document.getElementById('addressbar')
         bethSamach.focus()
       }, 3500)
     },
-    consoleLogger () {
-      console.log(document.styleSheets[0])
+    getOuttaMyWay () {
+      console.log('NOOOOOOOOOOOOOOO')
+      anime({
+        targets: '#logoBlockSlider',
+        translateY: 50,
+        delay: 2000
+      })
     }
   },
   mounted () {
     this.doItAlready()
-    this.injectPlaceholder()
+    // this.injectPlaceholder()
     this.focusHelper()
-    this.consoleLogger()
+    this.getOuttaMyWay()
   }
 }
 </script>
@@ -105,14 +115,20 @@ export default {
 <style scoped>
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
-@import url('https://fonts.googleapis.com/css?family=Alegreya:500i|Arapey|Crimson+Text:600i');
 
+#stars {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: -2rem;
+  margin-left: 1.5rem;
+  color: #313344;
+}
 #support {
   font-family: 'Oswald', serif;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-style: italic;
   display: block;
-  color: #423144;
+  color: #443133;
   margin: 1rem;
   margin-left: 1.6rem;
   margin-bottom: .2rem;
@@ -142,11 +158,11 @@ export default {
   border-style: solid;
   border-color: #654921;
   color: #654921;
-  font-size: 180%;
+  font-size: 1.4rem;
   background-color: #e0cb92;
   border-right-width: 2px;
-  padding: 8px;
-  padding-left: 1.15rem;
+  padding-top: .7rem;
+  padding-left: 1.25rem;
   font-family: 'Oswald', serif;
   font-weight: 400;
   display: table-cell;
@@ -174,8 +190,8 @@ a#partnership-baby:visited {
 }
 #partnership-graphic-buddy, #partnership-graphic {
   position: absolute;
-  left: 22.3rem;
-  top: -2.8rem;
+  left: 22.5rem;
+  top: -2.75rem;
   width: 20%;
   height: auto;
 }
@@ -206,9 +222,9 @@ a#partnership-baby:visited {
   font-family: 'Oswald', sans-serif;
   position: inherit;
   padding: .75rem;
-  width: 13rem;
-  height: 12.7rem;
-  font-size: 160%;
+  width: 14.2rem;
+  height: 10rem;
+  font-size: 1.2rem;
   line-height: 105%;
   color: white;
   border-radius: 2px;
@@ -218,22 +234,30 @@ a#partnership-baby:visited {
   color: #f2cbbc;
   font-family: 'Chicle', serif !important;
   text-align: left;
-  font-size: 6rem;
+  font-size: 6.4rem;
   line-height: 89%;
   left: 2.3rem;
   bottom: 2rem;
   position: absolute;
 }
-#logoBlock {
+.logoBlock {
   position: relative;
-  background-color: #334431;
-  height: 25.5rem;
-  width: 42rem;
+  height: 24.5rem;
   margin: 0 auto;
   border-radius: 2px;
   /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 6;
-  bottom: -1rem;
+  bottom: -4.7rem;
+}
+#logoBlockSlider, .logoBlock {
+  width: 42rem;
+  background-color: #334431;
+}
+#logoBlockSlider {
+  position: relative;
+  height: 10rem;
+  bottom: 3.8rem;
+  border-radius: 2px;
 }
 
 #inputEverything {
