@@ -95,14 +95,23 @@ export default {
     getOuttaMyWay () {
       anime({
         targets: '#logoBlockSlider',
-        translateY: 55,
-        delay: 2000
+        translateY: 59,
+        delay: 3500
       })
+    },
+    focusHelper () {
+      var daletShin = document.getElementById('places')
+      var daletSemach = document.getElementById('inputEverything')
+      setTimeout(function () {
+        daletShin.focus()
+        daletSemach.style.cssText = 'z-index: 700;'
+      }, 4000)
     }
   },
   mounted () {
     this.doItAlready()
     this.getOuttaMyWay()
+    this.focusHelper()
   },
   components: {
     Places
