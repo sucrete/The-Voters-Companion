@@ -34,20 +34,27 @@
       </div>
 
     </div>
+    <div id="inputEverything">
+      <places
+        id="places"
+        v-model="form.country.label"
+        placeholder="What is your address?"
+        @change="val => { form.country.data = val }"
+        :options="{ countries: ['US'] }">
+      </places>
+    </div>
     <div class="logoBlock">
       <span></span><div id="logoBlockSlider"></div></span>
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
     </div>
 
-    <!-- <div id="inputEverything">
-      <input id="addressbar" type="text" class="address" v-model="addy" placeholder="">
-    </div> -->
+
   </div>
 </template>
 
 <script>
 // import axios from 'axios'
-// import Places from 'vue-places'
+import Places from 'vue-places'
 import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 // import marsh from '../assets/04.png'
@@ -60,6 +67,7 @@ export default {
     return {
       addy: '',
       bolstarMsg: 'you did it, kiddo',
+      addyplaceholder: 'What is your address?',
       civicData: '',
       params: '',
       USVoteLogo: zayin,
@@ -84,30 +92,20 @@ export default {
         return false
       }
     },
-    // injectPlaceholder () {
-    //   var bethMem = document.getElementById('addressbar')
-    //   bethMem.placeholder = 'What is your address?'
-    // },
-    focusHelper () {
-      setTimeout(function () {
-        var bethSamach = document.getElementById('addressbar')
-        bethSamach.focus()
-      }, 3500)
-    },
     getOuttaMyWay () {
-      console.log('NOOOOOOOOOOOOOOO')
       anime({
         targets: '#logoBlockSlider',
-        translateY: 50,
+        translateY: 55,
         delay: 2000
       })
     }
   },
   mounted () {
     this.doItAlready()
-    // this.injectPlaceholder()
-    this.focusHelper()
     this.getOuttaMyWay()
+  },
+  components: {
+    Places
   }
 }
 </script>
@@ -195,28 +193,6 @@ a#partnership-baby:visited {
   width: 20%;
   height: auto;
 }
-#partnership-graphic-buddy {
-  z-index: 50;
-  -webkit-filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
-  -moz-filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
-  -ms-filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
-  -o-filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
-  filter: drop-shadow( 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
-  -webkit-transition: 0.3s cubic-bezier(.25,.8,.25,1);
-  transition: 0.3s cubic-bezier(.25,.8,.25,1);
-}
-#partnership-graphic-buddy:hover {
-  -webkit-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
-  -moz-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
-  -ms-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
-  -o-filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
-  filter: drop-shadow(0 5px 25px rgba(0,0,0,0.25), 0 4px 7px rgba(0,0,0,0.22));
-  -webkit-transition: 0.3s cubic-bezier(.25,.8,.25,1);
-  -moz-transition: 0.3s cubic-bezier(.25,.8,.25,1);
-  -o-transition: 0.3s cubic-bezier(.25,.8,.25,1);
-  transition: 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
 
 #infobject {
   font-family: 'Oswald', sans-serif;
@@ -261,28 +237,24 @@ a#partnership-baby:visited {
 }
 
 #inputEverything {
-  position: relative;
+  position: absolute;
+  z-index: 1;
+  left: 1.4rem;
+  top: 12.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-.address {
-  width: 44rem;
+#places {
+  width: 40rem;
   margin: 0 auto;
-  position: relative;
-  float: left;
-  padding-bottom: 23rem;
-  border: none;
   outline: none;
-  background-color: #903C3C;
-  padding-left: 25px;
-  border-radius: 1.5px;
+  border: none;
   font-family: 'Oswald', sans-serif;
-  bottom: 21.5rem;
-  font-size: 110%;
 }
-
 input:focus {
   outline: none;
   border: none;
-  color: #f2cbbc;
+  color: #e24b11;
 }
 input::-webkit-input-placeholder {
   color: #3f0000 !important;
