@@ -8,6 +8,7 @@
 <script>
 // import axios from 'axios'
 // import Places from 'vue-places'
+import store from './store.js'
 
 export default {
   name: 'app',
@@ -36,18 +37,8 @@ export default {
         toppy.style.cssText = 'background: #F5F5DC; background: -webkit-linear-gradient(315deg, #e8f4f8, #F5F5DC); background: linear-gradient(315deg, #e8f4f8, #F5F5DC)'
         return false
       }
-    },
-    pushIt () {
-      var charBar = document.getElementById('app')
-      charBar.style.background = '#F5F4EA'
     }
   },
-    // dataGrabber () {
-    //   axios.get('https://www.googleapis.com/civicinfo/v2/representatives')
-    // }
-  // components: {
-  //   Places
-  // },
   mounted () {
     this.doItAlready()
   }

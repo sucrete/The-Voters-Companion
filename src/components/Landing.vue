@@ -60,6 +60,7 @@ import anime from 'animejs'
 // import marsh from '../assets/04.png'
 import zayin from '../assets/usvote-logo-small.png'
 import bethBeth from '../assets/img-noise-361x370.png'
+import axios from 'axios'
 
 export default {
   name: 'landing',
@@ -72,10 +73,6 @@ export default {
       params: '',
       USVoteLogo: zayin,
       thirdTester: bethBeth,
-      form: {
-        country: {
-          label: null,
-          data: {}
         }
       }
     }
