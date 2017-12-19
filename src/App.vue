@@ -6,9 +6,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
-// import Places from 'vue-places'
-import store from './store.js'
+
 
 export default {
   name: 'app',
