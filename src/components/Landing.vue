@@ -52,13 +52,13 @@
         {{ form.country.label }}
       </div>
       <div style="color: blue;">
-        {{ callMe }}
+        <strong>{{ callMe }}</strong> SHOULD RETURN THE SAME AS ABOVE
       </div>
       <div style="color: green;">
-        {{ ghostIt }}
+        <strong>{{ ghostIt }}</strong> SHOULD READ 'ghost!'
       </div>
       <div style="color: pink; background-color: red;">
-        {{ labelMaker2 }}
+        <strong>{{ labelMaker2 }}</strong> SHOULD READ 'boy'
       </div>
     </span>
 
@@ -109,6 +109,7 @@ export default {
     addressHandler: function () {
       var harsh = this.form
       this.$store.commit('setUsersAddress', harsh)
+      console.log(harsh)
       return false
     },
     doItAlready () {

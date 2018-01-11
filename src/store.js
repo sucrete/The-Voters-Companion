@@ -22,7 +22,7 @@ export const store = new Vuex.Store({
   getters: {
     showMeDatState: state => {
       var bb = state
-      return bb.form
+      return bb.form.country.label
     },
     ghostGetter: state => {
       var carn = state
