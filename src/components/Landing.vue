@@ -12,7 +12,7 @@
       </div>
       <div style="display: block;">
         <div id="stars">
-          ★  ★  ★  ★  ★
+          <img id="starborn" :src=" levelStar " >
         </div>
         <div>
           <h1 id="support"> Made with generous support from</h1>
@@ -25,8 +25,7 @@
               </div>
               <div id="check-div"></div>
               <img id="partnership-graphic" :src=" USVoteLogo ">
-              <img id="partnership-graphic-buddy" :src=" USVoteLogo " >
-
+              <!-- <img id="partnership-graphic-buddy" :src=" USVoteLogo " > -->
             </a>
           </div>
         </div>
@@ -70,9 +69,10 @@
 import Places from 'vue-places'
 import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
-// import marsh from '../assets/04.png'
+
 import zayin from '../assets/usvote-logo-small.png'
 import bethBeth from '../assets/img-noise-500x500.png'
+import zuperZayin from '../assets/level_star.png'
 
 export default {
   name: 'landing',
@@ -85,6 +85,7 @@ export default {
       params: '',
       USVoteLogo: zayin,
       thirdTester: bethBeth,
+      levelStar: zuperZayin,
       rican: '',
       form: {
         country: {
@@ -137,15 +138,29 @@ export default {
         daletShin.focus()
         daletSemach.style.cssText = 'z-index: 700;'
       }, 5500)
+    },
+    starMaker () {
+      var daletKaf = document.getElementById('starborn')
+      var i
+      console.log('HEEEEEYYYY')
+      for (i = 0; i < 4; i++) {
+        var starclone = daletKaf.cloneNode(true)
+        document.getElementById('stars').appendChild(starclone)
+        console.log('bobo')
+      }
     }
   },
   mounted () {
     this.doItAlready()
     this.getOuttaMyWay()
+    this.starMaker()
     this.focusHelper()
   },
   components: {
     Places
+  },
+  beforeMount () {
+
   }
 }
 </script>
@@ -160,6 +175,11 @@ export default {
   margin-bottom: -2rem;
   margin-left: 1.5rem;
   color: #e2b951;
+}
+#starborn {
+  width: 8%;
+  height: auto;
+  display: inline-block;
 }
 #support {
   font-family: 'Oswald', serif;
