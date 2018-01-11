@@ -33,11 +33,6 @@ export default {
   },
   mounted () {
     this.blancher()
-  },
-  computed: {
-    addressDetails () {
-      return this.$store.state
-    }
   }
 }
 </script>

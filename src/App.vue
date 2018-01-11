@@ -7,7 +7,6 @@
 
 <script>
 
-
 export default {
   name: 'app',
   data () {
@@ -32,7 +31,7 @@ export default {
         toppy.style.background = '#F5F4EA'
         return false
       } else {
-        toppy.style.cssText = 'background: #F5F5DC; background: -webkit-linear-gradient(315deg, #e8f4f8, #F5F5DC); background: linear-gradient(315deg, #e8f4f8, #F5F5DC)'
+        toppy.style.cssText = 'background: #F5F5DC;' // 'background: -webkit-linear-gradient(315deg, #e8f4f8, #F5F5DC); background: linear-gradient(315deg, #e8f4f8, #F5F5DC)'
         return false
       }
     }

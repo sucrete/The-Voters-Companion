@@ -7,7 +7,7 @@ import App from './App'
 import router from './router'
 import VueGmaps from 'vue-gmaps'
 import anime from 'animejs'
-import {store} from './store.js'
+import { store } from './store.js'
 
 import '../node_modules/bulma/css/bulma.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -25,7 +25,7 @@ Vue.use(VueGmaps, {
 Vue.config.productionTip = false;
 
 new Vue({
-  store
+  store,
   el: '#app',
   router,
   template: '<App/>',
