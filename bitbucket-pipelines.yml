@@ -12,3 +12,4 @@ pipelines:
           - node
         script: # Modify the commands below to build your repository.
           - echo $VOTEKEY
+          - echo $CALL_ME_BY_YOUR_NAME
