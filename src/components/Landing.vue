@@ -8,7 +8,21 @@
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
     <div id="info-div">
       <div id="infobject" :style="{ 'background-image': 'url(' + thirdTester + ')' }">
-        A GUIDE TO YOUR DISTRICT, YOUR REPRESENTATIVES, AND WHEN AND WHERE TO VOTE
+        <div class="infoline" style="letter-spacing: .04rem;">
+          A GUIDE TO YOUR
+        </div>
+        <div class="infoline" style="letter-spacing: .10365rem;">
+          DISTRICT, YOUR
+        </div>
+        <div class="infoline">
+          REPRESENTATIVES,
+        </div>
+        <div class="infoline" style="letter-spacing: .14rem;">
+          AND WHEN AND
+        </div>
+        <div class="infoline" style="letter-spacing: .1rem;">
+          WHERE TO VOTE
+        </div>
       </div>
       <div style="display: block;">
         <div id="stars">
@@ -127,7 +141,7 @@ export default {
     getOuttaMyWay () {
       anime({
         targets: '#logoBlockSlider',
-        translateY: 59,
+        translateY: 60,
         delay: 5000
       })
     },
@@ -143,10 +157,10 @@ export default {
       var daletKaf = document.getElementById('starborn')
       var i
       console.log('HEEEEEYYYY')
-      for (i = 0; i < 4; i++) {
+      for (i = 0; i < 7; i++) {
         var starclone = daletKaf.cloneNode(true)
         document.getElementById('stars').appendChild(starclone)
-        console.log('bobo')
+        console.log(starclone)
       }
     }
   },
@@ -169,21 +183,32 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
+.infoline {
+  line-height: 125%;
+}
+
 #stars {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: -2rem;
-  margin-left: 1.5rem;
+  display: flex-start;
+  margin-bottom: -.3rem;
+  margin-left: .5rem;
   color: #e2b951;
+  position: relative;
+  justify-content: space-between;
 }
 #starborn {
   width: 8%;
   height: auto;
-  display: inline-block;
+  display: inline-flex;
+  position: relative;
+  justify-content: space-between;
+  top: .4rem;
+  bottom: .5rem;
+  margin-left: 1.2rem;
 }
 #support {
   font-family: 'Oswald', serif;
-  font-size: 1.4rem;
+  letter-spacing: .1rem;
+  font-size: 1.5rem;
   font-style: italic;
   display: block;
   color: #443133;
@@ -207,15 +232,16 @@ export default {
   margin-left: 1rem;
 }
 #partnership {
-  width: 22rem;
+  letter-spacing: .05rem;
+  width: 24.5rem;
   border-width: 4px;
   border-style: solid;
   border-color: #654921;
   color: #654921;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   background-color: #e0cb92;
   border-right-width: 2px;
-  padding-top: .7rem;
+  padding-top: .5rem;
   padding-left: 1.25rem;
   font-family: 'Oswald', serif;
   font-weight: 400;
@@ -240,23 +266,24 @@ a#partnership-baby:visited {
   background-color: transparent;
 }
 #partnership-graphic {
-    z-index: 150;
-}
-#partnership-graphic-buddy, #partnership-graphic {
+  z-index: 150;
   position: absolute;
-  left: 22.5rem;
-  top: -2.75rem;
-  width: 20%;
+  left: 25rem;
+  top: -2.55rem;
+  width: 17%;
   height: auto;
+  -webkit-filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.59)) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.59)) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2));
 }
 
 #infobject {
   font-family: 'Oswald', sans-serif;
   position: inherit;
   padding: .75rem;
+  padding-top: .6rem;
   width: 14.2rem;
   height: 10rem;
-  font-size: .9rem;
+  font-size: 1.4rem;
   line-height: 105%;
   color: white;
   border-radius: 3px;
@@ -294,13 +321,13 @@ a#partnership-baby:visited {
 #inputEverything {
   position: absolute;
   z-index: 1;
-  left: .7rem;
+  left: 1.2rem;
   top: 12.5rem;
   margin-left: auto;
   margin-right: auto;
 }
 #places {
-  width: 41.5rem;
+  width: 40.5rem;
   margin: 0 auto;
   outline: none;
   border: none;
