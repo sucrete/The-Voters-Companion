@@ -47,16 +47,17 @@
 
     </div>
     <div id="inputEverything">
+      <input type="search" id="address-input" placeholder="What is your address?" />
+      <p>Selected: <strong id="address-value">none</strong></p>
       <places
         id="places"
         v-model="form.country.label"
         placeholder="What is your address?"
-        @change="val => { form.country.data = val }"
-        @keypress.enter="addressHandler"
+        @change="val => { form.country.data = val}"
         :options="{ countries: ['US'] }">
-      </places>
+      </places hidden>
     </div>
-    <div class="logoBlock">
+    <div class="logoBlock" hidden>
       <span></span><div id="logoBlockSlider"></div></span>
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
     </div>
@@ -80,27 +81,29 @@
 
 <script>
 // import axios from 'axios'
-import Places from 'vue-places'
+// import Places from 'vue-places'
 import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
-
+import places from 'places.js'
 import zayin from '../assets/usvote-logo-small.png'
 import bethBeth from '../assets/img-noise-500x500.png'
 import zuperZayin from '../assets/level_star.png'
 
 export default {
   name: 'landing',
+  options: {
+    type: Object,
+    default: () => ({})
+  },
   data () {
     return {
-      addy: '',
-      bolstarMsg: 'you did it, kiddo',
-      addyplaceholder: 'What is your address?',
       civicData: '',
       params: '',
       USVoteLogo: zayin,
       thirdTester: bethBeth,
       levelStar: zuperZayin,
-      rican: '',
+      rican: 'challa!',
+      placesAutocomplete: null,
       form: {
         country: {
           label: null,
@@ -121,11 +124,24 @@ export default {
     }
   },
   methods: {
-    addressHandler: function () {
-      var harsh = this.form
-      this.$store.commit('setUsersAddress', harsh)
-      console.log(harsh)
-      return false
+    setUsersAddress (val) {
+
+    },
+    addressHandler () {
+      console.log('beefcake!')
+      console.log(this.rican)
+      document.querySelector('input').addEventListener('keyup', function (e) {
+        console.log(e.which)
+        var key = e.which
+        if (key === 13) {
+          console.log('ENTER has been typed')
+          let cray = this.rican
+          console.log('challa!')
+          console.log(typeof 'challa!')
+          this.$store.commit('setUsersAddress', cray)
+          return false
+        }
+      })
     },
     doItAlready () {
       var urlPath = location.pathname
@@ -156,12 +172,24 @@ export default {
     starMaker () {
       var daletKaf = document.getElementById('starborn')
       var i
-      console.log('HEEEEEYYYY')
       for (i = 0; i < 7; i++) {
         var starclone = daletKaf.cloneNode(true)
         document.getElementById('stars').appendChild(starclone)
-        console.log(starclone)
       }
+    },
+    placesLauncher () {
+      var placesAutocomplete = places({
+        container: document.querySelector('#address-input')
+      })
+
+      var $address = document.querySelector('#address-value')
+      placesAutocomplete.on('change', function (e) {
+        $address.textContent = e.suggestion.value
+      })
+
+      placesAutocomplete.on('clear', function () {
+        $address.textContent = 'none'
+      })()
     }
   },
   mounted () {
@@ -169,9 +197,10 @@ export default {
     this.getOuttaMyWay()
     this.starMaker()
     this.focusHelper()
+    this.addressHandler()
+    this.placesLauncher()
   },
   components: {
-    Places
   },
   beforeMount () {
 
@@ -272,8 +301,8 @@ a#partnership-baby:visited {
   top: -2.55rem;
   width: 17%;
   height: auto;
-  -webkit-filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.59)) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2));
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.59)) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2));
+  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.59)) drop-shadow(0 10px 5px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.59)) drop-shadow(0 10px 5px rgba(0, 0, 0, 0.15));
 }
 
 #infobject {
@@ -285,8 +314,8 @@ a#partnership-baby:visited {
   height: 10rem;
   font-size: 1.4rem;
   line-height: 105%;
-  color: white;
-  border-radius: 3px;
+  color: #F5FFFA;
+  border-radius: 2px;
 }
 
 #brownType {

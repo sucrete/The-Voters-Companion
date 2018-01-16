@@ -16,11 +16,15 @@ export const store = new Vuex.Store({
   },
   mutations: {
     setUsersAddress (state, payload) {
-      state.form = payload
+      state.form.country.label = payload
     }
+  },
+  actions: {
+
   },
   getters: {
     showMeDatState: state => {
+      console.log(state.form.country.label + ' from the STORE')
       var bb = state
       return bb.form.country.label
     },
