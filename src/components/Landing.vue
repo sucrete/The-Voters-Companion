@@ -47,15 +47,9 @@
 
     </div>
     <div id="inputEverything">
-      <input type="search" id="address-input" placeholder="What is your address?" />
-      <p>Selected: <strong id="address-value">none</strong></p>
-      <places
-        id="places"
-        v-model="form.country.label"
-        placeholder="What is your address?"
-        @change="val => { form.country.data = val}"
-        :options="{ countries: ['US'] }">
-      </places hidden>
+      <input type="search" id="address-input" v-model="addy" placeholder="What is your address?" />
+      <p>Selected: <strong id="address-value"> {{addy}} </strong></p>
+      <p>Attempting to store: <strong id="address-value2">none</strong></p>
     </div>
     <div class="logoBlock" hidden>
       <span></span><div id="logoBlockSlider"></div></span>
@@ -87,7 +81,7 @@ import anime from 'animejs'
 import places from 'places.js'
 import zayin from '../assets/usvote-logo-small.png'
 import bethBeth from '../assets/img-noise-500x500.png'
-import zuperZayin from '../assets/level_star.png'
+import zuperZayin from '../assets/star_plain.png'
 
 export default {
   name: 'landing',
@@ -97,6 +91,7 @@ export default {
   },
   data () {
     return {
+      addy: 'cool guy',
       civicData: '',
       params: '',
       USVoteLogo: zayin,
@@ -124,23 +119,19 @@ export default {
     }
   },
   methods: {
-    setUsersAddress (val) {
-
-    },
+    // setUsersAddress (val) {
+    //   var $address2 = document.querySelector('#address-value2')
+    //   $address2.textContent = this.addy
+    //   this.$store.commit('setUsersAddress', val)
+    // },
     addressHandler () {
-      console.log('beefcake!')
-      console.log(this.rican)
-      document.querySelector('input').addEventListener('keyup', function (e) {
-        console.log(e.which)
-        var key = e.which
-        if (key === 13) {
-          console.log('ENTER has been typed')
-          let cray = this.rican
-          console.log('challa!')
-          console.log(typeof 'challa!')
-          this.$store.commit('setUsersAddress', cray)
-          return false
-        }
+      var addy2 = document.querySelector('#address-value2')
+      document.querySelector('#address-input').addEventListener('change', function (e) {
+        console.log(' CHANGE occured')
+
+        var hiddenAddy = document.querySelector('pre').textContent
+        console.log(hiddenAddy)
+        addy2.textContent = hiddenAddy
       })
     },
     doItAlready () {
@@ -162,7 +153,7 @@ export default {
       })
     },
     focusHelper () {
-      var daletShin = document.getElementById('places')
+      var daletShin = document.getElementById('address-input')
       var daletSemach = document.getElementById('inputEverything')
       setTimeout(function () {
         daletShin.focus()
@@ -181,12 +172,25 @@ export default {
       var placesAutocomplete = places({
         container: document.querySelector('#address-input')
       })
-
       var $address = document.querySelector('#address-value')
+      placesAutocomplete.on('keyup', function (e) {
+        var gogetter = e.which
+        if (gogetter === 13) {
+          console.log('ADDRESS Enter key was typed')
+          var $address2 = document.querySelector('#address-value2')
+          var $hiddenAddy = document.querySelector('pre').textContent
+          console.log($hiddenAddy)
+          $address2.textContent = e.suggestion.value
+          console.log(typeof e.suggestion.value)
+          console.log(e.suggestion.value)
+        }
+      })
       placesAutocomplete.on('change', function (e) {
         $address.textContent = e.suggestion.value
+        this.addy = e.suggestion.address
+        console.log('addy is: ' + this.addy)
+        console.log(e.suggestion.value)
       })
-
       placesAutocomplete.on('clear', function () {
         $address.textContent = 'none'
       })()
@@ -355,7 +359,7 @@ a#partnership-baby:visited {
   margin-left: auto;
   margin-right: auto;
 }
-#places {
+#address-input {
   width: 40.5rem;
   margin: 0 auto;
   outline: none;
