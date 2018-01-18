@@ -1,6 +1,6 @@
 # votr
 
-> A quick-and-easy guide to creating more informed voters. ;^)
+> A quick-and-easy guide to create more informed voters. ;^)
 
 ## Build Setup
 
