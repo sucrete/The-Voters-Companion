@@ -1,6 +1,6 @@
 # votr
 
-> A quick-and-easy guide to create more informed voters. ;^)
+> A guide to your district, your representatives, and where and when to vote. ;^)
 
 ## Build Setup
 
