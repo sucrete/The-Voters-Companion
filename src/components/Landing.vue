@@ -3,7 +3,7 @@
 
   <div id="landing">
 
-    <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;"><router-link  to="overview" >Hello component</router-link></h2>
+    <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;" hidden><router-link  to="overview" >Hello component</router-link></h2>
     <!-- example of syntax needed to insert image with vue -->
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
     <div id="info-div">
@@ -47,8 +47,8 @@
 
     </div>
     <div id="inputEverything">
-      <input type="search" id="address-input" v-model="addy" placeholder="What is your address?" />
-      <p>Selected: <strong id="address-value"> {{addy}} </strong></p>
+      <input type="search" id="address-input" @input="updateValue($event.target.value)" placeholder="What is your address?" />
+      <p>Selected: <strong id="address-value"> {{ callMe }} </strong></p>
       <p>Attempting to store: <strong id="address-value2">none</strong></p>
     </div>
     <div class="logoBlock" hidden>
@@ -85,20 +85,13 @@ import zuperZayin from '../assets/star_plain.png'
 
 export default {
   name: 'landing',
-  options: {
-    type: Object,
-    default: () => ({})
-  },
   data () {
     return {
-      addy: 'cool guy',
-      civicData: '',
-      params: '',
+      addy: '',
       USVoteLogo: zayin,
       thirdTester: bethBeth,
       levelStar: zuperZayin,
       rican: 'challa!',
-      placesAutocomplete: null,
       form: {
         country: {
           label: null,
@@ -117,6 +110,14 @@ export default {
     labelMaker2 () {
       return this.$store.getters.labelMaker
     }
+    // message: {
+    //   get () {
+    //     return this.$store.state.form.country.label
+    //   },
+    //   set (value) {
+    //     this.$store.commit('setUsersAddress', value)
+    //   }
+    // }
   },
   methods: {
     // setUsersAddress (val) {
@@ -124,16 +125,7 @@ export default {
     //   $address2.textContent = this.addy
     //   this.$store.commit('setUsersAddress', val)
     // },
-    addressHandler () {
-      var addy2 = document.querySelector('#address-value2')
-      document.querySelector('#address-input').addEventListener('change', function (e) {
-        console.log(' CHANGE occured')
 
-        var hiddenAddy = document.querySelector('pre').textContent
-        console.log(hiddenAddy)
-        addy2.textContent = hiddenAddy
-      })
-    },
     doItAlready () {
       var urlPath = location.pathname
       var toppy = document.getElementById('app')
@@ -168,32 +160,9 @@ export default {
         document.getElementById('stars').appendChild(starclone)
       }
     },
-    placesLauncher () {
-      var placesAutocomplete = places({
-        container: document.querySelector('#address-input')
-      })
-      var $address = document.querySelector('#address-value')
-      placesAutocomplete.on('keyup', function (e) {
-        var gogetter = e.which
-        if (gogetter === 13) {
-          console.log('ADDRESS Enter key was typed')
-          var $address2 = document.querySelector('#address-value2')
-          var $hiddenAddy = document.querySelector('pre').textContent
-          console.log($hiddenAddy)
-          $address2.textContent = e.suggestion.value
-          console.log(typeof e.suggestion.value)
-          console.log(e.suggestion.value)
-        }
-      })
-      placesAutocomplete.on('change', function (e) {
-        $address.textContent = e.suggestion.value
-        this.addy = e.suggestion.address
-        console.log('addy is: ' + this.addy)
-        console.log(e.suggestion.value)
-      })
-      placesAutocomplete.on('clear', function () {
-        $address.textContent = 'none'
-      })()
+    updateValue (val) {
+      console.log('updateValue was activated')
+      this.$store.commit('setUsersAddress', val)
     }
   },
   mounted () {
@@ -201,20 +170,47 @@ export default {
     this.getOuttaMyWay()
     this.starMaker()
     this.focusHelper()
-    this.addressHandler()
-    this.placesLauncher()
+
+    var placesAutocomplete = places({
+      container: document.querySelector('#address-input'),
+      type: 'address',
+      countries: ['us'],
+      autoselect: true,
+      value: function (suggestion) {
+        return suggestion
+      }
+    })
+
+    placesAutocomplete.on('change', (e) => {
+      const sar = e.suggestion
+      console.log('on change you get: ' + e.suggestion.value)
+      console.log('addy is: ' + sar.value + '. With type: ' + typeof e.suggestion.value)
+      this.addy = sar.value
+      this.updateValue(e.suggestion.value)
+    })
+
+    placesAutocomplete.on('clear', function () {
+      var blank = null
+      this.updateValue(blank)
+    })
+    placesAutocomplete.on('autocomplete:selected', function (e, suggestion, dataset) {
+      console.log('selected autocomplete is: ' + suggestion, dataset)
+      this.updateValue(e.suggestion.value)
+    })
   },
   components: {
   },
-  beforeMount () {
-
+  beforeDestroy () {
+    this.placesAutocomplete.destroy()
   }
 }
+
 </script>
 
 <style scoped>
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
+
 
 .infoline {
   line-height: 125%;

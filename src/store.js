@@ -5,10 +5,11 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
+  strict: true,
   state: {
     form: {
       country: {
-        label: 'boy',
+        label: null,
         data: {}
       }
     },
@@ -16,6 +17,7 @@ export const store = new Vuex.Store({
   },
   mutations: {
     setUsersAddress (state, payload) {
+      console.log('setUsersAddress was fired')
       state.form.country.label = payload
     }
   },
