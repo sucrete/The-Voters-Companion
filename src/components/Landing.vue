@@ -48,28 +48,12 @@
     </div>
     <div id="inputEverything">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" placeholder="What is your address?" />
-      <p>Selected: <strong id="address-value"> {{ callMe }} </strong></p>
-      <p>Attempting to store: <strong id="address-value2">none</strong></p>
+
     </div>
-    <div class="logoBlock" hidden>
+    <div class="logoBlock">
       <span></span><div id="logoBlockSlider"></div></span>
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
     </div>
-    <span style="position: relative; top: 10rem;" >
-      <div style="color: red;">
-        {{ form.country.label }}
-      </div>
-      <div style="color: blue;">
-        <strong>{{ callMe }}</strong> SHOULD RETURN THE SAME AS ABOVE
-      </div>
-      <div style="color: green;">
-        <strong>{{ ghostIt }}</strong> SHOULD READ 'ghost!'
-      </div>
-      <div style="color: pink; background-color: red;">
-        <strong>{{ labelMaker2 }}</strong> SHOULD READ 'boy'
-      </div>
-    </span>
-
   </div>
 </template>
 
