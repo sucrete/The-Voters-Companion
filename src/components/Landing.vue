@@ -145,7 +145,6 @@ export default {
       }
     },
     updateValue (val) {
-      console.log('updateValue was activated')
       this.$store.commit('setUsersAddress', val)
     }
   },
@@ -167,8 +166,6 @@ export default {
 
     placesAutocomplete.on('change', (e) => {
       const sar = e.suggestion
-      console.log('on change you get: ' + e.suggestion.value)
-      console.log('addy is: ' + sar.value + '. With type: ' + typeof e.suggestion.value)
       this.addy = sar.value
       this.updateValue(e.suggestion.value)
     })
@@ -178,7 +175,6 @@ export default {
       this.updateValue(blank)
     })
     placesAutocomplete.on('autocomplete:selected', function (e, suggestion, dataset) {
-      console.log('selected autocomplete is: ' + suggestion, dataset)
       this.updateValue(e.suggestion.value)
     })
   },
@@ -194,7 +190,6 @@ export default {
 <style scoped>
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
-
 
 .infoline {
   line-height: 125%;
