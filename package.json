@@ -1,7 +1,7 @@
 {
   "name": "votr",
   "version": "1.0.0",
-  "description": "THE tool for keeping voters informed",
+  "description": "A guide to your district, your representatives, and where and when to vote.",
   "author": "William Andree <williamandree@gmail.com>",
   "private": true,
   "scripts": {
@@ -19,6 +19,7 @@
     "bulma": "^0.6.0",
     "bulma-timeline": "0.0.3",
     "dotenv": "^4.0.0",
+    "dotenv-webpack": "^1.5.4",
     "dynamics.js": "^1.1.5",
     "jquery": "^3.2.1",
     "request": "^2.83.0",

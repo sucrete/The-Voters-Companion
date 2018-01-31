@@ -1,5 +1,5 @@
 require('./check-versions')()
-
+const Dotenv = require('dotenv-webpack')
 var config = require('../config')
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
@@ -85,6 +85,9 @@ devMiddleware.waitUntilValid(() => {
 var server = app.listen(port)
 
 module.exports = {
+  plugins: [
+    new Dotenv()
+  ],
   ready: readyPromise,
   close: () => {
     server.close()

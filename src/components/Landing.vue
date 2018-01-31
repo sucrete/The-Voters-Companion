@@ -129,6 +129,7 @@ export default {
       })
     },
     focusHelper () {
+      console.log(process.env.VOTE_KEY)
       var daletShin = document.getElementById('address-input')
       var daletSemach = document.getElementById('inputEverything')
       setTimeout(function () {
@@ -177,8 +178,6 @@ export default {
     placesAutocomplete.on('autocomplete:selected', function (e, suggestion, dataset) {
       this.updateValue(e.suggestion.value)
     })
-  },
-  components: {
   },
   beforeDestroy () {
     this.placesAutocomplete.destroy()
