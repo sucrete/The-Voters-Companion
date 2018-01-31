@@ -32,6 +32,6 @@ module.exports = merge(baseWebpackConfig, {
       inject: true
     }),
     new FriendlyErrorsPlugin(),
-    new Dotenv
+    new Dotenv()
   ]
 })
