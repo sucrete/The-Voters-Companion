@@ -44,11 +44,10 @@
           </div>
         </div>
       </div>
-
+<!-- @keyup.enter="searchEvent" -->
     </div>
     <div id="inputEverything">
-      <input type="search" id="address-input" @input="updateValue($event.target.value)" placeholder="What is your address?" />
-
+      <input type="search" id="address-input" @input="updateValue($event.target.value)"  placeholder="What is your address?" />
     </div>
     <div class="logoBlock">
       <span></span><div id="logoBlockSlider"></div></span>
@@ -109,7 +108,10 @@ export default {
     //   $address2.textContent = this.addy
     //   this.$store.commit('setUsersAddress', val)
     // },
-
+    // searchEvent () {
+    // setTimeout
+    //   this.$store.dispatch('searchAPI')
+    // },
     doItAlready () {
       var urlPath = location.pathname
       var toppy = document.getElementById('app')
@@ -129,7 +131,6 @@ export default {
       })
     },
     focusHelper () {
-      console.log(process.env.VOTE_KEY)
       var daletShin = document.getElementById('address-input')
       var daletSemach = document.getElementById('inputEverything')
       setTimeout(function () {
@@ -147,6 +148,9 @@ export default {
     },
     updateValue (val) {
       this.$store.commit('setUsersAddress', val)
+    },
+    updatePostcode (val) {
+      this.$store.commit('setUsersPostcode', val)
     }
   },
   mounted () {
@@ -166,17 +170,20 @@ export default {
     })
 
     placesAutocomplete.on('change', (e) => {
-      const sar = e.suggestion
-      this.addy = sar.value
       this.updateValue(e.suggestion.value)
+      this.updatePostcode(e.suggestion.postcode)
+      console.log('your suggestion object is: ' + e.suggestion)
+      console.log('postcode? ---> ' + e.suggestion.postcode)
     })
 
     placesAutocomplete.on('clear', function () {
       var blank = null
       this.updateValue(blank)
+      this.updatePostcode(blank)
     })
     placesAutocomplete.on('autocomplete:selected', function (e, suggestion, dataset) {
       this.updateValue(e.suggestion.value)
+      this.updatePostcode(e.suggestion.postcode)
     })
   },
   beforeDestroy () {

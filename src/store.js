@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
   strict: true,
   state: {
     form: {
+      postcode: null,
       country: {
         label: null,
         data: {}
@@ -19,10 +20,16 @@ export const store = new Vuex.Store({
     setUsersAddress (state, payload) {
       console.log('setUsersAddress was fired')
       state.form.country.label = payload
+    },
+    setUsersPostcode (state, payload) {
+      console.log('postcode payload (in STORE): ' + payload)
+      state.form.postcode = payload
     }
   },
   actions: {
-
+    // searchAPI ({commit, state}) {
+    //
+    // }
   },
   getters: {
     showMeDatState: state => {
