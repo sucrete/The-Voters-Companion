@@ -84,34 +84,18 @@ export default {
     }
   },
   computed: {
-    callMe () {
-      return this.$store.getters.showMeDatState
-    },
-    ghostIt () {
-      return this.$store.getters.ghostGetter
-    },
-    labelMaker2 () {
-      return this.$store.getters.labelMaker
-    }
-    // message: {
-    //   get () {
-    //     return this.$store.state.form.country.label
-    //   },
-    //   set (value) {
-    //     this.$store.commit('setUsersAddress', value)
-    //   }
-    // }
+
   },
   methods: {
-    // setUsersAddress (val) {
-    //   var $address2 = document.querySelector('#address-value2')
-    //   $address2.textContent = this.addy
-    //   this.$store.commit('setUsersAddress', val)
-    // },
-    // searchEvent () {
-    // setTimeout
-    //   this.$store.dispatch('searchAPI')
-    // },
+    setUsersAddress (val) {
+      var $address2 = document.querySelector('#address-value2')
+      $address2.textContent = this.addy
+      this.$store.commit('setUsersAddress', val)
+    },
+    searchEvent () {
+    setTimeout
+      this.$store.dispatch('searchAPI')
+    },
     doItAlready () {
       var urlPath = location.pathname
       var toppy = document.getElementById('app')
