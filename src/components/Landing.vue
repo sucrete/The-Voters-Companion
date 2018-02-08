@@ -93,8 +93,8 @@ export default {
       this.$store.commit('setUsersAddress', val)
     },
     searchEvent () {
-    setTimeout
-      this.$store.dispatch('searchAPI')
+    // setTimeout
+    //   this.$store.dispatch('searchAPI')
     },
     doItAlready () {
       var urlPath = location.pathname
