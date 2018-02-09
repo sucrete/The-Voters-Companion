@@ -1,8 +1,5 @@
-var google = require('googleapis')
+
 
 module.exports = {
-  NODE_ENV: '"production"',
-  plugins: [
-    new google()
-  ]
+  NODE_ENV: '"production"'
 }

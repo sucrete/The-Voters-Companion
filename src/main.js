@@ -5,7 +5,6 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
-import VueGmaps from 'vue-gmaps'
 import anime from 'animejs'
 import { store } from './store.js'
 
@@ -17,10 +16,6 @@ import '../node_modules/dynamics.js/lib/dynamics.js'
 Vue.use(BootstrapVue);
 
 Vue.use(anime);
-
-Vue.use(VueGmaps, {
-  key: 'AIzaSyCJSHi0YcEsa1YqAvMqifmJNDj0VCaL5hQ'
-})
 
 Vue.config.productionTip = false;
 
