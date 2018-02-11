@@ -75,6 +75,7 @@ export default {
       thirdTester: bethBeth,
       levelStar: zuperZayin,
       rican: 'challa!',
+      googvotekey: process.env.GOOGLE_API_KEY,
       form: {
         country: {
           label: null,
@@ -94,8 +95,9 @@ export default {
     },
     searchEvent () {
       console.log('searchEvent fired')
-      console.log('google vote key is: ' + process.env.GOOGLE_VOTE_KEY)
+      console.log('google vote key is: ' + this.googvotekey)
       this.$store.dispatch('searchAPI')
+      this.$store.commit('declareSuggestion')
     },
     doItAlready () {
       var urlPath = location.pathname
@@ -121,7 +123,7 @@ export default {
       setTimeout(function () {
         daletShin.focus()
         daletSemach.style.cssText = 'z-index: 700;'
-      }, 5500)
+      }, 500)
     },
     starMaker () {
       var daletKaf = document.getElementById('starborn')
@@ -136,6 +138,9 @@ export default {
     },
     updatePostcode (val) {
       this.$store.commit('setUsersPostcode', val)
+    },
+    updateSuggestion (val) {
+      this.$store.commit('setSuggestion', val)
     }
   },
   mounted () {
@@ -159,8 +164,7 @@ export default {
     placesAutocomplete.on('change', (e) => {
       this.updateValue(e.suggestion.value)
       this.updatePostcode(e.suggestion.postcode)
-      console.log('your suggestion object is: ' + e.suggestion)
-      console.log('postcode? ---> ' + e.suggestion.postcode)
+      this.updateSuggestion(e.suggestion)
     })
 
     placesAutocomplete.on('clear', function () {

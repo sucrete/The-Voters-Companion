@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   strict: true,
   state: {
+    googvotekey: process.env.GOOGLE_API_KEY,
     form: {
       postcode: null,
       country: {
@@ -14,6 +15,7 @@ export const store = new Vuex.Store({
         data: {}
       }
     },
+    algoliaResponse: {},
     googleResponse: {
       data: {}
     },
@@ -30,17 +32,27 @@ export const store = new Vuex.Store({
     },
     setGoogleResponse (state, payload) {
       state.googleResponse.data = payload
+      console.log(JSON.stringify(payload, null, '\t'))
+    },
+    setSuggestion (state, payload) {
+      state.algoliaResponse = payload
+    },
+    declareSuggestion (state) {
+      var suggestionObject = JSON.stringify(state.algoliaResponse, null, '\t')
+      console.log(suggestionObject)
     }
   },
   actions: {
     searchAPI: ({ state, commit }) => {
-      var params = {
-        address: state.form.country.label,
-        key: process.env.GOOGLE_API_KEY
-      }
-      axios.get('https://www.googleapis.com/civicinfo/v2/representatives', { params }).then(response => {
-        commit('setGoogleResponse', response.result)
-        console.log(response.result)
+      var noJoke = state.googvotekey
+      console.log('vote key after search fired ' + noJoke)
+      var chainedAddress = state.form.country.label + ' ' + state.form.postcode
+      var convertedAddress = chainedAddress.split(' ').join('%20')
+      var convertedAddressFinal = convertedAddress.split(',').join('%2C')
+      console.log(convertedAddressFinal)
+      axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
+        commit('setGoogleResponse', response)
+        console.log('log your boy ---> ' + JSON.stringify(response, null, '\t'))
       }).catch(err => {
         console.log('your error is: ' + err)
       })
