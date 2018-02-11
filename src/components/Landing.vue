@@ -47,7 +47,7 @@
 <!-- @keyup.enter="searchEvent" -->
     </div>
     <div id="inputEverything">
-      <input type="search" id="address-input" @input="updateValue($event.target.value)"  placeholder="What is your address?" />
+      <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
     </div>
     <div class="logoBlock">
       <span></span><div id="logoBlockSlider"></div></span>
@@ -93,8 +93,9 @@ export default {
       this.$store.commit('setUsersAddress', val)
     },
     searchEvent () {
-    // setTimeout
-    //   this.$store.dispatch('searchAPI')
+      console.log('searchEvent fired')
+      console.log('google vote key is: ' + process.env.GOOGLE_VOTE_KEY)
+      this.$store.dispatch('searchAPI')
     },
     doItAlready () {
       var urlPath = location.pathname
@@ -111,7 +112,7 @@ export default {
       anime({
         targets: '#logoBlockSlider',
         translateY: 60,
-        delay: 5000
+        delay: 500
       })
     },
     focusHelper () {
@@ -152,6 +153,8 @@ export default {
         return suggestion
       }
     })
+
+    console.log(process.env.GOOGLE_API_KEY)
 
     placesAutocomplete.on('change', (e) => {
       this.updateValue(e.suggestion.value)
