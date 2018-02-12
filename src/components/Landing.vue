@@ -44,7 +44,6 @@
           </div>
         </div>
       </div>
-<!-- @keyup.enter="searchEvent" -->
     </div>
     <div id="inputEverything">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
@@ -53,6 +52,12 @@
       <span></span><div id="logoBlockSlider"></div></span>
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
     </div>
+    <modal id="circleLoader" name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
+      <div>
+
+        dog
+      </div>
+    </modal>
   </div>
 </template>
 
@@ -88,16 +93,26 @@ export default {
 
   },
   methods: {
+    removeOpacity () {
+      var wholeApp = document.querySelector('.v--modal-overlay')
+      wholeApp.addClass('choad')
+    },
+    show () {
+      this.$modal.show('v--modal-box')
+    },
+    hide () {
+      this.$modal.hide('v--modal-box')
+    },
     setUsersAddress (val) {
       var $address2 = document.querySelector('#address-value2')
       $address2.textContent = this.addy
       this.$store.commit('setUsersAddress', val)
     },
     searchEvent () {
-      console.log('searchEvent fired')
-      console.log('google vote key is: ' + this.googvotekey)
       this.$store.dispatch('searchAPI')
       this.$store.commit('declareSuggestion')
+      this.show()
+      this.removeOpacity()
     },
     doItAlready () {
       var urlPath = location.pathname
@@ -159,8 +174,6 @@ export default {
       }
     })
 
-    console.log(process.env.GOOGLE_API_KEY)
-
     placesAutocomplete.on('change', (e) => {
       this.updateValue(e.suggestion.value)
       this.updatePostcode(e.suggestion.postcode)
@@ -184,9 +197,29 @@ export default {
 
 </script>
 
-<style scoped>
+<style >
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
+
+.v--modal-box {
+  border-radius: 100%;
+  -webkit-box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
+  -moz-box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
+  box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
+  /* box-shadow: 0 2px 20px 0 rgba(0,0,0,.4); */
+}
+.v--modal-overlay {
+  border-radius: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+.scale-enter-active, .scale-leave-active {
+ transition: all 0.5s;
+}
+.scale-enter, .scale-leave-active {
+ opacity: 0;
+ transform: scale(0.3) translateY(24px);
+}
 
 .infoline {
   line-height: 125%;

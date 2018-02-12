@@ -7,15 +7,18 @@ import App from './App'
 import router from './router'
 import anime from 'animejs'
 import { store } from './store.js'
+import VModal from 'vue-js-modal'
 
 import '../node_modules/bulma/css/bulma.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../node_modules/dynamics.js/lib/dynamics.js'
 
-Vue.use(BootstrapVue);
+Vue.use(BootstrapVue)
 
-Vue.use(anime);
+Vue.use(anime)
+
+Vue.use(VModal)
 
 Vue.config.productionTip = false;
 
