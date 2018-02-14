@@ -52,10 +52,12 @@
       <span></span><div id="logoBlockSlider"></div></span>
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
     </div>
-    <modal id="circleLoader" name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
-      <div>
-
-        dog
+    <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
+      <div class="daletVav">
+        <div class="image">
+          <img style="height: 50px; width: auto; " :src=" lightYellowStar " >
+        </div>
+        <span style="font-family: Oswald;"> Loading... </span>
       </div>
     </modal>
   </div>
@@ -67,9 +69,11 @@
 import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import places from 'places.js'
+// import $ from 'jquery'
 import zayin from '../assets/usvote-logo-small.png'
 import bethBeth from '../assets/img-noise-500x500.png'
 import zuperZayin from '../assets/star_plain.png'
+import carpet from '../assets/light_yellow_star.png'
 
 export default {
   name: 'landing',
@@ -79,6 +83,7 @@ export default {
       USVoteLogo: zayin,
       thirdTester: bethBeth,
       levelStar: zuperZayin,
+      lightYellowStar: carpet,
       rican: 'challa!',
       googvotekey: process.env.GOOGLE_API_KEY,
       form: {
@@ -93,10 +98,6 @@ export default {
 
   },
   methods: {
-    removeOpacity () {
-      var wholeApp = document.querySelector('.v--modal-overlay')
-      wholeApp.addClass('choad')
-    },
     show () {
       this.$modal.show('v--modal-box')
     },
@@ -124,6 +125,33 @@ export default {
         toppy.style.cssText = 'background: #F5F5DC;'
         return false
       }
+    },
+    // The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN
+    loaderLoader () {
+      // var counter = 0
+      //
+      // // Start the changing images
+      // setInterval(function () {
+      //   if (counter === 9) {
+      //     counter = 0
+      //   }
+      //
+      //   changeImage(counter)
+      //   counter++
+      // }, 3000)
+      //
+      // // Set the percentage off
+      //
+      // function changeImage (counter) {
+      //   var images = [
+      //     '<img :src=" levelStar " />',
+      //     '<img :src=" levelStar " />',
+      //     '<img :src=" levelStar " />',
+      //     '<img :src=" levelStar " />'
+      //   ]
+      //
+      //   $('.image').html('' + images[counter] + '')
+      // }
     },
     getOuttaMyWay () {
       anime({
@@ -163,6 +191,7 @@ export default {
     this.getOuttaMyWay()
     this.starMaker()
     this.focusHelper()
+    this.loaderLoader()
 
     var placesAutocomplete = places({
       container: document.querySelector('#address-input'),
@@ -201,6 +230,78 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
+.daletVav {
+  width: 100px;
+  height: 80px;
+  position: absolute;
+  top: 0; right: 0; left: 0; bottom: 0;
+  margin: auto;
+}
+.image {
+  width: 100px;
+  height: 160px;
+  font-size: 40px;
+  text-align: center;
+  transform-origin: bottom center;
+  animation: 3s rotate infinite !important;
+  opacity: 0;
+  color: blue;
+  left: 1.5rem;
+}
+.daletVav span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+
+@keyframes rotate{
+  0% {
+    transform: rotate(90deg);
+  }
+  10% {
+    opacity: 0;
+  }
+  35% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  65% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes rotate{
+  0% {
+    transform: rotate(90deg);
+  }
+  10% {
+    opacity: 0;
+  }
+  35% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  65% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
 .v--modal-box {
   border-radius: 100%;
   -webkit-box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
@@ -209,6 +310,7 @@ export default {
   /* box-shadow: 0 2px 20px 0 rgba(0,0,0,.4); */
 }
 .v--modal-overlay {
+  background-color: rgba(208, 212, 203, 0.64);
   border-radius: 0px;
   width: 100vw;
   height: 100vh;
