@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
   strict: true,
   state: {
     googvotekey: process.env.GOOGLE_API_KEY,
+    usVoteKey: process.env.VOTE_KEY,
     form: {
       postcode: null,
       country: {
@@ -19,6 +20,8 @@ export const store = new Vuex.Store({
     googleResponse: {
       data: {}
     },
+    EODResponse: {},
+    USVoteElections: {},
     holla: 'ghost!'
   },
   mutations: {
@@ -32,7 +35,6 @@ export const store = new Vuex.Store({
     },
     setGoogleResponse (state, payload) {
       state.googleResponse.data = payload
-      console.log(JSON.stringify(payload, null, '\t'))
     },
     setSuggestion (state, payload) {
       state.algoliaResponse = payload
@@ -40,21 +42,64 @@ export const store = new Vuex.Store({
     declareSuggestion (state) {
       var suggestionObject = JSON.stringify(state.algoliaResponse, null, '\t')
       console.log(suggestionObject)
+    },
+    setEODResponse (state, payload) {
+      state.EODResponse = JSON.parse(payload)
+    },
+    setUSVoteElections (state, payload) {
+      state.USVoteElections = JSON.parse(payload)
+      console.log('☁ ☁ ☁ state elections within FINAL API search ☁ ☁ ☁ --> ' + JSON.stringify(payload, null, '\t'))
     }
   },
   actions: {
-    searchAPI: ({ state, commit }) => {
+    searchAPIs: ({ state, commit, dispatch }) => {
       var noJoke = state.googvotekey
       console.log('vote key after search fired ' + noJoke)
       var chainedAddress = state.form.country.label + ' ' + state.form.postcode
       var convertedAddress = chainedAddress.split(' ').join('%20')
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
-      console.log(convertedAddressFinal)
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         commit('setGoogleResponse', response)
         console.log('log your boy ---> ' + JSON.stringify(response, null, '\t'))
+        setTimeout(function () {
+          dispatch('getStateAndCounty')
+        }, 333)
       }).catch(err => {
         console.log('your error is: ' + err)
+        dispatch('getStateAndCounty')
+      })
+    },
+    getStateAndCounty: ({ state, commit, dispatch }) => {
+      // var USVoteFoundationKey = state.usVoteKey
+      console.log('us vote foundation vote key fired --> ' + process.env.VOTE_KEY)
+      var stateName = state.algoliaResponse.administrative
+      var countyName = state.algoliaResponse.hit.county[0].split(' ').join('%20')
+      console.log('your county name, my friend ----------------------------------> ' + countyName)
+      axios.get('https://localelections.usvotefoundation.org/v1/eod/regions?oauth_consumer_key=' + process.env.VOTE_KEY + '&state_name=' + stateName + '&county_name=' + countyName).then(response => {
+        console.log('** YOUR EOD RESPONSE ** YOUR EOD REPSONSE ** YOUR EOD RESPONSE **' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
+        commit('setEODResponse', response)
+        setTimeout(function () {
+          dispatch('search4Elections')
+        }, 333)
+      }).catch(err => {
+        console.log('your EOD API call failed. error --> ' + err)
+      })
+    },
+    search4Elections: ({ state, commit }) => {
+      var USVoteFoundationKey = state.usVoteKey
+      var electionsCallHeader = {
+        Authorization: 'Token ' + USVoteFoundationKey
+      }
+      var stateURI = state.EODResponse.objects[0].state
+      /* eslint-disable */
+      var stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
+      /* eslint-enable */
+      console.log('the STATE ID for ' + state.EODResponse.objects[0].state_name + ' is: ' + state.stateID)
+      axios.get('https://localelections.usvotefoundation.org/api/v1/elections?state_id=' + stateID, {headers: {electionsCallHeader}}).then(response => {
+        console.log('** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE **' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
+        commit('setUSVoteElections', response)
+      }).catch(err => {
+        console.log('your Elections API call failed. error --> ' + err)
       })
     }
   },
@@ -74,48 +119,3 @@ export const store = new Vuex.Store({
     }
   }
 })
-//   var getYourReps = google.civicinfo('v2')
-//   var params = {
-//     auth: process.env.GOOGLE_VOTE_KEY,
-//     address: state.form.country.label,
-//     resource: {}
-//   }
-//   getYourReps.representatives.representativeInfoByAddress(params, function (err, response) {
-//     if (err) {
-//       console.log('Encountered error', err);
-//     } else {
-//       var gimel = response.result
-//       context.commit('setGoogleResponse', gimel)
-//       console.log('RESponse: ', gimel);
-//     }
-//   })
-// //   function loadClient() {
-// //     gapi.client.setApiKey(process.env.GOOGLE_VOTE_KEY)
-// //     return gapi.client.load('https://content.googleapis.com/discovery/v1/apis/civicinfo/v2/rest')
-// //         .then(function() {
-// //           console.log('GAPI client loaded for API')
-// //         }, function(error) {
-// //           console.error('Error loading GAPI client for API')
-// //           return false
-// //         })
-// //       }
-// //   // Make sure the client is loaded before calling this method.
-// //   function execute() {
-// //     return gapi.client.civicinfo.representatives.representativeInfoByAddress({
-// //       'address': state.form.country.label,
-// //       'levels': null,
-// //       'roles': null,
-// //       'resource': {}
-// //     })
-// //       .then(function(response) {
-// //         // Handle the results here (response.result has the parsed body).
-// //         var gimel = response.result
-// //         context.commit('setGoogleResponse', gimel)
-// //
-// //         console.log('Response', response)
-// //       }, function(error) {
-// //         console.error('Execute error', error)
-// //       })
-// //     }
-// //   gapi.load('client')
-// }

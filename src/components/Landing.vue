@@ -54,6 +54,7 @@
     </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
       <div class="daletVav">
+        <!-- The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN -->
         <div class="image">
           <img style="height: 50px; width: auto; " :src=" lightYellowStar " >
         </div>
@@ -110,10 +111,9 @@ export default {
       this.$store.commit('setUsersAddress', val)
     },
     searchEvent () {
-      this.$store.dispatch('searchAPI')
+      this.$store.dispatch('searchAPIs')
       this.$store.commit('declareSuggestion')
       this.show()
-      this.removeOpacity()
     },
     doItAlready () {
       var urlPath = location.pathname
@@ -125,33 +125,6 @@ export default {
         toppy.style.cssText = 'background: #F5F5DC;'
         return false
       }
-    },
-    // The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN
-    loaderLoader () {
-      // var counter = 0
-      //
-      // // Start the changing images
-      // setInterval(function () {
-      //   if (counter === 9) {
-      //     counter = 0
-      //   }
-      //
-      //   changeImage(counter)
-      //   counter++
-      // }, 3000)
-      //
-      // // Set the percentage off
-      //
-      // function changeImage (counter) {
-      //   var images = [
-      //     '<img :src=" levelStar " />',
-      //     '<img :src=" levelStar " />',
-      //     '<img :src=" levelStar " />',
-      //     '<img :src=" levelStar " />'
-      //   ]
-      //
-      //   $('.image').html('' + images[counter] + '')
-      // }
     },
     getOuttaMyWay () {
       anime({
@@ -191,7 +164,6 @@ export default {
     this.getOuttaMyWay()
     this.starMaker()
     this.focusHelper()
-    this.loaderLoader()
 
     var placesAutocomplete = places({
       container: document.querySelector('#address-input'),
@@ -229,6 +201,8 @@ export default {
 <style >
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
+
+/* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN */
 
 .daletVav {
   width: 100px;
@@ -304,16 +278,20 @@ export default {
 
 .v--modal-box {
   border-radius: 100%;
+  border-style: solid;
+  border-width: 7px;
+  border-color: #DAF7A6;
   -webkit-box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
   -moz-box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
   box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
   /* box-shadow: 0 2px 20px 0 rgba(0,0,0,.4); */
 }
 .v--modal-overlay {
-  background-color: rgba(208, 212, 203, 0.64);
+  background-color: rgba(255, 255, 255, 0.64);
   border-radius: 0px;
   width: 100vw;
   height: 100vh;
+  border-style: none;
 }
 .scale-enter-active, .scale-leave-active {
  transition: all 0.5s;
