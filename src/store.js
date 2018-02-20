@@ -44,19 +44,20 @@ export const store = new Vuex.Store({
       console.log(suggestionObject)
     },
     setEODResponse (state, payload) {
-      state.EODResponse = JSON.parse(payload)
+      state.EODResponse = payload
+      console.log('** EODResponse mutated state ** EODResponse mutated state ** EODResponse mutated state **' + '\n' + 'here it is:' + '\n' + '\n' + JSON.stringify(payload.data.objects[0], null, '\t'))
     },
     setUSVoteElections (state, payload) {
-      state.USVoteElections = JSON.parse(payload)
+      state.USVoteElections = payload
       console.log('☁ ☁ ☁ state elections within FINAL API search ☁ ☁ ☁ --> ' + JSON.stringify(payload, null, '\t'))
     }
   },
   actions: {
     searchAPIs: ({ state, commit, dispatch }) => {
       var noJoke = state.googvotekey
-      console.log('vote key after search fired ' + noJoke)
-      var chainedAddress = state.form.country.label + ' ' + state.form.postcode
-      var convertedAddress = chainedAddress.split(' ').join('%20')
+      var postcode = state.form.postcode
+      var chainedAddress = state.form.country.label + ' ' + postcode
+      var convertedAddress = chainedAddress.split(' ').join('+')
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         commit('setGoogleResponse', response)
@@ -70,19 +71,24 @@ export const store = new Vuex.Store({
       })
     },
     getStateAndCounty: ({ state, commit, dispatch }) => {
-      // var USVoteFoundationKey = state.usVoteKey
       console.log('us vote foundation vote key fired --> ' + process.env.VOTE_KEY)
-      var stateName = state.algoliaResponse.administrative
-      var countyName = state.algoliaResponse.hit.county[0].split(' ').join('%20')
+      var stateName = state.algoliaResponse.administrative.split(' ').join('+')
+      /* eslint-disable */
+      var county = state.algoliaResponse.hit.county[0]
+      var countyName = county.match(/^(.*?)\ County/)[1]
+      /* eslint-enable */
       console.log('your county name, my friend ----------------------------------> ' + countyName)
       axios.get('https://localelections.usvotefoundation.org/v1/eod/regions?oauth_consumer_key=' + process.env.VOTE_KEY + '&state_name=' + stateName + '&county_name=' + countyName).then(response => {
         console.log('** YOUR EOD RESPONSE ** YOUR EOD REPSONSE ** YOUR EOD RESPONSE **' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
         commit('setEODResponse', response)
         setTimeout(function () {
           dispatch('search4Elections')
-        }, 333)
+        }, 555)
       }).catch(err => {
         console.log('your EOD API call failed. error --> ' + err)
+        setTimeout(function () {
+          dispatch('search4Elections')
+        }, 555)
       })
     },
     search4Elections: ({ state, commit }) => {
@@ -90,11 +96,13 @@ export const store = new Vuex.Store({
       var electionsCallHeader = {
         Authorization: 'Token ' + USVoteFoundationKey
       }
-      var stateURI = state.EODResponse.objects[0].state
+      console.log(state.EODResponse.data.objects)
+      var stateURI = state.EODResponse.data.objects[0].state
+
       /* eslint-disable */
       var stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
       /* eslint-enable */
-      console.log('the STATE ID for ' + state.EODResponse.objects[0].state_name + ' is: ' + state.stateID)
+      console.log('the STATE ID for ' + state.EODResponse.data.objects[0].state_name + ' is: ' + stateID)
       axios.get('https://localelections.usvotefoundation.org/api/v1/elections?state_id=' + stateID, {headers: {electionsCallHeader}}).then(response => {
         console.log('** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE **' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
         commit('setUSVoteElections', response)
