@@ -56,8 +56,8 @@ export const store = new Vuex.Store({
     searchAPIs: ({ state, commit, dispatch }) => {
       var noJoke = state.googvotekey
       var postcode = state.form.postcode
-      var chainedAddress = state.form.country.label + ' ' + postcode
-      var convertedAddress = chainedAddress.split(' ').join('+')
+      var chainedAddress = state.form.country.label + '' + postcode
+      var convertedAddress = chainedAddress.replace(', United States of America', ' ').split(' ').join('+')
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         commit('setGoogleResponse', response)
@@ -73,10 +73,18 @@ export const store = new Vuex.Store({
     getStateAndCounty: ({ state, commit, dispatch }) => {
       console.log('us vote foundation vote key fired --> ' + process.env.VOTE_KEY)
       var stateName = state.algoliaResponse.administrative.split(' ').join('+')
+      var counties = state.algoliaResponse.hit.county
+      var countyName = ''
       /* eslint-disable */
-      var county = state.algoliaResponse.hit.county[0]
-      var countyName = county.match(/^(.*?)\ County/)[1]
+      var findCounty = () => {
+        if (counties[0].includes('County')) {
+          countyName = counties[0].match(/^(.*?)\ County/)[1]
+        } else {
+          countyName = counties[0]
+        }
+      }
       /* eslint-enable */
+      findCounty(counties)
       console.log('your county name, my friend ----------------------------------> ' + countyName)
       axios.get('https://localelections.usvotefoundation.org/v1/eod/regions?oauth_consumer_key=' + process.env.VOTE_KEY + '&state_name=' + stateName + '&county_name=' + countyName).then(response => {
         console.log('** YOUR EOD RESPONSE ** YOUR EOD REPSONSE ** YOUR EOD RESPONSE **' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
@@ -92,19 +100,25 @@ export const store = new Vuex.Store({
       })
     },
     search4Elections: ({ state, commit }) => {
-      var USVoteFoundationKey = state.usVoteKey
-      var electionsCallHeader = {
-        Authorization: 'Token ' + USVoteFoundationKey
-      }
       console.log(state.EODResponse.data.objects)
       var stateURI = state.EODResponse.data.objects[0].state
 
       /* eslint-disable */
       var stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
       /* eslint-enable */
+      const axiosInstance = axios.create({
+        baseURL: 'https://localelections.usvotefoundation.org/api/v1/elections',
+        headers: { 'Authorization': 'Token ' + state.usVoteKey },
+        params: {
+          state_id: stateID
+        }
+      })
+
       console.log('the STATE ID for ' + state.EODResponse.data.objects[0].state_name + ' is: ' + stateID)
-      axios.get('https://localelections.usvotefoundation.org/api/v1/elections?state_id=' + stateID, {headers: {electionsCallHeader}}).then(response => {
-        console.log('** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE **' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
+      // axios.get('https://localelections.usvotefoundation.org/api/v1/elections?state_id=' + stateID, {'headers': {electionsCallHeader}})
+
+      axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
+        console.log('** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS RESPONSE ** YOUR ELECTIONS REPSONSE ** YOUR ELECTIONS RESPONSE **' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
         commit('setUSVoteElections', response)
       }).catch(err => {
         console.log('your Elections API call failed. error --> ' + err)
