@@ -123,11 +123,16 @@ export const store = new Vuex.Store({
       })
     },
     search4Elections: ({ state, commit }) => {
-      console.log(state.EODResponse.data.objects)
       var stateURI = state.EODResponse.data.objects[0].state
 
       /* eslint-disable */
       var stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
+      if (stateID.length == 2 ) {
+        stateID = 'S' + stateID
+      } else {
+        stateID = 'S0' + stateID
+      }
+
       console.log('variable stateID is ' + stateURI)
       /* eslint-enable */
       const axiosInstance = axios.create({
@@ -147,7 +152,7 @@ export const store = new Vuex.Store({
       console.log('the STATE ID for ' + state.EODResponse.data.objects[0].state_name + ' is: ' + stateID)
       // axios.get('https://localelections.usvotefoundation.org/api/v1/elections?state_id=' + stateID, {'headers': {electionsCallHeader}})
       axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
-        console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response.objects, null, '\t'))
+        console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response.objects, null, '\t'))
         commit('setUSVoteElections', response)
       }).catch(err => {
         console.log('your Elections API call failed. error --> ' + err)
