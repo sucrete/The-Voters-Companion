@@ -85,7 +85,7 @@ export const store = new Vuex.Store({
       }
       /* eslint-enable */
       findCounty(counties)
-      console.log('your county name ----------------------------------> ' + countyName)
+      console.log('your county name ----------------------------------> ' + countyName.split('+').join(' '))
       axios.get('https://localelections.usvotefoundation.org/v1/eod/regions?oauth_consumer_key=' + process.env.VOTE_KEY + '&state_name=' + stateName + '&county_name=' + countyName).then(response => {
         console.log(`%c
  _
@@ -117,28 +117,29 @@ export const store = new Vuex.Store({
         }, 555)
       }).catch(err => {
         console.log('your EOD API call failed. error --> ' + err)
-        setTimeout(function () {
-          dispatch('search4Elections')
-        }, 555)
+        // setTimeout(function () {
+        //   dispatch('search4Elections')
+        // }, 555)
       })
     },
     search4Elections: ({ state, commit }) => {
       console.log(state.EODResponse.data.objects)
       var stateURI = state.EODResponse.data.objects[0].state
+
       /* eslint-disable */
       var stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
+      console.log('variable stateID is ' + stateURI)
       /* eslint-enable */
       const axiosInstance = axios.create({
-        crossDomain: true,
+        // crossDomain: true,
         params: {
           state_id: stateID
         },
-        timeout: 10000,
-        withCredentials: true,
-        // transformRequest: [(data) => JSON.stringify(data.data)],
+        // timeout: 10000,
+        // withCredentials: true,
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
+          // 'Accept': 'application/json',
+          // 'Content-Type': 'application/json',
           'Authorization': 'Token ' + process.env.VOTE_KEY
         }
       })
@@ -146,7 +147,7 @@ export const store = new Vuex.Store({
       console.log('the STATE ID for ' + state.EODResponse.data.objects[0].state_name + ' is: ' + stateID)
       // axios.get('https://localelections.usvotefoundation.org/api/v1/elections?state_id=' + stateID, {'headers': {electionsCallHeader}})
       axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
-        console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
+        console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS REPSONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response.objects, null, '\t'))
         commit('setUSVoteElections', response)
       }).catch(err => {
         console.log('your Elections API call failed. error --> ' + err)
