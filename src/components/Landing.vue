@@ -127,9 +127,7 @@ export default {
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
         console.log('log your boy ---> ' + JSON.stringify(response, null, '\t'))
-        setTimeout(function () {
-          this.getStateAndCounty()
-        }, 333)
+        this.getStateAndCounty()
       }).catch(err => {
         console.log('searchAPIs method failed. error----> ' + err)
       })
@@ -174,9 +172,7 @@ export default {
  |
  |`, 'font-family:monospace' + '\n' + JSON.stringify(response, null, '\t'))
         this.$store.commit('setEODResponse', response)
-        setTimeout(function () {
-          this.search4Elections()
-        }, 555)
+        this.search4Elections()
       }).catch(err => {
         console.log('your EOD API call failed. error --> ' + err)
       })
@@ -205,6 +201,7 @@ export default {
       axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
         console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response.objects, null, '\t'))
         this.$store.commit('setUSVoteElections', response)
+        this.$router.push({path: 'overview'})
       }).catch(err => {
         console.log('your Elections API call failed. error --> ' + err)
       })
@@ -282,16 +279,20 @@ export default {
 }
 
 </script>
-
-<style scoped>
+<!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
+<style >
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
 /* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN */
-
+.v--modal {
+  border-radius: 100% !important;
+  box-sizing: none !important;
+}
 .daletVav {
   width: 100px;
   height: 80px;
+  border-radius: 100%;
   position: absolute;
   top: 0; right: 0; left: 0; bottom: 0;
   margin: auto;
@@ -370,6 +371,7 @@ export default {
   -moz-box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
   box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
   /* box-shadow: 0 2px 20px 0 rgba(0,0,0,.4); */
+  box-sizing: none;
 }
 .v--modal-overlay {
   background-color: rgba(255, 255, 255, 0.64);
