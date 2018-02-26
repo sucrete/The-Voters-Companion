@@ -3,7 +3,7 @@
 
   <div id="landing">
 
-    <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;" hidden><router-link  to="overview" >Hello component</router-link></h2>
+    <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;" ><router-link  to="overview" >Hello component</router-link></h2>
     <!-- example of syntax needed to insert image with vue -->
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
     <div id="info-div">
@@ -54,7 +54,6 @@
     </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
       <div class="daletVav">
-        <!-- The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN -->
         <div class="image">
           <img style="height: 50px; width: auto; " :src=" lightYellowStar " >
         </div>
@@ -65,7 +64,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 // import Places from 'vue-places'
 import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
@@ -96,7 +95,9 @@ export default {
     }
   },
   computed: {
-
+    state () {
+      return this.$store.getters.showMeDatState
+    }
   },
   methods: {
     show () {
@@ -111,20 +112,102 @@ export default {
       this.$store.commit('setUsersAddress', val)
     },
     searchEvent () {
-      this.$store.dispatch('searchAPIs')
-      this.$store.commit('declareSuggestion')
       this.show()
+      this.searchAPIs()
     },
-    doItAlready () {
-      var urlPath = location.pathname
-      var toppy = document.getElementById('app')
-      if (urlPath.length > 5) {
-        toppy.style.background = '#F5F4EA'
-        return false
+    // need any of these interpolated vars? { state, commit, dispatch }
+    searchAPIs () {
+      var state = this.$store.getters.showMeDatState
+      console.log(JSON.stringify(state, null, '\t'))
+      var noJoke = process.env.GOOGLE_API_KEY
+      var postcode = state.form.postcode
+      var chainedAddress = state.form.country.label + postcode
+      var convertedAddress = chainedAddress.replace(', United States of America', ' ').split(' ').join('+')
+      var convertedAddressFinal = convertedAddress.split(',').join('%2C')
+      axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
+        this.$store.commit('setGoogleResponse', response)
+        console.log('log your boy ---> ' + JSON.stringify(response, null, '\t'))
+        setTimeout(function () {
+          this.getStateAndCounty()
+        }, 333)
+      }).catch(err => {
+        console.log('searchAPIs method failed. error----> ' + err)
+      })
+    },
+    getStateAndCounty () {
+      console.log('us vote foundation vote key fired --> ' + process.env.VOTE_KEY)
+      var state = this.$store.getters.showMeDatState
+      var stateName = state.algoliaResponse.administrative.split(' ').join('+')
+      var counties = state.algoliaResponse.hit.county
+      var countyName = ''
+      /* eslint-disable */
+      if (counties[0].includes('County')) {
+        countyName = counties[0].match(/^(.*?)\ County/)[1].split(' ').join('+')
       } else {
-        toppy.style.cssText = 'background: #F5F5DC;'
-        return false
+        countyName = counties[0].split(' ').join('+')
       }
+      /* eslint-enable */
+      console.log('your county name ----------------------------------> ' + countyName.split('+').join(' '))
+      axios.get('https://localelections.usvotefoundation.org/v1/eod/regions?oauth_consumer_key=' + process.env.VOTE_KEY + '&state_name=' + stateName + '&county_name=' + countyName).then(response => {
+        console.log(`%c
+ _
+(_)
+ |_________________________________________
+ |*  *  *  *  * |##########################|
+ | *  *  *  *  *|                          |
+ |*  *  *  *  * |##########################|
+ | *  *  *  *  *|                          |
+ |*  *  *  *  * |##########################|
+ | *  *  *  *  *|                          |
+ |*  *  *  *  * |##########################|
+ |~~~~~~~~~~~~~~~                          |
+ |#########################################|
+ |                                         |
+ |#########################################|
+ |                                         |
+ |#########################################|
+ |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ |
+ |
+ |
+ |
+ |
+ |`, 'font-family:monospace' + '\n' + JSON.stringify(response, null, '\t'))
+        this.$store.commit('setEODResponse', response)
+        setTimeout(function () {
+          this.search4Elections()
+        }, 555)
+      }).catch(err => {
+        console.log('your EOD API call failed. error --> ' + err)
+      })
+    },
+    search4Elections () {
+      var state = this.$store.getters.showMeDatState
+      var stateURI = state.EODResponse.data.objects[0].state
+      /* eslint-disable */
+      var stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
+      /* eslint-enable */
+      if (stateID.length === 2) {
+        stateID = 'S' + stateID
+      } else {
+        stateID = 'S0' + stateID
+      }
+      console.log('variable stateID is ' + stateURI)
+      const axiosInstance = axios.create({
+        params: {
+          state_id: stateID
+        },
+        headers: {
+          'Authorization': 'Token ' + process.env.VOTE_KEY
+        }
+      })
+      console.log('the STATE ID for ' + state.EODResponse.data.objects[0].state_name + ' is: ' + stateID)
+      axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
+        console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response.objects, null, '\t'))
+        this.$store.commit('setUSVoteElections', response)
+      }).catch(err => {
+        console.log('your Elections API call failed. error --> ' + err)
+      })
     },
     getOuttaMyWay () {
       anime({
@@ -160,7 +243,6 @@ export default {
     }
   },
   mounted () {
-    this.doItAlready()
     this.getOuttaMyWay()
     this.starMaker()
     this.focusHelper()
@@ -193,12 +275,15 @@ export default {
   },
   beforeDestroy () {
     this.placesAutocomplete.destroy()
+    return false
+  },
+  created () {
   }
 }
 
 </script>
 
-<style >
+<style scoped>
 
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
@@ -230,6 +315,7 @@ export default {
   bottom: 0;
 }
 
+/* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN  */
 @keyframes rotate{
   0% {
     transform: rotate(90deg);
@@ -277,7 +363,6 @@ export default {
 }
 
 .v--modal-box {
-  border-radius: 100%;
   border-style: solid;
   border-width: 7px;
   border-color: #DAF7A6;

@@ -24,20 +24,20 @@ export default {
     }
   },
   methods: {
-    doItAlready () {
-      var urlPath = location.pathname
-      var toppy = document.getElementById('app')
-      if (urlPath.length > 5) {
-        toppy.style.background = '#F5F4EA'
-        return false
-      } else {
-        toppy.style.cssText = 'background: #F5F5DC;' // 'background: -webkit-linear-gradient(315deg, #e8f4f8, #F5F5DC); background: linear-gradient(315deg, #e8f4f8, #F5F5DC)'
-        return false
-      }
-    }
+    // doItAlready () {
+    //   var urlPath = location.pathname
+    //   var toppy = document.getElementById('app')
+    //   if (urlPath.length > 5) {
+    //     toppy.style.background = '#F5F4EA'
+    //     return false
+    //   } else {
+    //     toppy.style.cssText = 'background: #F5F5DC;' // 'background: -webkit-linear-gradient(315deg, #e8f4f8, #F5F5DC); background: linear-gradient(315deg, #e8f4f8, #F5F5DC)'
+    //     return false
+    //   }
+    // }
   },
   mounted () {
-    this.doItAlready()
+    // this.doItAlready()
   }
 }
 
@@ -48,10 +48,14 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Rasa');
 @import url('https://fonts.googleapis.com/css?family=Oswald:500,600');
 
+
 html {
   background-color: #E1DCDC;
 }
 
+#app {
+  background-color: #F5F5DC;
+}
 .hotBod {
   position: relative;
   overflow: scroll;
@@ -100,8 +104,6 @@ router-link:hover {
   width: 46rem;
   margin: auto;
   margin-top: 1rem;
-  /* background color called 'brown paper bag': #B29772*/
-  background: #F5F4EA;
   font-family: 'Rasa', serif;
   font-weight: 300;
   text-align: center;
@@ -114,7 +116,8 @@ router-link:hover {
 body {
   margin: 0;
   padding: 0;
-  background: #E1DCDC;
+  /* 👇 the color behind the 'page' element */
+  background: #e0dcdc;
 }
 
 a {

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -18,7 +17,9 @@ export const store = new Vuex.Store({
     },
     algoliaResponse: {},
     googleResponse: {
-      data: {}
+      data: {
+        hanger: 'knock knock'
+      }
     },
     EODResponse: {},
     USVoteElections: {},
@@ -39,10 +40,6 @@ export const store = new Vuex.Store({
     setSuggestion (state, payload) {
       state.algoliaResponse = payload
     },
-    declareSuggestion (state) {
-      var suggestionObject = JSON.stringify(state.algoliaResponse, null, '\t')
-      console.log(suggestionObject)
-    },
     setEODResponse (state, payload) {
       state.EODResponse = payload
       console.log('▼▼▼▼▼ EODResponse mutated state ▼▼▼▼▼ EODResponse mutated state ▼▼▼▼▼ EODResponse mutated state ▼▼▼▼▼' + '\n' + 'here it is:' + '\n' + '\n' + JSON.stringify(payload.data.objects[0], null, '\t'))
@@ -53,117 +50,13 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
-    searchAPIs: ({ state, commit, dispatch }) => {
-      var noJoke = state.googvotekey
-      var postcode = state.form.postcode
-      var chainedAddress = state.form.country.label + postcode
-      var convertedAddress = chainedAddress.replace(', United States of America', ' ').split(' ').join('+')
-      var convertedAddressFinal = convertedAddress.split(',').join('%2C')
-      axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
-        commit('setGoogleResponse', response)
-        console.log('log your boy ---> ' + JSON.stringify(response, null, '\t'))
-        setTimeout(function () {
-          dispatch('getStateAndCounty')
-        }, 333)
-      }).catch(err => {
-        console.log('your error is: ' + err)
-        dispatch('getStateAndCounty')
-      })
-    },
-    getStateAndCounty: ({ state, commit, dispatch }) => {
-      console.log('us vote foundation vote key fired --> ' + process.env.VOTE_KEY)
-      var stateName = state.algoliaResponse.administrative.split(' ').join('+')
-      var counties = state.algoliaResponse.hit.county
-      var countyName = ''
-      /* eslint-disable */
-      var findCounty = () => {
-        if (counties[0].includes('County')) {
-          countyName = counties[0].match(/^(.*?)\ County/)[1].split(' ').join('+')
-        } else {
-          countyName = counties[0]
-        }
-      }
-      /* eslint-enable */
-      findCounty(counties)
-      console.log('your county name ----------------------------------> ' + countyName.split('+').join(' '))
-      axios.get('https://localelections.usvotefoundation.org/v1/eod/regions?oauth_consumer_key=' + process.env.VOTE_KEY + '&state_name=' + stateName + '&county_name=' + countyName).then(response => {
-        console.log(`%c
- _
-(_)
- |_________________________________________
- |*  *  *  *  * |##########################|
- | *  *  *  *  *|                          |
- |*  *  *  *  * |##########################|
- | *  *  *  *  *|                          |
- |*  *  *  *  * |##########################|
- | *  *  *  *  *|                          |
- |*  *  *  *  * |##########################|
- |~~~~~~~~~~~~~~~                          |
- |#########################################|
- |                                         |
- |#########################################|
- |                                         |
- |#########################################|
- |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- |
- |
- |
- |
- |
- |`, 'font-family:monospace' + '\n' + JSON.stringify(response, null, '\t'))
-        commit('setEODResponse', response)
-        setTimeout(function () {
-          dispatch('search4Elections')
-        }, 555)
-      }).catch(err => {
-        console.log('your EOD API call failed. error --> ' + err)
-        // setTimeout(function () {
-        //   dispatch('search4Elections')
-        // }, 555)
-      })
-    },
-    search4Elections: ({ state, commit }) => {
-      var stateURI = state.EODResponse.data.objects[0].state
 
-      /* eslint-disable */
-      var stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
-      if (stateID.length == 2 ) {
-        stateID = 'S' + stateID
-      } else {
-        stateID = 'S0' + stateID
-      }
-
-      console.log('variable stateID is ' + stateURI)
-      /* eslint-enable */
-      const axiosInstance = axios.create({
-        // crossDomain: true,
-        params: {
-          state_id: stateID
-        },
-        // timeout: 10000,
-        // withCredentials: true,
-        headers: {
-          // 'Accept': 'application/json',
-          // 'Content-Type': 'application/json',
-          'Authorization': 'Token ' + process.env.VOTE_KEY
-        }
-      })
-      // axiosInstance.defaults.headers.common['X-Frame-Options'] = 'ALLOW-FROM http://localhost:8080'
-      console.log('the STATE ID for ' + state.EODResponse.data.objects[0].state_name + ' is: ' + stateID)
-      // axios.get('https://localelections.usvotefoundation.org/api/v1/elections?state_id=' + stateID, {'headers': {electionsCallHeader}})
-      axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
-        console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response.objects, null, '\t'))
-        commit('setUSVoteElections', response)
-      }).catch(err => {
-        console.log('your Elections API call failed. error --> ' + err)
-      })
-    }
   },
   getters: {
     showMeDatState: state => {
       console.log(state.form.country.label + ' --- (from the STORE)')
       var bb = state
-      return bb.form.country.label
+      return bb
     },
     ghostGetter: state => {
       var carn = state
@@ -172,6 +65,9 @@ export const store = new Vuex.Store({
     labelMaker (state) {
       var helloboys = state
       return helloboys.form.country.label
+    },
+    stuper: state => {
+      return state.googleResponse.data
     }
   }
 })

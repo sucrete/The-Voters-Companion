@@ -8,14 +8,16 @@
     </div>
     <!-- body -->
     <div class="hotBod">
-      <img id="toungey" class="animated-gif" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
+      <img id="toungey" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
       <h1 class="mt-2">{{ msg }}</h1>
+      <div>
+        {{ stuper }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
 
 export default {
   name: 'overview',
@@ -25,26 +27,35 @@ export default {
     }
   },
   methods: {
-    blancher () {
-      $('#app').css(
-        'background', '#F5F4EA'
-      )
+    colorMeSlightlyYellow () {
+      var toppy = document.getElementById('app')
+      toppy.style.cssText = 'background-color: #F5F4EA'
     }
   },
-  mounted () {
-    this.blancher()
+  computed: {
+    stuper () {
+      return this.$store.getters.stuper
+    }
+  },
+  beforeMount () {
+    this.colorMeSlightlyYellow()
+  },
+  updated () {
+    this.colorMeSlightlyYellow()
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-
+<style >
+#app {
+  background-color: #F5F4EA;
+}
 #toungey {
   width: 200px !important;
   height: auto !important;
 }
+
 h1, h2 {
   font-weight: normal;
   color: black;
