@@ -68,6 +68,12 @@ export const store = new Vuex.Store({
     },
     stuper: state => {
       return state.googleResponse.data
+    },
+    getElections: state => {
+      return state.USVoteElections
+    },
+    getElectionsStringified: state => {
+      return JSON.stringify(state.USVoteElections, undefined, 2)
     }
   }
 })

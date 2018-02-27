@@ -10,6 +10,9 @@
       </div><br/>
       <!-- body -->
       <div class="hotBod">
+        <div>
+          {{ displayElections }}
+        </div>
         <div id="yourTimeline">
           <ul style="width: 650px;" class="timeline">
             <li class="timeline-header">
@@ -68,23 +71,23 @@
 export default {
   name: 'timeline',
   methods: {
-    doItAlready () {
-      var urlPath = location.pathname
-      var toppy = document.getElementById('app')
-      if (urlPath.length > 5) {
-        toppy.style.background = '#F5F4EA'
-        return false
-      } else {
-        toppy.style.cssText = 'background: #F5F5DC;'
-        return false
-      }
+
+  },
+  computed: {
+    displayElections () {
+      return this.$store.getters.getElectionsStringified
     }
   }
 }
 
 </script>
 
-<style scoped>
+<style >
+
+#app {
+  background-color: #F5F4EA;
+}
+
 .hotBod {
 }
 
