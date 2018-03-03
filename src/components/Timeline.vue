@@ -75,7 +75,8 @@ export default {
   },
   computed: {
     displayElections () {
-      return this.$store.getters.getElectionsStringified
+      var heyLookAtMe = JSON.stringify(this.$store.getters.getElections, null, '\t')
+      return heyLookAtMe
     }
   }
 }

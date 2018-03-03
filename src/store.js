@@ -16,11 +16,7 @@ export const store = new Vuex.Store({
       }
     },
     algoliaResponse: {},
-    googleResponse: {
-      data: {
-        hanger: 'knock knock'
-      }
-    },
+    googleResponse: {},
     EODResponse: {},
     USVoteElections: {},
     holla: 'ghost!'
@@ -35,7 +31,7 @@ export const store = new Vuex.Store({
       state.form.postcode = payload
     },
     setGoogleResponse (state, payload) {
-      state.googleResponse.data = payload
+      state.googleResponse = payload
     },
     setSuggestion (state, payload) {
       state.algoliaResponse = payload
@@ -71,9 +67,6 @@ export const store = new Vuex.Store({
     },
     getElections: state => {
       return state.USVoteElections
-    },
-    getElectionsStringified: state => {
-      return JSON.stringify(state.USVoteElections, undefined, 2)
     }
   }
 })

@@ -10,6 +10,13 @@
     <div class="hotBod">
       <img id="toungey" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
       <h1 class="mt-2">{{ msg }}</h1>
+      <div id="overviewBody">
+<!--
+█▀▀█ █░░ █░░█ █▀▀▀ 　 █░░█ ▀▀█▀▀ █▀▄▀█ █░░ 　 ▀█▀ █▀▀▄　  █░░█ █▀▀ █▀▀█ █▀▀
+█░░█ █░░ █░░█ █░▀█ 　 █▀▀█ ░░█░░ █░▀░█ █░░ 　 ▒█░ █░░█ 　 █▀▀█ █▀▀ █▄▄▀ █▀▀
+█▀▀▀ ▀▀▀ ░▀▀▀ ▀▀▀▀ 　 ▀░░▀ ░░▀░░ ▀░░░▀ ▀▀▀ 　 ▄█▄ ▀░░▀ 　 ▀░░▀ ▀▀▀ ▀░▀▀ ▀▀▀
+ -->
+      </div>
       <div>
         {{ stuper }}
       </div>
@@ -42,6 +49,21 @@ export default {
   },
   updated () {
     this.colorMeSlightlyYellow()
+  },
+  mounted () {
+    var state = this.$store.getters.showMeDatState
+    var GState = state.googleResponse
+    var divisions = GState.data.divisions
+    var keys = Object.keys(divisions)
+    var reversedKeys = []
+    console.log('YOUR DIVISIONS ---> ' + JSON.stringify(divisions, null, '\t'))
+    console.log('YOUR DIVISION KEYS ---> ' + keys)
+    console.log('THE TYPE OF OBJECT keys IS IS ---> ' + typeof keys)
+    console.log('YOUR INDEX OF LAST DIVISION ---> ' + keys[keys.length - 1])
+    for (var i = keys.length - 1; i >= 0; i--) {
+      reversedKeys.push(keys[i])
+    }
+    console.log('YOUR reversedKeys VARIABLE IS ---> ' + reversedKeys)
   }
 }
 </script>
