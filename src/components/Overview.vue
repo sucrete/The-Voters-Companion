@@ -10,7 +10,7 @@
     <div class="hotBod">
       <img id="toungey" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
       <h1 class="mt-2">{{ msg }}</h1>
-      <div id="overviewBody">
+      <div id="overviewBody" style="background-color: rgb(155, 242, 133)">
 <!--
 █▀▀█ █░░ █░░█ █▀▀▀ 　 █░░█ ▀▀█▀▀ █▀▄▀█ █░░ 　 ▀█▀ █▀▀▄　  █░░█ █▀▀ █▀▀█ █▀▀
 █░░█ █░░ █░░█ █░▀█ 　 █▀▀█ ░░█░░ █░▀░█ █░░ 　 ▒█░ █░░█ 　 █▀▀█ █▀▀ █▄▄▀ █▀▀
@@ -44,31 +44,64 @@ export default {
       return this.$store.getters.stuper
     }
   },
-  beforeMount () {
-    this.colorMeSlightlyYellow()
-  },
-  updated () {
-    this.colorMeSlightlyYellow()
-  },
   mounted () {
     var state = this.$store.getters.showMeDatState
     var GState = state.googleResponse
     var divisions = GState.data.divisions
-    var keys = Object.keys(divisions)
+    var divisionKeys = []
+    divisionKeys = Object.getOwnPropertyNames(divisions)
     var reversedKeys = []
-    console.log('YOUR DIVISIONS ---> ' + JSON.stringify(divisions, null, '\t'))
-    console.log('YOUR DIVISION KEYS ---> ' + keys)
-    console.log('THE TYPE OF OBJECT keys IS IS ---> ' + typeof keys)
-    console.log('YOUR INDEX OF LAST DIVISION ---> ' + keys[keys.length - 1])
-    for (var i = keys.length - 1; i >= 0; i--) {
-      reversedKeys.push(keys[i])
+    for (var i = divisionKeys.length - 1; i >= 0; i--) {
+      reversedKeys.push(divisionKeys[i])
     }
+    console.log(JSON.stringify(GState.data, null, '\t'))
     console.log('YOUR reversedKeys VARIABLE IS ---> ' + reversedKeys)
+    /* eslint-disable */
+    var indices = {
+      placeOfficeIndices: [],
+      countyOfficeIndices: [],
+      congressionalOfficeIndices: [],
+      stateOfficeIndices: [],
+      countryOfficeIndices: []
+    }
+    var sectionHeaderPlace
+    var sectionHeaderCounty
+    var sectionHeaderCD
+    var sectionHeaderState
+    var sectionHeaderCountry
+    /* eslint-enable */
+    console.log(divisions[reversedKeys[1]].hasOwnProperty('officeIndices'))
+    if (divisions[reversedKeys[1]].hasOwnProperty('officeIndices')) {
+      console.log('you got this far!')
+      indices.placeOfficeIndices.push(divisions[reversedKeys[1]].officeIndices)
+      sectionHeaderPlace = document.createElement('h1')
+      var aaa = document.createTextNode(divisions[reversedKeys[1]].name)
+      sectionHeaderPlace.appendChild(aaa)
+      sectionHeaderPlace.style.cssText = 'border-top: 1px solid black; border-bottom: 1px solid black;'
+      document.getElementById('overviewBody').appendChild(sectionHeaderPlace)
+    } else {
+      return false
+    }
+    if (divisions[reversedKeys[2]].hasOwnProperty('officeIndices')) {
+      indices.countyOfficeIndices.push(divisions[reversedKeys[2]].officeIndices)
+      sectionHeaderCounty = document.createElement('h1')
+    }
+    if (divisions[reversedKeys[3]].hasOwnProperty('officeIndices')) {
+      indices.congressionalOfficeIndices.push(divisions[reversedKeys[3]].officeIndices)
+      sectionHeaderCD = document.createElement('h1')
+    }
+    if (divisions[reversedKeys[4]].hasOwnProperty('officeIndices')) {
+      indices.stateOfficeIndices.push(divisions[reversedKeys[4]].officeIndices)
+      sectionHeaderState = document.createElement('h1')
+    }
+    if (divisions[reversedKeys[5]].hasOwnProperty('officeIndices')) {
+      indices.countryOfficeIndices.push(divisions[reversedKeys[5]].officeIndices)
+      sectionHeaderCountry = document.createElement('h1')
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
 #app {
   background-color: #F5F4EA;

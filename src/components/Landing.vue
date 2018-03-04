@@ -126,7 +126,27 @@ export default {
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
-        console.log('log your boy ---> ' + JSON.stringify(response, null, '\t'))
+        console.log(`%c
+          ..
+* * * * * * * * * * $$$$$$$$$$$$$$$$$$$$                 .$$$$.
+ * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$.          .$$$$$
+* * * * * * * * * * ::::::::::::::::::::::::::.      .::::::::'
+ * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$$$$    $$$$$$$$F
+* * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$d$$$$$$$"
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
+  ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+  ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    ":::::::::::::::::::::::::::::::::::::::::::::::"
+      ""$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$P
+                    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$L
+                        ;; ;::::::::::::::::;;    ;;:::.
+                             $$$$$$"     ""         $$$$$;   Donna Shepherd
+                              ^$$"                   $$$$
+                                                       ""
+`, 'font-family:monospace' + JSON.stringify(response, null, '\t'))
         this.getStateAndCounty()
       }).catch(err => {
         console.log('searchAPIs method failed. error----> ' + err)
@@ -281,7 +301,9 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
-
+#app {
+  background-color: #F5F5DC;
+}
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
 /* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN */
