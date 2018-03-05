@@ -59,7 +59,7 @@ html {
 .hotBod {
   position: relative;
   overflow: scroll;
-  top: 4rem;
+  top: 4.2rem;
   padding-bottom: 4rem;
 }
 
