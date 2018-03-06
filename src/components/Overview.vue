@@ -17,9 +17,6 @@
 █▀▀▀ ▀▀▀ ░▀▀▀ ▀▀▀▀ 　 ▀░░▀ ░░▀░░ ▀░░░▀ ▀▀▀ 　 ▄█▄ ▀░░▀ 　 ▀░░▀ ▀▀▀ ▀░▀▀ ▀▀▀
  -->
       </div>
-      <div>
-        {{ stuper }}
-      </div>
     </div>
   </div>
 </template>
@@ -34,15 +31,10 @@ export default {
     }
   },
   methods: {
-    colorMeSlightlyYellow () {
-      var toppy = document.getElementById('app')
-      toppy.style.cssText = 'background-color: #F5F4EA'
-    }
+
   },
   computed: {
-    stuper () {
-      return this.$store.getters.stuper
-    }
+
   },
   mounted () {
     var state = this.$store.getters.showMeDatState
@@ -87,14 +79,21 @@ export default {
     //   console.log(JSON.stringify(officesList, null, '\t'))
     //   return officesList
     // }
-      /* eslint-enable */
+
+    // credit for insertAfter() -> https://stackoverflow.com/questions/4793604/how-to-insert-an-element-after-another-element-in-javascript-without-using-a-lib
+    function insertAfter(referenceNode, newNode) {
+      referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
+    }
+    /* eslint-enable */
     if (divisions[reversedKeys[1]].hasOwnProperty('officeIndices') !== undefined) {
       var sectionHeader1 = document.createElement('h1')
       sectionHeader1.className = ('sectionHeader')
+      var sectionBody1 = document.createElement('div')
       var upperCasedCityName = toTitleCase(divisions[reversedKeys[1]].name)
       var aaa = document.createTextNode(upperCasedCityName)
       sectionHeader1.appendChild(aaa)
       overviewBod.appendChild(sectionHeader1)
+      overviewBod.appendChild(sectionBody1)
       var officialFaceNameTitle1 = []
       divisions[reversedKeys[1]].officeIndices.forEach(thing1 => {
         var GOffice = GState.data.offices[thing1]
@@ -105,12 +104,13 @@ export default {
           officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
           officialFaceNameTitle1.push(officialObject)
         })
-        console.log('your FaceNameTitle var ----> ' + JSON.stringify(officialFaceNameTitle1, null, '\t'))
       })
+      console.log('your FaceNameTitle1 var ----> ' + JSON.stringify(officialFaceNameTitle1, null, '\t'))
       officialFaceNameTitle1.forEach(thing2 => {
         var tableElement = document.createElement('table')
         var tableRow1 = document.createElement('tr')
         var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
         var figureImage = document.createElement('img')
         figureImage.className = ('repImage')
         figureImage.setAttribute('src', thing2.repPhotoURL)
@@ -131,16 +131,57 @@ export default {
         tableElement.appendChild(tableRow1)
         tableElement.appendChild(tableRow2)
         tableElement.appendChild(tableRow3)
-        overviewBod.appendChild(tableElement)
+        sectionBody1.appendChild(tableElement)
       })
     }
     if (divisions[reversedKeys[2]].hasOwnProperty('officeIndices')) {
       var sectionheader2 = document.createElement('h1')
       sectionheader2.className = ('sectionHeader')
+      var sectionBody2 = document.createElement('div')
       var upperCasedName2 = toTitleCase(divisions[reversedKeys[2]].name)
       var bbb = document.createTextNode(upperCasedName2)
       sectionheader2.appendChild(bbb)
       overviewBod.appendChild(sectionheader2)
+      overviewBod.appendChild(sectionBody2)
+      var officialFaceNameTitle2 = []
+      divisions[reversedKeys[2]].officeIndices.forEach(thing1 => {
+        var GOffice = GState.data.offices[thing1]
+        GOffice.officialIndices.forEach(function (corazon) {
+          var officialObject = {}
+          officialObject.repTitle = GOffice.name
+          officialObject.repName = GState.data.officials[corazon].name
+          officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          officialFaceNameTitle2.push(officialObject)
+        })
+      })
+      console.log('your FaceNameTitle2 var ----> ' + JSON.stringify(officialFaceNameTitle2, null, '\t'))
+      officialFaceNameTitle2.forEach(thing2 => {
+        var tableElement = document.createElement('table')
+        var tableRow1 = document.createElement('tr')
+        var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
+        var figureImage = document.createElement('img')
+        figureImage.className = ('repImage')
+        figureImage.setAttribute('src', thing2.repPhotoURL)
+        tableCell1.appendChild(figureImage)
+        tableRow1.appendChild(tableCell1)
+        var tableRow2 = document.createElement('tr')
+        var tableCell2 = document.createElement('td')
+        tableCell2.className = ('repName')
+        var textNope2 = document.createTextNode(thing2.repName)
+        tableCell2.appendChild(textNope2)
+        tableRow2.appendChild(tableCell2)
+        var tableRow3 = document.createElement('tr')
+        var tableCell3 = document.createElement('td')
+        tableCell3.className = ('repTitle')
+        var textNope3 = document.createTextNode(thing2.repTitle)
+        tableCell3.appendChild(textNope3)
+        tableRow3.appendChild(tableCell3)
+        tableElement.appendChild(tableRow1)
+        tableElement.appendChild(tableRow2)
+        tableElement.appendChild(tableRow3)
+        sectionBody2.appendChild(tableElement)
+      })
     }
     if (divisions[reversedKeys[3]].hasOwnProperty('officeIndices')) {
       var sectionheader3 = document.createElement('h1')
@@ -222,6 +263,22 @@ export default {
 
 <style >
 
+.imageCell {
+  height: 8rem;
+  width: 7rem;
+}
+.repImage {
+  height: 9rem;
+  object-fit: cover;
+  -o-object-fit: cover;
+  border-radius: 3px;
+}
+.repName {
+  font-weight: bold;
+}
+.repTitle {
+  margin-top: .2rem;
+}
 .sectionHeader {
   border-top: 1px solid #C0C0C0;
   border-bottom: 1px solid #C0C0C0;
