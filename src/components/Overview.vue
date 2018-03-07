@@ -105,9 +105,9 @@ export default {
           officialFaceNameTitle1.push(officialObject)
         })
       })
-      console.log('your FaceNameTitle1 var ----> ' + JSON.stringify(officialFaceNameTitle1, null, '\t'))
       officialFaceNameTitle1.forEach(thing2 => {
         var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
         var tableRow1 = document.createElement('tr')
         var tableCell1 = document.createElement('td')
         tableCell1.className = ('imageCell')
@@ -154,9 +154,9 @@ export default {
           officialFaceNameTitle2.push(officialObject)
         })
       })
-      console.log('your FaceNameTitle2 var ----> ' + JSON.stringify(officialFaceNameTitle2, null, '\t'))
       officialFaceNameTitle2.forEach(thing2 => {
         var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
         var tableRow1 = document.createElement('tr')
         var tableCell1 = document.createElement('td')
         tableCell1.className = ('imageCell')
@@ -190,6 +190,49 @@ export default {
       var ccc = document.createTextNode(upperCasedName3)
       sectionheader3.appendChild(ccc)
       overviewBod.appendChild(sectionheader3)
+      // grab this to bumper and change numbers
+      var sectionBody3 = document.createElement('div')
+      overviewBod.appendChild(sectionBody3)
+      var officialFaceNameTitle3 = []
+      divisions[reversedKeys[3]].officeIndices.forEach(thing1 => {
+        var GOffice = GState.data.offices[thing1]
+        GOffice.officialIndices.forEach(function (corazon) {
+          var officialObject = {}
+          officialObject.repTitle = GOffice.name
+          officialObject.repName = GState.data.officials[corazon].name
+          officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          officialFaceNameTitle3.push(officialObject)
+        })
+      })
+      officialFaceNameTitle3.forEach(thing2 => {
+        var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
+        var tableRow1 = document.createElement('tr')
+        var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
+        var figureImage = document.createElement('img')
+        figureImage.className = ('repImage')
+        figureImage.setAttribute('src', thing2.repPhotoURL)
+        tableCell1.appendChild(figureImage)
+        tableRow1.appendChild(tableCell1)
+        var tableRow2 = document.createElement('tr')
+        var tableCell2 = document.createElement('td')
+        tableCell2.className = ('repName')
+        var textNope2 = document.createTextNode(thing2.repName)
+        tableCell2.appendChild(textNope2)
+        tableRow2.appendChild(tableCell2)
+        var tableRow3 = document.createElement('tr')
+        var tableCell3 = document.createElement('td')
+        tableCell3.className = ('repTitle')
+        var textNope3 = document.createTextNode(thing2.repTitle)
+        tableCell3.appendChild(textNope3)
+        tableRow3.appendChild(tableCell3)
+        tableElement.appendChild(tableRow1)
+        tableElement.appendChild(tableRow2)
+        tableElement.appendChild(tableRow3)
+        sectionBody3.appendChild(tableElement)
+      })
+      // bumper
     }
     if (divisions[reversedKeys[4]].hasOwnProperty('officeIndices')) {
       var sectionheader4 = document.createElement('h1')
@@ -198,6 +241,49 @@ export default {
       var ddd = document.createTextNode(upperCasedName4)
       sectionheader4.appendChild(ddd)
       overviewBod.appendChild(sectionheader4)
+      // grab this to bumper and change numbers
+      var sectionBody4 = document.createElement('div')
+      overviewBod.appendChild(sectionBody4)
+      var officialFaceNameTitle4 = []
+      divisions[reversedKeys[4]].officeIndices.forEach(thing1 => {
+        var GOffice = GState.data.offices[thing1]
+        GOffice.officialIndices.forEach(function (corazon) {
+          var officialObject = {}
+          officialObject.repTitle = GOffice.name
+          officialObject.repName = GState.data.officials[corazon].name
+          officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          officialFaceNameTitle4.push(officialObject)
+        })
+      })
+      officialFaceNameTitle4.forEach(thing2 => {
+        var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
+        var tableRow1 = document.createElement('tr')
+        var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
+        var figureImage = document.createElement('img')
+        figureImage.className = ('repImage')
+        figureImage.setAttribute('src', thing2.repPhotoURL)
+        tableCell1.appendChild(figureImage)
+        tableRow1.appendChild(tableCell1)
+        var tableRow2 = document.createElement('tr')
+        var tableCell2 = document.createElement('td')
+        tableCell2.className = ('repName')
+        var textNope2 = document.createTextNode(thing2.repName)
+        tableCell2.appendChild(textNope2)
+        tableRow2.appendChild(tableCell2)
+        var tableRow3 = document.createElement('tr')
+        var tableCell3 = document.createElement('td')
+        tableCell3.className = ('repTitle')
+        var textNope3 = document.createTextNode(thing2.repTitle)
+        tableCell3.appendChild(textNope3)
+        tableRow3.appendChild(tableCell3)
+        tableElement.appendChild(tableRow1)
+        tableElement.appendChild(tableRow2)
+        tableElement.appendChild(tableRow3)
+        sectionBody4.appendChild(tableElement)
+      })
+      // bumper
     }
     if (divisions[reversedKeys[5]].hasOwnProperty('officeIndices')) {
       var sectionheader5 = document.createElement('h1')
@@ -206,6 +292,49 @@ export default {
       var eee = document.createTextNode(upperCasedName5)
       sectionheader5.appendChild(eee)
       overviewBod.appendChild(sectionheader5)
+      // grab this to bumper and change numbers
+      var sectionBody5 = document.createElement('div')
+      overviewBod.appendChild(sectionBody5)
+      var officialFaceNameTitle5 = []
+      divisions[reversedKeys[5]].officeIndices.forEach(thing1 => {
+        var GOffice = GState.data.offices[thing1]
+        GOffice.officialIndices.forEach(function (corazon) {
+          var officialObject = {}
+          officialObject.repTitle = GOffice.name
+          officialObject.repName = GState.data.officials[corazon].name
+          officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          officialFaceNameTitle5.push(officialObject)
+        })
+      })
+      officialFaceNameTitle5.forEach(thing2 => {
+        var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
+        var tableRow1 = document.createElement('tr')
+        var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
+        var figureImage = document.createElement('img')
+        figureImage.className = ('repImage')
+        figureImage.setAttribute('src', thing2.repPhotoURL)
+        tableCell1.appendChild(figureImage)
+        tableRow1.appendChild(tableCell1)
+        var tableRow2 = document.createElement('tr')
+        var tableCell2 = document.createElement('td')
+        tableCell2.className = ('repName')
+        var textNope2 = document.createTextNode(thing2.repName)
+        tableCell2.appendChild(textNope2)
+        tableRow2.appendChild(tableCell2)
+        var tableRow3 = document.createElement('tr')
+        var tableCell3 = document.createElement('td')
+        tableCell3.className = ('repTitle')
+        var textNope3 = document.createTextNode(thing2.repTitle)
+        tableCell3.appendChild(textNope3)
+        tableRow3.appendChild(tableCell3)
+        tableElement.appendChild(tableRow1)
+        tableElement.appendChild(tableRow2)
+        tableElement.appendChild(tableRow3)
+        sectionBody5.appendChild(tableElement)
+      })
+      // bumper
     }
     if (divisions[reversedKeys[6]].hasOwnProperty('officeIndices')) {
       var sectionheader6 = document.createElement('h1')
@@ -214,6 +343,49 @@ export default {
       var fff = document.createTextNode(upperCasedName6)
       sectionheader6.appendChild(fff)
       overviewBod.appendChild(sectionheader6)
+      // grab this to bumper and change numbers
+      var sectionBody6 = document.createElement('div')
+      overviewBod.appendChild(sectionBody6)
+      var officialFaceNameTitle6 = []
+      divisions[reversedKeys[6]].officeIndices.forEach(thing1 => {
+        var GOffice = GState.data.offices[thing1]
+        GOffice.officialIndices.forEach(function (corazon) {
+          var officialObject = {}
+          officialObject.repTitle = GOffice.name
+          officialObject.repName = GState.data.officials[corazon].name
+          officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          officialFaceNameTitle6.push(officialObject)
+        })
+      })
+      officialFaceNameTitle6.forEach(thing2 => {
+        var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
+        var tableRow1 = document.createElement('tr')
+        var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
+        var figureImage = document.createElement('img')
+        figureImage.className = ('repImage')
+        figureImage.setAttribute('src', thing2.repPhotoURL)
+        tableCell1.appendChild(figureImage)
+        tableRow1.appendChild(tableCell1)
+        var tableRow2 = document.createElement('tr')
+        var tableCell2 = document.createElement('td')
+        tableCell2.className = ('repName')
+        var textNope2 = document.createTextNode(thing2.repName)
+        tableCell2.appendChild(textNope2)
+        tableRow2.appendChild(tableCell2)
+        var tableRow3 = document.createElement('tr')
+        var tableCell3 = document.createElement('td')
+        tableCell3.className = ('repTitle')
+        var textNope3 = document.createTextNode(thing2.repTitle)
+        tableCell3.appendChild(textNope3)
+        tableRow3.appendChild(tableCell3)
+        tableElement.appendChild(tableRow1)
+        tableElement.appendChild(tableRow2)
+        tableElement.appendChild(tableRow3)
+        sectionBody6.appendChild(tableElement)
+      })
+      // bumper
     }
     if (divisions[reversedKeys[7]].hasOwnProperty('officeIndices')) {
       var sectionheader7 = document.createElement('h1')
@@ -222,6 +394,49 @@ export default {
       var ggg = document.createTextNode(upperCasedName7)
       sectionheader7.appendChild(ggg)
       overviewBod.appendChild(sectionheader7)
+      // grab this to bumper and change numbers
+      var sectionBody7 = document.createElement('div')
+      overviewBod.appendChild(sectionBody7)
+      var officialFaceNameTitle7 = []
+      divisions[reversedKeys[7]].officeIndices.forEach(thing1 => {
+        var GOffice = GState.data.offices[thing1]
+        GOffice.officialIndices.forEach(function (corazon) {
+          var officialObject = {}
+          officialObject.repTitle = GOffice.name
+          officialObject.repName = GState.data.officials[corazon].name
+          officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          officialFaceNameTitle7.push(officialObject)
+        })
+      })
+      officialFaceNameTitle7.forEach(thing2 => {
+        var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
+        var tableRow1 = document.createElement('tr')
+        var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
+        var figureImage = document.createElement('img')
+        figureImage.className = ('repImage')
+        figureImage.setAttribute('src', thing2.repPhotoURL)
+        tableCell1.appendChild(figureImage)
+        tableRow1.appendChild(tableCell1)
+        var tableRow2 = document.createElement('tr')
+        var tableCell2 = document.createElement('td')
+        tableCell2.className = ('repName')
+        var textNope2 = document.createTextNode(thing2.repName)
+        tableCell2.appendChild(textNope2)
+        tableRow2.appendChild(tableCell2)
+        var tableRow3 = document.createElement('tr')
+        var tableCell3 = document.createElement('td')
+        tableCell3.className = ('repTitle')
+        var textNope3 = document.createTextNode(thing2.repTitle)
+        tableCell3.appendChild(textNope3)
+        tableRow3.appendChild(tableCell3)
+        tableElement.appendChild(tableRow1)
+        tableElement.appendChild(tableRow2)
+        tableElement.appendChild(tableRow3)
+        sectionBody7.appendChild(tableElement)
+      })
+      // bumper
     }
     /* eslint-disable */
     if (divisions[reversedKeys[8]].hasOwnProperty('officeIndices')) {
@@ -231,6 +446,49 @@ export default {
       var hhh = document.createTextNode(upperCasedName8)
       sectionheader8.appendChild(hhh)
       overviewBod.appendChild(sectionheader8)
+      // grab this to bumper and change numbers
+      var sectionBody8 = document.createElement('div')
+      overviewBod.appendChild(sectionBody8)
+      var officialFaceNameTitle8 = []
+      divisions[reversedKeys[8]].officeIndices.forEach(thing1 => {
+        var GOffice = GState.data.offices[thing1]
+        GOffice.officialIndices.forEach(function (corazon) {
+          var officialObject = {}
+          officialObject.repTitle = GOffice.name
+          officialObject.repName = GState.data.officials[corazon].name
+          officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          officialFaceNameTitle8.push(officialObject)
+        })
+      })
+      officialFaceNameTitle8.forEach(thing2 => {
+        var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
+        var tableRow1 = document.createElement('tr')
+        var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
+        var figureImage = document.createElement('img')
+        figureImage.className = ('repImage')
+        figureImage.setAttribute('src', thing2.repPhotoURL)
+        tableCell1.appendChild(figureImage)
+        tableRow1.appendChild(tableCell1)
+        var tableRow2 = document.createElement('tr')
+        var tableCell2 = document.createElement('td')
+        tableCell2.className = ('repName')
+        var textNope2 = document.createTextNode(thing2.repName)
+        tableCell2.appendChild(textNope2)
+        tableRow2.appendChild(tableCell2)
+        var tableRow3 = document.createElement('tr')
+        var tableCell3 = document.createElement('td')
+        tableCell3.className = ('repTitle')
+        var textNope3 = document.createTextNode(thing2.repTitle)
+        tableCell3.appendChild(textNope3)
+        tableRow3.appendChild(tableCell3)
+        tableElement.appendChild(tableRow1)
+        tableElement.appendChild(tableRow2)
+        tableElement.appendChild(tableRow3)
+        sectionBody8.appendChild(tableElement)
+      })
+      // bumper
     }
     if (divisions[reversedKeys[9]].hasOwnProperty('officeIndices') !== undefined) {
       var sectionheader9 = document.createElement('h1')
@@ -239,6 +497,49 @@ export default {
       var iii = document.createTextNode(upperCasedName9)
       sectionheader9.appendChild(iii)
       overviewBod.appendChild(sectionheader9)
+      // grab this to bumper and change numbers
+      var sectionBody4 = document.createElement('div')
+      overviewBod.appendChild(sectionBody9)
+      var officialFaceNameTitle9 = []
+      divisions[reversedKeys[9]].officeIndices.forEach(thing1 => {
+        var GOffice = GState.data.offices[thing1]
+        GOffice.officialIndices.forEach(function (corazon) {
+          var officialObject = {}
+          officialObject.repTitle = GOffice.name
+          officialObject.repName = GState.data.officials[corazon].name
+          officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          officialFaceNameTitle9.push(officialObject)
+        })
+      })
+      officialFaceNameTitle9.forEach(thing2 => {
+        var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
+        var tableRow1 = document.createElement('tr')
+        var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
+        var figureImage = document.createElement('img')
+        figureImage.className = ('repImage')
+        figureImage.setAttribute('src', thing2.repPhotoURL)
+        tableCell1.appendChild(figureImage)
+        tableRow1.appendChild(tableCell1)
+        var tableRow2 = document.createElement('tr')
+        var tableCell2 = document.createElement('td')
+        tableCell2.className = ('repName')
+        var textNope2 = document.createTextNode(thing2.repName)
+        tableCell2.appendChild(textNope2)
+        tableRow2.appendChild(tableCell2)
+        var tableRow3 = document.createElement('tr')
+        var tableCell3 = document.createElement('td')
+        tableCell3.className = ('repTitle')
+        var textNope3 = document.createTextNode(thing2.repTitle)
+        tableCell3.appendChild(textNope3)
+        tableRow3.appendChild(tableCell3)
+        tableElement.appendChild(tableRow1)
+        tableElement.appendChild(tableRow2)
+        tableElement.appendChild(tableRow3)
+        sectionBody9.appendChild(tableElement)
+      })
+      // bumper
     }
     if (divisions[reversedKeys[10]].hasOwnProperty('officeIndices') !== undefined) {
       var sectionheader10 = document.createElement('h1')
@@ -247,6 +548,50 @@ export default {
       var jjj = document.createTextNode(upperCasedName10)
       sectionheader10.appendChild(jjj)
       overviewBod.appendChild(sectionheader10)
+      // grab this to bumper and change numbers
+      var sectionBody10 = document.createElement('div')
+      overviewBod.appendChild(sectionBody10)
+      var officialFaceNameTitle10 = []
+      divisions[reversedKeys[10]].officeIndices.forEach(thing1 => {
+        var GOffice = GState.data.offices[thing1]
+        GOffice.officialIndices.forEach(function (corazon) {
+          var officialObject = {}
+          officialObject.repTitle = GOffice.name
+          officialObject.repName = GState.data.officials[corazon].name
+          officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          officialFaceNameTitle10.push(officialObject)
+        })
+      })
+      officialFaceNameTitle10.forEach(thing2 => {
+        var tableElement = document.createElement('table')
+        tableElement.className = ('imageWrapper')
+        var tableRow1 = document.createElement('tr')
+        var tableCell1 = document.createElement('td')
+        tableCell1.className = ('imageCell')
+        var figureImage = document.createElement('img')
+        figureImage.className = ('repImage')
+        figureImage.setAttribute('src', thing2.repPhotoURL)
+        tableCell1.appendChild(figureImage)
+        tableRow1.appendChild(tableCell1)
+        var tableRow2 = document.createElement('tr')
+        var tableCell2 = document.createElement('td')
+        tableCell2.className = ('repName')
+        var textNope2 = document.createTextNode(thing2.repName)
+        tableCell2.appendChild(textNope2)
+        tableRow2.appendChild(tableCell2)
+        var tableRow3 = document.createElement('tr')
+        var tableCell3 = document.createElement('td')
+        tableCell3.className = ('repTitle')
+        var textNope3 = document.createTextNode(thing2.repTitle)
+        tableCell3.appendChild(textNope3)
+        tableRow3.appendChild(tableCell3)
+        tableElement.appendChild(tableRow1)
+        tableElement.appendChild(tableRow2)
+        tableElement.appendChild(tableRow3)
+        sectionBody10.appendChild(tableElement)
+      })
+      // bumper
+
     }
     if (divisions[reversedKeys[11]].hasOwnProperty('officeIndices') !== undefined) {
       var sectionheader11 = document.createElement('h1')
@@ -262,7 +607,9 @@ export default {
 </script>
 
 <style >
-
+.imageWrapper {
+  position: relative;
+}
 .imageCell {
   height: 8rem;
   width: 7rem;
@@ -271,13 +618,14 @@ export default {
   height: 9rem;
   object-fit: cover;
   -o-object-fit: cover;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 .repName {
   font-weight: bold;
 }
 .repTitle {
-  margin-top: .2rem;
+  top: -.5rem;
+  position: relative;
 }
 .sectionHeader {
   border-top: 1px solid #C0C0C0;
