@@ -648,7 +648,8 @@ export default {
   width: 9rem;
   margin: .5rem;
   padding-left: .5rem;
-  border-top: 1px;
+  border-top: 1px solid white;
+  word-wrap: normal;
 }
 
 .imageWrapper:active {
@@ -711,7 +712,7 @@ export default {
   margin-left: .75rem;
   position: relative;
   font-family: 'Overlock', serif;
-  line-height: 100%;
+  line-height: 115%;
   font-weight: 700;
   font-size: 80%;
 }
@@ -719,8 +720,9 @@ export default {
   top: .35rem;
   position: relative;
   word-wrap: normal;
+  width: 7rem;
   left: .55rem;
-  line-height: 100%;
+  line-height: 115%;
   font-family: 'Overlock', serif;
   font-size: 80%;
   font-weight: 400;
