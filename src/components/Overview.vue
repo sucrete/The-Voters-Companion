@@ -641,13 +641,14 @@ export default {
 </script>
 
 <style >
+@import url('https://fonts.googleapis.com/css?family=David+Libre:400,500,700|Overlock:400,700,900');
 
 .imageWrapper {
-  border-radius: 2px;
-  height: 12rem;
-  width: 10rem;
-  margin: 1rem;
-  padding-left: 1rem;
+  height: 14rem;
+  width: 9rem;
+  margin: .5rem;
+  padding-left: .5rem;
+  border-top: 1px;
 }
 
 .imageWrapper:active {
@@ -657,26 +658,27 @@ export default {
   position: relative;
   display: inline-block;
   background-color: #fff;
-  border-radius: 3px;
-  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.18);
+  -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .imageWrapper::after {
   content: "";
-  border-radius: 5px;
+  border-radius: 2px;
   position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-box-shadow: 0px 5px 13px -3px rgba(0,0,0,0.41);
-  -moz-box-shadow: 0px 5px 13px -3px rgba(0,0,0,0.41);
-  box-shadow: 0px 5px 13px -3px rgba(0,0,0,0.41);
+  -webkit-box-shadow:  0 5px 20px 1px rgba(94, 93, 93, 0.18), 0 5px 10px rgba(94, 93, 93, 0.18);
+  -moz-box-shadow:  0 5px 20px 1px rgba(94, 93, 93, 0.18), 0 5px 10px rgba(94, 93, 93, 0.18);
+  box-shadow:  0 5px 20px 1px rgba(94, 93, 93, 0.18), 0 5px 10px rgba(94, 93, 93, 0.18);
   opacity: 0;
-  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1));
 }
 
 .imageWrapper:hover {
@@ -695,27 +697,43 @@ export default {
 .repImage {
   height: 9rem;
   width: 7rem;
+  top: .5rem;
+  position: relative;
   object-fit: cover;
   -o-object-fit: cover;
   border-radius: 2px;
   margin: .5rem;
 }
 .repName {
-  font-weight: bold;
-  top: -.5rem;
-  margin-left: .5rem;
+  left: .55rem;
+  top: .25rem;
+  width: 7rem;
+  margin-left: .75rem;
   position: relative;
+  font-family: 'Overlock', serif;
+  line-height: 100%;
+  font-weight: 700;
+  font-size: 80%;
 }
 .repTitle {
+  top: .35rem;
   position: relative;
   word-wrap: normal;
-  width: 8rem;
-  line-height: 95%;
+  left: .55rem;
+  line-height: 100%;
+  font-family: 'Overlock', serif;
+  font-size: 80%;
+  font-weight: 400;
+  text-overflow: ellipsis;
 }
 .sectionHeader {
   border-top: 1px solid #d1cccc;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: .5rem;
+  padding-top: .35rem;
 }
 
 #app {
