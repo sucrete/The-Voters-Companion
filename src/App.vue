@@ -59,7 +59,7 @@ html {
 .hotBod {
   position: relative;
   overflow: scroll;
-  top: 4.2rem;
+  top: 1rem;
   padding-bottom: 4rem;
 }
 
@@ -71,7 +71,7 @@ html {
   align-items: center;
   font-size: 125%;
   margin: 0 auto;
-  position: fixed; /* Set the navbar to a fixed position */
+  position: relative; /* Set the navbar to a fixed position */
   background-color: #F5F4EA;
   z-index: 5;
   box-shadow: 0 0 5px 10px #F5F4EA;

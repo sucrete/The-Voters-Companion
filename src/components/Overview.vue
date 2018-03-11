@@ -8,8 +8,6 @@
     </div>
     <!-- body -->
     <div class="hotBod">
-      <img id="toungey" src="https://www.tommoody.us/images/jun10/Adult_gecko_animation.gif"/>
-      <h1 class="mt-2">{{ msg }}</h1>
       <div id="overviewBody" style="">
 <!--
 █▀▀█ █░░ █░░█ █▀▀▀ 　 █░░█ ▀▀█▀▀ █▀▄▀█ █░░ 　 ▀█▀ █▀▀▄　  █░░█ █▀▀ █▀▀█ █▀▀
@@ -22,19 +20,12 @@
 </template>
 
 <script>
-
 export default {
   name: 'overview',
   data () {
     return {
       msg: ''
     }
-  },
-  methods: {
-
-  },
-  computed: {
-
   },
   mounted () {
     var state = this.$store.getters.showMeDatState
@@ -252,6 +243,12 @@ export default {
           officialObject.repTitle = GOffice.name
           officialObject.repName = GState.data.officials[corazon].name
           officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          if (corazon === 0) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
+          }
+          if (corazon === 1) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
+          }
           officialFaceNameTitle4.push(officialObject)
         })
       })
@@ -303,6 +300,12 @@ export default {
           officialObject.repTitle = GOffice.name
           officialObject.repName = GState.data.officials[corazon].name
           officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          if (corazon === 0) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
+          }
+          if (corazon === 1) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
+          }
           officialFaceNameTitle5.push(officialObject)
         })
       })
@@ -354,6 +357,12 @@ export default {
           officialObject.repTitle = GOffice.name
           officialObject.repName = GState.data.officials[corazon].name
           officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          if (corazon === 0) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
+          }
+          if (corazon === 1) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
+          }
           officialFaceNameTitle6.push(officialObject)
         })
       })
@@ -405,6 +414,12 @@ export default {
           officialObject.repTitle = GOffice.name
           officialObject.repName = GState.data.officials[corazon].name
           officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          if (corazon === 0) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
+          }
+          if (corazon === 1) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
+          }
           officialFaceNameTitle7.push(officialObject)
         })
       })
@@ -457,6 +472,12 @@ export default {
           officialObject.repTitle = GOffice.name
           officialObject.repName = GState.data.officials[corazon].name
           officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          if (corazon === 0) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
+          }
+          if (corazon === 1) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
+          }
           officialFaceNameTitle8.push(officialObject)
         })
       })
@@ -508,6 +529,12 @@ export default {
           officialObject.repTitle = GOffice.name
           officialObject.repName = GState.data.officials[corazon].name
           officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          if (corazon === 0) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
+          }
+          if (corazon === 1) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
+          }
           officialFaceNameTitle9.push(officialObject)
         })
       })
@@ -559,10 +586,17 @@ export default {
           officialObject.repTitle = GOffice.name
           officialObject.repName = GState.data.officials[corazon].name
           officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+          if (corazon === 0) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
+          }
+          if (corazon === 1) {
+            officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
+          }
           officialFaceNameTitle10.push(officialObject)
         })
       })
       officialFaceNameTitle10.forEach(thing2 => {
+        var gridCell
         var tableElement = document.createElement('table')
         tableElement.className = ('imageWrapper')
         var tableRow1 = document.createElement('tr')
@@ -607,38 +641,85 @@ export default {
 </script>
 
 <style >
+
+.imageWrapper {
+  border-radius: 2px;
+  height: 12rem;
+  width: 10rem;
+  margin: 1rem;
+  padding-left: 1rem;
+}
+
+.imageWrapper:active {
+  background-color: white;
+}
 .imageWrapper {
   position: relative;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 3px;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.imageWrapper::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: 0px 5px 13px -3px rgba(0,0,0,0.41);
+  -moz-box-shadow: 0px 5px 13px -3px rgba(0,0,0,0.41);
+  box-shadow: 0px 5px 13px -3px rgba(0,0,0,0.41);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.imageWrapper:hover {
+  -webkit-transform: scale(1.0, 1.0);
+  transform: scale(1.0, 1.0);
+  background-color: white;
+}
+
+.imageWrapper:hover::after {
+    opacity: 1;
 }
 .imageCell {
-  height: 8rem;
-  width: 7rem;
+  height: 9rem;
+  width: 8rem;
 }
 .repImage {
   height: 9rem;
+  width: 7rem;
   object-fit: cover;
   -o-object-fit: cover;
   border-radius: 2px;
+  margin: .5rem;
 }
 .repName {
   font-weight: bold;
-}
-.repTitle {
   top: -.5rem;
+  margin-left: .5rem;
   position: relative;
 }
+.repTitle {
+  position: relative;
+  word-wrap: normal;
+  width: 8rem;
+  line-height: 95%;
+}
 .sectionHeader {
-  border-top: 1px solid #C0C0C0;
-  border-bottom: 1px solid #C0C0C0;
-  margin-bottom: .25rem;
+  border-top: 1px solid #d1cccc;
+  border-bottom: 1px solid #d1cccc;
+  text-align: left;
 }
 
 #app {
   background-color: #F5F4EA;
-}
-#toungey {
-  width: 200px !important;
-  height: auto !important;
 }
 
 h1, h2 {
