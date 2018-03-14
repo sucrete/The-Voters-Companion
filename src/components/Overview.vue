@@ -132,10 +132,14 @@ export default {
             lilDivvy.appendChild(lilDivvyNode)
             var tableElement = document.createElement('div')
             tableElement.classList.add('repCard')
-            tableElement.addEventListener('click', function () {
-              this.classList.add('selected')
-              var superchunk = document.querySelector('.simple-navigation-header')
-              superchunk.style.cssText = 'background-color: blue;'
+            tableElement.addEventListener('click', function (e) {
+              if (!(this.classList.contains('selected'))) {
+                this.classList.add('selected')
+                var superchunk = document.querySelector('.simple-navigation-header')
+                superchunk.style.cssText = 'background-color: blue;'
+              }
+              e.stopPropagation()
+              e.preventDefault()
             })
             var figureImage = document.createElement('img')
             figureImage.className = ('repImage')
@@ -159,8 +163,13 @@ export default {
             tableElement.appendChild(figureImage)
             tableElement.appendChild(tableWrapper)
             tableElement.appendChild(lilDivvy)
-            lilDivvy.addEventListener('click', function () {
-              this.parentElement.classList.remove('selected')
+            lilDivvy.addEventListener('click', function (e) {
+              console.log('parentNode BEFORE click event ====== ' + this.parentNode.className)
+              var kunta = this.parentNode
+              kunta.classList.remove('selected')
+              console.log('parentNode ======= ' + this.parentNode.className)
+              e.stopPropagation()
+              e.preventDefault()
             })
             sectionBody.appendChild(tableElement)
           })
@@ -231,17 +240,12 @@ export default {
 
 .tableWrapper {
   position: relative;
-  left: .85rem;
-  top: .2rem;
-  -webkit-transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transform: 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transform: 800ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  top: -.2rem;
+  -webkit-transition: opacity 70ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 70ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .repCard.selected .tableWrapper {
   opacity: 0;
-  -webkit-transform: translatey(70rem) perspective(100rem) translatez(-10rem);
-  transform: translatey(70rem) perspective(100rem) translatez(-10rem);
 }
 
 .repCard {
@@ -263,6 +267,7 @@ export default {
   transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+
 .repCard .repImage {
   display: inline-block;
   position: relative;
@@ -274,10 +279,10 @@ export default {
   transition: transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .deselect-rep {
-  position: relative;
-  right: 0;
+  position: absolute;
+  right: .4rem;
   top: 0;
-  color: #bbb8b8;
+  color: rgb(173, 172, 147);
   z-index: 70;
   display: inline-block;
   font-size: 1.5rem;
@@ -288,6 +293,7 @@ export default {
   transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
   font-weight: 100;
 }
+
 .repCard.selected {
   -webkit-transform: translatey(0rem) perspective(100rem) translatez(0rem);
         transform: translatey(0rem) perspective(100rem) translatez(0rem);
@@ -308,15 +314,19 @@ export default {
   -moz-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
   box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
 }
+
+
 .repCard.selected .deselect-rep {
   opacity: 1;
   pointer-events: auto;
   z-index: 20;
+  transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .repCard.selected .repImage {
-  -webkit-transform: scale(1.5) translatex(-107.5%) translatey(14.5%);
-          transform: scale(1.5) translatex(-107.5%) translatey(14.5%);
+  -webkit-transform: scale(1.5) translatex(-106%) translatey(15.3%);
+          transform: scale(1.5) translatex(-106%) translatey(15.3%);
 }
+
 .repCard::after {
   content: "";
   border-radius: 2px;
@@ -329,19 +339,22 @@ export default {
   -webkit-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
   -moz-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
   box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  opacity: 0;
+  /* opacity: 0; */
   -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1));
 }
 
 .repCard:hover {
-  /* -webkit-transform: scale(1.0, 1.0);
-  transform: scale(1.0, 1.0); */
+  -webkit-transform: scale(1.0, 1.0);
+  transform: scale(1.0, 1.0);
   background-color: #fff;
 }
 
-.repCard:hover::after {
-    opacity: 1;
+.repCard::after:hover {
+  -webkit-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
+  -moz-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
+  box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
+
 }
 .imageCell {
   height: 9rem;
@@ -350,7 +363,8 @@ export default {
 .repImage {
   height: 9rem;
   width: 7rem;
-  top: .5rem;
+  top: .4rem;
+  left: -.25rem;
   position: relative;
   object-fit: cover;
   -o-object-fit: cover;
@@ -387,6 +401,7 @@ export default {
   position: relative;
   padding-left: 2.5rem;
   margin-bottom: .5rem;
+  margin-top: .5rem;
   padding-top: .35rem;
 }
 
@@ -397,9 +412,6 @@ export default {
 h1, h2 {
   font-weight: normal;
   color: black;
-}
-.selected {
-  color: blue;
 }
 
 </style>

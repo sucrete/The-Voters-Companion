@@ -58,7 +58,6 @@ html {
 }
 .hotBod {
   position: relative;
-  overflow: scroll;
   top: 1rem;
   padding-bottom: 4rem;
 }
