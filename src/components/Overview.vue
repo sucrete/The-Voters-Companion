@@ -135,8 +135,20 @@ export default {
             tableElement.addEventListener('click', function (e) {
               if (!(this.classList.contains('selected'))) {
                 this.classList.add('selected')
-                var superchunk = document.querySelector('.simple-navigation-header')
-                superchunk.style.cssText = 'background-color: blue;'
+                var w = window
+                var d = document
+                var h = d.documentElement
+                var g = d.getElementsByTagName('body')[0]
+                var x = w.innerWidth || h.clientWidth || g.clientWidth
+                var y = w.innerHeight || h.clientHeight || g.clientHeight
+                var cardSpecs = this.getBoundingClientRect()
+                var boxx = cardSpecs.x + (cardSpecs.width / 2)
+                var boxy = cardSpecs.y + (cardSpecs.height / 2)
+                var windowx = (x / 2)
+                var windowy = (y / 2)
+                var movementalongx = windowx - boxx
+                var movementalongy = windowy - boxy
+                this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px);'
               }
               e.stopPropagation()
               e.preventDefault()
@@ -167,6 +179,7 @@ export default {
               console.log('parentNode BEFORE click event ====== ' + this.parentNode.className)
               var kunta = this.parentNode
               kunta.classList.remove('selected')
+              kunta.style.transform = ''
               console.log('parentNode ======= ' + this.parentNode.className)
               e.stopPropagation()
               e.preventDefault()
@@ -237,7 +250,13 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Overlock:400,700,900');
 
 /* much of the expandable repCard UI is built on a design by Nathan Taylor https://codepen.io/nathantaylor/pen/qRmWeW */
-
+#overviewBody {
+}
+.sectionBody {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .tableWrapper {
   position: relative;
   top: -.2rem;
@@ -247,7 +266,6 @@ export default {
 .repCard.selected .tableWrapper {
   opacity: 0;
 }
-
 .repCard {
   display: inline-block;
   cursor: pointer;
@@ -264,8 +282,8 @@ export default {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.18);
   -webkit-transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .repCard .repImage {
@@ -295,26 +313,17 @@ export default {
 }
 
 .repCard.selected {
-  -webkit-transform: translatey(0rem) perspective(100rem) translatez(0rem);
-        transform: translatey(0rem) perspective(100rem) translatez(0rem);
   height: 15rem;
-  width: 80%;
+  width: 30rem;
   cursor: default;
   z-index: 10;
-  -webkit-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  -moz-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  -webkit-transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 800ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .repCard.selected::after {
   -webkit-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
   -moz-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
   box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-}
 
+}
 
 .repCard.selected .deselect-rep {
   opacity: 1;
@@ -323,8 +332,8 @@ export default {
   transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .repCard.selected .repImage {
-  -webkit-transform: scale(1.5) translatex(-106%) translatey(15.3%);
-          transform: scale(1.5) translatex(-106%) translatey(15.3%);
+  -webkit-transform: scale(1) translatex(-106%) translatey(15.3%);
+          transform: scale(1) translatex(-106%) translatey(15.3%);
 }
 
 .repCard::after {
@@ -345,17 +354,11 @@ export default {
 }
 
 .repCard:hover {
-  -webkit-transform: scale(1.0, 1.0);
-  transform: scale(1.0, 1.0);
+  /* -webkit-transform: scale(1.0, 1.0);
+  transform: scale(1.0, 1.0); */
   background-color: #fff;
 }
 
-.repCard::after:hover {
-  -webkit-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  -moz-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-
-}
 .imageCell {
   height: 9rem;
   width: 8rem;
@@ -396,6 +399,7 @@ export default {
 }
 .sectionHeader {
   border-top: 1px solid #d1cccc;
+  font-family: 'Overlock', serif;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   position: relative;
