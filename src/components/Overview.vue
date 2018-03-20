@@ -167,6 +167,10 @@ export default {
               kunta.classList.remove('selected')
               kunta.style.transform = ''
               kunta.style.removeProperty('-webkit-transform')
+              kunta.style.cssText = ('z-index: 50;')
+              setTimeout(function () {
+                kunta.style.cssText = ('z-index: 0;')
+              }, 500)
               console.log('parentNode ======= ' + this.parentNode.className)
               e.stopPropagation()
               e.preventDefault()
@@ -199,11 +203,12 @@ export default {
   margin: .5rem;
   word-wrap: normal;
   position: relative;
+  background-color: #DCDCDC;
   border-radius: 3px;
   border: 1px solid transparent;
   border-top: none;
   border-bottom: 1px solid #DDD;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  box-shadow: inset 0 1px 2px rgba(0,46,167, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
 }
 .sectionBody {
   -webkit-box-sizing: border-box;
@@ -220,30 +225,25 @@ export default {
   opacity: 0;
 }
 .repCard {
-  z-index: 5;
   width: inherit;
   height: inherit;
   cursor: pointer;
   padding-left: .5rem;
   position: absolute;
+  border: 1px solid black;
   background-color: #fff;
   border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.18);
-  -webkit-transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 800ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 800ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 300ms cubic-bezier(0.645, 0.045, 0.355, 1), height 300ms cubic-bezier(0.645, 0.045, 0.355, 1), width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 300ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-box-shadow 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  -webkit-transition: width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
 }
-
+.repCard:hover {
+  box-shadow: 0 10px 12px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
 .repCard .repImage {
   display: inline-block;
   position: relative;
-  /* -webkit-transform-origin: 100% 0%;
-        transform-origin: 100% 0%; */
-  -webkit-transition: -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+
 }
 .deselect-rep {
   position: absolute;
@@ -256,8 +256,8 @@ export default {
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
-  -webkit-transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
   font-weight: 100;
 }
 
@@ -265,49 +265,44 @@ export default {
   height: 15rem;
   width: 32rem;
   cursor: default;
-  z-index: 10;
+  z-index: 6;
 }
-.repCard.selected::after {
+/* .repCard.selected::after {
   -webkit-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
   -moz-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
   box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
 
-}
+} */
 
 .repCard.selected .deselect-rep {
   opacity: 1;
   pointer-events: auto;
-  z-index: 20;
-  transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .repCard.selected .repImage {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
 }
 
-.repCard::after {
+/* .repCard::after {
   content: "";
   border-radius: 2px;
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  -moz-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  /* opacity: 0; */
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  opacity: 0;
   -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1));
-}
+ }
 
-.repCard:hover {
-  /* -webkit-transform: scale(1.0, 1.0);
-  transform: scale(1.0, 1.0); */
-  background-color: #fff;
-}
-
+.repCard::after:hover {
+  opacity: 1;
+} */
 .imageCell {
   height: 9rem;
   width: 8rem;
@@ -323,6 +318,7 @@ export default {
   border-radius: 2px;
   margin: .5rem;
 }
+
 .repName {
   left: .55rem;
   top: .25rem;
