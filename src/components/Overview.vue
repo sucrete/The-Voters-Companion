@@ -73,24 +73,6 @@ export default {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
       })
     }
-
-    // function faceFarmer (thingy) {
-    //   console.log('thingy = ' + thingy)
-    //   var officesList = []
-    //   var GOffice = GState.data.offices[thingy]
-    //   GOffice.officialIndices.forEach(function (corazon) {
-    //     console.log(typeof corazon + ' and corazon itself = ' + corazon)
-    //     var officialObject = {}
-    //     officialObject.repTitle = GOffice.name
-    //     officialObject.repName = GState.data.officials[corazon].name
-    //     officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl
-    //     officesList.push(officialObject)
-    //     console.log(JSON.stringify(officesList, null, '\t'))
-    //   })
-    //   console.log(JSON.stringify(officesList, null, '\t'))
-    //   return officesList
-    // }
-
     // credit for insertAfter() -> https://stackoverflow.com/questions/4793604/how-to-insert-an-element-after-another-element-in-javascript-without-using-a-lib
 
     const DOMMaker = function () {
@@ -126,6 +108,8 @@ export default {
           })
           officialFaceNameTitle.forEach(thing2 => {
             console.log('44444444')
+            var repWrapper = document.createElement('div')
+            repWrapper.className = ('cardWrapper')
             var lilDivvy = document.createElement('div')
             var lilDivvyNode = document.createTextNode('✕')
             lilDivvy.className = ('deselect-rep')
@@ -144,10 +128,12 @@ export default {
                 var cardSpecs = this.getBoundingClientRect()
                 var boxx = cardSpecs.x + (cardSpecs.width / 2)
                 var boxy = cardSpecs.y + (cardSpecs.height / 2)
+                console.log('x ----- ' + x + '\n' + 'y ----- ' + y)
                 var windowx = (x / 2)
                 var windowy = (y / 2)
-                var movementalongx = windowx - boxx
+                var movementalongx = windowx - (boxx + 172)
                 var movementalongy = windowy - boxy
+                console.log('movement along x ----- ' + movementalongx + '\n' + 'movement along y ----- ' + movementalongy)
                 this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px);'
               }
               e.stopPropagation()
@@ -180,68 +166,18 @@ export default {
               var kunta = this.parentNode
               kunta.classList.remove('selected')
               kunta.style.transform = ''
+              kunta.style.removeProperty('-webkit-transform')
               console.log('parentNode ======= ' + this.parentNode.className)
               e.stopPropagation()
               e.preventDefault()
             })
-            sectionBody.appendChild(tableElement)
+            repWrapper.appendChild(tableElement)
+            sectionBody.appendChild(repWrapper)
           })
         }
       }
     }
     DOMMaker()
-    // if (divisions[reversedKeys[1]].hasOwnProperty('officeIndices')) {
-    //   var sectionHeader1 = document.createElement('h1')
-    //   sectionHeader1.className = ('sectionHeader')
-    //   var sectionBody1 = document.createElement('div')
-    //   var upperCasedCityName = toTitleCase(divisions[reversedKeys[1]].name)
-    //   var aaa = document.createTextNode(upperCasedCityName)
-    //   sectionHeader1.appendChild(aaa)
-    //   overviewBod.appendChild(sectionHeader1)
-    //   overviewBod.appendChild(sectionBody1)
-    //   var officialFaceNameTitle1 = []
-    //   divisions[reversedKeys[1]].officeIndices.forEach(thing1 => {
-    //     var GOffice = GState.data.offices[thing1]
-    //     GOffice.officialIndices.forEach(function (corazon) {
-    //       var officialObject = {}
-    //       officialObject.repTitle = GOffice.name
-    //       officialObject.repName = GState.data.officials[corazon].name
-    //       officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
-    //       officialFaceNameTitle1.push(officialObject)
-    //     })
-    //   })
-    //   officialFaceNameTitle1.forEach(thing2 => {
-    //     var lilDivvy = document.createElement('div')
-    //     var lilDivvyNode = document.createTextNode('✕')
-    //     lilDivvy.className = ('deselect-rep')
-    //     lilDivvy.appendChild(lilDivvyNode)
-    //     var tableElement = document.createElement('div')
-    //     tableElement.className = ('repCard')
-    //     var figureImage = document.createElement('img')
-    //     figureImage.className = ('repImage')
-    //     figureImage.setAttribute('src', thing2.repPhotoURL)
-    //     var tableWrapper = document.createElement('div')
-    //     tableWrapper.className = ('tableWrapper')
-    //     var tableRow2 = document.createElement('tr')
-    //     var tableCell2 = document.createElement('td')
-    //     tableCell2.className = ('repName')
-    //     var textNope2 = document.createTextNode(thing2.repName)
-    //     tableCell2.appendChild(textNope2)
-    //     tableRow2.appendChild(tableCell2)
-    //     var tableRow3 = document.createElement('tr')
-    //     var tableCell3 = document.createElement('td')
-    //     tableCell3.className = ('repTitle')
-    //     var textNope3 = document.createTextNode(thing2.repTitle)
-    //     tableCell3.appendChild(textNope3)
-    //     tableRow3.appendChild(tableCell3)
-    //     tableWrapper.appendChild(tableRow2)
-    //     tableWrapper.appendChild(tableRow3)
-    //     tableElement.appendChild(figureImage)
-    //     tableElement.appendChild(tableWrapper)
-    //     tableElement.appendChild(lilDivvy)
-    //     sectionBody1.appendChild(tableElement)
-    //   })
-    // }
   }
 }
 </script>
@@ -251,6 +187,23 @@ export default {
 
 /* much of the expandable repCard UI is built on a design by Nathan Taylor https://codepen.io/nathantaylor/pen/qRmWeW */
 #overviewBody {
+}
+
+/* CSS to center a div in the window of width 400px and height 200px;
+   top: calc(50% - 100px);
+   left: calc(50% - 200px); */
+.cardWrapper {
+  display: inline-block;
+  height: 14rem;
+  width: 9rem;
+  margin: .5rem;
+  word-wrap: normal;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
 }
 .sectionBody {
   -webkit-box-sizing: border-box;
@@ -267,16 +220,12 @@ export default {
   opacity: 0;
 }
 .repCard {
-  display: inline-block;
+  z-index: 5;
+  width: inherit;
+  height: inherit;
   cursor: pointer;
-  height: 14rem;
-  width: 9rem;
-  margin: .5rem;
   padding-left: .5rem;
-  border-top: 1px solid white;
-  word-wrap: normal;
-  position: relative;
-  display: inline-block;
+  position: absolute;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.18);
@@ -314,7 +263,7 @@ export default {
 
 .repCard.selected {
   height: 15rem;
-  width: 30rem;
+  width: 32rem;
   cursor: default;
   z-index: 10;
 }
@@ -332,8 +281,8 @@ export default {
   transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .repCard.selected .repImage {
-  -webkit-transform: scale(1) translatex(-106%) translatey(15.3%);
-          transform: scale(1) translatex(-106%) translatey(15.3%);
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .repCard::after {
