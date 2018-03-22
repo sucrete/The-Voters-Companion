@@ -135,10 +135,31 @@ export default {
                 var movementalongy = windowy - boxy
                 console.log('movement along x ----- ' + movementalongx + '\n' + 'movement along y ----- ' + movementalongy)
                 this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px);'
+                var imageNode = null
+                var sparklingDiamond = this.childNodes
+                for (var i = 0; i < sparklingDiamond.length; i++) {
+                  if (sparklingDiamond[i].className === 'repImageWrapper') {
+                    imageNode = sparklingDiamond[i].firstChild
+                    console.log('imageNode className equals ======> ' + imageNode.className)
+                    console.log('window working in this for loop? ======>' + 'windowx -----> ' + windowx + ' and ' + 'windowy -----> ' + windowy)
+                    var imageSpecs = imageNode.getBoundingClientRect()
+                    var imagex = imageSpecs.x + (imageSpecs.width / 2)
+                    var imagey = imageSpecs.y + (imageSpecs.height / 2)
+                    console.log('Bill\'s image\'s width =====> ' + imageSpecs.width + '\n' + 'Bill\'s image\'s height =====> ' + imageSpecs.height)
+                    console.log('location of imageRep ======> ' + imagex + ', ' + imagey + ' or ' + imageSpecs.x + ', ' + imageSpecs.y)
+                    var moveimagealongx = windowx - (imagex + 270)
+                    var moveimagealongy = windowy - (imagey + 111)
+                    console.log('movin\' along x ----- ' + moveimagealongx + '\n' + 'movin\' along y ----- ' + moveimagealongy)
+                    imageNode.style.cssText = 'transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
+                    // break
+                  }
+                }
               }
               e.stopPropagation()
               e.preventDefault()
             })
+            var imageWrapper = document.createElement('div')
+            imageWrapper.className = ('repImageWrapper')
             var figureImage = document.createElement('img')
             figureImage.className = ('repImage')
             figureImage.setAttribute('src', thing2.repPhotoURL)
@@ -156,9 +177,10 @@ export default {
             var textNope3 = document.createTextNode(thing2.repTitle)
             tableCell3.appendChild(textNope3)
             tableRow3.appendChild(tableCell3)
+            imageWrapper.appendChild(figureImage)
+            tableElement.appendChild(imageWrapper)
             tableWrapper.appendChild(tableRow2)
             tableWrapper.appendChild(tableRow3)
-            tableElement.appendChild(figureImage)
             tableElement.appendChild(tableWrapper)
             tableElement.appendChild(lilDivvy)
             lilDivvy.addEventListener('click', function (e) {
@@ -240,10 +262,16 @@ export default {
 .repCard:hover {
   box-shadow: 0 10px 12px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
-.repCard .repImage {
+.repCard .repImageWrapper {
   display: inline-block;
   position: relative;
-
+  height: 9rem;
+  width: 7rem;
+  top: .4rem;
+  left: -.25rem;
+  border-radius: 2px;
+  margin: .5rem;
+  z-index: 7;
 }
 .deselect-rep {
   position: absolute;
@@ -279,10 +307,6 @@ export default {
   pointer-events: auto;
   transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-.repCard.selected .repImage {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
-}
 
 /* .repCard::after {
   content: "";
@@ -303,20 +327,18 @@ export default {
 .repCard::after:hover {
   opacity: 1;
 } */
-.imageCell {
-  height: 9rem;
-  width: 8rem;
-}
+
 .repImage {
   height: 9rem;
   width: 7rem;
-  top: .4rem;
-  left: -.25rem;
-  position: relative;
+  z-index: 10;
+  left: 0rem;
+  position: absolute;
   object-fit: cover;
   -o-object-fit: cover;
   border-radius: 2px;
-  margin: .5rem;
+  -webkit-transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), scale 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), scale 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .repName {
