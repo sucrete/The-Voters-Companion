@@ -83,6 +83,12 @@ export default {
           var sectionBody = document.createElement('div')
           sectionBody.className = ('sectionBody')
           var upperCasedDivisionName = toTitleCase(divisions[reversedKeys[ttt]].name)
+          if (upperCasedDivisionName.endsWith('City')) {
+            var upperCasedDivisionNameArray = upperCasedDivisionName.split(' ')
+            console.log(upperCasedDivisionNameArray)
+            upperCasedDivisionNameArray.pop()
+            upperCasedDivisionName = 'City of ' + upperCasedDivisionNameArray.join(' ')
+          }
           var aaa = document.createTextNode(upperCasedDivisionName)
           sectionHeader.appendChild(aaa)
           overviewBod.appendChild(sectionHeader)
@@ -377,6 +383,7 @@ box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 25
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   position: relative;
+  font-size: 120%;
   padding-left: 2.5rem;
   margin-bottom: .5rem;
   margin-top: .5rem;

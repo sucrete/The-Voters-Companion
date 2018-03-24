@@ -83,6 +83,7 @@ html {
 #takeMeOmh {
   position: relative;
   bottom: 3px;
+  font-family: 'Oswald', serif;
 }
 
 #takeMeOmh:visited {
