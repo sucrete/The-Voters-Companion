@@ -134,7 +134,7 @@ export default {
                 var movementalongx = windowx - (boxx + 172)
                 var movementalongy = windowy - boxy
                 console.log('movement along x ----- ' + movementalongx + '\n' + 'movement along y ----- ' + movementalongy)
-                this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px);'
+                this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); z-index: 10;'
                 var imageNode = null
                 var sparklingDiamond = this.childNodes
                 for (var i = 0; i < sparklingDiamond.length; i++) {
@@ -147,8 +147,8 @@ export default {
                     var imagey = imageSpecs.y + (imageSpecs.height / 2)
                     console.log('Bill\'s image\'s width =====> ' + imageSpecs.width + '\n' + 'Bill\'s image\'s height =====> ' + imageSpecs.height)
                     console.log('location of imageRep ======> ' + imagex + ', ' + imagey + ' or ' + imageSpecs.x + ', ' + imageSpecs.y)
-                    var moveimagealongx = windowx - (imagex + 270)
-                    var moveimagealongy = windowy - (imagey + 111)
+                    var moveimagealongx = movementalongx - ((windowx - imagex) - 66)
+                    var moveimagealongy = 21.5
                     console.log('movin\' along x ----- ' + moveimagealongx + '\n' + 'movin\' along y ----- ' + moveimagealongy)
                     imageNode.style.cssText = 'transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
                     // break
@@ -184,14 +184,20 @@ export default {
             tableElement.appendChild(tableWrapper)
             tableElement.appendChild(lilDivvy)
             lilDivvy.addEventListener('click', function (e) {
-              console.log('parentNode BEFORE click event ====== ' + this.parentNode.className)
               var kunta = this.parentNode
               kunta.classList.remove('selected')
               kunta.style.transform = ''
               kunta.style.removeProperty('-webkit-transform')
               kunta.style.cssText = ('z-index: 50;')
+              for (var i = 0; i < kunta.childNodes.length; i++) {
+                if (kunta.childNodes[i].className === 'repImageWrapper') {
+                  var notes = kunta.childNodes[i].firstChild
+                  notes.style.transform = ''
+                  notes.style.removeProperty('-webkit-transform')
+                }
+              }
               setTimeout(function () {
-                kunta.style.cssText = ('z-index: 0;')
+                kunta.style.cssText = ('z-index: 1;')
               }, 500)
               console.log('parentNode ======= ' + this.parentNode.className)
               e.stopPropagation()
