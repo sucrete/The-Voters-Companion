@@ -78,7 +78,6 @@ export default {
     const DOMMaker = function () {
       for (let ttt = 1; ttt < reversedKeys.length; ttt++) {
         if (divisions[reversedKeys[ttt]].hasOwnProperty('officeIndices')) {
-          console.log('1111111')
           var sectionHeader = document.createElement('h1')
           sectionHeader.className = ('sectionHeader')
           var sectionBody = document.createElement('div')
@@ -132,7 +131,7 @@ export default {
                 var windowx = (x / 2)
                 var windowy = (y / 2)
                 var movementalongx = windowx - (boxx + 172)
-                var movementalongy = windowy - boxy
+                var movementalongy = windowy - (boxy + 15)
                 console.log('movement along x ----- ' + movementalongx + '\n' + 'movement along y ----- ' + movementalongy)
                 this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); z-index: 10;'
                 var imageNode = null
@@ -148,7 +147,7 @@ export default {
                     console.log('Bill\'s image\'s width =====> ' + imageSpecs.width + '\n' + 'Bill\'s image\'s height =====> ' + imageSpecs.height)
                     console.log('location of imageRep ======> ' + imagex + ', ' + imagey + ' or ' + imageSpecs.x + ', ' + imageSpecs.y)
                     var moveimagealongx = movementalongx - ((windowx - imagex) - 66)
-                    var moveimagealongy = 21.5
+                    var moveimagealongy = 22.5
                     console.log('movin\' along x ----- ' + moveimagealongx + '\n' + 'movin\' along y ----- ' + moveimagealongy)
                     imageNode.style.cssText = 'transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
                     // break
@@ -217,13 +216,11 @@ export default {
 <style >
 @import url('https://fonts.googleapis.com/css?family=Overlock:400,700,900');
 
-/* much of the expandable repCard UI is built on a design by Nathan Taylor https://codepen.io/nathantaylor/pen/qRmWeW */
+/* much of the expandable repCard UI gleaned from a design by Nathan Taylor https://codepen.io/nathantaylor/pen/qRmWeW */
 #overviewBody {
 }
 
-/* CSS to center a div in the window of width 400px and height 200px;
-   top: calc(50% - 100px);
-   left: calc(50% - 200px); */
+/* CSS for .cardWrapper credit to Tara Jensen https://codepen.io/TLJens/pen/RPWBvY */
 .cardWrapper {
   display: inline-block;
   height: 14rem;
@@ -231,12 +228,16 @@ export default {
   margin: .5rem;
   word-wrap: normal;
   position: relative;
-  background-color: #DCDCDC;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  border-top: none;
-  border-bottom: 1px solid #DDD;
-  box-shadow: inset 0 1px 2px rgba(0,46,167, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  border-radius: 2px;
+  background-image:
+  radial-gradient(
+    circle at bottom right,
+    rgba(254, 196, 85, 0.20),
+    #cfc7c1 90%
+  );
+-moz-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+-webkit-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 }
 .sectionBody {
   -webkit-box-sizing: border-box;
@@ -245,7 +246,7 @@ export default {
 }
 .tableWrapper {
   position: relative;
-  top: -.2rem;
+  top: -.7rem;
   -webkit-transition: opacity 70ms cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: opacity 70ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -258,7 +259,6 @@ export default {
   cursor: pointer;
   padding-left: .5rem;
   position: absolute;
-  border: 1px solid black;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -266,7 +266,7 @@ export default {
   transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
 }
 .repCard:hover {
-  box-shadow: 0 10px 12px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 8px rgba(0,0,0,0.18);
 }
 .repCard .repImageWrapper {
   display: inline-block;
@@ -300,6 +300,7 @@ export default {
   width: 32rem;
   cursor: default;
   z-index: 6;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 8px rgba(0,0,0,0.18);
 }
 /* .repCard.selected::after {
   -webkit-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
