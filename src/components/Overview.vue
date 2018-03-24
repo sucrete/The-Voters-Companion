@@ -95,11 +95,10 @@ export default {
           overviewBod.appendChild(sectionBody)
           var officialFaceNameTitle = []
           divisions[reversedKeys[ttt]].officeIndices.forEach(thing1 => {
-            console.log('22222222')
             var GOffice = GState.data.offices[thing1]
             GOffice.officialIndices.forEach(function (corazon) {
-              console.log('333333333')
               var officialObject = {}
+              officialObject.index = corazon
               officialObject.repTitle = GOffice.name
               officialObject.repName = GState.data.officials[corazon].name
               officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
@@ -112,7 +111,6 @@ export default {
             })
           })
           officialFaceNameTitle.forEach(thing2 => {
-            console.log('44444444')
             var repWrapper = document.createElement('div')
             repWrapper.className = ('cardWrapper')
             var lilDivvy = document.createElement('div')
@@ -121,6 +119,8 @@ export default {
             lilDivvy.appendChild(lilDivvyNode)
             var tableElement = document.createElement('div')
             tableElement.classList.add('repCard')
+            var deets = document.createElement('ul')
+            deets.className = ('repDeets')
             tableElement.addEventListener('click', function (e) {
               if (!(this.classList.contains('selected'))) {
                 this.classList.add('selected')
@@ -133,32 +133,25 @@ export default {
                 var cardSpecs = this.getBoundingClientRect()
                 var boxx = cardSpecs.x + (cardSpecs.width / 2)
                 var boxy = cardSpecs.y + (cardSpecs.height / 2)
-                console.log('x ----- ' + x + '\n' + 'y ----- ' + y)
                 var windowx = (x / 2)
                 var windowy = (y / 2)
                 var movementalongx = windowx - (boxx + 172)
                 var movementalongy = windowy - (boxy + 15)
-                console.log('movement along x ----- ' + movementalongx + '\n' + 'movement along y ----- ' + movementalongy)
                 this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); z-index: 10;'
                 var imageNode = null
                 var sparklingDiamond = this.childNodes
                 for (var i = 0; i < sparklingDiamond.length; i++) {
                   if (sparklingDiamond[i].className === 'repImageWrapper') {
                     imageNode = sparklingDiamond[i].firstChild
-                    console.log('imageNode className equals ======> ' + imageNode.className)
-                    console.log('window working in this for loop? ======>' + 'windowx -----> ' + windowx + ' and ' + 'windowy -----> ' + windowy)
                     var imageSpecs = imageNode.getBoundingClientRect()
                     var imagex = imageSpecs.x + (imageSpecs.width / 2)
-                    var imagey = imageSpecs.y + (imageSpecs.height / 2)
-                    console.log('Bill\'s image\'s width =====> ' + imageSpecs.width + '\n' + 'Bill\'s image\'s height =====> ' + imageSpecs.height)
-                    console.log('location of imageRep ======> ' + imagex + ', ' + imagey + ' or ' + imageSpecs.x + ', ' + imageSpecs.y)
                     var moveimagealongx = movementalongx - ((windowx - imagex) - 66)
                     var moveimagealongy = 22.5
-                    console.log('movin\' along x ----- ' + moveimagealongx + '\n' + 'movin\' along y ----- ' + moveimagealongy)
                     imageNode.style.cssText = 'transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
-                    // break
                   }
                 }
+                // plug deets generator in here
+                // TODO take thing2.index and query GState.data.officials[thing2.index]
               }
               e.stopPropagation()
               e.preventDefault()
@@ -366,7 +359,7 @@ box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 25
   font-size: 80%;
 }
 .repTitle {
-  top: .35rem;
+  top: .25rem;
   position: relative;
   word-wrap: normal;
   width: 7rem;
@@ -379,12 +372,13 @@ box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 25
 }
 .sectionHeader {
   border-top: 1px solid #d1cccc;
-  font-family: 'Overlock', serif;
+  color: #343434;
+  font-family: 'Oswald', serif;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   position: relative;
   font-size: 120%;
-  padding-left: 2.5rem;
+  padding-left: 2rem;
   margin-bottom: .5rem;
   margin-top: .5rem;
   padding-top: .35rem;

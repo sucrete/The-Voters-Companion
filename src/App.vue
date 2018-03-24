@@ -64,6 +64,7 @@ html {
 
 .simple-navigation-header {
   display: flex;
+  color: #343434;
   text-align: center;
   justify-content: space-between;
   min-width: 35em;
@@ -84,6 +85,7 @@ html {
   position: relative;
   bottom: 3px;
   font-family: 'Oswald', serif;
+  color: #343434;
 }
 
 #takeMeOmh:visited {
