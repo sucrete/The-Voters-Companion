@@ -45,7 +45,7 @@ export default {
 
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Rasa');
+@import url('https://fonts.googleapis.com/css?family=Oranienbaum');
 @import url('https://fonts.googleapis.com/css?family=Oswald:500,600');
 
 
@@ -74,7 +74,6 @@ html {
   position: relative; /* Set the navbar to a fixed position */
   background-color: #F5F4EA;
   z-index: 5;
-  box-shadow: 0 0 5px 10px #F5F4EA;
 }
 
 #righty, #lefty {
@@ -84,12 +83,12 @@ html {
 #takeMeOmh {
   position: relative;
   bottom: 3px;
-  font-family: 'Oswald', serif;
+  font-family: 'Oranienbaum', serif;
   color: #343434;
 }
 
 #takeMeOmh:visited {
-  color: black;
+  color: #343434;
 }
 
 a {

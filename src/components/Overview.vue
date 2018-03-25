@@ -7,6 +7,14 @@
       <button id="righty" type="button" class="mui-btn"><router-link to="district">District</router-link></button>
     </div>
     <!-- body -->
+    <div id="overviewNoticWrapper">
+      <div id="overviewNotice">
+        This page is devoted to your elected officials. They are grouped according to geographic scope. Each card can be expanded for critical gateways to your representative officals.
+      </div>
+      <div id="overviewNoticeWrapperArrow">
+        ⇣
+      </div>
+    </div>
     <div class="hotBod">
       <div id="overviewBody" style="">
 <!--
@@ -150,8 +158,13 @@ export default {
                     imageNode.style.cssText = 'transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
                   }
                 }
-                // plug deets generator in here
+                // plug 'deets' generator in here
                 // TODO take thing2.index and query GState.data.officials[thing2.index]
+                // Evelyn Sanguinetti (D)
+                // Lieutenant Whatever
+                // Address:
+                //  Office of the Lt. Governor 214 State House
+                //  Springfield, IL 62706
               }
               e.stopPropagation()
               e.preventDefault()
@@ -236,7 +249,7 @@ export default {
   );
 -moz-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 -webkit-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+box-shadow: inset 1px 1px 5px rgba(154, 147, 140, 0.39), 1px 1px 5px rgba(255, 255, 255, 1);
 }
 .sectionBody {
   -webkit-box-sizing: border-box;
@@ -260,6 +273,8 @@ box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 25
   position: absolute;
   background-color: #fff;
   border-radius: 2px;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   -webkit-transition: width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
@@ -314,26 +329,6 @@ box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 25
   transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-/* .repCard::after {
-  content: "";
-  border-radius: 2px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  opacity: 0;
-  -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1));
- }
-
-.repCard::after:hover {
-  opacity: 1;
-} */
-
 .repImage {
   height: 9rem;
   width: 7rem;
@@ -373,15 +368,44 @@ box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 25
 .sectionHeader {
   border-top: 1px solid #d1cccc;
   color: #343434;
-  font-family: 'Oswald', serif;
+  font-family: 'Oranienbaum', serif;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   position: relative;
-  font-size: 120%;
+  font-size: 130%;
   padding-left: 2rem;
   margin-bottom: .5rem;
   margin-top: .5rem;
   padding-top: .35rem;
+}
+#overviewNotice {
+  color: #343434;
+  font-size: 120%;
+  width: 20rem;
+  text-align: left;
+}
+#overviewNoticWrapper {
+  background-color: #E3E3E3;
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  position: relative;
+}
+#overviewNoticeWrapperArrow {
+  border-radius: 100%;
+  font-size: 180%;
+  text-align: center;
+  width: 3rem;
+  height: 3rem;
+  vertical-align: middle;
+  position: absolute;
+  color: white;
+  background-color: #9c9a9a;
+  z-index: 5;
+  bottom: -1.5rem;
+  left: calc(50% - 1.5rem);
+  padding-top: .4rem;
 }
 
 #app {
