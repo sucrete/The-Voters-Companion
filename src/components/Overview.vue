@@ -12,7 +12,7 @@
         This page is devoted to your elected officials. They are grouped according to geographic scope. Each card can be expanded for critical gateways to your representative officals.
       </div>
       <div id="overviewNoticeWrapperArrow">
-        ⇣
+        🐕
       </div>
     </div>
     <div class="hotBod">
@@ -36,29 +36,6 @@ export default {
     }
   },
   methods: {
-    // addRepCardListener () {
-    //   var allRepCardElements = document.getElementsByClassName('repCard')
-    //   console.log('the first element in allRepCardElements is ---> ' + allRepCardElements[0])
-    //   var allDeselectElements = Array.from(document.getElementsByClassName('deselect-rep'))
-    //   console.log(allRepCardElements)
-    //   console.log(allDeselectElements)
-    //   console.log('tryinn to add eventlistener')
-    //   for (var uuu = 0; uuu < allRepCardElements.length; uuu++) {
-    //     console.log('EVENTLISTENER ADDED')
-    //     allRepCardElements[uuu].addEventListener('click', function () {
-    //       var hohoho = document.querySelector('.simple-navigation-header')
-    //       hohoho.style.cssText = 'background-color: blue;'
-    //       var bobobo = document.querySelectorAll('.repCard')[uuu]
-    //       bobobo.classList.add('selected')
-    //       console.log('BOBOBO CLASS NAME IS ---> ' + bobobo.classList)
-    //     })
-    //   }
-    //   for (var vvv = 0; vvv < allDeselectElements.length; vvv++) {
-    //     allDeselectElements[vvv].addEventListener('click', function () {
-    //       allRepCardElements[vvv].classList.remove = ('selected')
-    //     })
-    //   }
-    // }
   },
   mounted () {
     var state = this.$store.getters.showMeDatState
@@ -127,8 +104,6 @@ export default {
             lilDivvy.appendChild(lilDivvyNode)
             var tableElement = document.createElement('div')
             tableElement.classList.add('repCard')
-            var deets = document.createElement('ul')
-            deets.className = ('repDeets')
             tableElement.addEventListener('click', function (e) {
               if (!(this.classList.contains('selected'))) {
                 this.classList.add('selected')
@@ -148,9 +123,9 @@ export default {
                 this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); z-index: 10;'
                 var imageNode = null
                 var sparklingDiamond = this.childNodes
-                for (var i = 0; i < sparklingDiamond.length; i++) {
-                  if (sparklingDiamond[i].className === 'repImageWrapper') {
-                    imageNode = sparklingDiamond[i].firstChild
+                for (var hhh = 0; hhh < sparklingDiamond.length; hhh++) {
+                  if (sparklingDiamond[hhh].className === 'repImageWrapper') {
+                    imageNode = sparklingDiamond[hhh].firstChild
                     var imageSpecs = imageNode.getBoundingClientRect()
                     var imagex = imageSpecs.x + (imageSpecs.width / 2)
                     var moveimagealongx = movementalongx - ((windowx - imagex) - 66)
@@ -158,13 +133,99 @@ export default {
                     imageNode.style.cssText = 'transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
                   }
                 }
-                // plug 'deets' generator in here
-                // TODO take thing2.index and query GState.data.officials[thing2.index]
-                // Evelyn Sanguinetti (D)
-                // Lieutenant Whatever
-                // Address:
-                //  Office of the Lt. Governor 214 State House
-                //  Springfield, IL 62706
+                var gridWrapper = document.createElement('div')
+                gridWrapper.className = ('gridContainer')
+                var theOfficial = GState.data.officials[thing2.index]
+                console.log('THIS GUY/GALS PARTY ---> ' + theOfficial.party)
+                var party = theOfficial.party
+                var partyLetter = ''
+                if (party === 'Republican') {
+                  partyLetter = ' (R)'
+                } else if (party === 'Democrat') {
+                  partyLetter = ' (D)'
+                } else if (party === 'Independent') {
+                  partyLetter = ' (I)'
+                }
+                var expandedName = document.createElement('div')
+                var expandedNameNode = document.createTextNode(thing2.repName + partyLetter)
+                expandedName.appendChild(expandedNameNode)
+                expandedName.className = ('detailsName')
+                var expandedTitle = document.createElement('div')
+                var expandedTitleNode = document.createTextNode(thing2.repTitle)
+                expandedTitle.appendChild(expandedTitleNode)
+                expandedTitle.className = ('detailsTitle')
+                var expandedAddress = document.createElement('div')
+                expandedAddress.className = ('detailsAddress')
+                var theOfficialAddress = theOfficial.address[0] || null
+                var addressSaver
+                var theOfficialPropertyNames = Object.getOwnPropertyNames(theOfficial)
+                for (var yyy = 0; yyy < theOfficialPropertyNames.length; yyy++) {
+                  if (theOfficialPropertyNames[yyy] === 'address') {
+                    addressSaver = ''
+                    var theOfficialAddressPropertyNames = Object.getOwnPropertyNames(theOfficialAddress)
+                    console.log('theOfficialAddressPropertyNames =======> ' + JSON.stringify(theOfficialAddressPropertyNames, null, '\t'))
+                    var cityStateZip = theOfficialAddress.city + ', ' + theOfficialAddress.state + ' ' + theOfficialAddress.zip
+                    for (var vvv = 0; vvv < theOfficialAddressPropertyNames.length; vvv++) {
+                      if (theOfficialAddressPropertyNames[vvv].includes('line')) {
+                        addressSaver += theOfficialAddress[theOfficialAddressPropertyNames[vvv]] + '\n'
+                      }
+                    }
+                    addressSaver += cityStateZip
+                    console.log(addressSaver)
+                  } else {
+                    addressSaver = 'unavailable'
+                  }
+                }
+                console.log(addressSaver)
+                var expandedAddressNode = document.createTextNode(addressSaver)
+                expandedAddress.appendChild(expandedAddressNode)
+                var expandedPhone = document.createElement('div')
+                var theOfficialPhone = theOfficial.phones[0] || 'unavailable'
+                var expandedPhoneNode = document.createTextNode(theOfficialPhone)
+                expandedPhone.appendChild(expandedPhoneNode)
+                expandedPhone.className = ('detailsPhone')
+                var expandedURL = document.createElement('div')
+                var theOfficialURL = theOfficial.urls[0] || 'unavailable'
+                var expandedURLNode = document.createTextNode(theOfficialURL)
+                expandedURL.appendChild(expandedURLNode)
+                expandedURL.className = ('detailsURL')
+                var channelsSubgrid = document.createElement('div')
+                channelsSubgrid.className = ('detailsChannels')
+                for (var ppp = 0; ppp < theOfficialPropertyNames.length; ppp++) {
+                  if (theOfficialPropertyNames[ppp] === 'channels') {
+                    var channels = theOfficial.channels
+                    channels.forEach(Chanel => {
+                      if (!(Chanel.type === 'GooglePlus')) {
+                        var channel = Chanel.type
+                        var channelID = Chanel.id
+                        var channelIcon = document.createElement('a')
+                        var channelIconPic = document.createElement('img')
+                        channelIcon.className = ('iconBox')
+                        channelIconPic.className = (channel)
+                        if (channel === 'YouTube') {
+                          channelIcon.href = 'www.youtube.com/' + channelID
+                          channelIconPic.src = 'https://i.imgur.com/9sWkVN0.png'
+                        } else if (channel === 'Facebook') {
+                          channelIcon.href = 'www.facebook.com/' + channelID
+                          channelIconPic.src = 'https://i.imgur.com/kSOcprC.png'
+                        } else if (channel === 'Twitter') {
+                          channelIcon.href = 'www.twitter.com/' + channelID
+                          channelIconPic.src = 'https://i.imgur.com/jYDU1nT.png'
+                        }
+                        channelIcon.appendChild(channelIconPic)
+                        channelsSubgrid.appendChild(channelIcon)
+                      }
+                    })
+                  }
+                }
+                // APPEND YOUR CHILDREN
+                gridWrapper.appendChild(expandedName)
+                gridWrapper.appendChild(expandedTitle)
+                gridWrapper.appendChild(expandedAddress)
+                gridWrapper.appendChild(expandedPhone)
+                gridWrapper.appendChild(expandedURL)
+                gridWrapper.appendChild(channelsSubgrid)
+                tableElement.appendChild(gridWrapper)
               }
               e.stopPropagation()
               e.preventDefault()
@@ -200,9 +261,9 @@ export default {
               kunta.style.transform = ''
               kunta.style.removeProperty('-webkit-transform')
               kunta.style.cssText = ('z-index: 50;')
-              for (var i = 0; i < kunta.childNodes.length; i++) {
-                if (kunta.childNodes[i].className === 'repImageWrapper') {
-                  var notes = kunta.childNodes[i].firstChild
+              for (var ggg = 0; ggg < kunta.childNodes.length; ggg++) {
+                if (kunta.childNodes[ggg].className === 'repImageWrapper') {
+                  var notes = kunta.childNodes[ggg].firstChild
                   notes.style.transform = ''
                   notes.style.removeProperty('-webkit-transform')
                 }
@@ -223,6 +284,7 @@ export default {
     DOMMaker()
   }
 }
+
 </script>
 
 <style >
@@ -232,6 +294,25 @@ export default {
 #overviewBody {
 }
 
+.repCard .gridContainer {
+}
+.gridContainer {
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 8.5rem auto 1rem;
+  grid-template-rows: 1.5rem repeat(12, 1rem) 2rem;
+  background-color: #F4A460;
+  grid-gap: 1px;
+}
+.gridContainer > * {
+  background-color: white;
+}
+.detailsChannels {
+  display: subgrid;
+}
+.repCard.selected .gridContainer {
+  opacity: 1;
+}
 /* CSS for .cardWrapper credit to Tara Jensen https://codepen.io/TLJens/pen/RPWBvY */
 .cardWrapper {
   display: inline-block;
@@ -247,9 +328,9 @@ export default {
     rgba(254, 196, 85, 0.20),
     #cfc7c1 90%
   );
--moz-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
--webkit-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
-box-shadow: inset 1px 1px 5px rgba(154, 147, 140, 0.39), 1px 1px 5px rgba(255, 255, 255, 1);
+  -moz-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+  box-shadow: inset 1px 1px 5px rgba(154, 147, 140, 0.39), 1px 1px 5px rgba(255, 255, 255, 1);
 }
 .sectionBody {
   -webkit-box-sizing: border-box;
@@ -375,14 +456,13 @@ box-shadow: inset 1px 1px 5px rgba(154, 147, 140, 0.39), 1px 1px 5px rgba(255, 2
   font-size: 130%;
   padding-left: 2rem;
   margin-bottom: .5rem;
-  margin-top: .5rem;
-  padding-top: .35rem;
 }
 #overviewNotice {
   color: #343434;
-  font-size: 120%;
+  font-size: 115%;
   width: 20rem;
   text-align: left;
+  line-height: 140%;
 }
 #overviewNoticWrapper {
   background-color: #E3E3E3;
@@ -391,6 +471,7 @@ box-shadow: inset 1px 1px 5px rgba(154, 147, 140, 0.39), 1px 1px 5px rgba(255, 2
   padding-top: 1rem;
   padding-bottom: 1rem;
   position: relative;
+  margin-bottom: -.99rem;
 }
 #overviewNoticeWrapperArrow {
   border-radius: 100%;
