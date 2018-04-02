@@ -9,7 +9,7 @@
     <!-- body -->
     <div id="overviewNoticWrapper">
       <div id="overviewNotice">
-        This page is devoted to your elected officials. They are grouped according to geographic scope. Each card can be expanded for critical gateways to your representative officals.
+        This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for critical gateways to your representative officals.
       </div>
       <div id="overviewNoticeWrapperArrow">
         🐕
