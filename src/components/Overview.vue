@@ -7,7 +7,7 @@
       <button id="righty" type="button" class="mui-btn"><router-link to="district">District</router-link></button>
     </div>
     <!-- body -->
-    <div id="overviewNoticWrapper">
+    <div id="overviewNoticeWrapper">
       <div id="overviewNotice">
         This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for critical gateways to your representative officals.
       </div>
@@ -130,7 +130,7 @@ export default {
                     var imagex = imageSpecs.x + (imageSpecs.width / 2)
                     var moveimagealongx = movementalongx - ((windowx - imagex) - 66)
                     var moveimagealongy = 22.5
-                    imageNode.style.cssText = 'transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
+                    imageNode.style.cssText = 'transform: scale(1) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
                   }
                 }
                 var gridWrapper = document.createElement('div')
@@ -167,27 +167,26 @@ export default {
                     var cityStateZip = theOfficialAddress.city + ', ' + theOfficialAddress.state + ' ' + theOfficialAddress.zip
                     for (var vvv = 0; vvv < theOfficialAddressPropertyNames.length; vvv++) {
                       if (theOfficialAddressPropertyNames[vvv].includes('line')) {
-                        addressSaver += theOfficialAddress[theOfficialAddressPropertyNames[vvv]] + '\n'
+                        addressSaver += theOfficialAddress[theOfficialAddressPropertyNames[vvv]] + '<br />'
                       }
                     }
                     addressSaver += cityStateZip
                     console.log(addressSaver)
-                  } else {
-                    addressSaver = 'unavailable'
                   }
                 }
                 console.log(addressSaver)
-                var expandedAddressNode = document.createTextNode(addressSaver)
-                expandedAddress.appendChild(expandedAddressNode)
+                expandedAddress.innerHTML = '<p>' + addressSaver + '</p>'
                 var expandedPhone = document.createElement('div')
                 var theOfficialPhone = theOfficial.phones[0] || 'unavailable'
                 var expandedPhoneNode = document.createTextNode(theOfficialPhone)
                 expandedPhone.appendChild(expandedPhoneNode)
                 expandedPhone.className = ('detailsPhone')
-                var expandedURL = document.createElement('div')
+                var expandedURL = document.createElement('a')
                 var theOfficialURL = theOfficial.urls[0] || 'unavailable'
                 var expandedURLNode = document.createTextNode(theOfficialURL)
                 expandedURL.appendChild(expandedURLNode)
+                expandedURL.setAttribute('href', theOfficialURL)
+                expandedURL.setAttribute('target', '_blank')
                 expandedURL.className = ('detailsURL')
                 var channelsSubgrid = document.createElement('div')
                 channelsSubgrid.className = ('detailsChannels')
@@ -212,13 +211,14 @@ export default {
                           channelIcon.href = 'www.twitter.com/' + channelID
                           channelIconPic.src = 'https://i.imgur.com/jYDU1nT.png'
                         }
+                        channelIcon.setAttribute('target', '_blank')
+                        channelIcon.setAttribute('rel', 'noopener noreferrer')
                         channelIcon.appendChild(channelIconPic)
                         channelsSubgrid.appendChild(channelIcon)
                       }
                     })
                   }
                 }
-                // APPEND YOUR CHILDREN
                 gridWrapper.appendChild(expandedName)
                 gridWrapper.appendChild(expandedTitle)
                 gridWrapper.appendChild(expandedAddress)
@@ -226,6 +226,9 @@ export default {
                 gridWrapper.appendChild(expandedURL)
                 gridWrapper.appendChild(channelsSubgrid)
                 tableElement.appendChild(gridWrapper)
+                setTimeout(function () {
+                  gridWrapper.className += ' engaged'
+                }, 200)
               }
               e.stopPropagation()
               e.preventDefault()
@@ -261,6 +264,11 @@ export default {
               kunta.style.transform = ''
               kunta.style.removeProperty('-webkit-transform')
               kunta.style.cssText = ('z-index: 50;')
+              kunta.childNodes.forEach(sabotage => {
+                if (sabotage.className === 'gridContainer engaged') {
+                  sabotage.remove()
+                }
+              })
               for (var ggg = 0; ggg < kunta.childNodes.length; ggg++) {
                 if (kunta.childNodes[ggg].className === 'repImageWrapper') {
                   var notes = kunta.childNodes[ggg].firstChild
@@ -297,23 +305,95 @@ export default {
 .repCard .gridContainer {
 }
 .gridContainer {
+  font-family: 'Overlock', serif;
+  text-align: left;
   z-index: 5;
+  top: .5rem;
+  position: absolute;
   display: grid;
-  grid-template-columns: 8.5rem auto 1rem;
-  grid-template-rows: 1.5rem repeat(12, 1rem) 2rem;
-  background-color: #F4A460;
+  grid-template-columns: 11.4rem 18.5rem;
+  grid-template-rows: 1.75rem repeat(7, 1.5rem) [channels] 1rem;
   grid-gap: 1px;
+  color: #3b3c36;
 }
 .gridContainer > * {
-  background-color: white;
+  -webkit-transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  opacity: 0;
 }
-.detailsChannels {
-  display: subgrid;
-}
-.repCard.selected .gridContainer {
+
+.engaged .detailsName {
+  grid-column-start: 2;
+  font-weight: bold;
+  grid-column-end: 3;
+  font-size: 115%;
+  border-bottom: 1px solid #d1cccc;
   opacity: 1;
+  -webkit-transition-delay: 0ms;
+          transition-delay: 0ms;
+          opacity: 1;
 }
-/* CSS for .cardWrapper credit to Tara Jensen https://codepen.io/TLJens/pen/RPWBvY */
+.engaged .detailsTitle {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  -webkit-transition-delay: 50ms;
+          transition-delay: 50ms;
+          opacity: 1;
+}
+.engaged .detailsAddress {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 6;
+  line-height: 100%;
+  padding-top: .5rem;
+  -webkit-transition-delay: 100ms;
+          transition-delay: 100ms;
+          opacity: 1;
+}
+.engaged .detailsPhone {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  -webkit-transition-delay: 150ms;
+          transition-delay: 150ms;
+          opacity: 1;
+}
+.engaged .detailsURL {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transition-delay: 200ms;
+          transition-delay: 200ms;
+          opacity: 1;
+}
+.engaged .detailsChannels {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: channels;
+  max-width: 100%;
+  height: auto;
+  align-self: end;
+  display: inline-block;
+  -webkit-transition-delay: 250ms;
+          transition-delay: 250ms;
+          opacity: 1;
+}
+.YouTube, .Twitter, .Facebook {
+  max-width: 1.5rem;
+  margin: .2rem;
+  margin-right: 1rem;
+  -webkit-filter: grayscale(15%);
+       -moz-filter: grayscale(15%);
+         -o-filter: grayscale(15%);
+        -ms-filter: grayscale(15%);
+            filter: grayscale(15%);
+}
+
+/* CSS for .cardWrapper inset credit to Tara Jensen https://codepen.io/TLJens/pen/RPWBvY */
 .cardWrapper {
   display: inline-block;
   height: 14rem;
@@ -368,8 +448,8 @@ export default {
   position: relative;
   height: 9rem;
   width: 7rem;
-  top: .4rem;
-  left: -.25rem;
+  top: .35rem;
+  left: -.3rem;
   border-radius: 2px;
   margin: .5rem;
   z-index: 7;
@@ -397,12 +477,6 @@ export default {
   z-index: 6;
   box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 8px rgba(0,0,0,0.18);
 }
-/* .repCard.selected::after {
-  -webkit-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  -moz-box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-  box-shadow:  0 5px 20px 1px rgba(186, 102, 165, 0.18), 0 5px 10px rgba(20, 153, 33, 0.18);
-
-} */
 
 .repCard.selected .deselect-rep {
   opacity: 1;
@@ -464,7 +538,7 @@ export default {
   text-align: left;
   line-height: 140%;
 }
-#overviewNoticWrapper {
+#overviewNoticeWrapper {
   background-color: #E3E3E3;
   width: 100%;
   padding-left: 1.5rem;
