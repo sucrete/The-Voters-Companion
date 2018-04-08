@@ -120,7 +120,7 @@ export default {
                 var windowy = (y / 2)
                 var movementalongx = windowx - (boxx + 172)
                 var movementalongy = windowy - (boxy + 15)
-                this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); z-index: 10;'
+                this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); z-index: 888;'
                 var imageNode = null
                 var sparklingDiamond = this.childNodes
                 for (var hhh = 0; hhh < sparklingDiamond.length; hhh++) {
@@ -219,12 +219,24 @@ export default {
                     })
                   }
                 }
+                var phoneIcon = document.createElement('img')
+                var URLIcon = document.createElement('img')
+                var placeIcon = document.createElement('img')
+                phoneIcon.className = ('detailsPhoneIcon')
+                URLIcon.className = ('detailsURLIcon')
+                placeIcon.className = ('detailsAddressIcon')
+                phoneIcon.src = 'https://i.imgur.com/kXKmZrE.png'
+                URLIcon.src = 'https://i.imgur.com/7O903TX.png'
+                placeIcon.src = 'https://i.imgur.com/6rxdk4T.png'
                 gridWrapper.appendChild(expandedName)
                 gridWrapper.appendChild(expandedTitle)
                 gridWrapper.appendChild(expandedAddress)
                 gridWrapper.appendChild(expandedPhone)
                 gridWrapper.appendChild(expandedURL)
                 gridWrapper.appendChild(channelsSubgrid)
+                gridWrapper.appendChild(phoneIcon)
+                gridWrapper.appendChild(URLIcon)
+                gridWrapper.appendChild(placeIcon)
                 tableElement.appendChild(gridWrapper)
                 setTimeout(function () {
                   gridWrapper.className += ' engaged'
@@ -263,7 +275,7 @@ export default {
               kunta.classList.remove('selected')
               kunta.style.transform = ''
               kunta.style.removeProperty('-webkit-transform')
-              kunta.style.cssText = ('z-index: 50;')
+              kunta.style.cssText = ('z-index: 555;')
               kunta.childNodes.forEach(sabotage => {
                 if (sabotage.className === 'gridContainer engaged') {
                   sabotage.remove()
@@ -290,6 +302,32 @@ export default {
       }
     }
     DOMMaker()
+    document.addEventListener('click', function (event) {
+      var neo = document.querySelector('.selected')
+      var isClickInside = neo.contains(event.target)
+      if (!isClickInside) {
+        // the click was outside the specifiedElement, do something
+        neo.classList.remove('selected')
+        neo.style.transform = ''
+        neo.style.removeProperty('-webkit-transform')
+        neo.style.cssText = ('z-index: 556;')
+        neo.childNodes.forEach(sabotage => {
+          if (sabotage.className === 'gridContainer engaged') {
+            sabotage.remove()
+          }
+        })
+        setTimeout(function () {
+          neo.style.cssText = ('z-index: 1;')
+        }, 500)
+        for (var ggg = 0; ggg < neo.childNodes.length; ggg++) {
+          if (neo.childNodes[ggg].className === 'repImageWrapper') {
+            var notes = neo.childNodes[ggg].firstChild
+            notes.style.transform = ''
+            notes.style.removeProperty('-webkit-transform')
+          }
+        }
+      }
+    })
   }
 }
 
@@ -338,8 +376,8 @@ export default {
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 3;
-  -webkit-transition-delay: 50ms;
-          transition-delay: 50ms;
+  -webkit-transition-delay: 30ms;
+          transition-delay: 30ms;
           opacity: 1;
 }
 .engaged .detailsAddress {
@@ -349,15 +387,42 @@ export default {
   grid-row-end: 6;
   line-height: 100%;
   padding-top: .5rem;
-  -webkit-transition-delay: 100ms;
-          transition-delay: 100ms;
+  margin-left: 1.5rem;
+  -webkit-transition-delay: 60ms;
+          transition-delay: 60ms;
           opacity: 1;
+}
+.detailsAddressIcon {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+.detailsURLIcon {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 7;
+  grid-row-end: 8;
+}
+.detailsPhoneIcon {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 6;
+  grid-row-end: 7;
+}
+.detailsURLIcon, .detailsAddressIcon, .detailsPhoneIcon {
+  height: 100%;
+  width: auto;
+  z-index: 999;
+  right: -11.5rem;
+  position: absolute;
 }
 .engaged .detailsPhone {
   grid-column-start: 2;
   grid-column-end: 3;
-  -webkit-transition-delay: 150ms;
-          transition-delay: 150ms;
+  margin-left: 1.5rem;
+  -webkit-transition-delay: 90ms;
+          transition-delay: 90ms;
           opacity: 1;
 }
 .engaged .detailsURL {
@@ -366,8 +431,9 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  -webkit-transition-delay: 200ms;
-          transition-delay: 200ms;
+  margin-left: 1.5rem;
+  -webkit-transition-delay: 120ms;
+          transition-delay: 120ms;
           opacity: 1;
 }
 .engaged .detailsChannels {
@@ -378,8 +444,8 @@ export default {
   height: auto;
   align-self: end;
   display: inline-block;
-  -webkit-transition-delay: 250ms;
-          transition-delay: 250ms;
+  -webkit-transition-delay: 150ms;
+          transition-delay: 150ms;
           opacity: 1;
 }
 .YouTube, .Twitter, .Facebook {
@@ -474,7 +540,7 @@ export default {
   height: 15rem;
   width: 32rem;
   cursor: default;
-  z-index: 6;
+  z-index: 800;
   box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 8px rgba(0,0,0,0.18);
 }
 

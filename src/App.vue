@@ -50,7 +50,9 @@ export default {
 
 
 html {
-  background-color: #E1DCDC;
+  /* background-color: #E1DCDC; */
+  background: #f2f2f2 url( https://cl.ly/image/381U2k0A3L3S/bg.png );
+  height: 100%;
 }
 
 #app {
@@ -105,12 +107,11 @@ router-link:hover {
   width: 46rem;
   margin: auto;
   margin-top: 1rem;
-  font-family: 'Rasa', serif;
   font-weight: 300;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
   padding: 10px 24px;
-  min-height: 43rem;
+  min-height: 45rem;
   position: relative;
 }
 
@@ -118,11 +119,12 @@ body {
   margin: 0;
   padding: 0;
   /* 👇 the color behind the 'page' element */
-  background: #e0dcdc;
+  background: #f2f2f2 url( https://cl.ly/image/381U2k0A3L3S/bg.png );
+  height: 100%;
 }
 
 a {
-  color: black;
+  color: #3b3c36;
 }
 a:visited {
   color: #716E10;
