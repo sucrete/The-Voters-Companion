@@ -15,6 +15,7 @@
         🐕
       </div>
     </div>
+    <div id="dimScreen"></div>
     <div class="hotBod">
       <div id="overviewBody" style="">
 <!--
@@ -58,8 +59,11 @@ export default {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
       })
     }
-    // credit for insertAfter() -> https://stackoverflow.com/questions/4793604/how-to-insert-an-element-after-another-element-in-javascript-without-using-a-lib
 
+    const boppeddd = document.getElementById('dimScreen')
+    const toggleIt = function () {
+      boppeddd.classList.toggle('bopped')
+    }
     const DOMMaker = function () {
       for (let ttt = 1; ttt < reversedKeys.length; ttt++) {
         if (divisions[reversedKeys[ttt]].hasOwnProperty('officeIndices')) {
@@ -106,6 +110,7 @@ export default {
             tableElement.classList.add('repCard')
             tableElement.addEventListener('click', function (e) {
               if (!(this.classList.contains('selected'))) {
+                toggleIt()
                 this.classList.add('selected')
                 var w = window
                 var d = document
@@ -185,6 +190,7 @@ export default {
                 var theOfficialURL = theOfficial.urls[0] || 'unavailable'
                 var expandedURLNode = document.createTextNode(theOfficialURL)
                 expandedURL.appendChild(expandedURLNode)
+                expandedURL.setAttribute('rel', 'noopener noreferrer')
                 expandedURL.setAttribute('href', theOfficialURL)
                 expandedURL.setAttribute('target', '_blank')
                 expandedURL.className = ('detailsURL')
@@ -202,14 +208,14 @@ export default {
                         channelIcon.className = ('iconBox')
                         channelIconPic.className = (channel)
                         if (channel === 'YouTube') {
-                          channelIcon.href = 'www.youtube.com/' + channelID
-                          channelIconPic.src = 'https://i.imgur.com/9sWkVN0.png'
+                          channelIcon.href = 'http://www.youtube.com/' + channelID
+                          channelIconPic.src = 'https://i.imgur.com/b4J5pf1.png'
                         } else if (channel === 'Facebook') {
-                          channelIcon.href = 'www.facebook.com/' + channelID
-                          channelIconPic.src = 'https://i.imgur.com/kSOcprC.png'
+                          channelIcon.href = 'http://www.facebook.com/' + channelID
+                          channelIconPic.src = 'https://i.imgur.com/MvZ9x3Z.png'
                         } else if (channel === 'Twitter') {
-                          channelIcon.href = 'www.twitter.com/' + channelID
-                          channelIconPic.src = 'https://i.imgur.com/jYDU1nT.png'
+                          channelIcon.href = 'http://www.twitter.com/' + channelID
+                          channelIconPic.src = 'https://i.imgur.com/ZnowWs0.png'
                         }
                         channelIcon.setAttribute('target', '_blank')
                         channelIcon.setAttribute('rel', 'noopener noreferrer')
@@ -272,6 +278,7 @@ export default {
             tableElement.appendChild(lilDivvy)
             lilDivvy.addEventListener('click', function (e) {
               var kunta = this.parentNode
+              toggleIt()
               kunta.classList.remove('selected')
               kunta.style.transform = ''
               kunta.style.removeProperty('-webkit-transform')
@@ -308,6 +315,7 @@ export default {
       if (!isClickInside) {
         // the click was outside the specifiedElement, do something
         neo.classList.remove('selected')
+        boppeddd.classList.remove('bopped')
         neo.style.transform = ''
         neo.style.removeProperty('-webkit-transform')
         neo.style.cssText = ('z-index: 556;')
@@ -340,6 +348,27 @@ export default {
 #overviewBody {
 }
 
+#dimScreen {
+  position:fixed;
+  padding:0;
+  margin:0;
+
+  opacity: 0;
+  display: none;
+  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+}
+#dimScreen.bopped {
+  opacity: 1;
+  z-index: 777;
+  display: block;
+  background: rgba(27, 41, 29, 0.23);
+}
 .repCard .gridContainer {
 }
 .gridContainer {
@@ -351,7 +380,6 @@ export default {
   display: grid;
   grid-template-columns: 11.4rem 18.5rem;
   grid-template-rows: 1.75rem repeat(7, 1.5rem) [channels] 1rem;
-  grid-gap: 1px;
   color: #3b3c36;
 }
 .gridContainer > * {
@@ -392,29 +420,39 @@ export default {
           transition-delay: 60ms;
           opacity: 1;
 }
-.detailsAddressIcon {
+.engaged .detailsAddressIcon {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 3;
   grid-row-end: 4;
+  top: .6rem;
+  opacity: 1;
+  -webkit-transition-delay: 60ms;
+          transition-delay: 60ms;
 }
-.detailsURLIcon {
+.engaged .detailsURLIcon {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 7;
+  top: .25rem;
   grid-row-end: 8;
+  opacity: 1;
+  -webkit-transition-delay: 120ms;
+          transition-delay: 120ms;
 }
-.detailsPhoneIcon {
+.engaged .detailsPhoneIcon {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 6;
   grid-row-end: 7;
+  top: .25rem;
+  opacity: 1;
+  -webkit-transition-delay: 90ms;
+          transition-delay: 90ms;
 }
 .detailsURLIcon, .detailsAddressIcon, .detailsPhoneIcon {
-  height: 100%;
-  width: auto;
-  z-index: 999;
-  right: -11.5rem;
+  z-index: 900;
+  right: -1rem;
   position: absolute;
 }
 .engaged .detailsPhone {
@@ -452,11 +490,6 @@ export default {
   max-width: 1.5rem;
   margin: .2rem;
   margin-right: 1rem;
-  -webkit-filter: grayscale(15%);
-       -moz-filter: grayscale(15%);
-         -o-filter: grayscale(15%);
-        -ms-filter: grayscale(15%);
-            filter: grayscale(15%);
 }
 
 /* CSS for .cardWrapper inset credit to Tara Jensen https://codepen.io/TLJens/pen/RPWBvY */
@@ -498,13 +531,13 @@ export default {
   cursor: pointer;
   padding-left: .5rem;
   position: absolute;
-  background-color: #fff;
+  background-color: #FDFDFD;
   border-radius: 2px;
   border-top: 1px solid white;
   border-left: 1px solid white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   -webkit-transition: width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
+  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1),background-color 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
 }
 .repCard:hover {
   box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 8px rgba(0,0,0,0.18);
@@ -542,6 +575,7 @@ export default {
   cursor: default;
   z-index: 800;
   box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 8px rgba(0,0,0,0.18);
+  background-color: #fff;
 }
 
 .repCard.selected .deselect-rep {
@@ -558,7 +592,6 @@ export default {
   position: absolute;
   object-fit: cover;
   -o-object-fit: cover;
-  border-radius: 2px;
   -webkit-transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), scale 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), scale 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
