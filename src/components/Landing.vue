@@ -33,7 +33,6 @@ import anime from 'animejs'
 import places from 'places.js'
 // import $ from 'jquery'
 import zayin from '../assets/usvote-logo-small.png'
-import bethBeth from '../assets/img-noise-500x500.png'
 import zuperZayin from '../assets/star_plain.png'
 import carpet from '../assets/light_yellow_star.png'
 
@@ -43,7 +42,6 @@ export default {
     return {
       addy: '',
       USVoteLogo: zayin,
-      thirdTester: bethBeth,
       levelStar: zuperZayin,
       lightYellowStar: carpet,
       rican: 'challa!',
