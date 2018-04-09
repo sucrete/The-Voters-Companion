@@ -354,7 +354,6 @@ export default {
   margin:0;
 
   opacity: 0;
-  display: none;
   transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
 
   top:0;
@@ -366,8 +365,7 @@ export default {
 #dimScreen.bopped {
   opacity: 1;
   z-index: 777;
-  display: block;
-  background: rgba(27, 41, 29, 0.23);
+  background: rgba(255, 255, 255, 0.34);
 }
 .repCard .gridContainer {
 }

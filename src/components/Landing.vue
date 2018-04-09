@@ -357,7 +357,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
   box-sizing: none;
 }
 .v--modal-overlay {
-  background-color: rgba(255, 255, 255, 0.64);
+  background-color: rgba(255, 255, 255, 0.34);
   border-radius: 0px;
   width: 100vw;
   height: 100vh;
