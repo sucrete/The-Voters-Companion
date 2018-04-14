@@ -45,6 +45,7 @@ export default {
       levelStar: zuperZayin,
       lightYellowStar: carpet,
       rican: 'challa!',
+      stateID: '',
       googvotekey: process.env.GOOGLE_API_KEY,
       form: {
         country: {
@@ -107,95 +108,111 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                               ^$$"                   $$$$
                                                        ""
 `, 'font-family:monospace' + JSON.stringify(response, null, '\t'))
-        // this.getStateAndCounty()
-        this.$router.push({path: 'overview'})
+        this.getStateAndCounty()
       }).catch(err => {
         console.log('searchAPIs method failed. error----> ' + err)
       })
     },
-//     getStateAndCounty () {
-//       console.log('us vote foundation vote key fired --> ' + process.env.VOTE_KEY)
-//       var state = this.$store.getters.showMeDatState
-//       var stateName = state.algoliaResponse.administrative.split(' ').join('+')
-//       var counties = state.algoliaResponse.hit.county
-//       var countyName = ''
-//       /* eslint-disable */
-//       if (counties[0].includes('County')) {
-//         countyName = counties[0].match(/^(.*?)\ County/)[1].split(' ').join('+')
-//       } else {
-//         countyName = counties[0].split(' ').join('+')
-//       }
-//       /* eslint-enable */
-//       const axiosInstance2 = axios.create({
-//         params: {
-//           state_name: stateName,
-//           county_name: countyName
-//         },
-//         headers: {
-//           'Authorization': 'OAuth ' + process.env.VOTE_KEY
-//         }
-//       })
-//       console.log('your county name ----------------------------------> ' + countyName.split('+').join(' '))
-//       axiosInstance2.get('https://localelections.usvotefoundation.org/v1/eod/regions').then(response => {
-//         console.log(`%c
-//  _
-// (_)
-//  |_________________________________________
-//  |*  *  *  *  * |##########################|
-//  | *  *  *  *  *|                          |
-//  |*  *  *  *  * |##########################|
-//  | *  *  *  *  *|                          |
-//  |*  *  *  *  * |##########################|
-//  | *  *  *  *  *|                          |
-//  |*  *  *  *  * |##########################|
-//  |~~~~~~~~~~~~~~~                          |
-//  |#########################################|
-//  |                                         |
-//  |#########################################|
-//  |                                         |
-//  |#########################################|
-//  |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//  |
-//  |
-//  |
-//  |
-//  |
-//  |`, 'font-family:monospace' + '\n' + JSON.stringify(response, null, '\t'))
-//         this.$store.commit('setEODResponse', response)
-//         this.search4Elections()
-//       }).catch(err => {
-//         console.log('your EOD API call failed. error --> ' + err)
-//       })
-//     },
-//     search4Elections () {
-//       var state = this.$store.getters.showMeDatState
-//       var stateURI = state.EODResponse.data.objects[0].state
-//       /* eslint-disable */
-//       var stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
-//       /* eslint-enable */
-//       if (stateID.length === 2) {
-//         stateID = 'S' + stateID
-//       } else {
-//         stateID = 'S0' + stateID
-//       }
-//       console.log('variable stateID is ' + stateURI)
-//       const axiosInstance = axios.create({
-//         params: {
-//           state_id: stateID
-//         },
-//         headers: {
-//           'Authorization': 'Token ' + process.env.VOTE_KEY
-//         }
-//       })
-//       console.log('the STATE ID for ' + state.EODResponse.data.objects[0].state_name + ' is: ' + stateID)
-//       axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
-//         console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response.objects, null, '\t'))
-//         this.$store.commit('setUSVoteElections', response)
-//         this.$router.push({path: 'overview'})
-//       }).catch(err => {
-//         console.log('your Elections API call failed. error --> ' + err)
-//       })
-//     },
+    getStateAndCounty () {
+      console.log('us vote foundation vote key fired --> ' + process.env.VOTE_KEY)
+      var state = this.$store.getters.showMeDatState
+      var stateName = state.algoliaResponse.administrative.split(' ').join('+')
+      var counties = state.algoliaResponse.hit.county
+      var countyName = null
+      /* eslint-disable */
+      if (counties[0].includes('County')) {
+        countyName = counties[0].match(/^(.*?)\ County/)[1].split(' ').join('+')
+      } else {
+        countyName = counties[0].split(' ').join('+')
+      }
+      /* eslint-enable */
+      const axiosInstance2 = axios.create({
+        params: {
+          state_name: stateName,
+          county_name: countyName
+        },
+        headers: {
+          'Authorization': 'OAuth ' + process.env.VOTE_KEY
+        }
+      })
+      console.log('your county name ----------------------------------> ' + countyName.split('+').join(' '))
+      axiosInstance2.get('https://localelections.usvotefoundation.org/v1/eod/regions').then(response => {
+        console.log(`%c
+ _
+(_)
+ |_________________________________________
+ |*  *  *  *  * |##########################|
+ | *  *  *  *  *|                          |
+ |*  *  *  *  * |##########################|
+ | *  *  *  *  *|                          |
+ |*  *  *  *  * |##########################|
+ | *  *  *  *  *|                          |
+ |*  *  *  *  * |##########################|
+ |~~~~~~~~~~~~~~~                          |
+ |#########################################|
+ |                                         |
+ |#########################################|
+ |                                         |
+ |#########################################|
+ |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ |
+ |
+ |
+ |
+ |
+ |`, 'font-family:monospace' + '\n' + JSON.stringify(response, null, '\t'))
+        this.$store.commit('setEODResponse', response)
+        this.search4Elections()
+      }).catch(err => {
+        console.log('your EOD API call failed. error --> ' + err)
+      })
+    },
+    search4Elections () {
+      var state = this.$store.getters.showMeDatState
+      var stateURI = state.EODResponse.data.objects[0].state
+      /* eslint-disable */
+      this.stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
+      /* eslint-enable */
+      if (this.stateID.length === 2) {
+        this.stateID = 'S' + this.stateID
+      } else {
+        this.stateID = 'S0' + this.stateID
+      }
+      console.log('variable stateID is ' + stateURI)
+      const axiosInstance = axios.create({
+        params: {
+          state_id: this.stateID
+        },
+        headers: {
+          'Authorization': 'Token ' + process.env.VOTE_KEY
+        }
+      })
+      console.log('the STATE ID for ' + state.EODResponse.data.objects[0].state_name + ' is: ' + this.stateID)
+      axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
+        console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response.objects, null, '\t'))
+        this.$store.commit('setUSVoteElections', response)
+        this.search4VoterInfo()
+      }).catch(err => {
+        console.log('your Elections API call failed. error --> ' + err)
+      })
+    },
+    search4VoterInfo () {
+      const axiosInstance3 = axios.create({
+        params: {
+          state_id: this.stateID
+        },
+        headers: {
+          'Authorization': 'Token ' + process.env.VOTE_KEY
+        }
+      })
+      axiosInstance3.get('https://localelections.usvotefoundation.org/api/v1/state_voter_information').then(response => {
+        console.log('!!!!!!!!! STATE VOTER INFORMATION, BOYO !!!!!!!!! ' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
+        this.$store.commit('setVoterInformation', response)
+        this.$router.push({path: 'overview'})
+      }).catch(err => {
+        console.log('STATE VOTER INFORMATION search FAAAAAAAAAAAAAIIIIIILLLLLLLLLLLLLLEEEDDD!!!!!!!!!' + '\n' + '\n' + '\n' + 'yer err ======> ' + err)
+      })
+    },
     getOuttaMyWay () {
       anime({
         targets: '#logoBlockSlider',

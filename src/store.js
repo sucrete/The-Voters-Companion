@@ -19,6 +19,7 @@ export const store = new Vuex.Store({
     googleResponse: {},
     EODResponse: {},
     USVoteElections: {},
+    voterInformation: {},
     holla: 'ghost!'
   },
   mutations: {
@@ -43,6 +44,10 @@ export const store = new Vuex.Store({
     setUSVoteElections (state, payload) {
       state.USVoteElections = payload
       console.log('☁ ☁ ☁ state elections within FINAL API search ☁ ☁ ☁ --> ' + JSON.stringify(payload, null, '\t'))
+    },
+    setVoterInformation (state, payload) {
+      state.voterInformation = payload
+      console.log('voter info shoved in to the STORE')
     }
   },
   actions: {
