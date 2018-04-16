@@ -2,7 +2,7 @@
 <template>
 
   <div id="landing">
-
+    <div id="verticalLine"></div>
     <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;" hidden><router-link  to="overview" >Hello component</router-link></h2>
     <!-- example of syntax needed to insert image with vue -->
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
@@ -81,7 +81,10 @@ export default {
       var state = this.$store.getters.showMeDatState
       console.log(JSON.stringify(state, null, '\t'))
       var noJoke = process.env.GOOGLE_API_KEY
-      var postcode = state.form.postcode
+      var postcode = ''
+      if (!(state.form.postcode === undefined)) {
+        postcode = state.form.postcode
+      }
       var chainedAddress = state.form.country.label + postcode
       var convertedAddress = chainedAddress.replace(', United States of America', ' ').split(' ').join('+')
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
@@ -114,7 +117,6 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       })
     },
     getStateAndCounty () {
-      console.log('us vote foundation vote key fired --> ' + process.env.VOTE_KEY)
       var state = this.$store.getters.showMeDatState
       var stateName = state.algoliaResponse.administrative.split(' ').join('+')
       var counties = state.algoliaResponse.hit.county
@@ -135,7 +137,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
           'Authorization': 'OAuth ' + process.env.VOTE_KEY
         }
       })
-      console.log('your county name ----------------------------------> ' + countyName.split('+').join(' '))
+      console.log('your county name ----------------------------------> ' + countyName.split('+').join(' ') + '\n' + 'you state name -------------------------------> ' + stateName)
       axiosInstance2.get('https://localelections.usvotefoundation.org/v1/eod/regions').then(response => {
         console.log(`%c
  _
@@ -282,6 +284,16 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 #app {
   background-color: rgb(17, 122, 63);
 }
+#verticalLine {
+  position: absolute;
+  width: inherit;
+  height: 45rem;
+  top: -.6rem;
+  border-left: 2px solid rgb(19, 136, 70);
+  left: -.8rem;
+  z-index: 30;
+
+}
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
 /* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN */
@@ -392,93 +404,9 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
   line-height: 125%;
 }
 
-#stars {
-  display: flex-start;
-  margin-bottom: -.3rem;
-  margin-left: .5rem;
-  color: #e2b951;
-  position: relative;
-  justify-content: space-between;
-}
-#starborn {
-  width: 8%;
-  height: auto;
-  display: inline-flex;
-  position: relative;
-  justify-content: space-between;
-  top: .4rem;
-  bottom: .5rem;
-  margin-left: 1.2rem;
-}
-#support {
-  font-family: 'Oswald', serif;
-  letter-spacing: .1rem;
-  font-size: 1.5rem;
-  font-style: italic;
-  display: block;
-  color: #443133;
-  margin: 1rem;
-  margin-left: 1.6rem;
-  margin-bottom: .2rem;
-}
-#info-div {
-  margin-top: 1.3rem;
-  position: relative;
-  text-align: left;
-  z-index: 99;
-  width: 41.5rem;
-  display: inline-flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-}
-
 #p-wrapper {
   display: table;
   margin-left: 1rem;
-}
-#partnership {
-  letter-spacing: .05rem;
-  width: 24.5rem;
-  border-width: 4px;
-  border-style: solid;
-  border-color: #654921;
-  color: #654921;
-  font-size: 1.7rem;
-  background-color: #e0cb92;
-  border-right-width: 2px;
-  padding-top: .5rem;
-  padding-left: 1.25rem;
-  font-family: 'Oswald', serif;
-  font-weight: 400;
-  display: table-cell;
-  -moz-box-sizing:border-box;
-  -webkit-box-sizing:border-box;
-  z-index: 80;
-}
-a#partnership-baby:visited {
-  color: inherit;
-}
-#check-div, #partnership {
-  height: 4rem;
-}
-#check-div {
-  width: 4rem;
-  border-width: 4px;
-  border-style: solid;
-  display: table-cell;
-  border-left-width: 2px;
-  border-color: #654921;
-  background-color: transparent;
-}
-#partnership-graphic {
-  z-index: 150;
-  position: absolute;
-  left: 25rem;
-  top: -2.55rem;
-  width: 17%;
-  height: auto;
-  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.59)) drop-shadow(0 10px 5px rgba(0, 0, 0, 0.15));
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.59)) drop-shadow(0 10px 5px rgba(0, 0, 0, 0.15));
 }
 
 #infobject {
@@ -507,16 +435,22 @@ a#partnership-baby:visited {
 .logoBlock {
   position: relative;
   height: 23rem;
+  left: 2rem;
   margin: 0 auto;
   /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 6;
 }
 
+.ap-input-icon {
+  right: 1.5rem;
+}
 #inputEverything {
+  margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
 }
 #address-input {
+  padding-right: .5rem;
   width: 40.5rem;
   margin: 0 auto;
   outline: none;

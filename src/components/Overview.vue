@@ -9,7 +9,7 @@
     <!-- body -->
     <div id="overviewNoticeWrapper">
       <div id="overviewNotice">
-        This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for critical gateways to your representative officals.
+        This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for gateways to your representative officals.
       </div>
       <div id="overviewNoticeWrapperArrow">
         🐕
@@ -405,6 +405,9 @@ export default {
   -webkit-transition-delay: 30ms;
           transition-delay: 30ms;
           opacity: 1;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
 }
 .engaged .detailsAddress {
   grid-column-start: 2;
@@ -608,17 +611,19 @@ export default {
 .repTitle {
   top: .25rem;
   position: relative;
+  overflow: hidden;
   word-wrap: normal;
+  text-overflow: ellipsis;
+  height: .5rem;
   width: 7rem;
   left: .55rem;
   line-height: 115%;
   font-family: 'Overlock', serif;
   font-size: 80%;
   font-weight: 400;
-  text-overflow: ellipsis;
 }
 .sectionHeader {
-  border-top: 1px solid #d1cccc;
+  margin-top: .5rem;
   color: #343434;
   font-family: 'Oranienbaum', serif;
   border-bottom: 1px solid #d1cccc;

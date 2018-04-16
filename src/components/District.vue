@@ -8,6 +8,13 @@
     </div>
     <!-- body -->
     <div class="hotBod">
+      <b-nav fill tabs>
+        <b-nav-item>General Information</b-nav-item>
+        <b-nav-item>Identification Requirements</b-nav-item>
+        <b-nav-item>Another Link</b-nav-item>
+        <b-nav-item active>Lookup Tools</b-nav-item>
+      </b-nav>
+
       <h1>district</h1>
 
       <h2>{{ msg }}</h2>
@@ -27,6 +34,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style>
+  b-nav-item:hover {
+    background-color: white;
+  }
 </style>
