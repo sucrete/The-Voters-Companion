@@ -8,26 +8,38 @@
     </div>
     <!-- body -->
     <div class="hotBod">
-      <b-nav fill tabs>
-        <b-nav-item>General Information</b-nav-item>
-        <b-nav-item>Identification Requirements</b-nav-item>
-        <b-nav-item>Another Link</b-nav-item>
-        <b-nav-item active>Lookup Tools</b-nav-item>
+      <b-nav fill tabs v-bind:class="active" v-on:click.prevent>
+        <b-nav-item class="home" v-on:click="makeActive( generalInfo )">General</b-nav-item>
+        <b-nav-item class="projects" v-on:click="makeActive( eligibility )">Eligibility</b-nav-item>
+        <b-nav-item class="services" v-on:click="makeActive( IDRequirements )">ID Requirements</b-nav-item>
+        <b-nav-item class="contact" v-on:click="makeActive( voteTools )">Voter Tools</b-nav-item>
       </b-nav>
 
-      <h1>district</h1>
+      <p id="activeBod">
+        {{ active }}
+      </p>
 
-      <h2>{{ msg }}</h2>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'district',
   data () {
     return {
-      msg: 'the message space. updated with district designation?'
+      active: 'This is your landing General Info spot',
+      generalInfo: 'This is your landing General Info spot',
+      eligibility: 'are you eligibile?',
+      IDRequirements: 'this is what you need',
+      voteTools: '<h1>Voter\'s tools.</h1><br /> Can I vote?'
+    }
+  },
+  methods: {
+    makeActive: function (item) {
+      this.active = item
+      this.classList.toggle('imBlue')
     }
   }
 }
@@ -37,5 +49,8 @@ export default {
 <style>
   b-nav-item:hover {
     background-color: white;
+  }
+  .imBlue {
+    background-color: blue;
   }
 </style>
