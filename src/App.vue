@@ -63,28 +63,32 @@ html {
   top: 1rem;
   padding-bottom: 4rem;
 }
-
+.simple-navigation-header > * {
+  display: inline-block;
+}
 .simple-navigation-header {
-  display: flex;
   color: #343434;
-  text-align: center;
-  justify-content: space-between;
-  min-width: 35em;
-  align-items: center;
+  width: 70rem;
   font-size: 125%;
   margin: 0 auto;
-  position: relative; /* Set the navbar to a fixed position */
-  background-color: #F5F4EA;
-  z-index: 5;
-}
-
-#righty, #lefty {
-  display: flex;
-}
-
-#takeMeOmh {
   position: relative;
-  bottom: 3px;
+  background-color: #F5F4EA;
+  height: 5rem;
+  z-index: 5;
+  display: inline;
+}
+
+#righty {
+  position: relative;
+  margin-left: 5rem;
+}
+#lefty {
+  position: relative;
+  margin-right: 5rem;
+}
+#takeMeOmh {
+  position: absolute;
+  left: 50%;
   font-family: 'Oranienbaum', serif;
   color: #343434;
 }
@@ -131,7 +135,7 @@ a:visited {
 }
 
 
-h1, h2 {
+h1 {
   font-size: 34px;
   font-weight: 300;
   line-height: 40px;
@@ -143,11 +147,8 @@ h2 {
   font-size: 25px;
 }
 
-p {
-  margin: 0;
-}
-
 .mui-btn {
+  width: 125px;
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
@@ -251,13 +252,6 @@ p {
   }
 }
 
-.mui-btn:disabled, .mui-btn.mui--is-disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.60;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
 
 input, input:focus {
   border: none;

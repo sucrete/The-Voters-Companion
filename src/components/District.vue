@@ -1,9 +1,9 @@
 <template>
   <div class="district">
     <!-- simple nav header -->
-    <div class="simple-navigation-header mt-2 mb-2">
+    <div class="simple-navigation-header">
       <button id="lefty" type="button" class="mui-btn"><router-link to="overview">Overview</router-link></button>
-      <a id="takeMeOmh" class="mt-1" style="display: flex;" href="/"><p>The Voter's Companion</p></a>
+      <a href="/"><p id="takeMeOmh">The Voter's Companion</p></a>
       <button id="righty" type="button" class="mui-btn"><router-link to="timeline">timeline</router-link></button>
     </div>
     <!-- body -->
@@ -17,7 +17,22 @@
 
       <p id="activeBod" v-html="active">
       </p>
-
+      <ul class="nav nav-tabs" id="myTab" role="tablist" v-bind:class="active" v-on:click.prevent>
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+      </div>
     </div>
   </div>
 </template>
