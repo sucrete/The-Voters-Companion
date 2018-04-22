@@ -2,9 +2,9 @@
   <div class="overview">
     <!-- simple nav header -->
     <div class="simple-navigation-header">
-      <button id="lefty" type="button" class="mui-btn"><router-link to="timeline">timeline</router-link></button>
+      <button id="lefty" type="button" class="mui-btn"><router-link to="Timeline">Timeline</router-link></button>
       <a href="/"><p id="takeMeOmh">The Voter's Companion</p></a>
-      <button id="righty" type="button" class="mui-btn"><router-link to="district">District</router-link></button>
+      <button id="righty" type="button" class="mui-btn"><router-link to="General">General</router-link></button>
     </div>
     <!-- body -->
     <div id="overviewNoticeWrapper">

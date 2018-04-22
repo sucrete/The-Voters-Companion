@@ -4,9 +4,9 @@
     <div class="fullwidth">
       <!-- simple nav header -->
       <div class="simple-navigation-header">
-        <button id="lefty" type="button" class="mui-btn"><router-link to="district">district</router-link></button>
+        <button id="lefty" type="button" class="mui-btn"><router-link to="General">General</router-link></button>
         <a href="/"><p id="takeMeOmh">The Voter's Companion</p></a>
-        <button id="righty" type="button" class="mui-btn"><router-link to="overview">overview</router-link></button>
+        <button id="righty" type="button" class="mui-btn"><router-link to="Overview">Overview</router-link></button>
       </div><br/>
       <!-- body -->
       <div class="hotBod">

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Overview from '@/components/Overview'
+import General from '@/components/General'
 import Timeline from '@/components/Timeline'
-import District from '@/components/District'
 import Landing from '@/components/Landing'
 
 Vue.use(Router)
@@ -21,19 +21,19 @@ export default new Router({
       component: Landing
     },
     {
-      path: '/overview',
+      path: '/Overview',
       name: 'Overview',
       component: Overview
     },
     {
-      path: '/timeline',
-      name: 'Timeline',
-      component: Timeline
+      path: '/General',
+      name: 'General',
+      component: General
     },
     {
-      path: '/district',
-      name: 'District',
-      component: District
+      path: '/Timeline',
+      name: 'Timeline',
+      component: Timeline
     }
   ]
 })
