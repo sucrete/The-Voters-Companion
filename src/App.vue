@@ -53,8 +53,12 @@ html {
   /* background-color: #E1DCDC; */
   background: #f2f2f2 url( https://cl.ly/image/381U2k0A3L3S/bg.png );
   height: 100%;
+  box-sizing: border-box;
 }
 
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 #app {
   background-color: #F5F5DC;
 }
@@ -63,42 +67,37 @@ html {
   top: 1rem;
   padding-bottom: 4rem;
 }
-.simple-navigation-header > * {
-  display: inline-block;
-}
+
 .simple-navigation-header {
   color: #343434;
-  width: 70rem;
+  width: inherit;
   font-size: 125%;
   margin: 0 auto;
   position: relative;
   background-color: #F5F4EA;
-  height: 5rem;
+  height: 4rem;
   z-index: 5;
-  display: inline;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #righty {
-  position: relative;
-  margin-left: 5rem;
+  margin: auto;
 }
 #lefty {
-  position: relative;
-  margin-right: 5rem;
+  margin:auto;
 }
 #takeMeOmh {
-  position: absolute;
-  left: 50%;
   font-family: 'Oranienbaum', serif;
   color: #343434;
 }
-
+#takeMeOmhDaddy {
+  position: relative;
+  top: .5rem;
+}
 #takeMeOmh:visited {
   color: #343434;
-}
-
-a {
-  text-decoration:none !important;
 }
 
 router-link:hover {
@@ -129,6 +128,7 @@ body {
 
 a {
   color: #3b3c36;
+  text-decoration:none !important;
 }
 a:visited {
   color: #716E10;

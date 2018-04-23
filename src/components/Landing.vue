@@ -130,8 +130,8 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       /* eslint-enable */
       const axiosInstance2 = axios.create({
         params: {
-          state_name: stateName,
-          county_name: countyName
+          state_name: stateName
+          // county_name: countyName
         },
         headers: {
           'Authorization': 'OAuth ' + process.env.VOTE_KEY
@@ -167,6 +167,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         this.search4Elections()
       }).catch(err => {
         console.log('your EOD API call failed. error --> ' + err)
+        console.log('yr EOD ===> ' + '\n' + JSON.stringify(this.$store.getters.showMeDatState.EODResponse, null, '\t'))
       })
     },
     search4Elections () {
@@ -443,6 +444,9 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 .ap-input-icon {
   right: 1.5rem;
+}
+.ap-icon-clear {
+  right: 1.75rem;
 }
 #inputEverything {
   margin-top: 2rem;

@@ -2,9 +2,9 @@
   <div class="overview">
     <!-- simple nav header -->
     <div class="simple-navigation-header">
-      <button id="lefty" type="button" class="mui-btn"><router-link to="Timeline">Timeline</router-link></button>
-      <a href="/"><p id="takeMeOmh">The Voter's Companion</p></a>
-      <button id="righty" type="button" class="mui-btn"><router-link to="General">General</router-link></button>
+      <button id="lefty" type="button" class="mui-btn"><router-link to="timeline">Timeline</router-link></button>
+      <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">The Voter's Companion</p></a>
+      <button id="righty" type="button" class="mui-btn"><router-link to="general">General</router-link></button>
     </div>
     <!-- body -->
     <div id="overviewNoticeWrapper">
@@ -575,7 +575,7 @@ export default {
   width: 32rem;
   cursor: default;
   z-index: 800;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 8px rgba(0,0,0,0.18);
+  box-shadow: 0px 5px 10px 0 rgba(119, 105, 17, 0.35), 0px 15px 20px 0px rgba(81, 89, 138, 0.2);
   background-color: #fff;
 }
 

@@ -39,11 +39,9 @@ export const store = new Vuex.Store({
     },
     setEODResponse (state, payload) {
       state.EODResponse = payload
-      console.log('▼▼▼▼▼ EODResponse mutated state ▼▼▼▼▼ EODResponse mutated state ▼▼▼▼▼ EODResponse mutated state ▼▼▼▼▼' + '\n' + 'here it is:' + '\n' + '\n' + JSON.stringify(payload.data.objects[0], null, '\t'))
     },
     setUSVoteElections (state, payload) {
       state.USVoteElections = payload
-      console.log('☁ ☁ ☁ state elections within FINAL API search ☁ ☁ ☁ --> ' + JSON.stringify(payload, null, '\t'))
     },
     setVoterInformation (state, payload) {
       state.voterInformation = payload
@@ -55,7 +53,6 @@ export const store = new Vuex.Store({
   },
   getters: {
     showMeDatState: state => {
-      console.log(state.form.country.label + ' --- (from the STORE)')
       var bb = state
       return bb
     },
@@ -72,6 +69,9 @@ export const store = new Vuex.Store({
     },
     getElections: state => {
       return state.USVoteElections
+    },
+    getVoterInfo: state => {
+      return state.voterInformation
     }
   }
 })

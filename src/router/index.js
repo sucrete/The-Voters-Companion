@@ -21,17 +21,17 @@ export default new Router({
       component: Landing
     },
     {
-      path: '/Overview',
+      path: '/overview',
       name: 'Overview',
       component: Overview
     },
     {
-      path: '/General',
+      path: '/general',
       name: 'General',
       component: General
     },
     {
-      path: '/Timeline',
+      path: '/timeline',
       name: 'Timeline',
       component: Timeline
     }

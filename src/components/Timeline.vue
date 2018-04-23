@@ -5,7 +5,7 @@
       <!-- simple nav header -->
       <div class="simple-navigation-header">
         <button id="lefty" type="button" class="mui-btn"><router-link to="General">General</router-link></button>
-        <a href="/"><p id="takeMeOmh">The Voter's Companion</p></a>
+        <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">The Voter's Companion</p></a>
         <button id="righty" type="button" class="mui-btn"><router-link to="Overview">Overview</router-link></button>
       </div><br/>
       <!-- body -->
@@ -600,6 +600,7 @@ li.timeline-item:nth-child(odd) {
 li.timeline-content:nth-child(even) {
   background: #fff !important;
 }
+
 </style>
 
 <!-- alert.vue -->
