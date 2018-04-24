@@ -16,13 +16,13 @@
       </nav>
 
       <p id="activeBod" v-html="active">  </p>
-      <p id="activeBod" > {{ active }} </p>
+
     </div>
   </div>
 </template>
 
 <script>
-
+import showdown from 'showdown'
 export default {
   name: 'district',
   data () {
@@ -43,7 +43,27 @@ export default {
     },
     fillItUp () {
       var voterInfo = this.$store.getters.getVoterInfo.data
-      this.generalInfo = voterInfo.objects[0].voting_general_info
+      var voterGenInfo = this.convertNewLines(voterInfo.objects[0].voting_general_info)
+
+      this.active = voterGenInfo
+      var voterEligibility = ''
+      voterInfo.objects[0].eligibility_requirements.forEach(headly => {
+        voterEligibility += '<h6>' + headly.header + '</h6>'
+        headly.items.forEach(itemys => {
+          voterEligibility += '<p>- ' + itemys.item.name + '</p>'
+        })
+        if (headly.hasOwnProperty('footer')) {
+          voterEligibility += '<p><em>' + headly.footer + '</em></p>'
+        }
+        voterEligibility += '<hr />'
+      })
+      this.eligibility = voterEligibility
+      var converty = new showdown.Converter()
+      this.generalInfo = converty.makeHTML(voterGenInfo)
+    },
+    convertNewLines (str) {
+      var flippedstring = str.split('\r\n').join('<br />')
+      return flippedstring
     }
   },
   mounted () {
@@ -77,6 +97,7 @@ nav {
   cursor: pointer;
 }
 .tabButton {
+  color: #62624c;
   background-color: #f5f4ea;
   border-top-right-radius: 2px;
   border-top-left-radius: 2px;
@@ -85,13 +106,14 @@ nav {
   padding-right: 1rem;
   margin-left: .5rem;
   outline: none;
-  transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
   border-bottom: none;
   border: none;
   cursor: pointer;
 }
 
 .tabButton:focus {
+  color: #353535;
   outline: 0;
   background-color: #f5f4ea;
   background-image: -webkit-linear-gradient(to bottom, #f5f4ea, #FFFFFF);
@@ -102,6 +124,7 @@ nav {
 }
 
 .tabButton:active {
+    color: #353535;
     background-color: #fff;
     background-image: -webkit-linear-gradient(to bottom, #f5f4ea, #FFFFFF);
     background-image: -moz-linear-gradient(top, #f5f4ea, #FFFFFF);
@@ -110,6 +133,7 @@ nav {
     background-image: linear-gradient(to bottom, #f5f4ea, #FFFFFF);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#D3D3D3, endColorstr=#FFFFFF);
 }
 .tabButton:hover {
+  color: #353535;
   background-color: #f5f4ea;
 background-image: -webkit-linear-gradient(to bottom, #f5f4ea, #f5f4ea, #ffffff);
 background-image: -moz-linear-gradient(top, #f5f4ea, #f5f4ea, #ffffff);
