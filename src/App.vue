@@ -60,12 +60,13 @@ html {
   box-sizing: inherit;
 }
 #app {
-  background-color: #F5F5DC;
+  background-color: #F5F4EA;
 }
+
 .hotBod {
   position: relative;
   top: 1rem;
-  padding-bottom: 4rem;
+  padding-bottom: 1rem;
 }
 
 .simple-navigation-header {

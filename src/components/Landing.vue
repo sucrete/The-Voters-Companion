@@ -79,7 +79,6 @@ export default {
     // need any of these interpolated vars? { state, commit, dispatch }
     searchAPIs () {
       var state = this.$store.getters.showMeDatState
-      console.log(JSON.stringify(state, null, '\t'))
       var noJoke = process.env.GOOGLE_API_KEY
       var postcode = ''
       if (!(state.form.postcode === undefined)) {
@@ -90,27 +89,27 @@ export default {
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
-        console.log(`%c
-          ..
-* * * * * * * * * * $$$$$$$$$$$$$$$$$$$$                 .$$$$.
- * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$.          .$$$$$
-* * * * * * * * * * ::::::::::::::::::::::::::.      .::::::::'
- * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$$$$    $$$$$$$$F
-* * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$d$$$$$$$"
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
-  ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-  ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    ":::::::::::::::::::::::::::::::::::::::::::::::"
-      ""$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$P
-                    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$L
-                        ;; ;::::::::::::::::;;    ;;:::.
-                             $$$$$$"     ""         $$$$$;   Donna Shepherd
-                              ^$$"                   $$$$
-                                                       ""
-`, 'font-family:monospace' + JSON.stringify(response, null, '\t'))
+//         console.log(`%c
+//           ..
+// * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$                 .$$$$.
+//  * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$.          .$$$$$
+// * * * * * * * * * * ::::::::::::::::::::::::::.      .::::::::'
+//  * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$$$$    $$$$$$$$F
+// * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$d$$$$$$$"
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
+//   ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+//   ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//     ":::::::::::::::::::::::::::::::::::::::::::::::"
+//       ""$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$P
+//                     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$L
+//                         ;; ;::::::::::::::::;;    ;;:::.
+//                              $$$$$$"     ""         $$$$$;   Donna Shepherd
+//                               ^$$"                   $$$$
+//                                                        ""
+// `, 'font-family:monospace' + JSON.stringify(response, null, '\t'))
         this.getStateAndCounty()
       }).catch(err => {
         console.log('searchAPIs method failed. error----> ' + err)
@@ -120,8 +119,8 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       var state = this.$store.getters.showMeDatState
       var stateName = state.algoliaResponse.administrative.split(' ').join('+')
       var counties = state.algoliaResponse.hit.county
-      var countyName = null
       /* eslint-disable */
+      var countyName = null
       if (counties[0].includes('County')) {
         countyName = counties[0].match(/^(.*?)\ County/)[1].split(' ').join('+')
       } else {
@@ -137,37 +136,35 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
           'Authorization': 'OAuth ' + process.env.VOTE_KEY
         }
       })
-      console.log('your county name ----------------------------------> ' + countyName.split('+').join(' ') + '\n' + 'you state name -------------------------------> ' + stateName)
       axiosInstance2.get('https://localelections.usvotefoundation.org/v1/eod/regions').then(response => {
-        console.log(`%c
- _
-(_)
- |_________________________________________
- |*  *  *  *  * |##########################|
- | *  *  *  *  *|                          |
- |*  *  *  *  * |##########################|
- | *  *  *  *  *|                          |
- |*  *  *  *  * |##########################|
- | *  *  *  *  *|                          |
- |*  *  *  *  * |##########################|
- |~~~~~~~~~~~~~~~                          |
- |#########################################|
- |                                         |
- |#########################################|
- |                                         |
- |#########################################|
- |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- |
- |
- |
- |
- |
- |`, 'font-family:monospace' + '\n' + JSON.stringify(response, null, '\t'))
+//         console.log(`%c
+//  _
+// (_)
+//  |_________________________________________
+//  |*  *  *  *  * |##########################|
+//  | *  *  *  *  *|                          |
+//  |*  *  *  *  * |##########################|
+//  | *  *  *  *  *|                          |
+//  |*  *  *  *  * |##########################|
+//  | *  *  *  *  *|                          |
+//  |*  *  *  *  * |##########################|
+//  |~~~~~~~~~~~~~~~                          |
+//  |#########################################|
+//  |                                         |
+//  |#########################################|
+//  |                                         |
+//  |#########################################|
+//  |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//  |
+//  |
+//  |
+//  |
+//  |
+//  |`, 'font-family:monospace' + '\n' + JSON.stringify(response, null, '\t'))
         this.$store.commit('setEODResponse', response)
         this.search4Elections()
       }).catch(err => {
         console.log('your EOD API call failed. error --> ' + err)
-        console.log('yr EOD ===> ' + '\n' + JSON.stringify(this.$store.getters.showMeDatState.EODResponse, null, '\t'))
       })
     },
     search4Elections () {
@@ -181,7 +178,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       } else {
         this.stateID = 'S0' + this.stateID
       }
-      console.log('variable stateID is ' + stateURI)
+
       const axiosInstance = axios.create({
         params: {
           state_id: this.stateID
@@ -190,9 +187,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
           'Authorization': 'Token ' + process.env.VOTE_KEY
         }
       })
-      console.log('the STATE ID for ' + state.EODResponse.data.objects[0].state_name + ' is: ' + this.stateID)
       axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
-        console.log('▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼ YOUR ELECTIONS RESPONSE ▼▼▼▼▼' + '\n' + '\n' + '\n' + JSON.stringify(response.objects, null, '\t'))
         this.$store.commit('setUSVoteElections', response)
         this.search4VoterInfo()
       }).catch(err => {

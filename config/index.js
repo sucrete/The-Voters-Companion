@@ -4,6 +4,9 @@ const Dotenv = require('dotenv-webpack')
 const showdown = require('showdown')
 
 module.exports = {
+  module: {
+
+  },
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
@@ -39,6 +42,5 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    new showdown()
   ]
 }
