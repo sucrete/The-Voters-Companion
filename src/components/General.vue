@@ -98,8 +98,6 @@ export default {
 
 <style >
 
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
-
 #activeBod {
   background-color: WHITE;
   border-radius: 3px;
@@ -108,7 +106,7 @@ export default {
   text-align: left;
   z-index: 5;
   position: relative;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
   color: #353839;
 }
 #activeBod > h1, h1 > * {
@@ -145,10 +143,6 @@ export default {
 .VTName {
   width: 30rem;
 }
-
-.VTRow:nth-child(even) {
-  background-color: #c6d4ce;
-}
 .VTTable {
   width: 40rem;
   margin: 0 auto;
@@ -159,7 +153,8 @@ export default {
 }
 .VTCell {
   padding: .75rem;
-  border: 1px solid white;
+  border: 2px solid white;
+  background-color: #c6d4ce;
 }
 h2 > a {
   -webkit-transition: all 0.1s linear;
@@ -254,7 +249,8 @@ nav {
   cursor: pointer;
 }
 .tabButton {
-  font-family: 'Gudea', sans-serif;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 500;
   color: #62624c;
   background-color: #f5f4ea;
   border-top-right-radius: 2px;

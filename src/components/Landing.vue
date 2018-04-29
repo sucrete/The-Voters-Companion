@@ -19,7 +19,7 @@
         <div class="image">
           <img style="height: 50px; width: auto; " :src=" lightYellowStar " >
         </div>
-        <span style="font-family: Oswald;"> Loading... </span>
+        <span style="font-family: Francois One;"> Loading... </span>
       </div>
     </modal>
   </div>

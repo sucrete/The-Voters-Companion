@@ -11,9 +11,6 @@
       <div id="overviewNotice">
         This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for gateways to your representative officals.
       </div>
-      <div id="overviewNoticeWrapperArrow">
-        🐕
-      </div>
     </div>
     <div id="dimScreen"></div>
     <div class="hotBod">
@@ -342,11 +339,7 @@ export default {
 </script>
 
 <style >
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
 
-/* much of the expandable repCard UI gleaned from a design by Nathan Taylor https://codepen.io/nathantaylor/pen/qRmWeW */
-#overviewBody {
-}
 
 #dimScreen {
   position:fixed;
@@ -370,7 +363,7 @@ export default {
 .repCard .gridContainer {
 }
 .gridContainer {
-  font-family: 'Overlock', serif;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
   text-align: left;
   z-index: 5;
   top: .5rem;
@@ -388,9 +381,9 @@ export default {
 
 .engaged .detailsName {
   grid-column-start: 2;
-  font-weight: bold;
   grid-column-end: 3;
   font-size: 115%;
+  font-weight: 500;
   border-bottom: 1px solid #d1cccc;
   opacity: 1;
   -webkit-transition-delay: 0ms;
@@ -519,7 +512,7 @@ export default {
 }
 .tableWrapper {
   position: relative;
-  top: -.7rem;
+  top: -.65rem;
   -webkit-transition: opacity 70ms cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: opacity 70ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -527,6 +520,7 @@ export default {
   opacity: 0;
 }
 .repCard {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
   width: inherit;
   height: inherit;
   cursor: pointer;
@@ -603,7 +597,6 @@ export default {
   width: 7rem;
   margin-left: .75rem;
   position: relative;
-  font-family: 'Overlock', serif;
   line-height: 115%;
   font-weight: 700;
   font-size: 80%;
@@ -618,14 +611,13 @@ export default {
   width: 7rem;
   left: .55rem;
   line-height: 115%;
-  font-family: 'Overlock', serif;
   font-size: 80%;
   font-weight: 400;
 }
 .sectionHeader {
   margin-top: .5rem;
   color: #343434;
-  font-family: 'Oranienbaum', serif;
+  font-family: 'IBM Plex Serif', serif;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   position: relative;
@@ -639,6 +631,8 @@ export default {
   width: 20rem;
   text-align: left;
   line-height: 140%;
+  height: 20rem;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
 }
 #overviewNoticeWrapper {
   background-color: #E3E3E3;
@@ -648,21 +642,6 @@ export default {
   padding-bottom: 1rem;
   position: relative;
   margin-bottom: -.99rem;
-}
-#overviewNoticeWrapperArrow {
-  border-radius: 100%;
-  font-size: 180%;
-  text-align: center;
-  width: 3rem;
-  height: 3rem;
-  vertical-align: middle;
-  position: absolute;
-  color: white;
-  background-color: #9c9a9a;
-  z-index: 5;
-  bottom: -1.5rem;
-  left: calc(50% - 1.5rem);
-  padding-top: .4rem;
 }
 
 #app {

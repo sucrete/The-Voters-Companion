@@ -45,9 +45,8 @@ export default {
 
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Oranienbaum');
-@import url('https://fonts.googleapis.com/css?family=Oswald:500,600');
 
+@import url('https://fonts.googleapis.com/css?family=Francois+One|IBM+Plex+Sans+Condensed:400,500,600|IBM+Plex+Serif');
 
 html {
   /* background-color: #E1DCDC; */
@@ -61,6 +60,7 @@ html {
 }
 #app {
   background-color: #F5F4EA;
+  border-radius: 2px;
 }
 
 .hotBod {
@@ -70,12 +70,12 @@ html {
 }
 
 .simple-navigation-header {
-  color: #343434;
+  color: #353839;
   width: inherit;
-  font-size: 125%;
+  font-size: 105%;
   margin: 0 auto;
   position: relative;
-  background-color: #F5F4EA;
+  background-color: transparent;
   height: 4rem;
   z-index: 5;
   display: flex;
@@ -90,15 +90,15 @@ html {
   margin:auto;
 }
 #takeMeOmh {
-  font-family: 'Oranienbaum', serif;
-  color: #343434;
+  font-family: 'Francois One', sans-serif;
+  font-size: 115%;
 }
 #takeMeOmhDaddy {
   position: relative;
-  top: .5rem;
+  top: .25rem;
 }
 #takeMeOmh:visited {
-  color: #343434;
+  color: #353839;
 }
 
 router-link:hover {
