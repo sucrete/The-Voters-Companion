@@ -342,7 +342,7 @@ export default {
 </script>
 
 <style >
-@import url('https://fonts.googleapis.com/css?family=Overlock:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
 
 /* much of the expandable repCard UI gleaned from a design by Nathan Taylor https://codepen.io/nathantaylor/pen/qRmWeW */
 #overviewBody {

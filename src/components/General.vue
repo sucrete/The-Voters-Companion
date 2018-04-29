@@ -98,6 +98,8 @@ export default {
 
 <style >
 
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
+
 #activeBod {
   background-color: WHITE;
   border-radius: 3px;
@@ -106,6 +108,8 @@ export default {
   text-align: left;
   z-index: 5;
   position: relative;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #353839;
 }
 #activeBod > h1, h1 > * {
   margin-bottom: 0.5rem;
@@ -123,7 +127,6 @@ export default {
   font-family: inherit;
   font-weight: 500;
   line-height: 120%;
-  color: #771F1F;
   font-size: 1rem;
 }
 #activeBod > p {
@@ -133,7 +136,6 @@ export default {
 }
 #activeBod > li {
   list-style-type: none;
-  color: #4a86e8;
 }
 .VTURL {
   white-space: nowrap;
@@ -252,13 +254,14 @@ nav {
   cursor: pointer;
 }
 .tabButton {
+  font-family: 'Gudea', sans-serif;
   color: #62624c;
   background-color: #f5f4ea;
   border-top-right-radius: 2px;
   border-top-left-radius: 2px;
   padding: .5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   margin-left: .5rem;
   outline: none;
   transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -303,11 +306,9 @@ ul {
   list-style-type: none;
 }
 #activeBod ul > li {
-  color: #4a86e8;
   text-indent: -5px;
 }
 #activeBod ul > li:before {
-  color: #4a86e8;
   content: "- ";
   text-indent: -5px;
 }
@@ -315,7 +316,6 @@ ul {
   margin-bottom: .75rem;
 }
 h2, h6 {
-  color: #771F1F;
   line-height: 120%;
 }
 
