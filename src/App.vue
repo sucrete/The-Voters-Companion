@@ -97,9 +97,7 @@ html {
   position: relative;
   top: .25rem;
 }
-#takeMeOmh:visited {
-  color: #353839;
-}
+
 
 router-link:hover {
   text-decoration: none !important;
@@ -131,7 +129,7 @@ a {
   color: #3b3c36;
   text-decoration:none !important;
 }
-a:visited {
+a:visited:not(#takeMeOmh) {
   color: #716E10;
 }
 
@@ -257,5 +255,8 @@ h2 {
 input, input:focus {
   border: none;
   outline: none;
+}
+#takeMeOmh:visited, #takeMeOmhDaddy:visited {
+  color: #353839 !important;
 }
 </style>

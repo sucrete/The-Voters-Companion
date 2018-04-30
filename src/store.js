@@ -42,6 +42,7 @@ export const store = new Vuex.Store({
     },
     setUSVoteElections (state, payload) {
       state.USVoteElections = payload
+      console.log('elections >>>>>>>>>>>>>>' + '\n' + JSON.stringify(payload, null, '\t'))
     },
     setVoterInformation (state, payload) {
       state.voterInformation = payload

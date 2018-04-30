@@ -10,14 +10,18 @@
       </div><br/>
       <!-- body -->
       <div class="hotBod">
-        <div>
-          {{ displayElections }}
-        </div>
+
+        <p id="timelineBod" v-html="timelineHTML">  </p>
+
+        <hr />
+
         <div id="yourTimeline">
           <ul style="width: 650px;" class="timeline">
+
             <li class="timeline-header">
               <span class="tag is-medium is-primary">Future</span>
             </li>
+
             <li class="timeline-item is-primary">
               <div class="timeline-marker is-primary"></div>
               <div class="timeline-content">
@@ -26,20 +30,17 @@
                 </p>
               </div>
             </li>
+
             <li class="timeline-item is-primary">
-              <div class="timeline-marker is-image is-primary is-icon">
-              </div>
+              <div class="timeline-marker is-primary"></div>
               <div class="timeline-content">
                 <p class="heading">February 2016</p>
                 <p class="timeline-item-content"> IS-WARNING = YELLOW? - Can include any HTML element</p>
               </div>
             </li>
+
             <li class="timeline-item is-past">
-              <div class="timeline-marker is-past">
-                <span class="icon has-text-success">
-                  <i class="fa fa-check-square"></i>
-                </span>
-              </div>
+              <div class="timeline-marker is-past"></div>
               <div class="timeline-content">
                 <p class="heading">March 2017</p>
                 <p class="timeline-item-content">is-past = RED? - Can include any HTML element</p>
@@ -70,14 +71,32 @@
 
 export default {
   name: 'timeline',
-  methods: {
-
-  },
-  computed: {
-    displayElections () {
-      var heyLookAtMe = JSON.stringify(this.$store.getters.getElections, null, '\t')
-      return heyLookAtMe
+  data () {
+    return {
+      whatAPrimaryIs: ''
     }
+  },
+  methods: {
+    timeToVoteGuys () {
+      var electionsInfo = this.$store.getters.getElections.data.objects
+      var electionsInfoSorted = electionsInfo.sort(this.sorter)
+      console.log('SORTED ELECTIONS ' + '\n' + '\n' + JSON.stringify(electionsInfoSorted, null, '\t'))
+    },
+    sorter (a, b) {
+      const obj1 = a.election_date
+      const obj2 = b.election_date
+
+      let comparison = 0
+      if (obj1 > obj2) {
+        comparison = 1
+      } else if (obj1 < obj2) {
+        comparison = -1
+      }
+      return comparison
+    }
+  },
+  mounted () {
+    this.timeToVoteGuys()
   }
 }
 
@@ -89,11 +108,15 @@ export default {
   background-color: #F5F4EA;
 }
 
-.hotBod {
+#timelineBod:not(.heading), #yourTimeline:not(.heading) {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 400;
+  color: #353839;
 }
 
 .tag {
   background-color: #33825e !important;
+  font-weight: 500;
 }
 
 .tag-past {
@@ -102,12 +125,6 @@ export default {
 
 #yourTimeline {
   position: relative;
-}
-
-#takeMeOmh {
-  justify-content: center;
-  position: relative;
-  left: 5px;
 }
 
 .timeline-item-content {
