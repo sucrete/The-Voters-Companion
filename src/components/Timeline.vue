@@ -11,7 +11,7 @@
       <!-- body -->
       <div class="hotBod">
 
-        <p id="timelineBod" v-html="timelineHTML">  </p>
+        <div id="timelineBod" v-html="timelineHTML">  </div>
 
         <hr />
 
@@ -46,6 +46,7 @@
                 <p class="timeline-item-content">is-past = RED? - Can include any HTML element</p>
               </div>
             </li>
+
             <li class="timeline-item is-past">
               <div class="timeline-marker is-past">
                 <span class="icon has-text-success">
@@ -54,7 +55,7 @@
               </div>
               <div class="timeline-content">
                 <p class="heading">March 2017</p>
-                <p class="timeline-item-content">more lorem => simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+                <p class="timeline-item-content">more and more lorem </p>
               </div>
             </li>
             <li class="timeline-header">
@@ -68,12 +69,14 @@
 </template>
 
 <script>
+var hdate = require('human-date')
 
 export default {
   name: 'timeline',
   data () {
     return {
-      whatAPrimaryIs: ''
+      whatAPrimaryIs: '',
+      timelineHTML: ''
     }
   },
   methods: {
@@ -81,6 +84,19 @@ export default {
       var electionsInfo = this.$store.getters.getElections.data.objects
       var electionsInfoSorted = electionsInfo.sort(this.sorter)
       console.log('SORTED ELECTIONS ' + '\n' + '\n' + JSON.stringify(electionsInfoSorted, null, '\t'))
+      console.log('come now... ' + '\n' + this.getDate())
+      var todayHTML = '<li class="timeline-header"><span class="tag is-medium is-primary">Today</span></li>'
+      var futureTagHTML = '<li class="timeline-header"><span class="tag is-medium is-primary">Future</span></li>'
+      var timelineBitsBetweenNowAndLater = ''
+      electionsInfoSorted.forEach(tally => {
+        let timelineBit
+        var electionDate = hdate.prettyPrint(tally.election_date)
+        var timelineBitHeading = '<p class="heading">' + electionDate + '</p>'
+        var timelineBitContent = '<p class="timeline-item-content">more and more lorem </p>'
+        timelineBit = '<li class="timeline-item is-primary"><div class="timeline-marker is-primary"></div><div class="timeline-content">' + timelineBitHeading + timelineBitContent + '</div></li>'
+        timelineBitsBetweenNowAndLater += timelineBit
+      })
+      this.timelineHTML = '<ul style="width: 650px;" class="timeline">' + todayHTML + timelineBitsBetweenNowAndLater + futureTagHTML + '</ul>'
     },
     sorter (a, b) {
       const obj1 = a.election_date
@@ -93,6 +109,18 @@ export default {
         comparison = -1
       }
       return comparison
+    },
+    getDate () {
+      // js for getDate() from https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
+      var objToday = new Date()
+      var weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      var dayOfWeek = weekday[objToday.getDay()]
+      var dayOfMonth = today + (objToday.getDate() < 10) ? '0' + objToday.getDate() : objToday.getDate()
+      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      var curMonth = months[objToday.getMonth()]
+      var curYear = objToday.getFullYear()
+      var today = dayOfWeek + ' ' + dayOfMonth + ' of ' + curMonth + ', ' + curYear
+      return today
     }
   },
   mounted () {
