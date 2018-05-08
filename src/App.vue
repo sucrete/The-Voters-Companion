@@ -68,7 +68,32 @@ html {
   top: 1rem;
   padding-bottom: 1rem;
 }
-
+#overviewNotice {
+  color: rgb(113, 106, 56);
+  font-size: 130%;
+  width: 20rem;
+  text-align: left;
+  line-height: 140%;
+  height: 20rem;
+  padding-left: .5rem;
+}
+#overviewNoticeWrapper {
+  background-color: #E5E5E5;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  position: relative;
+  margin-bottom: -.99rem;
+  border-radius: 3px;
+}
+#overviewMarquee {
+  font-size: 350%;
+  color: #353839;
+  font-weight: 600;
+  text-align: left;
+}
 .simple-navigation-header {
   color: #353839;
   width: inherit;
@@ -92,6 +117,10 @@ html {
 #takeMeOmh {
   font-family: 'Francois One', sans-serif;
   font-size: 115%;
+  color: #4b5052;
+}
+#takeMeOmh:hover {
+  color: #353839;
 }
 #takeMeOmhDaddy {
   position: relative;

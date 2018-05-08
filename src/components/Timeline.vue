@@ -7,9 +7,21 @@
         <button id="lefty" type="button" class="mui-btn"><router-link to="General">General</router-link></button>
         <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">The Voter's Companion</p></a>
         <button id="righty" type="button" class="mui-btn"><router-link to="Overview">Overview</router-link></button>
-      </div><br/>
+      </div>
+
+      <div id="overviewNoticeWrapper">
+        <div id="overviewMarquee">
+          Timeline
+        </div>
+        <div id="overviewNotice">
+          This page is devoted to your elections.
+        </div>
+      </div>
       <!-- body -->
       <div class="hotBod">
+
+
+        <br />
 
         <div id="timelineBod" v-html="timelineHTML">  </div>
 
@@ -92,6 +104,8 @@ export default {
         let timelineBit
         var electionDate = hdate.prettyPrint(tally.election_date)
         var timelineBitHeading = '<p class="heading">' + electionDate + '</p>'
+        // var votableContentGrid
+        // var votableHeader = '<div class="votableHeader">' +  + '</div>'
         var timelineBitContent = '<p class="timeline-item-content">more and more lorem </p>'
         timelineBit = '<li class="timeline-item is-primary"><div class="timeline-marker is-primary"></div><div class="timeline-content">' + timelineBitHeading + timelineBitContent + '</div></li>'
         timelineBitsBetweenNowAndLater += timelineBit
@@ -141,7 +155,9 @@ export default {
   font-weight: 400;
   color: #353839;
 }
-
+#timelineBod {
+  top: auto;
+}
 .tag {
   background-color: #33825e !important;
   font-weight: 500;

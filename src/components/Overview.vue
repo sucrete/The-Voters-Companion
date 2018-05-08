@@ -625,24 +625,6 @@ export default {
   padding-left: 2rem;
   margin-bottom: .5rem;
 }
-#overviewNotice {
-  color: #343434;
-  font-size: 115%;
-  width: 20rem;
-  text-align: left;
-  line-height: 140%;
-  height: 20rem;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-}
-#overviewNoticeWrapper {
-  background-color: #E3E3E3;
-  width: 100%;
-  padding-left: 1.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  position: relative;
-  margin-bottom: -.99rem;
-}
 
 #app {
   background-color: #F5F4EA;
