@@ -74,14 +74,14 @@ html {
   width: 20rem;
   text-align: left;
   line-height: 140%;
-  height: 20rem;
+  height: 12rem;
   padding-left: .5rem;
 }
 #overviewNoticeWrapper {
   background-color: #E5E5E5;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   width: 100%;
-  padding-left: 1.5rem;
+  padding-left: 1.75rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   position: relative;
@@ -117,7 +117,8 @@ html {
 #takeMeOmh {
   font-family: 'Francois One', sans-serif;
   font-size: 115%;
-  color: #4b5052;
+  color: #867933;
+  transition: color 250ms ease-in-out;
 }
 #takeMeOmh:hover {
   color: #353839;

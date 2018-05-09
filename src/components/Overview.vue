@@ -8,11 +8,16 @@
     </div>
     <!-- body -->
     <div id="overviewNoticeWrapper">
+      <div id="overviewMarquee">
+        Officials
+      </div>
       <div id="overviewNotice">
         This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for gateways to your representative officals.
       </div>
     </div>
+
     <div id="dimScreen"></div>
+
     <div class="hotBod">
       <div id="overviewBody" style="">
 <!--

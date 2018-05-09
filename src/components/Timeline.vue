@@ -102,11 +102,48 @@ export default {
       var timelineBitsBetweenNowAndLater = ''
       electionsInfoSorted.forEach(tally => {
         let timelineBit
-        var electionDate = hdate.prettyPrint(tally.election_date)
-        var timelineBitHeading = '<p class="heading">' + electionDate + '</p>'
-        // var votableContentGrid
-        // var votableHeader = '<div class="votableHeader">' +  + '</div>'
-        var timelineBitContent = '<p class="timeline-item-content">more and more lorem </p>'
+        var electionDate = tally.election_date.split('-')
+        electionDate.push(electionDate.shift())
+        electionDate.join('/')
+        var prettyElectionDate = hdate.prettyPrint(electionDate)
+        var timelineBitHeading = '<p class="heading">' + prettyElectionDate + '</p>'
+        var votableContentGrid
+        var votableHeader = '<div class="votableHeader">' + tally.title + '</div>'
+        var allNewVoterRegistrationDates
+        var allAbsenteeBallotReturnDates
+        var allAbsenteeBallotRequestDates
+        var inPersonAbsenteeVotingToFrom = 'none on record'
+        var earlyVotingToFrom = 'none on record'
+        tally.dates.forEach(booger => {
+          if (booger.kind === 'DRD') {
+            allNewVoterRegistrationDates += '<p class="votingDates">' + booger.date_human_readable + '</p>'
+          } else if (booger.kind === 'DBED') {
+            allAbsenteeBallotReturnDates += '<p class="votingDates">' + booger.date_human_readable + '</p>'
+          } else if (booger.kind === 'DBRD') {
+            var boogerNameDBRD
+            if (!(booger.date_type.name === 'Blank - (Date Only - No Descriptive Label)')) {
+              boogerNameDBRD = booger.date_type.name
+              allAbsenteeBallotRequestDates += '<p class="votingDates">' + boogerNameDBRD + ' ' + hdate.prettyPrint(booger.date) + '</p>'
+            } else {
+              allAbsenteeBallotRequestDates += '<p class="votingDates">' + hdate.prettyPrint(booger.date) + '</p>'
+            }
+          } else if (booger.kind === 'AVF') {
+            inPersonAbsenteeVotingToFrom = booger.date_human_readable
+          } else if (booger.kind === 'AVT') {
+            inPersonAbsenteeVotingToFrom += ' - ' + booger.date_human_readable
+          } else if (booger.kind === 'EVF') {
+            earlyVotingToFrom = booger.date_human_readable
+          } else if (booger.kind === 'EVT') {
+            earlyVotingToFrom += ' - ' + booger.date_human_readable
+          }
+        })
+        var newVoterRegistration = '<div class="votingType">New Voter Registration</div><div class=votingValue>' + allNewVoterRegistrationDates + '</div>'
+        var absenteeBallotReturn = '<div class="votingType">Absentee Ballot Return</div><div class=votingValue>' + allAbsenteeBallotReturnDates + '</div>'
+        var absenteeBallotRequest = '<div class="votingType">Absentee Ballot Request</div><div class=votingValue>' + allAbsenteeBallotRequestDates + '</div>'
+        var inPersonAbsenteeVoting = '<div class="votingType">In-Person Absentee Voting</div><div class=votingValue>' + inPersonAbsenteeVotingToFrom + '</div>'
+        var earlyVoting = '<div class="votingType">Early Voting</div><div class=votingValue>' + earlyVotingToFrom + '</div>'
+        votableContentGrid = newVoterRegistration + absenteeBallotRequest + absenteeBallotReturn + inPersonAbsenteeVoting + earlyVoting
+        var timelineBitContent = '<p class="timeline-item-content">' + votableHeader + votableContentGrid + '</p>'
         timelineBit = '<li class="timeline-item is-primary"><div class="timeline-marker is-primary"></div><div class="timeline-content">' + timelineBitHeading + timelineBitContent + '</div></li>'
         timelineBitsBetweenNowAndLater += timelineBit
       })
@@ -149,7 +186,14 @@ export default {
 #app {
   background-color: #F5F4EA;
 }
-
+.votingType {
+  font-weight: 500;
+  text-align: left;
+}
+.votableHeader {
+  text-align: left;
+  margin-top: -.75rem;
+}
 #timelineBod:not(.heading), #yourTimeline:not(.heading) {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 400;
@@ -157,6 +201,7 @@ export default {
 }
 #timelineBod {
   top: auto;
+  margin-left: .75rem;
 }
 .tag {
   background-color: #33825e !important;
@@ -186,6 +231,9 @@ p {
   margin-bottom: 5px;
   text-transform: uppercase;
   font-weight: lighter;
+  position: relative;
+  top: 2px;
+
 }
 
 .timeline .timeline-header {
@@ -202,6 +250,10 @@ p {
     padding-bottom: 2em
 }
 
+.votableHeader {
+  font-size: 120%;
+  font-weight: 500;
+}
 .timeline .timeline-item .timeline-marker {
     position: absolute;
     background: #dbdbdb;

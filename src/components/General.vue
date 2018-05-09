@@ -6,7 +6,17 @@
       <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">The Voter's Companion</p></a>
       <button id="righty" type="button" class="mui-btn"><router-link to="Timeline">Timeline</router-link></button>
     </div>
+    <div id="overviewNoticeWrapper">
+      <div id="overviewMarquee">
+        Voter's Tools
+      </div>
+      <div id="overviewNotice">
+        This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for gateways to your representative officals.
+      </div>
+    </div>
+
     <!-- body -->
+
     <div class="hotBod">
       <nav v-bind:class="active" v-on:click.prevent>
         <a class="home tabItem" v-on:click="makeActive( generalInfo )"><button class="tabButton" id="activated">General</button></a>
