@@ -25,8 +25,7 @@
 
         <div id="timelineBod" v-html="timelineHTML">  </div>
 
-        <hr />
-
+<!--
         <div id="yourTimeline">
           <ul style="width: 650px;" class="timeline">
 
@@ -74,7 +73,7 @@
               <span class="tag is-medium is-primary">Past</span>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -109,24 +108,22 @@ export default {
         var timelineBitHeading = '<p class="heading">' + prettyElectionDate + '</p>'
         var votableContentGrid
         var votableHeader = '<div class="votableHeader">' + tally.title + '</div>'
-        var allNewVoterRegistrationDates
-        var allAbsenteeBallotReturnDates
-        var allAbsenteeBallotRequestDates
+        var allNewVoterRegistrationDates = ''
+        var allAbsenteeBallotReturnDates = ''
+        var allAbsenteeBallotRequestDates = ''
         var inPersonAbsenteeVotingToFrom = 'none on record'
         var earlyVotingToFrom = 'none on record'
+        var additionalInformation = ''
+        if (!(tally.additional_information === '')) {
+          additionalInformation = '<em class="additionalInformation">' + tally.additional_information + '</em>'
+        }
         tally.dates.forEach(booger => {
           if (booger.kind === 'DRD') {
-            allNewVoterRegistrationDates += '<p class="votingDates">' + booger.date_human_readable + '</p>'
+            allNewVoterRegistrationDates += '<div class="votingDates">' + booger.date_human_readable + '</div><br />'
           } else if (booger.kind === 'DBED') {
-            allAbsenteeBallotReturnDates += '<p class="votingDates">' + booger.date_human_readable + '</p>'
+            allAbsenteeBallotReturnDates += '<div class="votingDates">' + booger.date_human_readable + '</div><br />'
           } else if (booger.kind === 'DBRD') {
-            var boogerNameDBRD
-            if (!(booger.date_type.name === 'Blank - (Date Only - No Descriptive Label)')) {
-              boogerNameDBRD = booger.date_type.name
-              allAbsenteeBallotRequestDates += '<p class="votingDates">' + boogerNameDBRD + ' ' + hdate.prettyPrint(booger.date) + '</p>'
-            } else {
-              allAbsenteeBallotRequestDates += '<p class="votingDates">' + hdate.prettyPrint(booger.date) + '</p>'
-            }
+            allAbsenteeBallotRequestDates += '<div class="votingDates">' + booger.date_human_readable + '</div><br />'
           } else if (booger.kind === 'AVF') {
             inPersonAbsenteeVotingToFrom = booger.date_human_readable
           } else if (booger.kind === 'AVT') {
@@ -143,7 +140,7 @@ export default {
         var inPersonAbsenteeVoting = '<div class="votingType">In-Person Absentee Voting</div><div class=votingValue>' + inPersonAbsenteeVotingToFrom + '</div>'
         var earlyVoting = '<div class="votingType">Early Voting</div><div class=votingValue>' + earlyVotingToFrom + '</div>'
         votableContentGrid = newVoterRegistration + absenteeBallotRequest + absenteeBallotReturn + inPersonAbsenteeVoting + earlyVoting
-        var timelineBitContent = '<p class="timeline-item-content">' + votableHeader + votableContentGrid + '</p>'
+        var timelineBitContent = votableHeader + '<div class="timeline-item-content">' + votableContentGrid + '</div>' + additionalInformation
         timelineBit = '<li class="timeline-item is-primary"><div class="timeline-marker is-primary"></div><div class="timeline-content">' + timelineBitHeading + timelineBitContent + '</div></li>'
         timelineBitsBetweenNowAndLater += timelineBit
       })
@@ -183,18 +180,14 @@ export default {
 
 <style >
 
-#app {
-  background-color: #F5F4EA;
-}
-.votingType {
-  font-weight: 500;
-  text-align: left;
-}
 .votableHeader {
   text-align: left;
   margin-top: -.75rem;
+  padding-left: 1.75rem;
+  padding-bottom: .2rem;
+  width: 37rem;
 }
-#timelineBod:not(.heading), #yourTimeline:not(.heading) {
+#timelineBod:not(.heading) {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 400;
   color: #353839;
@@ -212,12 +205,58 @@ export default {
   background-color: #b60000;
 }
 
-#yourTimeline {
-  position: relative;
-}
 
 .timeline-item-content {
-  font-size: 100%;
+  margin-top: .2rem;
+  font-size: 90%;
+  display: grid;
+  grid-template-columns: 35% auto;
+  grid-template-rows: repeat(5, 20%);
+  text-align: left;
+  grid-column-gap: .2rem;
+  grid-row-gap: .2rem;
+  width: 37rem;
+}
+
+.votingType {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  font-weight: 500;
+  text-align: left;
+  position: relative;
+  padding-left: calc( 4em / 2 );
+}
+.votingValue {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  line-height: 97%;
+  position: relative;
+  padding-left: .5rem;
+  padding-top: .2rem;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.additionalInformation {
+  text-align: left;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  width: inherit;
+  padding-left: 1.75rem;
+  margin-top: .2rem;
+  padding-top: .2rem;
+  position: relative;
+  left: -1.5rem;
+  min-height: 2rem;
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  position: relative;
+  margin-left: 1.6rem;
+  padding-bottom: 2em;
+  width: 37rem
+}
+.votingDates {
+  line-height: 110%;
 }
 
 p {
@@ -226,14 +265,18 @@ p {
 
 .heading {
   display: block;
-  font-size: 11px;
+  font-size: 110%;
   letter-spacing: 1px;
-  margin-bottom: 5px;
+  margin-bottom: .5rem;
   text-transform: uppercase;
-  font-weight: lighter;
   position: relative;
   top: 2px;
-
+  padding-left: 1.75rem;
+  margin-top: .6rem;
+  padding-top: .2rem;
+  color: #33825e;
+  border-top-right-radius: 5px;
+  width: 37rem;
 }
 
 .timeline .timeline-header {
@@ -261,442 +304,42 @@ p {
     border-radius: 100%;
     content: "";
     display: block;
-    height: .8rem;
-    left: -0.45em;
+    height: 1rem;
+    left: -0.55rem;
     position: absolute;
     top: 1.2rem;
-    width: .8rem
+    width: 1rem;
+    z-index: 3;
 }
 
-.timeline .timeline-item .timeline-marker.is-image {
-    background: #dbdbdb;
-    border: .1em solid #dbdbdb;
-    border-radius: 100%;
-    display: block;
-    overflow: hidden;
-}
-
-.timeline .timeline-item .timeline-marker.is-image.is-16x16 {
-    height: 16px;
-    width: 16px;
-    left: -8px
-}
-
-.timeline .timeline-item .timeline-marker.is-image.is-24x24 {
-    height: 24px;
-    width: 24px;
-    left: -12px
-}
-
-.timeline .timeline-item .timeline-marker.is-image.is-32x32 {
-    height: 32px;
-    width: 32px;
-    left: -16px
-}
-
-.timeline .timeline-item .timeline-marker.is-image.is-48x48 {
-    height: 48px;
-    width: 48px;
-    left: -24px
-}
-
-.timeline .timeline-item .timeline-marker.is-image.is-64x64 {
-    height: 64px;
-    width: 64px;
-    left: -32px
-}
-
-.timeline .timeline-item .timeline-marker.is-image.is-96x96 {
-    height: 96px;
-    width: 96px;
-    left: -48px
-}
-
-.timeline .timeline-item .timeline-marker.is-image.is-128x128 {
-    height: 128px;
-    width: 128px;
-    left: -64px
-}
-
-.timeline .timeline-item .timeline-marker.is-icon {
-    height: 1.5rem;
-    width: 1.5rem;
-    left: -0.8rem;
-    line-height: .75rem;
-    padding: .25rem;
-    background: #dbdbdb;
-    border: .1em solid #dbdbdb;
-    border-radius: 100%
-}
-
-.timeline .timeline-item .timeline-marker.is-icon>i {
-    color: #fff;
-    font-size: .75rem !important
-}
-
-.timeline .timeline-item .timeline-marker.is-outlined .image {
-    background: #fff
-}
-
-.timeline .timeline-item .timeline-marker.is-outlined.is-icon {
-    background: #fff
-}
-
-.timeline .timeline-item .timeline-marker.is-outlined.is-icon>i {
-    color: #dbdbdb
-}
-
-.timeline .timeline-item .timeline-marker.is-white {
-    background-color: #fff !important;
-    border-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-white .image {
-    border-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-white.is-icon {
-    background-color: #fff !important;
-    border-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-white.is-icon>i {
-    color: #0a0a0a !important
-}
-
-.timeline .timeline-item .timeline-marker.is-white.is-outlined {
-    background-color: #fff !important;
-    border-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-white.is-outlined .image {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-white.is-outlined.is-icon {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-white.is-outlined.is-icon>i {
-    color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-black {
-    background-color: #0a0a0a !important;
-    border-color: #0a0a0a !important
-}
-
-.timeline .timeline-item .timeline-marker.is-black .image {
-    border-color: #0a0a0a !important
-}
-
-.timeline .timeline-item .timeline-marker.is-black.is-icon {
-    background-color: #0a0a0a !important;
-    border-color: #0a0a0a !important
-}
-
-.timeline .timeline-item .timeline-marker.is-black.is-icon>i {
-    color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-black.is-outlined {
-    background-color: #fff !important;
-    border-color: #0a0a0a !important
-}
-
-.timeline .timeline-item .timeline-marker.is-black.is-outlined .image {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-black.is-outlined.is-icon {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-black.is-outlined.is-icon>i {
-    color: #0a0a0a !important
-}
-
-.timeline .timeline-item .timeline-marker.is-light {
-    background-color: #f5f5f5 !important;
-    border-color: #f5f5f5 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-light .image {
-    border-color: #f5f5f5 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-light.is-icon {
-    background-color: #f5f5f5 !important;
-    border-color: #f5f5f5 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-light.is-icon {
-    color: #363636 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-light.is-outlined {
-    background-color: #fff !important;
-    border-color: #f5f5f5 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-light.is-outlined .image {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-light.is-outlined.is-icon {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-light.is-outlined.is-icon {
-    color: #f5f5f5 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-dark {
-    background-color: #363636 !important;
-    border-color: #363636 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-dark .image {
-    border-color: #363636 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-dark.is-icon {
-    background-color: #363636 !important;
-    border-color: #363636 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-dark.is-icon>i {
-    color: #f5f5f5 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-dark.is-outlined {
-    background-color: #fff !important;
-    border-color: #363636 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-dark.is-outlined .image {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-dark.is-outlined.is-icon {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-dark.is-outlined.is-icon>i {
-    color: #363636 !important
-}
 
 .timeline .timeline-item .timeline-marker.is-primary {
     background-color: #33825e !important;
     border-color: #33825e !important
 }
 
-.timeline .timeline-item .timeline-marker.is-primary .image {
-    border-color: #33825e !important
-}
-
-.timeline .timeline-item .timeline-marker.is-primary.is-icon {
-    background-color: #33825e !important;
-    border-color: #33825e !important
-}
-
-.timeline .timeline-item .timeline-marker.is-primary.is-icon>i {
-    color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-primary.is-outlined {
-    background-color: #fff !important;
-    border-color: #33825e !important
-}
-
-.timeline .timeline-item .timeline-marker.is-primary.is-outlined .image {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-primary.is-outlined.is-icon {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-primary.is-outlined.is-icon>i {
-    color: #33825e !important
-}
-
-.timeline .timeline-item .timeline-marker.is-info {
-    background-color: #3273dc !important;
-    border-color: #3273dc !important
-}
-
-.timeline .timeline-item .timeline-marker.is-info .image {
-    border-color: #3273dc !important
-}
-
-.timeline .timeline-item .timeline-marker.is-info.is-icon {
-    background-color: #3273dc !important;
-    border-color: #3273dc !important
-}
-
-.timeline .timeline-item .timeline-marker.is-info.is-icon>i {
-    color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-info.is-outlined {
-    background-color: #fff !important;
-    border-color: #3273dc !important
-}
-
-.timeline .timeline-item .timeline-marker.is-info.is-outlined .image {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-info.is-outlined.is-icon {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-info.is-outlined.is-icon>i {
-    color: #3273dc !important
-}
-
-.timeline .timeline-item .timeline-marker.is-success {
-    background-color: #23d160 !important;
-    border-color: #23d160 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-success .image {
-    border-color: #23d160 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-success.is-icon {
-    background-color: #23d160 !important;
-    border-color: #23d160 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-success.is-icon>i {
-    color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-success.is-outlined {
-    background-color: #fff !important;
-    border-color: #23d160 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-success.is-outlined .image {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-success.is-outlined.is-icon {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-success.is-outlined.is-icon>i {
-    color: #23d160 !important
-}
 
 .timeline .timeline-item .timeline-marker.is-warning {
     background-color: #ffdd57 !important;
     border-color: #ffdd57 !important
 }
 
-.timeline .timeline-item .timeline-marker.is-warning .image {
-    border-color: #ffdd57 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-warning.is-icon {
-    background-color: #ffdd57 !important;
-    border-color: #ffdd57 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-warning.is-icon>i {
-    color: rgba(0,0,0,0.7) !important
-}
-
-.timeline .timeline-item .timeline-marker.is-warning.is-outlined {
-    background-color: #fff !important;
-    border-color: #ffdd57 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-warning.is-outlined .image {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-warning.is-outlined.is-icon {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-warning.is-outlined.is-icon>i {
-    color: #ffdd57 !important
-}
 
 .timeline .timeline-item .timeline-marker.is-past {
     background-color: #b60000 !important;
     border-color: #b60000 !important
 }
 
-.timeline .timeline-item .timeline-marker.is-past .image {
-    border-color: #b60000 !important
-}
 
-.timeline .timeline-item .timeline-marker.is-past.is-icon {
-    background-color: #b60000 !important;
-    border-color: #b60000 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-past.is-icon>i {
-    color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-past.is-outlined {
-    background-color: #fff !important;
-    border-color: #b60000 !important
-}
-
-.timeline .timeline-item .timeline-marker.is-past.is-outlined .image {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-past.is-outlined.is-icon {
-    background-color: #fff !important
-}
-
-.timeline .timeline-item .timeline-marker.is-past.is-outlined.is-icon>i {
-    color: #b60000 !important
-}
-
-.timeline .timeline-item .timeline-content {
-    padding: 1em 0 0 .5em;
-    padding: 1em 0 0 2em
-}
 
 .timeline .timeline-item .timeline-content .heading {
-    font-weight: 600
-}
-
-.timeline .timeline-item.is-white {
-    border-left-color: #fff
-}
-
-.timeline .timeline-item.is-black {
-    border-left-color: #0a0a0a
-}
-
-.timeline .timeline-item.is-light {
-    border-left-color: #f5f5f5
-}
-
-.timeline .timeline-item.is-dark {
-    border-left-color: #363636
+    font-weight: 500
 }
 
 .timeline .timeline-item.is-primary {
     border-left-color: #33825e
 }
 
-.timeline .timeline-item.is-info {
-    border-left-color: #3273dc
-}
-
-.timeline .timeline-item.is-success {
-    border-left-color: #23d160
-}
 
 .timeline .timeline-item.is-warning {
     border-left-color: #ffdd57
@@ -706,12 +349,18 @@ p {
     border-left-color: #b60000
 }
 
-li.timeline-item:nth-child(odd) {
-  background: #eaebf5 !important;
+.timeline-item:nth-child(even) .timeline-content .heading, .timeline-item:nth-child(even) .timeline-content .votableHeader, .timeline-item:nth-child(even) .timeline-content .timeline-item-content > *, .timeline-item:nth-child(even) .timeline-content .additionalInformation {
+  background-color: #F0FFF0 !important;
+  z-index: 1;
 }
 
-li.timeline-content:nth-child(even) {
-  background: #fff !important;
+.timeline-item .timeline-content .timeline-item-content > * {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+#app {
+  background-color: #F5F4EA;
 }
 
 </style>
