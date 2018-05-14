@@ -166,13 +166,6 @@ export default {
         console.log('STATE VOTER INFORMATION search FAAAAAAAAAAAAAIIIIIILLLLLLLLLLLLLLEEEDDD!!!!!!!!!' + '\n' + '\n' + '\n' + 'yer err ======> ' + err)
       })
     },
-    getOuttaMyWay () {
-      anime({
-        targets: '#logoBlockSlider',
-        translateY: 60,
-        delay: 500
-      })
-    },
     focusHelper () {
       var daletShin = document.getElementById('address-input')
       var daletSemach = document.getElementById('inputEverything')
@@ -192,7 +185,6 @@ export default {
     }
   },
   mounted () {
-    this.getOuttaMyWay()
     this.focusHelper()
 
     var placesAutocomplete = places({

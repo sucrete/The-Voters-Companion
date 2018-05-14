@@ -1,11 +1,11 @@
 <template>
   <!-- eslint-disable -->
   <div>
-    <md-tabs md-sync-route>
-      <md-tab id="tab-home" class="magicTab" md-label="General" v-on:click="makeActive( generalInfo )"></md-tab>
-      <md-tab id="tab-pages" class="magicTab" md-label="Eligibility" v-on:click="makeActive( eligibility )"></md-tab>
-      <md-tab id="tab-posts" class="magicTab" md-label="Identification Requirements" v-on:click="makeActive( IDRequirements )"></md-tab>
-      <md-tab id="tab-settings" class="magicTab" md-label="Voter's Tools" v-on:click="makeActive( voteTools )"></md-tab>
+    <md-tabs id="navTabs" md-alignment="centered">
+      <md-tab id="tab-home" :md-ripple="false" class="magicTab" md-label="General" v-on:click="makeActive( generalInfo )"></md-tab>
+      <md-tab id="tab-pages" :md-ripple="false" class="magicTab" md-label="Eligibility" v-on:click="makeActive( eligibility )"></md-tab>
+      <md-tab id="tab-posts" :md-ripple="false" class="magicTab" md-label="Identification Requirements" v-on:click="makeActive( IDRequirements )"></md-tab>
+      <md-tab id="tab-settings" :md-ripple="false" class="magicTab" md-label="Voter's Tools" v-on:click="makeActive( voteTools )"></md-tab>
     </md-tabs>
 
     <p id="activeBod" v-html="active">  </p>

@@ -1,6 +1,5 @@
-
+/* eslint-disable */
 <template>
-  <!-- eslint-disable -->
   <div class="district">
     <!-- simple nav header -->
     <div class="simple-navigation-header">
@@ -29,86 +28,33 @@
 
 <script>
 import TabRouter from './Tabs.vue'
-let marked = require('marked')
 export default {
   name: 'district',
-  data () {
-    return {
-      active: '...',
-      generalInfo: '...',
-      eligibility: '...',
-      IDRequirements: '...',
-      voteTools: '...'
-    }
+  components: {
+    TabRouter
   },
   methods: {
-    makeActive: function (item) {
-      this.active = item
-    },
-    superSizeThisTab () {
-      document.getElementById('activated').focus()
-    },
-    capitalizeIt (string) {
-      return string.charAt(0).toUpperCase() + string.slice(1)
-    },
-    fillItUp () {
-      var voterInfo = this.$store.getters.getVoterInfo.data.objects[0]
-      var voterGenInfo = marked(voterInfo.voting_general_info)
-      var voterEligibility = ''
-      voterInfo.eligibility_requirements.forEach(headly => {
-        voterEligibility += '<h6 class="happiHeader">' + headly.header + '</h6>'
-        headly.items.forEach(itemys => {
-          voterEligibility += '<li>- ' + this.capitalizeIt(itemys.item.name) + '</li>'
-        })
-        if (headly.hasOwnProperty('footer')) {
-          voterEligibility += '<p><em>' + headly.footer + '</em></p>'
-        }
+    removinRippls () {
+      var allRippls = document.querySelectorAll('div.md-ripple')
+      allRippls.forEach(goofy => {
+        goofy.classList.remove('md-ripple')
       })
-      this.eligibility = voterEligibility
-      this.generalInfo = voterGenInfo
-      this.active = voterGenInfo
-      var voterIDRequirements = voterInfo.identification_requirements
-      var voterIDRequirementsToShoveInTheDOM = ''
-      voterIDRequirements.forEach(credly => {
-        voterIDRequirementsToShoveInTheDOM += '<h6 class="happiHeader">' + credly.header + '</h6>'
-        credly.items.forEach(itemysis => {
-          voterIDRequirementsToShoveInTheDOM += '<li>- ' + this.capitalizeIt(itemysis.item.name) + '</li>'
-        })
-        if (credly.hasOwnProperty('footer')) {
-          voterIDRequirementsToShoveInTheDOM += '<p><em>' + credly.footer + '</em></p>'
-        }
-      })
-      this.IDRequirements = voterIDRequirementsToShoveInTheDOM
-      var votersTools = voterInfo.lookup_tools
-      var tableElementsKeeper = ''
-      votersTools.forEach(tooly => {
-        var votersToolsName = '<td class="VTName VTCell">' + tooly.lookup_tool.name + '</td>'
-        var votersToolsURL = '<td class="VTURL VTCell"><a href="' + tooly.url + '" target="_blank">' + tooly.url + '</a></td>'
-        tableElementsKeeper += '<tr class="VTRow">' + votersToolsName + votersToolsURL + '</tr>'
-      })
-      var votersToolsTable = '<table class="VTTable">' + tableElementsKeeper + '</table>'
-      this.voteTools = votersToolsTable
-    },
-    convertNewLines (str) {
-      var flippedstring = str.split('\r\n').join('<br />')
-      return flippedstring
+      console.log(allRippls)
     }
   },
   mounted () {
-    this.superSizeThisTab()
-    this.fillItUp()
-  },
-  components: {
-    TabRouter
+    this.removinRippls()
   }
 }
 </script>
 
-
 <style >
-
-md-button {
-  margin-left: 1rem;
+#navTabs {
+  margin-top: 1rem;
+  background-color: #F5F4EA !important;
+}
+.md-tabs-navigation {
+  background-color: #F5F4EA !important;
 }
 
 #activeBod {

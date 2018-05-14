@@ -558,7 +558,7 @@ export default {
 .deselect-rep {
   position: absolute;
   right: .4rem;
-  top: 0;
+  top: .4rem;
   color: rgb(173, 172, 147);
   z-index: 70;
   display: inline-block;
