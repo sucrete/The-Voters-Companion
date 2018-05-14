@@ -5,7 +5,6 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
-import anime from 'animejs'
 import { store } from './store.js'
 import VModal from 'vue-js-modal'
 import '../node_modules/bulma/css/bulma.css'
@@ -13,10 +12,13 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../node_modules/dynamics.js/lib/dynamics.js'
 import 'showdown/dist/showdown.js'
+import { MdTabs } from 'vue-material/dist/components'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
+
+Vue.use(MdTabs)
 
 Vue.use(BootstrapVue)
-
-Vue.use(anime)
 
 Vue.use(VModal)
 
@@ -29,3 +31,4 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+/* eslint-enable */

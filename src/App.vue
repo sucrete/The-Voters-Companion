@@ -40,9 +40,7 @@ export default {
     // this.doItAlready()
   }
 }
-
 </script>
-
 
 <style>
 
@@ -75,14 +73,14 @@ html {
   text-align: left;
   line-height: 140%;
   height: 12rem;
-  padding-left: .5rem;
+  padding-left: .4rem;
 }
 #overviewNoticeWrapper {
   background-color: #E5E5E5;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   width: 100%;
   padding-left: 1.75rem;
-  padding-top: 1rem;
+  padding-top: 2.2rem;
   padding-bottom: 1rem;
   position: relative;
   margin-bottom: -.99rem;
@@ -93,6 +91,7 @@ html {
   color: #353839;
   font-weight: 600;
   text-align: left;
+  margin-bottom: 1.25rem;
 }
 .simple-navigation-header {
   color: #353839;
@@ -141,7 +140,7 @@ router-link:hover {
   margin-top: 1rem;
   font-weight: 300;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,.26);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.17);
   padding: 10px 24px;
   min-height: 45rem;
   position: relative;

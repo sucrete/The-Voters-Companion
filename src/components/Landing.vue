@@ -1,6 +1,5 @@
-
 <template>
-
+<!-- eslint-disable -->
   <div id="landing">
     <div id="verticalLine"></div>
     <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;" hidden><router-link  to="overview" >Hello component</router-link></h2>
@@ -26,6 +25,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import axios from 'axios'
 // import Places from 'vue-places'
 import anime from 'animejs'
@@ -89,27 +89,6 @@ export default {
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
-//         console.log(`%c
-//           ..
-// * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$                 .$$$$.
-//  * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$.          .$$$$$
-// * * * * * * * * * * ::::::::::::::::::::::::::.      .::::::::'
-//  * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$$$$    $$$$$$$$F
-// * * * * * * * * * * $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$d$$$$$$$"
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
-// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
-//   ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-//   ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-//     ":::::::::::::::::::::::::::::::::::::::::::::::"
-//       ""$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$P
-//                     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$L
-//                         ;; ;::::::::::::::::;;    ;;:::.
-//                              $$$$$$"     ""         $$$$$;   Donna Shepherd
-//                               ^$$"                   $$$$
-//                                                        ""
-// `, 'font-family:monospace' + JSON.stringify(response, null, '\t'))
         this.getStateAndCounty()
       }).catch(err => {
         console.log('searchAPIs method failed. error----> ' + err)
@@ -137,30 +116,6 @@ export default {
         }
       })
       axiosInstance2.get('https://localelections.usvotefoundation.org/v1/eod/regions').then(response => {
-//         console.log(`%c
-//  _
-// (_)
-//  |_________________________________________
-//  |*  *  *  *  * |##########################|
-//  | *  *  *  *  *|                          |
-//  |*  *  *  *  * |##########################|
-//  | *  *  *  *  *|                          |
-//  |*  *  *  *  * |##########################|
-//  | *  *  *  *  *|                          |
-//  |*  *  *  *  * |##########################|
-//  |~~~~~~~~~~~~~~~                          |
-//  |#########################################|
-//  |                                         |
-//  |#########################################|
-//  |                                         |
-//  |#########################################|
-//  |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//  |
-//  |
-//  |
-//  |
-//  |
-//  |`, 'font-family:monospace' + '\n' + JSON.stringify(response, null, '\t'))
         this.$store.commit('setEODResponse', response)
         this.search4Elections()
       }).catch(err => {
@@ -273,7 +228,6 @@ export default {
   created () {
   }
 }
-
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >

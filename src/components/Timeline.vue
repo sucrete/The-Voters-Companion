@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable -->
   <div id="timeline">
 
     <div class="fullwidth">
@@ -80,6 +81,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 var hdate = require('human-date')
 
 export default {
@@ -186,6 +188,12 @@ export default {
   padding-left: 1.75rem;
   padding-bottom: .2rem;
   width: 37rem;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding-top: .65rem;
+  padding-bottom: .5rem;
+  font-weight: 500;
+  font-size: 140%;
 }
 #timelineBod:not(.heading) {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
@@ -225,6 +233,7 @@ export default {
   text-align: left;
   position: relative;
   padding-left: calc( 4em / 2 );
+  padding-top: .25rem;
 }
 .votingValue {
   grid-column-start: 2;
@@ -232,7 +241,7 @@ export default {
   line-height: 97%;
   position: relative;
   padding-left: .5rem;
-  padding-top: .2rem;
+  padding-top: .4rem;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -245,7 +254,7 @@ export default {
   margin-top: .2rem;
   padding-top: .2rem;
   position: relative;
-  left: -1.5rem;
+  left: -1.6rem;
   min-height: 2rem;
   display: flex;
   display: -ms-flexbox;
@@ -273,7 +282,7 @@ p {
   top: 2px;
   padding-left: 1.75rem;
   margin-top: .6rem;
-  padding-top: .2rem;
+  padding-top: .35rem;
   color: #33825e;
   border-top-right-radius: 5px;
   width: 37rem;
@@ -290,13 +299,8 @@ p {
     position: relative;
     border-left: .1rem solid #dbdbdb;
     margin-left: calc( 4em / 2 );
-    padding-bottom: 2em
 }
 
-.votableHeader {
-  font-size: 120%;
-  font-weight: 500;
-}
 .timeline .timeline-item .timeline-marker {
     position: absolute;
     background: #dbdbdb;
@@ -351,6 +355,11 @@ p {
 
 .timeline-item:nth-child(even) .timeline-content .heading, .timeline-item:nth-child(even) .timeline-content .votableHeader, .timeline-item:nth-child(even) .timeline-content .timeline-item-content > *, .timeline-item:nth-child(even) .timeline-content .additionalInformation {
   background-color: #F0FFF0 !important;
+  z-index: 1;
+}
+
+.timeline-item:nth-child(odd) .timeline-content .heading, .timeline-item:nth-child(odd) .timeline-content .votableHeader, .timeline-item:nth-child(odd) .timeline-content .timeline-item-content > *, .timeline-item:nth-child(odd) .timeline-content .additionalInformation {
+  background-color: #F5F5F5 !important;
   z-index: 1;
 }
 

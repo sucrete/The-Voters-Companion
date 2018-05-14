@@ -1,4 +1,6 @@
+
 <template>
+  <!-- eslint-disable -->
   <div class="district">
     <!-- simple nav header -->
     <div class="simple-navigation-header">
@@ -18,22 +20,16 @@
     <!-- body -->
 
     <div class="hotBod">
-      <nav v-bind:class="active" v-on:click.prevent>
-        <a class="home tabItem" v-on:click="makeActive( generalInfo )"><button class="tabButton" id="activated">General</button></a>
-        <a class="projects tabItem" v-on:click="makeActive( eligibility )"><button class="tabButton">Eligibility</button></a>
-        <a class="services tabItem" v-on:click="makeActive( IDRequirements )"><button class="tabButton">Identification Requirements</button></a>
-        <a class="contact tabItem" v-on:click="makeActive( voteTools )"><button class="tabButton">Voter Tools</button></a>
-      </nav>
 
-      <p id="activeBod" v-html="active">  </p>
+      <TabRouter></TabRouter>
 
     </div>
   </div>
 </template>
 
 <script>
+import TabRouter from './Tabs.vue'
 let marked = require('marked')
-
 export default {
   name: 'district',
   data () {
@@ -101,6 +97,9 @@ export default {
   mounted () {
     this.superSizeThisTab()
     this.fillItUp()
+  },
+  components: {
+    TabRouter
   }
 }
 </script>
@@ -108,8 +107,12 @@ export default {
 
 <style >
 
+md-button {
+  margin-left: 1rem;
+}
+
 #activeBod {
-  background-color: WHITE;
+  background-color: #F5F4EA;
   border-radius: 3px;
   padding: 1.5rem;
   min-height: 75vh;
@@ -152,6 +155,7 @@ export default {
 }
 .VTName {
   width: 30rem;
+  font-weight: 500;
 }
 .VTTable {
   width: 40rem;
@@ -164,97 +168,13 @@ export default {
 .VTCell {
   padding: .75rem;
   border: 2px solid white;
-  background-color: #c6d4ce;
-}
-h2 > a {
-  -webkit-transition: all 0.1s linear;
-          transition: all 0.1s linear;
-  font-family: sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
-  margin: 0 auto;
-  padding: 0 140px 0 0;
-  display: inline;
-  margin-bottom: 0;
-  text-align: center;
-  color: rgba(255,255,255,0.1);
-  background: #03001e;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #353535, #ec38bc,  #7303c0, #353535);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #353535, #ec38bc,  #7303c0, #353535); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  -webkit-background-size: 125px 100%;
-  -moz-background-size: 125px 100%;
-  background-size: 125px 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  -webkit-animation-name: shimmer;
-  -moz-animation-name: shimmer;
-  animation-name: shimmer;
-  -webkit-animation-duration: 7s;
-  -moz-animation-duration: 7s;
-  animation-duration: 7s;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  background-repeat: no-repeat;
-  background-position: -50% 0%;
-  background-color: #222;
-}
-@-moz-keyframes shimmer {
-  0% {
-    background-position: -75% 0%;
-  }
-  85% {
-    background-position: -75% 0%;
-  }
-  100% {
-    background-position: top right;
-  }
-}
-@-webkit-keyframes shimmer {
-  0% {
-    background-position: -75% 0%;
-  }
-  80% {
-    background-position: -75% 0%;
-  }
-  100% {
-    background-position: top right;
-  }
-}
-@-o-keyframes shimmer {
-  0% {
-    background-position: -75% 0%;
-  }
-  80% {
-    background-position: -75% 0%;
-  }
-  100% {
-    background-position: top right;
-  }
-}
-@keyframes shimmer {
-  0% {
-    background-position: -75% 0%;
-  }
-  80% {
-    background-position: -75% 0%;
-  }
-  100% {
-    background-position: top right;
-  }
+  background-color: #F0FFF0;
 }
 
 nav {
   display: flex;
 }
 .tabItem {
-  border-top-right-radius: 2px;
-  border-top-left-radius: 2px;
-  border-top: 1px solid rgba(#716e10, 0.77);
-  border-left: 1px solid rgba(#716e10, 0.77);
-  border-right: 1px solid rgba(#716e10, 0.77);
   position: relative;
   cursor: pointer;
 }
@@ -263,14 +183,11 @@ nav {
   font-weight: 500;
   color: #62624c;
   background-color: #f5f4ea;
-  border-top-right-radius: 2px;
-  border-top-left-radius: 2px;
   padding: .5rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   margin-left: .5rem;
   outline: none;
-  transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
   border-bottom: none;
   border: none;
   cursor: pointer;
@@ -279,30 +196,15 @@ nav {
   color: #353535;
   outline: 0;
   background-color: #f5f4ea;
-  background-image: -webkit-linear-gradient(to bottom, #f5f4ea, #FFFFFF);
-  background-image: -moz-linear-gradient(top, #f5f4ea, #FFFFFF);
-  background-image: -ms-linear-gradient(top, #f5f4ea, #FFFFFF);
-  background-image: -o-linear-gradient(top, #f5f4ea, #FFFFFF);
-  background-image: linear-gradient(to bottom, #f5f4ea, #FFFFFF);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#D3D3D3, endColorstr=#FFFFFF);
 }
 
 .tabButton:active {
     color: #353535;
     background-color: #fff;
-    background-image: -webkit-linear-gradient(to bottom, #f5f4ea, #FFFFFF);
-    background-image: -moz-linear-gradient(top, #f5f4ea, #FFFFFF);
-    background-image: -ms-linear-gradient(top, #f5f4ea #FFFFFF);
-    background-image: -o-linear-gradient(top, #f5f4ea, #FFFFFF);
-    background-image: linear-gradient(to bottom, #f5f4ea, #FFFFFF);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#D3D3D3, endColorstr=#FFFFFF);
 }
 .tabButton:hover {
   color: #353535;
   background-color: #f5f4ea;
-background-image: -webkit-linear-gradient(to bottom, #f5f4ea, #f5f4ea, #ffffff);
-background-image: -moz-linear-gradient(top, #f5f4ea, #f5f4ea, #ffffff);
-background-image: -ms-linear-gradient(top, #f5f4ea, #f5f4ea, #ffffff);
-background-image: -o-linear-gradient(top, #f5f4ea, #f5f4ea, #ffffff);
-background-image: linear-gradient(to bottom, #f5f4ea, #f5f4ea, #ffffff);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#D3D3D3, endColorstr=#cdceff);
 }
 
 ul {
@@ -325,4 +227,279 @@ h2, h6 {
   line-height: 120%;
 }
 
+
+@import "https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400";
+/* colors */
+/* tab setting */
+/* breakpoints */
+/* selectors relative to radio inputs */
+
+
+.tabs {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  position: relative;
+  background: white;
+  padding: 50px;
+  padding-bottom: 80px;
+  width: 70%;
+  height: 700px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 5px;
+  min-width: 240px;
+}
+
+.tabs input[name="tab-control"] { display: none; }
+
+.tabs .content section h2, .tabs ul li label {
+  font-weight: bold;
+  font-size: 18px;
+  color: #428BFF;
+}
+
+.tabs ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 10px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.tabs ul li {
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 25%;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.tabs ul li label {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: #929daf;
+  padding: 5px auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.tabs ul li label br { display: none; }
+
+.tabs ul li label svg {
+  fill: #929daf;
+  height: 1.2em;
+  vertical-align: bottom;
+  margin-right: 0.2em;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.tabs ul li label:hover, .tabs ul li label:focus, .tabs ul li label:active {
+  outline: 0;
+  color: #bec5cf;
+}
+
+.tabs ul li label:hover svg, .tabs ul li label:focus svg, .tabs ul li label:active svg { fill: #bec5cf; }
+
+.tabs .slider {
+  position: relative;
+  width: 25%;
+  -webkit-transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+  transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+}
+
+.tabs .slider .indicator {
+  position: relative;
+  width: 50px;
+  max-width: 100%;
+  margin: 0 auto;
+  height: 4px;
+  background: #428BFF;
+  border-radius: 1px;
+}
+
+.tabs .content { margin-top: 30px; }
+
+.tabs .content section {
+  display: none;
+  -webkit-animation-name: content;
+  animation-name: content;
+  -webkit-animation-direction: normal;
+  animation-direction: normal;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  line-height: 1.4;
+}
+
+.tabs .content section h2 {
+  color: #428BFF;
+  display: none;
+}
+
+.tabs .content section h2::after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #428BFF;
+  margin-top: 5px;
+  left: 1px;
+}
+
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+  cursor: default;
+  color: #428BFF;
+}
+
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg { fill: #428BFF; }
+@media (max-width: 600px) {
+
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label { background: rgba(0, 0, 0, 0.08); }
+}
+
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .slider {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
+}
+
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .content > section:nth-child(1) { display: block; }
+
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+  cursor: default;
+  color: #428BFF;
+}
+
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg { fill: #428BFF; }
+@media (max-width: 600px) {
+
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label { background: rgba(0, 0, 0, 0.08); }
+}
+
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .slider {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .content > section:nth-child(2) { display: block; }
+
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+  cursor: default;
+  color: #428BFF;
+}
+
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg { fill: #428BFF; }
+@media (max-width: 600px) {
+
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label { background: rgba(0, 0, 0, 0.08); }
+}
+
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .slider {
+  -webkit-transform: translateX(200%);
+  transform: translateX(200%);
+}
+
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .content > section:nth-child(3) { display: block; }
+
+.tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+  cursor: default;
+  color: #428BFF;
+}
+
+.tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg { fill: #428BFF; }
+@media (max-width: 600px) {
+
+.tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label { background: rgba(0, 0, 0, 0.08); }
+}
+
+.tabs input[name="tab-control"]:nth-of-type(4):checked ~ .slider {
+  -webkit-transform: translateX(300%);
+  transform: translateX(300%);
+}
+
+.tabs input[name="tab-control"]:nth-of-type(4):checked ~ .content > section:nth-child(4) { display: block; }
+@-webkit-keyframes
+content {  from {
+ opacity: 0;
+ -webkit-transform: translateY(5%);
+ transform: translateY(5%);
+}
+
+to {
+  opacity: 1;
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+}
+}
+@keyframes
+content {  from {
+ opacity: 0;
+ -webkit-transform: translateY(5%);
+ transform: translateY(5%);
+}
+
+to {
+  opacity: 1;
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+}
+}
+@media (max-width: 1000px) {
+
+.tabs ul li label { white-space: initial; }
+
+.tabs ul li label br { display: initial; }
+
+.tabs ul li label svg { height: 1.5em; }
+}
+@media (max-width: 600px) {
+
+.tabs ul li label {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.tabs ul li label span { display: none; }
+
+.tabs .slider { display: none; }
+
+.tabs .content { margin-top: 20px; }
+
+.tabs .content section h2 { display: block; }
+}
 </style>
