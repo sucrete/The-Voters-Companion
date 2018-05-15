@@ -347,7 +347,6 @@ export default {
 
 <style >
 
-
 #dimScreen {
   position:fixed;
   padding:0;

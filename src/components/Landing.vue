@@ -6,17 +6,30 @@
     <!-- example of syntax needed to insert image with vue -->
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
 
-
     <div class="logoBlock">
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
     </div>
+
     <div id="inputEverything">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
     </div>
+
+    <div id="landingInfoGrid">
+      <div id="landingInfo">
+        Register. <br />
+        Connect with your representatives. <br />
+        Stay informed.
+      </div>
+      <div id="landingLogoWrapper">
+        <img id="USVoteLogoCheck" :src=" USVoteLogoCheck "/> <br />
+        <img id="USVoteLogoText" :src=" USVoteLogoText" />
+      </div>
+    </div>
+
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
       <div class="daletVav">
         <div class="image">
-          <img style="height: 50px; width: auto; " :src=" lightYellowStar " >
+          <img style="height: 50px; width: auto; " :src=" lightYellowStar "/>
         </div>
         <span style="font-family: Francois One;"> Loading... </span>
       </div>
@@ -31,9 +44,8 @@ import axios from 'axios'
 import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import places from 'places.js'
-// import $ from 'jquery'
-import zayin from '../assets/usvote-logo-small.png'
-import zuperZayin from '../assets/star_plain.png'
+import soup from '../assets/USVF_logo_fnl/logotoedit.png'
+import drink from '../assets/usvote-logo-small.png'
 import carpet from '../assets/light_yellow_star.png'
 
 export default {
@@ -41,9 +53,9 @@ export default {
   data () {
     return {
       addy: '',
-      USVoteLogo: zayin,
-      levelStar: zuperZayin,
+      USVoteLogoText: soup,
       lightYellowStar: carpet,
+      USVoteLogoCheck: drink,
       rican: 'challa!',
       stateID: '',
       googvotekey: process.env.GOOGLE_API_KEY,
@@ -223,9 +235,29 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
+#landingInfoGrid {
+  margin: 1rem;
+  width: 42rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 2.5rem;
+}
+#landingInfo {
+  color: white;
+  line-height: 150%;
+  text-align: left;
+  font-family: 'Francois One', sans-serif;
+  font-size: 140%;
+  grid-column: 1 / 2;
+}
+#landingLogoWrapper {
+  grid-column: 2 / -1;
+}
+
 #app {
   background-color: rgb(17, 122, 63);
 }
+
 #verticalLine {
   position: absolute;
   width: inherit;
@@ -346,24 +378,6 @@ export default {
   line-height: 125%;
 }
 
-#p-wrapper {
-  display: table;
-  margin-left: 1rem;
-}
-
-#infobject {
-  font-family: 'Oswald', sans-serif;
-  position: inherit;
-  padding: .75rem;
-  padding-top: .6rem;
-  width: 14.2rem;
-  height: 10rem;
-  font-size: 1.4rem;
-  line-height: 105%;
-  color: #F5FFFA;
-  border-radius: 2px;
-}
-
 #brownType {
   color: #f2cbbc;
   font-family: 'Chicle', serif !important;
@@ -390,7 +404,7 @@ export default {
   right: 1.75rem;
 }
 #inputEverything {
-  margin-top: 2rem;
+  margin-top: 4rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -400,7 +414,11 @@ export default {
   margin: 0 auto;
   outline: none;
   border: none;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 500;
+  background-color: #F5F4EA;
+  border-bottom: 1px solid rgba(77, 166, 70, 0.35);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35);
 }
 input:focus {
   outline: none;
@@ -408,28 +426,33 @@ input:focus {
   color: #e24b11;
 }
 input::-webkit-input-placeholder {
-  color: #3f0000 !important;
-  font-family: 'Oswald', sans-serif;
+  color: #7c7c7c !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
 }
 input:-moz-placeholder {
   /* Firefox 18- */
-  color: #3f0000 !important;
-  font-family: 'Oswald', sans-serif;
+  color: #7c7c7c !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
 }
 input::-moz-placeholder {
   /* Firefox 19+ */
-  color: #3f0000 !important;
-  font-family: 'Oswald', sans-serif;
+  color: #7c7c7c !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
 }
 input:-ms-input-placeholder {
   /* IE 10+ */
-  color: #3f0000 !important;
-  font-family: 'Oswald', sans-serif;
+  color: #7c7c7c !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
 }
 input::-ms-input-placeholder {
   /* Edge */
-  color: #3f0000 !important;
-  font-family: 'Oswald', sans-serif;
+  color: #7c7c7c !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
 }
 
 #landing {
