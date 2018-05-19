@@ -28,7 +28,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=Francois+One|IBM+Plex+Sans+Condensed:400,500,600|IBM+Plex+Serif');
+@import url('https://fonts.googleapis.com/css?family=Francois+One|IBM+Plex+Sans+Condensed:400,500i,600|IBM+Plex+Serif:400i,500,600');
 
 html {
   /* background-color: #E1DCDC; */
@@ -60,7 +60,7 @@ html {
   padding-left: .4rem;
 }
 #overviewNoticeWrapper {
-  background-color: #E5E5E5;
+  background-color: rgba(230, 230, 230, 0.8);
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   width: 100%;
   padding-left: 1.75rem;
