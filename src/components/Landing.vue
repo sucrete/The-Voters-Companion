@@ -21,36 +21,7 @@
         Stay informed.
       </div>
       <div id="landingLogoWrapper">
-        <div id="logoBadge">
-          <div id="svgLogoHeader">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="830px" height="650px" viewBox="0 0 830 650" preserveAspectRatio="xMidYMid meet"  xmlns:drawsvg="http://www.drawsvg.org" >
-              <rect id="svgEditorBackground" x="0" y="0" width="830" height="650" style="fill:none; stroke: none;"/>
-              <path d="M220,261a111.2754126421,111.2754126421,0,0,1,221,0" style="stroke-width: 1px; fill: none;" id="e9_circleArc"/>
-              <text dy="-0.5em" style="fill: rgb(14, 43, 87); font-family: Arial; font-size:0.9em;" id="e11_texte" dx="" y="" x="4" transform="matrix(0.835879 0 0 0.835879 53.3624 44.4075)">
-                <textPath id="e10_textPath" xlink:href="#e9_circleArc" startOffset="16.2" method="stretch" spacing="exact">MADE WITH GENEROUS SUPPORT FROM THE</textPath>
-              </text>
-            </svg>
-          </div>
-          <div id="greyCircle">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 240 240" width="240" height="240">
-              <defs>
-                <clipPath id="_clipPath_oA2FhYXjAYRHTLxaqT3q4zrFgc4runEb">
-                <rect width="240" height="240"/>
-                </clipPath>
-              </defs>
-              <g clip-path="url(#_clipPath_oA2FhYXjAYRHTLxaqT3q4zrFgc4runEb)">
-              <path d=" M 10 120 C 10 59.289 59.289 10 120 10 C 180.711 10 230 59.289 230 120 C 230 180.711 180.711 230 120 230 C 59.289 230 10 180.711 10 120 Z " fill="rgb(168,168,168)"/>
-              </g>
-            </svg>
-          </div>
-          <div id="logoBooper">
-            <img id="USVoteLogoCheck" :src=" USVoteLogoCheck "/><br />
-            <img id="USVoteLogoText" :src=" USVoteLogoText" />
-          </div>
-
-          <img id="headerBridge" :src=" headerBridge "/>
-
-        </div>
+        <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank"><img :src=" logFin "/></a>
       </div>
     </div>
 
@@ -72,20 +43,16 @@ import axios from 'axios'
 import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import places from 'places.js'
-import soup from '../assets/USVF_logo_fnl/logotoedit.png'
-import drink from '../assets/usvote-logo-small.png'
 import carpet from '../assets/light_yellow_star.png'
-import swinglow from '../assets/circlebit.png'
+import logoFinal from '../assets/lastone.png'
 
 export default {
   name: 'landing',
   data () {
     return {
       addy: '',
-      USVoteLogoText: soup,
+      logFin: logoFinal,
       lightYellowStar: carpet,
-      USVoteLogoCheck: drink,
-      headerBridge: swinglow,
       rican: 'challa!',
       stateID: '',
       googvotekey: process.env.GOOGLE_API_KEY,
@@ -265,28 +232,15 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
-#svgLogoHeader {
-  position: absolute;
-  left: -13.09rem;
-  top: -9.4rem;
-  z-index: 12;
+#landingLogoWrapper {
+  height: 12rem;
+  width: auto;
+  position: relative;
 }
-#greyCircle {
+#logoLink {
+  top: -1.5rem;
+  right: -1rem;
   position: absolute;
-  left: 0;
-  top: 0;
-}
-#headerBridge {
-  position: absolute;
-  left: .5rem;
-  top: .9rem;
-}
-#logoBadge {
-  position: absolute;
-  width: 14rem;
-  height: auto;
-  left: 3.5rem;
-  top: -1.75rem;
 }
 #landingInfoGrid {
   margin: 1rem;
@@ -309,21 +263,7 @@ export default {
   grid-column: 1 / 2;
   padding-left: 1rem;
 }
-#landingLogoWrapper {
-  grid-column: 2 / -1;
-  position: relative;
-}
-#logoBooper {
-  position: absolute;
-  left: 2.54rem;
-  top: 2.8rem;
-}
-#USVoteLogoCheck {
-  width: 6.5rem;
-}
-#USVoteLogoText {
-  width: 9.5rem;
-}
+
 #app {
   background-color: rgb(17, 122, 63);
 }
