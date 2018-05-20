@@ -28,7 +28,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=Francois+One|IBM+Plex+Sans+Condensed:400,500i,600|IBM+Plex+Serif:400i,500,600');
+@import url('https://fonts.googleapis.com/css?family=Francois+One|IBM+Plex+Sans+Condensed:400,500i,600|IBM+Plex+Serif:400i,400,500,600');
 
 html {
   /* background-color: #E1DCDC; */
