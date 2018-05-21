@@ -18,7 +18,7 @@ export const store = new Vuex.Store({
     },
     algoliaResponse: {},
     googleResponse: {},
-    EODResponse: {},
+    allStatesResponse: {},
     USVoteElections: {},
     voterInformation: {},
     holla: 'ghost!'
@@ -38,8 +38,8 @@ export const store = new Vuex.Store({
     setSuggestion (state, payload) {
       state.algoliaResponse = payload
     },
-    setEODResponse (state, payload) {
-      state.EODResponse = payload
+    setAllStateIDs (state, payload) {
+      state.allStatesResponse = payload
     },
     setUSVoteElections (state, payload) {
       state.USVoteElections = payload

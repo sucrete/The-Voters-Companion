@@ -17,7 +17,7 @@
     <div id="landingInfoGrid">
       <div id="landingInfo">
         Register to vote. <br />
-        Connect with your representatives. <br />
+        Connect with your reps. <br />
         Stay informed.
       </div>
       <div id="landingLogoWrapper">
@@ -98,34 +98,33 @@ export default {
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
-        this.getStateAndCounty()
+        this.getStates()
       }).catch(err => {
         console.log('searchAPIs method failed. error----> ' + err)
       })
     },
-    getStateAndCounty () {
-      var state = this.$store.getters.showMeDatState
-      var stateName = state.algoliaResponse.administrative.split(' ').join('+')
-      var counties = state.algoliaResponse.hit.county
+    getStates () {
+
+      // var counties = state.algoliaResponse.hit.county
       /* eslint-disable */
-      var countyName = null
-      if (counties[0].includes('County')) {
-        countyName = counties[0].match(/^(.*?)\ County/)[1].split(' ').join('+')
-      } else {
-        countyName = counties[0].split(' ').join('+')
-      }
+      // var countyName = null
+      // if (counties[0].includes('County')) {
+      //   countyName = counties[0].match(/^(.*?)\ County/)[1].split(' ').join('+')
+      // } else {
+      //   countyName = counties[0].split(' ').join('+')
+      // }
       /* eslint-enable */
       const axiosInstance2 = axios.create({
         params: {
-          state_name: stateName
+          limit: 57
           // county_name: countyName
         },
         headers: {
-          'Authorization': 'OAuth ' + process.env.VOTE_KEY
+          'Authorization': 'Token ' + process.env.VOTE_KEY
         }
       })
-      axiosInstance2.get('https://localelections.usvotefoundation.org/v1/eod/regions').then(response => {
-        this.$store.commit('setEODResponse', response)
+      axiosInstance2.get('https://localelections.usvotefoundation.org/api/v1/states').then(response => {
+        this.$store.commit('setAllStateIDs', response)
         this.search4Elections()
       }).catch(err => {
         console.log('your EOD API call failed. error --> ' + err)
@@ -133,15 +132,16 @@ export default {
     },
     search4Elections () {
       var state = this.$store.getters.showMeDatState
-      var stateURI = state.EODResponse.data.objects[0].state
+      var allStates = state.allStatesResponse.data.objects
+      var stateName = state.algoliaResponse.administrative
       /* eslint-disable */
-      this.stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
+      // this.stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
       /* eslint-enable */
-      if (this.stateID.length === 2) {
-        this.stateID = 'S' + this.stateID
-      } else {
-        this.stateID = 'S0' + this.stateID
-      }
+      allStates.forEach(where => {
+        if (where.name === stateName ) {
+          this.stateID = where.id
+        }
+      })
 
       const axiosInstance = axios.create({
         params: {
@@ -238,7 +238,7 @@ export default {
   position: relative;
 }
 #logoLink {
-  top: -1.5rem;
+  top: -1.8rem;
   right: -1rem;
   position: absolute;
 }
@@ -248,17 +248,17 @@ export default {
   display: grid;
   grid-template-columns: 55% 45%;
   padding: 2rem;
-  height: 15rem;
+  height: 13.5rem;
 }
 
 #landingInfo {
   color: #F5F4EA;
-  font-weight: 400;
+  font-weight: 500;
   font-family: 'IBM Plex Serif', serif;
   font-style: italic;
-  font-size: 110%;
+  font-size: 130%;
   text-align: left;
-  margin-top: -1rem;
+  margin-top: -.8rem;
   line-height: 300%;
   grid-column: 1 / 2;
   padding-left: 1rem;
@@ -271,7 +271,7 @@ export default {
 #verticalLine {
   position: absolute;
   width: inherit;
-  height: 47.5rem;
+  height: 46.2rem;
   top: -.6rem;
   border-left: 2px solid rgb(19, 136, 70, .75);
   left: -.8rem;
@@ -434,6 +434,7 @@ input:focus {
   outline: none;
   border: none;
   color: #7A3F11;
+  font-weight: 600;
 }
 input::-webkit-input-placeholder {
   color: #7A3F11 !important;

@@ -114,12 +114,12 @@ html {
   top: -.2rem;
 }
 #righty:hover {
-  transform: translate(5px, 0px);
-  -webkit-transform: translate(5px, 0px);
+  transform: translate(3px, 0px);
+  -webkit-transform: translate(3px, 0px);
 }
 #lefty:hover {
-  transform: translate(-5px, 0px);
-  -webkit-transform: translate(-5px, 0px);
+  transform: translate(-3px, 0px);
+  -webkit-transform: translate(-3px, 0px);
 }
 router-link:hover {
   text-decoration: none !important;
