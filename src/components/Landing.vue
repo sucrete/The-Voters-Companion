@@ -16,9 +16,7 @@
 
     <div id="landingInfoGrid">
       <div id="landingInfo">
-        Register to vote. <br />
-        Connect with your reps. <br />
-        Stay informed.
+        Register to vote. Connect with your reps. Stay informed.
       </div>
       <div id="landingLogoWrapper">
         <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank"><img :src=" logFin "/></a>
@@ -239,7 +237,7 @@ export default {
   position: relative;
 }
 #logoLink {
-  top: -1.8rem;
+  top: -28.8rem;
   right: -1rem;
   position: absolute;
 }
@@ -247,19 +245,20 @@ export default {
   margin: 1rem;
   width: 39rem;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 65% 35%;
   padding: 2rem;
   height: 13.5rem;
 }
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,700');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:700i');
 #landingInfo {
-  color: #F5F4EA;
-  font-weight: 100;
+  color: #E0F2D4;
+  font-weight: 700;
+  font-style: italic;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 200%;
+  font-size: 250%;
   text-align: left;
   margin-top: -1rem;
-  line-height: 140%;
+  line-height: 110%;
   grid-column: 1 / 2;
   padding-left: 1.5rem;
 }
@@ -269,6 +268,7 @@ export default {
 }
 
 #verticalLine {
+  opacity: 0;
   position: absolute;
   width: inherit;
   height: 46.2rem;
@@ -409,19 +409,19 @@ export default {
 }
 
 .ap-input-icon {
-  right: 1.5rem;
+  right: 2.5rem;
 }
 .ap-icon-clear {
-  right: 1.75rem;
+  right: 2.75rem;
 }
 #inputEverything {
-  margin-top: 4rem;
+  margin-top: 3.75rem;
   margin-left: auto;
   margin-right: auto;
 }
 #address-input {
   padding-right: .5rem;
-  width: 40.5rem;
+  width: 38rem;
   margin: 0 auto;
   outline: none;
   border: none;
