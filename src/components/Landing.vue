@@ -138,7 +138,7 @@ export default {
       // this.stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
       /* eslint-enable */
       allStates.forEach(where => {
-        if (where.name === stateName ) {
+        if (where.name === stateName) {
           this.stateID = where.id
         }
       })
@@ -232,6 +232,7 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
+
 #landingLogoWrapper {
   height: 12rem;
   width: auto;
@@ -246,22 +247,21 @@ export default {
   margin: 1rem;
   width: 39rem;
   display: grid;
-  grid-template-columns: 55% 45%;
+  grid-template-columns: 60% 40%;
   padding: 2rem;
   height: 13.5rem;
 }
-
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,700');
 #landingInfo {
   color: #F5F4EA;
-  font-weight: 500;
-  font-family: 'IBM Plex Serif', serif;
-  font-style: italic;
-  font-size: 130%;
+  font-weight: 100;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 200%;
   text-align: left;
-  margin-top: -.8rem;
-  line-height: 300%;
+  margin-top: -1rem;
+  line-height: 140%;
   grid-column: 1 / 2;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 }
 
 #app {
@@ -397,6 +397,7 @@ export default {
   left: 1.5rem;
   margin-top: 3.75rem;
   position: absolute;
+  /* -webkit-text-stroke: 3px #343434; */
 }
 .logoBlock {
   position: relative;
@@ -425,7 +426,7 @@ export default {
   outline: none;
   border: none;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   background-color: #F5F4EA;
   border-bottom: 1px solid rgba(77, 166, 70, 0.35);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35);

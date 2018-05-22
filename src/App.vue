@@ -28,7 +28,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=Francois+One|IBM+Plex+Sans+Condensed:400,500i,600|IBM+Plex+Serif:400i,400,500,600');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600|IBM+Plex+Sans');
 
 html {
   /* background-color: #E1DCDC; */
@@ -69,6 +69,7 @@ html {
   position: relative;
   margin-bottom: -.99rem;
   border-radius: 3px;
+  margin-top: .4rem;
 }
 #overviewMarquee {
   font-size: 350%;
