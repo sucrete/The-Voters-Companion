@@ -12,14 +12,16 @@
 
     <div id="inputEverything">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
+      <span class="highlight"></span>
+      <span class="bar"></span>
     </div>
 
     <div id="landingInfoGrid">
       <div id="landingInfo">
-        Register to vote. Connect with your reps. Stay informed.
+        Register to vote. Connect with your representatives. Stay informed.
       </div>
       <div id="landingLogoWrapper">
-        <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank"><img :src=" logFin "/></a>
+        <a href="https://www.usvotefoundation.org/" target="_blank"><img id="logoLink" :src=" logFin "/></a>
       </div>
     </div>
 
@@ -42,7 +44,7 @@ import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import places from 'places.js'
 import carpet from '../assets/light_yellow_star.png'
-import logoFinal from '../assets/lastone.png'
+import logoFinal from '../assets/lighter.png'
 
 export default {
   name: 'landing',
@@ -238,26 +240,30 @@ export default {
 }
 #logoLink {
   top: -28.8rem;
-  right: -1rem;
+  right: -3.5rem;
   position: absolute;
+  -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
+    filter:drop-shadow(4px 4px 0 #A57F70)
 }
 #landingInfoGrid {
   margin: 1rem;
   width: 39rem;
   display: grid;
-  grid-template-columns: 65% 35%;
+  grid-template-columns: 95% 5%;
   padding: 2rem;
   height: 13.5rem;
 }
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:700i');
+@import url('https://fonts.googleapis.com/css?family=Cambo|Kurale|Montaga|Nanum+Myeongjo:700|Radley|Rosarivo|Song+Myung|Vollkorn');
+
 #landingInfo {
-  color: #E0F2D4;
-  font-weight: 700;
-  font-style: italic;
-  font-family: 'IBM Plex Sans', sans-serif;
+  position: absolute;
+  width: 35rem;
+  color: #E2F4D6;
+  font-family: 'Cambo', sans-serif;
   font-size: 250%;
   text-align: left;
-  margin-top: -1rem;
+  top: 30.5rem;
+  left: 3rem;
   line-height: 110%;
   grid-column: 1 / 2;
   padding-left: 1.5rem;
@@ -409,17 +415,19 @@ export default {
 }
 
 .ap-input-icon {
-  right: 2.5rem;
+  right: 3rem;
 }
 .ap-icon-clear {
-  right: 2.75rem;
+  right: 3.25rem;
 }
 #inputEverything {
-  margin-top: 3.75rem;
+  margin-top: 3rem;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 #address-input {
+
   padding-right: .5rem;
   width: 38rem;
   margin: 0 auto;
@@ -427,9 +435,8 @@ export default {
   border: none;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
-  background-color: #F5F4EA;
-  border-bottom: 1px solid rgba(77, 166, 70, 0.35);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35);
+  /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
 }
 input:focus {
   outline: none;
@@ -475,5 +482,75 @@ input::-ms-input-placeholder {
   font-size: 1.5rem;
   font-family:Arial;
 }
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  background-color: transparent;
+  border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; }
 
+/* BOTTOM BARS ================================= */
+.bar 	{
+  position:relative;
+  display:block;
+  width:300px; }
+
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#5264AE;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
 </style>
