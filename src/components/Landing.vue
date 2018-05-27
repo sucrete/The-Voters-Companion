@@ -30,7 +30,7 @@
         <div class="image">
           <img style="height: 50px; width: auto; " :src=" lightYellowStar "/>
         </div>
-        <span style="font-family: Francois One;"> Loading... </span>
+        <span style="font-family: IBM Plex Sans Condensed;"> Loading... </span>
       </div>
     </modal>
   </div>
@@ -172,7 +172,7 @@ export default {
         this.$store.commit('setVoterInformation', response)
         this.$router.push({path: 'overview'})
       }).catch(err => {
-        console.log('STATE VOTER INFORMATION search FAAAAAAAAAAAAAIIIIIILLLLLLLLLLLLLLEEEDDD!!!!!!!!!' + '\n' + '\n' + '\n' + 'yer err ======> ' + err)
+        console.log('STATE VOTER INFORMATION search F003979003979AIIIIIILLLLLLLLLLLLLLEEEDDD!!!!!!!!!' + '\n' + '\n' + '\n' + 'yer err ======> ' + err)
       })
     },
     focusHelper () {
@@ -237,33 +237,32 @@ export default {
   height: 12rem;
   width: auto;
   position: relative;
+  z-index: 777;
 }
 #logoLink {
   top: -28.8rem;
   right: -3.5rem;
   position: absolute;
-  -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
-    filter:drop-shadow(4px 4px 0 #A57F70)
+  width: 11rem;
+  /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
+    filter:drop-shadow(4px 4px 0 #A57F70) */
 }
 #landingInfoGrid {
   margin: 1rem;
   width: 39rem;
   display: grid;
   grid-template-columns: 95% 5%;
-  padding: 2rem;
   height: 13.5rem;
+  left: 1.5rem;
+  position: relative;
 }
-@import url('https://fonts.googleapis.com/css?family=Cambo|Kurale|Montaga|Nanum+Myeongjo:700|Radley|Rosarivo|Song+Myung|Vollkorn');
-
 #landingInfo {
-  position: absolute;
-  width: 35rem;
   color: #E2F4D6;
-  font-family: 'Cambo', sans-serif;
+  font-family: 'Cambo', serif;
   font-size: 250%;
   text-align: left;
+  width: 35rem;
   top: 30.5rem;
-  left: 3rem;
   line-height: 110%;
   grid-column: 1 / 2;
   padding-left: 1.5rem;
@@ -284,9 +283,174 @@ export default {
   z-index: 30;
 
 }
-@import url('https://fonts.googleapis.com/css?family=Chicle');
 
-/* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN */
+#brownType {
+  color: #f2cbbc;
+  font-family: 'Chicle', serif !important;
+  text-align: left;
+  font-size: 8.5rem;
+  line-height: 80%;
+  left: 1.5rem;
+  margin-top: 3.75rem;
+  position: absolute;
+  /* -webkit-text-stroke: 3px #343434; */
+}
+.logoBlock {
+  position: relative;
+  height: 23rem;
+  left: 2rem;
+  margin: 0 auto;
+  /*box-shadow: 10px 10px 20px #334431;*/
+  z-index: 6;
+}
+
+.ap-input-icon {
+  right: 4rem;
+}
+.ap-icon-clear {
+  right: 4.25rem;
+}
+#inputEverything {
+  margin-top: 3.25rem;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+#address-input {
+  width: 36rem;
+  margin: 0 auto;
+  outline: none;
+  border: none;
+  font-size: 130%;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
+  /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
+}
+.ap-dropdown-menu {
+  position: relative;
+  width: 34rem;
+  left: 4.25rem !important;
+}
+input:focus {
+  outline: none;
+  border: none;
+  color: #003979;
+  font-weight: 600;
+}
+input::-webkit-input-placeholder {
+  color: #003979 !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
+}
+input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #003979 !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
+}
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #003979 !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
+}
+input:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #003979 !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
+}
+input::-ms-input-placeholder {
+  /* Edge */
+  color: #003979 !important;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 600;
+}
+
+#landing {
+  position: relative;
+}
+
+#e9_texte {
+  font-size: 1.5rem;
+  font-family:Arial;
+}
+#address-input	{
+  padding-left: 1rem;
+  display:block;
+  border:none;
+  border-radius: 0%;
+  background-color: transparent;
+  border-bottom: 2px solid #C68512 !important;
+}
+#address-input:focus {
+  outline:none;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{
+  position:relative;
+  display:block;
+  width:300px; }
+
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#5264AE !important;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+#address-input:focus ~ .bar:before, #address-input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+#address-input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+/* loading modal below this line ================================= */
+/* The modal-loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN */
 .v--modal {
   border-radius: 100% !important;
   box-sizing: none !important;
@@ -341,7 +505,6 @@ export default {
     transform: rotate(-90deg);
   }
 }
-
 @keyframes rotate{
   0% {
     transform: rotate(90deg);
@@ -364,7 +527,6 @@ export default {
     transform: rotate(-90deg);
   }
 }
-
 .v--modal-box {
   border-style: solid;
   border-width: 7px;
@@ -376,7 +538,7 @@ export default {
   box-sizing: none;
 }
 .v--modal-overlay {
-  background-color: rgba(255, 255, 255, 0.34);
+  background-color: rgba(255, 255, 255, .5);
   border-radius: 0px;
   width: 100vw;
   height: 100vh;
@@ -389,168 +551,5 @@ export default {
  opacity: 0;
  transform: scale(0.3) translateY(24px);
 }
-
-.infoline {
-  line-height: 125%;
-}
-
-#brownType {
-  color: #f2cbbc;
-  font-family: 'Chicle', serif !important;
-  text-align: left;
-  font-size: 8.5rem;
-  line-height: 80%;
-  left: 1.5rem;
-  margin-top: 3.75rem;
-  position: absolute;
-  /* -webkit-text-stroke: 3px #343434; */
-}
-.logoBlock {
-  position: relative;
-  height: 23rem;
-  left: 2rem;
-  margin: 0 auto;
-  /*box-shadow: 10px 10px 20px #334431;*/
-  z-index: 6;
-}
-
-.ap-input-icon {
-  right: 3rem;
-}
-.ap-icon-clear {
-  right: 3.25rem;
-}
-#inputEverything {
-  margin-top: 3rem;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-#address-input {
-
-  padding-right: .5rem;
-  width: 38rem;
-  margin: 0 auto;
-  outline: none;
-  border: none;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
-  /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
-}
-input:focus {
-  outline: none;
-  border: none;
-  color: #7A3F11;
-  font-weight: 600;
-}
-input::-webkit-input-placeholder {
-  color: #7A3F11 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
-}
-input:-moz-placeholder {
-  /* Firefox 18- */
-  color: #7A3F11 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
-}
-input::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #7A3F11 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
-}
-input:-ms-input-placeholder {
-  /* IE 10+ */
-  color: #7A3F11 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
-}
-input::-ms-input-placeholder {
-  /* Edge */
-  color: #7A3F11 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
-}
-
-#landing {
-  position: relative;
-}
-
-#e9_texte {
-  font-size: 1.5rem;
-  font-family:Arial;
-}
-input 				{
-  font-size:18px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  width:300px;
-  border:none;
-  background-color: transparent;
-  border-bottom:1px solid #757575;
-}
-input:focus 		{ outline:none; }
-
-/* BOTTOM BARS ================================= */
-.bar 	{
-  position:relative;
-  display:block;
-  width:300px; }
-
-.bar:before, .bar:after 	{
-  content:'';
-  height:2px;
-  width:0;
-  bottom:1px;
-  position:absolute;
-  background:#5264AE;
-  transition:0.2s ease all;
-  -moz-transition:0.2s ease all;
-  -webkit-transition:0.2s ease all;
-}
-.bar:before {
-  left:50%;
-}
-.bar:after {
-  right:50%;
-}
-
-/* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
-}
-
-/* HIGHLIGHTER ================================== */
-.highlight {
-  position:absolute;
-  height:60%;
-  width:100px;
-  top:25%;
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
-}
-
-/* active state */
-input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
-}
-
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
-@-moz-keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
-@keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
+/* loading modal above this line ================================= */
 </style>

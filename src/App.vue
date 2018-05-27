@@ -28,7 +28,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600|IBM+Plex+Sans');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600|Cambo|Chicle');
 
 html {
   /* background-color: #E1DCDC; */
@@ -93,7 +93,8 @@ html {
 }
 
 #takeMeOmh {
-  font-family: 'Francois One', sans-serif;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-weight: 500;
   font-size: 125%;
   color: #867933;
   transition: color 150ms ease-in-out;

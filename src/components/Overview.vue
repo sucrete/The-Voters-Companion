@@ -623,7 +623,7 @@ export default {
 .sectionHeader {
   margin-top: .5rem;
   color: #343434;
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Cambo', serif;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   position: relative;
