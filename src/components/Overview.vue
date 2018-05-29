@@ -15,6 +15,7 @@
       <div id="overviewNotice">
         This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for gateways to your representative officals.
       </div>
+      <img id="bigButton" src="https://i.imgur.com/1pMjyWO.png"/>
     </div>
 
     <div id="dimScreen"></div>

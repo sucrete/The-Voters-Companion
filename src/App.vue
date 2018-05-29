@@ -29,7 +29,19 @@ export default {
 <style>
 
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600|Cambo|Chicle');
-
+#bigButton {
+  position: absolute;
+  right: 1rem;
+  z-index: 888;
+  transition: all 250ms ease-in-out;
+  top: 5.5rem;
+  filter: drop-shadow(0px 10px 9px rgba(15, 13, 2, 0.2)) ;
+  -webkit-filter: drop-shadow(0px 10px 9px rgba(15, 13, 2, 0.2));
+}
+#bigButton:hover {
+  filter: drop-shadow(0 14px 9px rgba(15, 13, 2, 0.15));
+  -webkit-filter: drop-shadow(0 14px 9px rgba(15, 13, 2, 0.15));
+}
 html {
   /* background-color: #E1DCDC; */
   background: #f2f2f2 url( https://cl.ly/image/381U2k0A3L3S/bg.png );
@@ -50,6 +62,7 @@ html {
   top: 1rem;
   padding-bottom: 1rem;
 }
+
 #overviewNotice {
   color: rgb(113, 106, 56);
   font-size: 130%;

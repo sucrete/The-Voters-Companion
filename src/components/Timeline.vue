@@ -17,6 +17,7 @@
         <div id="overviewNotice">
           This page is devoted to your elections.
         </div>
+        <img id="bigButton" src="https://i.imgur.com/1pMjyWO.png"/>
       </div>
       <!-- body -->
       <div class="hotBod">
@@ -341,7 +342,8 @@ p {
 }
 
 .timeline .timeline-item.is-primary {
-    border-left-color: #33825e
+    border-left-color: #33825e;
+    z-index: 12;
 }
 
 

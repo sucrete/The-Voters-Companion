@@ -14,6 +14,7 @@
       <div id="overviewNotice">
         All you need to know to vote in your state.
       </div>
+      <img id="bigButton" src="https://i.imgur.com/1pMjyWO.png"/>
     </div>
 
     <!-- body -->
@@ -55,6 +56,8 @@ export default {
 }
 #activeBod {
   background-color: #F5F4EA;
+  width: 40rem;
+  margin: 0 auto;
   border-radius: 3px;
   padding: 1.5rem;
   min-height: 75vh;
@@ -82,7 +85,7 @@ export default {
   font-size: 1rem;
 }
 #activeBod > p {
-  color: #6aa84f;
+  color: #353839;
   line-height: 120%;
   margin-top: .75rem;
 }
@@ -108,7 +111,7 @@ export default {
 }
 .VTCell {
   padding: .75rem;
-  border: 2px solid white;
+  border: 2px solid #F5F4EA;
   background-color: #F0FFF0;
 }
 

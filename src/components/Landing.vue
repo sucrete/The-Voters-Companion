@@ -8,6 +8,9 @@
 
     <div class="logoBlock">
       <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
+      <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank">
+        <img :src=" logFin "/>
+      </a>
     </div>
 
     <div id="inputEverything">
@@ -16,13 +19,8 @@
       <span class="bar"></span>
     </div>
 
-    <div id="landingInfoGrid">
-      <div id="landingInfo">
-        Register to vote. Connect with your representatives. Stay informed.
-      </div>
-      <div id="landingLogoWrapper">
-        <a href="https://www.usvotefoundation.org/" target="_blank"><img id="logoLink" :src=" logFin "/></a>
-      </div>
+    <div id="landingInfo">
+      Register to vote. Connect with your representatives. Stay informed.
     </div>
 
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
@@ -44,7 +42,7 @@ import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import places from 'places.js'
 import carpet from '../assets/light_yellow_star.png'
-import logoFinal from '../assets/lighter.png'
+import logoFinal from '../assets/lighterUSVFlogo.png'
 
 export default {
   name: 'landing',
@@ -233,39 +231,28 @@ export default {
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
 
-#landingLogoWrapper {
-  height: 12rem;
-  width: auto;
-  position: relative;
-  z-index: 777;
-}
 #logoLink {
-  top: -28.8rem;
-  right: -3.5rem;
+  z-index: 777;
   position: absolute;
-  width: 11rem;
+  top: 5rem;
+  right: -7;
+  /* filter: drop-shadow(7px 9px 20px rgba(225, 226, 238, 0.36));
+	-webkit-filter: drop-shadow(7px 9px 20px rgba(225, 226, 238, 0.36)); */
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70) */
 }
-#landingInfoGrid {
-  margin: 1rem;
-  width: 39rem;
-  display: grid;
-  grid-template-columns: 95% 5%;
-  height: 13.5rem;
-  left: 1.5rem;
-  position: relative;
-}
+
 #landingInfo {
   color: #E2F4D6;
   font-family: 'Cambo', serif;
   font-size: 250%;
   text-align: left;
-  width: 35rem;
+  width: 39rem;
   top: 30.5rem;
   line-height: 110%;
-  grid-column: 1 / 2;
   padding-left: 1.5rem;
+  margin-left: 2.5rem;
+  margin-top: .75rem;
 }
 
 #app {
