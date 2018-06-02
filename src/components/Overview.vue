@@ -15,7 +15,7 @@
       <div id="overviewNotice">
         This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for gateways to your representative officals.
       </div>
-      <img id="bigButton" src="https://i.imgur.com/1pMjyWO.png"/>
+      <a id="bigButtonLink"><img id="bigButton" :src=" register "/></a>
     </div>
 
     <div id="dimScreen"></div>
@@ -34,10 +34,12 @@
 
 <script>
 /* eslint-disable */
+import registerBi from '../assets/76pix.png'
 export default {
   name: 'overview',
   data () {
     return {
+      register: registerBi,
       msg: ''
     }
   },
@@ -542,7 +544,7 @@ export default {
   transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1),background-color 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
 }
 .repCard:hover {
-  box-shadow: 0 2px 5px rgba(0,0,0,.26);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 .repCard .repImageWrapper {
   display: inline-block;

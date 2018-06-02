@@ -17,7 +17,7 @@
         <div id="overviewNotice">
           This page is devoted to your elections.
         </div>
-        <img id="bigButton" src="https://i.imgur.com/1pMjyWO.png"/>
+        <a id="bigButtonLink"><img id="bigButton" :src=" register "/></a>
       </div>
       <!-- body -->
       <div class="hotBod">
@@ -84,12 +84,13 @@
 <script>
 /* eslint-disable */
 var hdate = require('human-date')
-
+import registerBi from '../assets/76pix.png'
 export default {
   name: 'timeline',
   data () {
     return {
       whatAPrimaryIs: '',
+      register: registerBi,
       timelineHTML: ''
     }
   },

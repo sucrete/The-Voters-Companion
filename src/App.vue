@@ -34,14 +34,15 @@ export default {
   right: 1rem;
   z-index: 888;
   transition: all 250ms ease-in-out;
-  top: 5.5rem;
-  filter: drop-shadow(0px 10px 9px rgba(15, 13, 2, 0.2)) ;
-  -webkit-filter: drop-shadow(0px 10px 9px rgba(15, 13, 2, 0.2));
+  top: 6.2rem;
+  /* first drop shadow handles the v light shadow and the second handles the sharper shadow */
+  /* filter: drop-shadow(1px 10px 14px rgba(15, 13, 2, 0.15)) drop-shadow(1px 5px 8px rgba(15, 13, 2, 0.25));
+  -webkit-filter: drop-shadow(1px 10px 14px rgba(15, 13, 2, 0.15)) drop-shadow(1px 5px 8px rgba(15, 13, 2, 0.25)); */
 }
-#bigButton:hover {
-  filter: drop-shadow(0 14px 9px rgba(15, 13, 2, 0.15));
-  -webkit-filter: drop-shadow(0 14px 9px rgba(15, 13, 2, 0.15));
-}
+/* #bigButton:hover {
+  filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));
+  -webkit-filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));
+} */
 html {
   /* background-color: #E1DCDC; */
   background: #f2f2f2 url( https://cl.ly/image/381U2k0A3L3S/bg.png );

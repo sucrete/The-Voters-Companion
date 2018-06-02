@@ -28,7 +28,7 @@
         <div class="image">
           <img style="height: 50px; width: auto; " :src=" lightYellowStar "/>
         </div>
-        <span style="font-family: IBM Plex Sans Condensed;"> Loading... </span>
+        <span style="font-family: IBM Plex Sans Condensed; font-weight: 600;"> Loading... </span>
       </div>
     </modal>
   </div>
@@ -42,7 +42,7 @@ import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import places from 'places.js'
 import carpet from '../assets/light_yellow_star.png'
-import logoFinal from '../assets/lighterUSVFlogo.png'
+import logoFinal from '../assets/logologohopeful.png'
 
 export default {
   name: 'landing',
@@ -234,8 +234,8 @@ export default {
 #logoLink {
   z-index: 777;
   position: absolute;
-  top: 5rem;
-  right: -7;
+  top: 4.8rem;
+  right: -8;
   /* filter: drop-shadow(7px 9px 20px rgba(225, 226, 238, 0.36));
 	-webkit-filter: drop-shadow(7px 9px 20px rgba(225, 226, 238, 0.36)); */
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
@@ -247,7 +247,7 @@ export default {
   font-family: 'Cambo', serif;
   font-size: 250%;
   text-align: left;
-  width: 39rem;
+  width: 38rem;
   top: 30.5rem;
   line-height: 110%;
   padding-left: 1.5rem;
@@ -322,35 +322,35 @@ export default {
 input:focus {
   outline: none;
   border: none;
-  color: #003979;
+  color: #C68512;
   font-weight: 600;
 }
 input::-webkit-input-placeholder {
-  color: #003979 !important;
+  color: #C68512 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input:-moz-placeholder {
   /* Firefox 18- */
-  color: #003979 !important;
+  color: #C68512 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input::-moz-placeholder {
   /* Firefox 19+ */
-  color: #003979 !important;
+  color: #C68512 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input:-ms-input-placeholder {
   /* IE 10+ */
-  color: #003979 !important;
+  color: #C68512 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input::-ms-input-placeholder {
   /* Edge */
-  color: #003979 !important;
+  color: #C68512 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
