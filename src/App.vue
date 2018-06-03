@@ -34,10 +34,10 @@ export default {
   right: 1rem;
   z-index: 888;
   transition: all 250ms ease-in-out;
-  top: 6.2rem;
+  top: 9.5rem;
   /* first drop shadow handles the v light shadow and the second handles the sharper shadow */
-  /* filter: drop-shadow(1px 10px 14px rgba(15, 13, 2, 0.15)) drop-shadow(1px 5px 8px rgba(15, 13, 2, 0.25));
-  -webkit-filter: drop-shadow(1px 10px 14px rgba(15, 13, 2, 0.15)) drop-shadow(1px 5px 8px rgba(15, 13, 2, 0.25)); */
+  filter: drop-shadow(1px 14px 6px rgba(15, 13, 2, 0.07)) drop-shadow(1px 4px 7px rgba(15, 13, 2, 0.25));
+  -webkit-filter: drop-shadow(1px 14px 6px rgba(15, 13, 2, 0.07)) drop-shadow(1px 4px 7px rgba(15, 13, 2, 0.25));
 }
 /* #bigButton:hover {
   filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));

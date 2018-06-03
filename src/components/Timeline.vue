@@ -215,7 +215,6 @@ export default {
   background-color: #b60000;
 }
 
-
 .timeline-item-content {
   margin-top: .2rem;
   font-size: 90%;
@@ -236,6 +235,7 @@ export default {
   position: relative;
   padding-left: calc( 4em / 2 );
   padding-top: .25rem;
+  z-index: 1;
 }
 .votingValue {
   grid-column-start: 2;
@@ -262,7 +262,7 @@ export default {
   display: -ms-flexbox;
   display: -webkit-flex;
   position: relative;
-  margin-left: 1.6rem;
+  margin-left: 1.85rem;
   padding-bottom: 2em;
   width: 37rem
 }
@@ -273,7 +273,10 @@ export default {
 p {
   text-align: left;
 }
+.heading, .votingType, .votableHeader {
 
+  margin-left: .25rem;
+}
 .heading {
   display: block;
   font-size: 110%;
@@ -344,26 +347,20 @@ p {
 
 .timeline .timeline-item.is-primary {
     border-left-color: #33825e;
-    z-index: 12;
-}
-
-
-.timeline .timeline-item.is-warning {
-    border-left-color: #ffdd57
+    z-index: 600;
 }
 
 .timeline .timeline-item.is-past {
-    border-left-color: #b60000
+    border-left-color: #b60000;
+    z-index: 600;
 }
 
 .timeline-item:nth-child(even) .timeline-content .heading, .timeline-item:nth-child(even) .timeline-content .votableHeader, .timeline-item:nth-child(even) .timeline-content .timeline-item-content > *, .timeline-item:nth-child(even) .timeline-content .additionalInformation {
   background-color: #F0FFF0 !important;
-  z-index: 1;
 }
 
 .timeline-item:nth-child(odd) .timeline-content .heading, .timeline-item:nth-child(odd) .timeline-content .votableHeader, .timeline-item:nth-child(odd) .timeline-content .timeline-item-content > *, .timeline-item:nth-child(odd) .timeline-content .additionalInformation {
   background-color: #F5F5F5 !important;
-  z-index: 1;
 }
 
 .timeline-item .timeline-content .timeline-item-content > * {
