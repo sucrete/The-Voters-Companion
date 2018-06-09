@@ -37,12 +37,10 @@
 <script>
 /* eslint-disable */
 import axios from 'axios'
-// import Places from 'vue-places'
-import anime from 'animejs'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import places from 'places.js'
 import carpet from '../assets/light_yellow_star.png'
-import logoFinal from '../assets/logologohopeful.png'
+import logoFinal from '../assets/mauve.png'
 
 export default {
   name: 'landing',

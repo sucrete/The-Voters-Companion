@@ -10,8 +10,6 @@ import VModal from 'vue-js-modal'
 import '../node_modules/bulma/css/bulma.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
-import '../node_modules/dynamics.js/lib/dynamics.js'
-import 'showdown/dist/showdown.js'
 import { MdTabs } from 'vue-material/dist/components'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
@@ -30,6 +28,9 @@ Vue.config.productionTip = false;
 new Vue({
   store,
   el: '#app',
+  mounted() {
+    this.$material.ripple = false;
+  },
   router,
   template: '<App/>',
   components: { App }

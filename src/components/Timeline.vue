@@ -189,7 +189,7 @@ export default {
   margin-top: -.75rem;
   padding-left: 1.75rem;
   padding-bottom: .2rem;
-  width: 37rem;
+  width: 36.9rem;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   padding-top: .65rem;
@@ -262,9 +262,9 @@ export default {
   display: -ms-flexbox;
   display: -webkit-flex;
   position: relative;
-  margin-left: 1.85rem;
+  margin-left: 1.65rem;
   padding-bottom: 2em;
-  width: 37rem
+  width: 36.9rem
 }
 .votingDates {
   line-height: 110%;
@@ -275,7 +275,7 @@ p {
 }
 .heading, .votingType, .votableHeader {
 
-  margin-left: .25rem;
+  margin-left: .08rem;
 }
 .heading {
   display: block;
@@ -290,7 +290,7 @@ p {
   padding-top: .35rem;
   color: #33825e;
   border-top-right-radius: 5px;
-  width: 37rem;
+  width: 36.9rem;
 }
 
 .timeline .timeline-header {
@@ -304,6 +304,7 @@ p {
     position: relative;
     border-left: .1rem solid #dbdbdb;
     margin-left: calc( 4em / 2 );
+    padding-bottom: .5rem;
 }
 
 .timeline .timeline-item .timeline-marker {
@@ -356,11 +357,11 @@ p {
 }
 
 .timeline-item:nth-child(even) .timeline-content .heading, .timeline-item:nth-child(even) .timeline-content .votableHeader, .timeline-item:nth-child(even) .timeline-content .timeline-item-content > *, .timeline-item:nth-child(even) .timeline-content .additionalInformation {
-  background-color: #F0FFF0 !important;
+  background-color: rgba(230, 230, 230, 0.8) !important;
 }
 
 .timeline-item:nth-child(odd) .timeline-content .heading, .timeline-item:nth-child(odd) .timeline-content .votableHeader, .timeline-item:nth-child(odd) .timeline-content .timeline-item-content > *, .timeline-item:nth-child(odd) .timeline-content .additionalInformation {
-  background-color: #F5F5F5 !important;
+  background-color: rgba(230, 230, 230, 0.8) !important;
 }
 
 .timeline-item .timeline-content .timeline-item-content > * {

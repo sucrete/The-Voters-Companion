@@ -37,6 +37,10 @@ export default {
       register: registerBi
     }
   },
+  methods: {
+  },
+  mounted () {
+  },
   components: {
     TabRouter
   }
@@ -104,11 +108,11 @@ export default {
   text-overflow: ellipsis;
 }
 .VTName {
-  width: 30rem;
+  width: 25rem;
   font-weight: 500;
 }
 .VTTable {
-  width: 40rem;
+  width: 37rem;
   margin: 0 auto;
   position: relative;
 }
@@ -118,7 +122,7 @@ export default {
 .VTCell {
   padding: .75rem;
   border: 2px solid #F5F4EA;
-  background-color: #F0FFF0;
+  background-color: rgba(230, 230, 230, 0.8);
 }
 
 .tabItem {

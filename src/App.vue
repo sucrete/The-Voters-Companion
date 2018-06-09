@@ -22,6 +22,20 @@ export default {
         }
       }
     }
+  },
+  methods: {
+    removeRipple () {
+      var els = document.querySelectorAll('.md-ripple')
+      this._removeClasses(els)
+    },
+    _removeClasses (hope) {
+      for (var i = 0; i < hope.length; i++) {
+        hope[i].classList.remove('md-ripple')
+      }
+    }
+  },
+  created () {
+    this.removeRipple()
   }
 }
 </script>
@@ -35,9 +49,9 @@ export default {
   z-index: 888;
   transition: all 250ms ease-in-out;
   top: 9.5rem;
-  /* first drop shadow handles the v light shadow and the second handles the sharper shadow */
-  filter: drop-shadow(1px 14px 6px rgba(15, 13, 2, 0.07)) drop-shadow(1px 4px 7px rgba(15, 13, 2, 0.25));
-  -webkit-filter: drop-shadow(1px 14px 6px rgba(15, 13, 2, 0.07)) drop-shadow(1px 4px 7px rgba(15, 13, 2, 0.25));
+  /* first drop shadow handles the v light shadow and the second handles the sharper shadow drop-shadow(1px 14px 6px rgba(15, 13, 2, 0.07)) */
+  filter: drop-shadow(1px 5px 3px rgba(15, 13, 2, 0.25));
+  -webkit-filter: drop-shadow(1px 5px 3px rgba(15, 13, 2, 0.25));
 }
 /* #bigButton:hover {
   filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));
