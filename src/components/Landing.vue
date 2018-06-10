@@ -233,7 +233,7 @@ export default {
   z-index: 777;
   position: absolute;
   top: 4.8rem;
-  right: -8;
+  right: -5rem;
   /* filter: drop-shadow(7px 9px 20px rgba(225, 226, 238, 0.36));
 	-webkit-filter: drop-shadow(7px 9px 20px rgba(225, 226, 238, 0.36)); */
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
@@ -241,15 +241,14 @@ export default {
 }
 
 #landingInfo {
-  color: #E2F4D6;
+  color: #f6c777;
   font-family: 'Cambo', serif;
   font-size: 250%;
   text-align: left;
-  width: 38rem;
+  width: 34rem;
   top: 30.5rem;
   line-height: 110%;
-  padding-left: 1.5rem;
-  margin-left: 2.5rem;
+  margin-left: 4.75rem;
   margin-top: .75rem;
 }
 
@@ -275,8 +274,8 @@ export default {
   text-align: left;
   font-size: 8.5rem;
   line-height: 80%;
-  left: 1.5rem;
-  margin-top: 3.75rem;
+  left: 2.5rem;
+  margin-top: 4.75rem;
   position: absolute;
   /* -webkit-text-stroke: 3px #343434; */
 }
@@ -320,35 +319,35 @@ export default {
 input:focus {
   outline: none;
   border: none;
-  color: #C68512;
+  color: #f6c777;
   font-weight: 600;
 }
 input::-webkit-input-placeholder {
-  color: #C68512 !important;
+  color: #f6c777 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input:-moz-placeholder {
   /* Firefox 18- */
-  color: #C68512 !important;
+  color: #f6c777 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input::-moz-placeholder {
   /* Firefox 19+ */
-  color: #C68512 !important;
+  color: #f6c777 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input:-ms-input-placeholder {
   /* IE 10+ */
-  color: #C68512 !important;
+  color: #f6c777 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input::-ms-input-placeholder {
   /* Edge */
-  color: #C68512 !important;
+  color: #f6c777 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
@@ -367,7 +366,7 @@ input::-ms-input-placeholder {
   border:none;
   border-radius: 0%;
   background-color: transparent;
-  border-bottom: 2px solid #C68512 !important;
+  border-bottom: 2px solid #f6c777 !important;
 }
 #address-input:focus {
   outline:none;
