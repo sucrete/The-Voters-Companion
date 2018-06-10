@@ -143,6 +143,9 @@ html {
   border: none;
   top: -.2rem;
 }
+.mui-btn:hover {
+  color: #353839;
+}
 #righty:hover {
   transform: translate(3px, 0px);
   -webkit-transform: translate(3px, 0px);

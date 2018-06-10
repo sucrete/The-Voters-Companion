@@ -233,15 +233,15 @@ export default {
   z-index: 777;
   position: absolute;
   top: 4.8rem;
-  right: -5rem;
-  /* filter: drop-shadow(7px 9px 20px rgba(225, 226, 238, 0.36));
-	-webkit-filter: drop-shadow(7px 9px 20px rgba(225, 226, 238, 0.36)); */
+  right: 6rem;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.17));
+	-webkit-filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.17));
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70) */
 }
 
 #landingInfo {
-  color: #f6c777;
+  color: #bcf2aa;
   font-family: 'Cambo', serif;
   font-size: 250%;
   text-align: left;
