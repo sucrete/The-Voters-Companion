@@ -50,8 +50,8 @@ export default {
   transition: all 250ms ease-in-out;
   top: 9.5rem;
   /* first drop shadow handles the v light shadow and the second handles the sharper shadow drop-shadow(1px 14px 6px rgba(15, 13, 2, 0.07)) */
-  filter: drop-shadow(1px 5px 3px rgba(15, 13, 2, 0.25));
-  -webkit-filter: drop-shadow(1px 5px 3px rgba(15, 13, 2, 0.25));
+  filter: drop-shadow(1px 5px 3px rgba(15, 13, 2, 0.2)) drop-shadow(0px -5px 5px rgb(173, 39, 15, .2));
+  -webkit-filter: drop-shadow(1px 5px 3px rgba(15, 13, 2, 0.2)) drop-shadow(0px -5px 5px rgb(173, 39, 15, .2));
 }
 /* #bigButton:hover {
   filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));

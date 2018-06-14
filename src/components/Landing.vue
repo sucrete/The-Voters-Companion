@@ -234,14 +234,14 @@ export default {
   position: absolute;
   top: 4.8rem;
   right: 6rem;
-  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.17));
-	-webkit-filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.17));
+  /* filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.17));
+	-webkit-filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.17)); */
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70) */
 }
 
 #landingInfo {
-  color: #bcf2aa;
+  color: #e0f6d9;
   font-family: 'Cambo', serif;
   font-size: 250%;
   text-align: left;
@@ -257,10 +257,10 @@ export default {
 }
 
 #verticalLine {
-  opacity: 0;
+  opacity: .7;
   position: absolute;
   width: inherit;
-  height: 46.2rem;
+  height: 45rem;
   top: -.6rem;
   border-left: 2px solid rgb(19, 136, 70, .75);
   left: -.8rem;
@@ -277,6 +277,7 @@ export default {
   left: 2.5rem;
   margin-top: 4.75rem;
   position: absolute;
+  text-shadow: 0.07em 0.07em 0 rgba(0, 0, 0, 0.09);
   /* -webkit-text-stroke: 3px #343434; */
 }
 .logoBlock {
