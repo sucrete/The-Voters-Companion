@@ -1,5 +1,5 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-require('dotenv').config()
+
 var path = require('path')
 const Dotenv = require('dotenv-webpack')
 const showdown = require('showdown')
