@@ -5,6 +5,6 @@
  "author": "sucrete",
  "private": true,
  "scripts": {
-   "postinstall": "npm run build"
+   "postinstall": "npm install express"
  }
 }

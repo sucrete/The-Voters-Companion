@@ -16,7 +16,6 @@ var env = process.env.NODE_ENV === 'testing'
   : config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
-  mode: 'production',
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
@@ -33,7 +32,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': {
-          'NODE_ENV': JSON.stringify('production'),
+          'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
           'VOTE_KEY': JSON.stringify(process.env.VOTE_KEY),
           'GOOGLE_API_KEY': JSON.stringify(process.env.GOOGLE_API_KEY)
         }
