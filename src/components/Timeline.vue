@@ -17,7 +17,7 @@
         <div id="overviewNotice">
           This page is devoted to your elections.
         </div>
-        <a id="bigButtonLink"><img id="bigButton" :src=" register "/></a>
+        <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a>
       </div>
       <!-- body -->
       <div class="hotBod">

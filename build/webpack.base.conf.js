@@ -28,6 +28,10 @@ module.exports = {
     symlinks: false
   },
   optimization: {
+    minimize: false,
+    runtimeChunk: {
+      name: 'vendor'
+    },
     splitChunks: {
       cacheGroups: {
         commons: {

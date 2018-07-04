@@ -6,7 +6,7 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
@@ -16,6 +16,10 @@ var env = process.env.NODE_ENV === 'testing'
   : config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
+  optimization: {
+    minimize: true
+  },
+  mode: 'production',
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
@@ -38,7 +42,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         }
     }),
     // extract css into its own file
-    new ExtractTextPlugin({
+    new MiniCSSExtractPlugin({
       filename: utils.assetsPath('css/[name].[md5:contenthash:hex:20].css')
     }),
     new Dotenv(),

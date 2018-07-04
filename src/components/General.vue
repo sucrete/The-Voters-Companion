@@ -14,7 +14,7 @@
       <div id="overviewNotice">
         All you need to know to vote in your state.
       </div>
-      <a id="bigButtonLink"><img id="bigButton" :src=" register "/></a>
+      <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a>
     </div>
 
     <!-- body -->
