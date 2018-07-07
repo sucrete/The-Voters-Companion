@@ -121,8 +121,8 @@ html {
 }
 
 #takeMeOmh {
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 500;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
   font-size: 125%;
   color: #867933;
   transition: color 150ms ease-in-out;

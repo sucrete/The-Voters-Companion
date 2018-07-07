@@ -216,29 +216,41 @@ export default {
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
 
+#whiteVerticalElement {
+  width: 1.5rem;
+  height: 18rem;
+  z-index: 1;
+  background-color: white;
+  position: absolute;
+  left: calc(50% - .75rem);
+  top: 50%;
+}
 #logoLink {
   z-index: 777;
   position: absolute;
   top: 3rem;
   right: 3rem;
-  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.17));
-	-webkit-filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.17));
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35));
+	-webkit-filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35));
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70) */
 }
 
 #landingInfo {
   position: relative;
-  color: #ebe2cb;
-  font-family: 'Cambo', serif;
-  text-align: left;
+  color: #3f5586;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
   width: 20rem;
   height: 13rem;
   background-color: white;
   top: 1rem;
   line-height: 110%;
   padding: 1rem;
+  z-index: 88;
   margin: 0 auto;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 #app {
@@ -246,6 +258,7 @@ export default {
 }
 
 #brownType {
+  z-index: 99;
   color: #3f5586;
   font-family: 'Roboto Condensed', serif !important;
   text-align: center;
@@ -267,9 +280,11 @@ export default {
   /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 6;
   background-color: #ebe2cb;
+  background-image: url("https://i.imgur.com/HSwsLkl.png");
   border-style: solid;
   border-width: .9rem;
   border-color: white;
+  z-index: 100;
 }
 
 .ap-input-icon {
@@ -279,12 +294,17 @@ export default {
   right: 4.25rem;
 }
 #inputEverything {
-  margin-top: 7rem;
+  margin-top: 8rem;
   margin-left: auto;
   margin-right: auto;
   position: relative;
 }
 #address-input {
+  padding-left: 1rem;
+  display:block;
+  border:none;
+  background-color: white;
+  position: relative;
   width: 36rem;
   margin: 0 auto;
   outline: none;
@@ -343,13 +363,6 @@ input::-ms-input-placeholder {
 #e9_texte {
   font-size: 1.5rem;
   font-family:Arial;
-}
-#address-input	{
-  padding-left: 1rem;
-  display:block;
-  border:none;
-  border-radius: 2%;
-  background-color: white;
 }
 #address-input:focus {
   outline:none;
