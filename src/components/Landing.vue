@@ -1,24 +1,20 @@
 <template>
 <!-- eslint-disable -->
   <div id="landing">
-    <div id="verticalLine"></div>
-    <h2 class="mb-5" style="position: absolute; top: 0; left: -225px;" hidden><router-link  to="overview" >Hello component</router-link></h2>
     <!-- example of syntax needed to insert image with vue -->
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
-
+    <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank">
+      <img :src=" logFin "/>
+    </a>
     <div class="logoBlock">
-      <h1 id="brownType" >The<br>Voter's<br>Companion</h1>
-      <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank">
-        <img :src=" logFin "/>
-      </a>
+      <h1 id="brownType" >THE<br>VOTER'S<br>COMPANION</h1>
+
     </div>
 
     <div id="inputEverything">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
-      <span class="highlight"></span>
-      <span class="bar"></span>
     </div>
-
+    <div id="whiteVerticalElement"></div>
     <div id="landingInfo">
       Register to vote. Connect with your representatives. Stay informed.
     </div>
@@ -101,15 +97,6 @@ export default {
     },
     getStates () {
 
-      // var counties = state.algoliaResponse.hit.county
-      /* eslint-disable */
-      // var countyName = null
-      // if (counties[0].includes('County')) {
-      //   countyName = counties[0].match(/^(.*?)\ County/)[1].split(' ').join('+')
-      // } else {
-      //   countyName = counties[0].split(' ').join('+')
-      // }
-      /* eslint-enable */
       const axiosInstance2 = axios.create({
         params: {
           limit: 57
@@ -232,61 +219,57 @@ export default {
 #logoLink {
   z-index: 777;
   position: absolute;
-  top: 4.8rem;
-  right: 6rem;
-  /* filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.17));
-	-webkit-filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.17)); */
+  top: 3rem;
+  right: 3rem;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.17));
+	-webkit-filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.17));
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70) */
 }
 
 #landingInfo {
-  color: #e0f6d9;
+  position: relative;
+  color: #ebe2cb;
   font-family: 'Cambo', serif;
-  font-size: 250%;
   text-align: left;
-  width: 34rem;
-  top: 30.5rem;
+  width: 20rem;
+  height: 13rem;
+  background-color: white;
+  top: 1rem;
   line-height: 110%;
-  margin-left: 4.75rem;
-  margin-top: .75rem;
+  padding: 1rem;
+  margin: 0 auto;
 }
 
 #app {
-  background-color: rgb(17, 122, 63);
-}
-
-#verticalLine {
-  opacity: .7;
-  position: absolute;
-  width: inherit;
-  height: 45rem;
-  top: -.6rem;
-  border-left: 2px solid rgb(19, 136, 70, .75);
-  left: -.8rem;
-  z-index: 30;
-
+  background-color: #e9f7df;
 }
 
 #brownType {
-  color: #f2cbbc;
-  font-family: 'Chicle', serif !important;
-  text-align: left;
-  font-size: 8.5rem;
-  line-height: 80%;
+  color: #3f5586;
+  font-family: 'Roboto Condensed', serif !important;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 90%;
   left: 2.5rem;
-  margin-top: 4.75rem;
+  margin-top: 2.5rem;
   position: absolute;
-  text-shadow: 0.07em 0.07em 0 rgba(0, 0, 0, 0.09);
+  text-shadow: 0.08em 0.08em 0 white;
   /* -webkit-text-stroke: 3px #343434; */
 }
 .logoBlock {
   position: relative;
-  height: 23rem;
-  left: 2rem;
+  height: 13rem;
+  width: 20rem;
   margin: 0 auto;
+  top: 7rem;
   /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 6;
+  background-color: #ebe2cb;
+  border-style: solid;
+  border-width: .9rem;
+  border-color: white;
 }
 
 .ap-input-icon {
@@ -296,7 +279,7 @@ export default {
   right: 4.25rem;
 }
 #inputEverything {
-  margin-top: 3.25rem;
+  margin-top: 7rem;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -365,9 +348,8 @@ input::-ms-input-placeholder {
   padding-left: 1rem;
   display:block;
   border:none;
-  border-radius: 0%;
-  background-color: transparent;
-  border-bottom: 2px solid #f6c777 !important;
+  border-radius: 2%;
+  background-color: white;
 }
 #address-input:focus {
   outline:none;

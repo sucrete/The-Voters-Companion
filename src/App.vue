@@ -42,7 +42,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600|Cambo|Chicle');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600|Cambo|Roboto+Condensed:700');
 #bigButton {
   position: absolute;
   right: 1rem;

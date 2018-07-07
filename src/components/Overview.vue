@@ -15,7 +15,7 @@
       <div id="overviewNotice">
         This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for ways to connect with your representatives.
       </div>
-      <a id="bigButtonLink"><img id="bigButton" :src=" register "/ hidden></a>
+      <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a>
     </div>
 
     <div id="dimScreen"></div>
@@ -636,7 +636,7 @@ export default {
 }
 
 #app {
-  background-color: #F5F4EA;
+  background-color: #f5f4eb;
 }
 
 h1, h2 {
