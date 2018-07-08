@@ -131,8 +131,9 @@ html {
   color: #353839;
 }
 #takeMeOmhDaddy {
-  top: .35rem;
+  top: .4rem;
   position: relative;
+  left: .2rem;
 }
 .mui-btn {
   width: 125px;

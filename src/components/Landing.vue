@@ -10,13 +10,13 @@
       <h1 id="brownType" >THE<br>VOTER'S<br>COMPANION</h1>
 
     </div>
-
+    <img id="hrufkins" src="https://i.imgur.com/1aFZ7jQ.png" />
     <div id="inputEverything">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
     </div>
-    <div id="whiteVerticalElement"></div>
+    <div id="whiteVerticalElement" hidden></div>
     <div id="landingInfo">
-      Register to vote. Connect with your representatives. Stay informed.
+      Register to vote. <br /> <br />Connect with your representatives. <br /><br />Stay informed.
     </div>
 
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
@@ -215,7 +215,13 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
-
+#hrufkins {
+  visibility: hidden;
+  position: absolute;
+  z-index: 101;
+  left: 11.35rem;
+  top: 6.75rem;
+}
 #whiteVerticalElement {
   width: 1.5rem;
   height: 18rem;
@@ -243,13 +249,12 @@ export default {
   text-align: center;
   width: 20rem;
   height: 13rem;
-  background-color: white;
   top: 1rem;
   line-height: 110%;
   padding: 1rem;
   z-index: 88;
   margin: 0 auto;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -280,9 +285,9 @@ export default {
   /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 6;
   background-color: #ebe2cb;
-  background-image: url("https://i.imgur.com/HSwsLkl.png");
+  /* background-image: url("https://i.imgur.com/HSwsLkl.png"); */
   border-style: solid;
-  border-width: .9rem;
+  border-width: .5rem;
   border-color: white;
   z-index: 100;
 }
@@ -323,35 +328,35 @@ export default {
 input:focus {
   outline: none;
   border: none;
-  color: #f6c777;
+  color: #696969;
   font-weight: 600;
 }
 input::-webkit-input-placeholder {
-  color: #f6c777 !important;
+  color: #696969 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input:-moz-placeholder {
   /* Firefox 18- */
-  color: #f6c777 !important;
+  color: #696969 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input::-moz-placeholder {
   /* Firefox 19+ */
-  color: #f6c777 !important;
+  color: #696969 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input:-ms-input-placeholder {
   /* IE 10+ */
-  color: #f6c777 !important;
+  color: #696969 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }
 input::-ms-input-placeholder {
   /* Edge */
-  color: #f6c777 !important;
+  color: #696969 !important;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
 }

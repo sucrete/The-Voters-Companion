@@ -6,7 +6,7 @@
       <!-- simple nav header -->
       <div class="simple-navigation-header">
         <button id="lefty" type="button" class="mui-btn"><router-link to="General">General</router-link></button>
-        <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">The Voter's Companion</p></a>
+        <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
         <button id="righty" type="button" class="mui-btn"><router-link to="Overview">Overview</router-link></button>
       </div>
 
@@ -357,11 +357,11 @@ p {
 }
 
 .timeline-item:nth-child(even) .timeline-content .heading, .timeline-item:nth-child(even) .timeline-content .votableHeader, .timeline-item:nth-child(even) .timeline-content .timeline-item-content > *, .timeline-item:nth-child(even) .timeline-content .additionalInformation {
-  background-color: rgba(230, 230, 230, 0.8) !important;
+  background-color: #ede8e8 !important;
 }
 
 .timeline-item:nth-child(odd) .timeline-content .heading, .timeline-item:nth-child(odd) .timeline-content .votableHeader, .timeline-item:nth-child(odd) .timeline-content .timeline-item-content > *, .timeline-item:nth-child(odd) .timeline-content .additionalInformation {
-  background-color: rgba(230, 230, 230, 0.8) !important;
+  background-color: #ede8e8 !important;
 }
 
 .timeline-item .timeline-content .timeline-item-content > * {

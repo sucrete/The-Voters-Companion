@@ -4,7 +4,7 @@
     <!-- simple nav header -->
     <div class="simple-navigation-header">
       <button id="lefty" type="button" class="mui-btn"><router-link to="timeline">Timeline</router-link></button>
-      <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">The Voter's Companion</p></a>
+      <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
       <button id="righty" type="button" class="mui-btn"><router-link to="general">General</router-link></button>
     </div>
     <!-- body -->
@@ -142,7 +142,7 @@ export default {
                     var imagex = imageSpecs.x + (imageSpecs.width / 2)
                     var moveimagealongx = movementalongx - ((windowx - imagex) - 66)
                     var moveimagealongy = 22.5
-                    imageNode.style.cssText = 'transform: scale(1) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
+                    imageNode.style.cssText = 'transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
                   }
                 }
                 var gridWrapper = document.createElement('div')
@@ -262,6 +262,7 @@ export default {
             imageWrapper.className = ('repImageWrapper')
             var figureImage = document.createElement('img')
             figureImage.className = ('repImage')
+            figureImage.classList.add('md-image')
             figureImage.setAttribute('src', thing2.repPhotoURL)
             var tableWrapper = document.createElement('div')
             tableWrapper.className = ('tableWrapper')

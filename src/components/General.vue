@@ -4,7 +4,7 @@
     <!-- simple nav header -->
     <div class="simple-navigation-header">
       <button id="lefty" type="button" class="mui-btn"><router-link to="Overview">Overview</router-link></button>
-      <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">The Voter's Companion</p></a>
+      <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
       <button id="righty" type="button" class="mui-btn"><router-link to="Timeline">Timeline</router-link></button>
     </div>
     <div id="overviewNoticeWrapper">
