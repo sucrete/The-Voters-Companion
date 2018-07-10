@@ -10,11 +10,10 @@
       <h1 id="brownType" >THE<br>VOTER'S<br>COMPANION</h1>
 
     </div>
-    <img id="hrufkins" src="https://i.imgur.com/1aFZ7jQ.png" />
+    <img id="hrufkins" src="https://cdn.rawgit.com/sucrete/392a487c4fe9b943f8b78e7dfb0a4667/raw/dd949833970ebfd9e1ff2a6391ceabc433d844cc/boldsquare.svg" />
     <div id="inputEverything">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
     </div>
-    <div id="whiteVerticalElement" hidden></div>
     <div id="landingInfo">
       Register to vote. <br /> <br />Connect with your representatives. <br /><br />Stay informed.
     </div>
@@ -216,11 +215,12 @@ export default {
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
 #hrufkins {
-  visibility: hidden;
   position: absolute;
   z-index: 101;
-  left: 11.35rem;
-  top: 6.75rem;
+  left: 11.75rem;
+  top: 6rem;
+  width: 19.2rem;
+  height: auto;
 }
 #whiteVerticalElement {
   width: 1.5rem;
@@ -270,7 +270,7 @@ export default {
   font-weight: 700;
   font-size: 2.5rem;
   line-height: 90%;
-  left: 2.5rem;
+  left: 1.5rem;
   margin-top: 2.5rem;
   position: absolute;
   text-shadow: 0.08em 0.08em 0 white;
@@ -278,8 +278,8 @@ export default {
 }
 .logoBlock {
   position: relative;
-  height: 13rem;
-  width: 20rem;
+  height: 12.75rem;
+  width: 17rem;
   margin: 0 auto;
   top: 7rem;
   /*box-shadow: 10px 10px 20px #334431;*/
@@ -287,7 +287,7 @@ export default {
   background-color: #ebe2cb;
   /* background-image: url("https://i.imgur.com/HSwsLkl.png"); */
   border-style: solid;
-  border-width: .5rem;
+  border-width: .75rem;
   border-color: white;
   z-index: 100;
 }
