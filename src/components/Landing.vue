@@ -76,7 +76,6 @@ export default {
       this.show()
       this.searchAPIs()
     },
-    // need any of these interpolated vars? { state, commit, dispatch }
     searchAPIs () {
       var state = this.$store.getters.showMeDatState
       var noJoke = process.env.GOOGLE_API_KEY
@@ -89,6 +88,7 @@ export default {
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
+        console.log('RESPONSE SUCCESS. HERE IT BE ---->   ' + JSON.stringify(response, null, '\t'))
         this.getStates()
       }).catch(err => {
         console.log('searchAPIs method failed. error----> ' + err)
@@ -102,7 +102,10 @@ export default {
           // county_name: countyName
         },
         headers: {
-          'Authorization': 'Token ' + process.env.VOTE_KEY
+          'withCredentials': true,
+          'Authorization': 'Token ' + process.env.VOTE_KEY,
+          'Cache-Control': 'no-cache',
+          'Content-Type': 'application/json'
         }
       })
       axiosInstance2.get('https://localelections.usvotefoundation.org/api/v1/states').then(response => {
@@ -130,7 +133,8 @@ export default {
           state_id: this.stateID
         },
         headers: {
-          'Authorization': 'Token ' + process.env.VOTE_KEY
+          'Authorization': 'Token ' + process.env.VOTE_KEY,
+          'Cache-Control': 'no-cache'
         }
       })
       axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {

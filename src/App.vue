@@ -24,18 +24,8 @@ export default {
     }
   },
   methods: {
-    removeRipple () {
-      var els = document.querySelectorAll('.md-ripple')
-      this._removeClasses(els)
-    },
-    _removeClasses (hope) {
-      for (var i = 0; i < hope.length; i++) {
-        hope[i].classList.remove('md-ripple')
-      }
-    }
   },
   created () {
-    this.removeRipple()
   }
 }
 </script>
