@@ -51,21 +51,17 @@ export default {
 
 #navTabs {
   margin-top: 1rem;
-  background-color: #F5F4EA !important;
 }
 .md-tabs-navigation {
-  background-color: #F5F4EA !important;
+  background-color: #f7f7f0 !important;
 }
 .md-button-content {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 500;
   font-size: 105%;
 }
-.md-tabs-indicator {
-  background-color: #867933;
-}
 #activeBod {
-  background-color: #F5F4EA;
+  background-color: #f7f7f0;
   width: 40rem;
   margin: 0 auto;
   border-radius: 3px;
@@ -121,7 +117,7 @@ export default {
 }
 .VTCell {
   padding: .75rem;
-  border: 2px solid #F5F4EA;
+  border: 2px solid white;
   background-color: rgba(230, 230, 230, 0.8);
 }
 
@@ -133,7 +129,7 @@ export default {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 500;
   color: #62624c;
-  background-color: #f5f4ea;
+  background-color: #f7f7f0;
   padding: .5rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;

@@ -58,7 +58,7 @@ html {
   box-sizing: inherit;
 }
 #app {
-  background-color: #F5F4EA;
+  background-color: #f7f7f0;
   border-radius: 2px;
 }
 
@@ -97,7 +97,7 @@ html {
   margin-bottom: 1.25rem;
 }
 .simple-navigation-header {
-  color: #353839;
+  color: #3c9035;
   width: 42.5rem;
   font-size: 105%;
   margin: 0 auto;
@@ -114,14 +114,14 @@ html {
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 700;
   font-size: 125%;
-  color: #867933;
+  color: #3c9035;
   transition: color 150ms ease-in-out;
 }
 #takeMeOmh:hover {
   color: #353839;
 }
 #takeMeOmhDaddy {
-  top: .4rem;
+  top: .5rem;
   position: relative;
   left: .2rem;
 }
@@ -129,14 +129,12 @@ html {
   width: 125px;
   font-weight: 500;
   font-size: 14px;
-  background-color: #F5F4EA;
+  background-color: #f7f7f0;
   transition: all 250ms ease-in-out;
   border: none;
   top: -.2rem;
 }
-.mui-btn:hover {
-  color: #353839;
-}
+
 #righty:hover {
   transform: translate(3px, 0px);
   -webkit-transform: translate(3px, 0px);

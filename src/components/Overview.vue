@@ -536,16 +536,17 @@ export default {
   cursor: pointer;
   padding-left: .5rem;
   position: absolute;
-  background-color: #fff;
+  background-color: #f7f7f0;
   border-radius: 2px;
   border-top: 1px solid white;
   border-left: 1px solid white;
   box-shadow: 0 1px 3px rgba(119, 105, 17,0.12), 0 1px 2px rgba(81, 89, 138,0.24);
   -webkit-transition: width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1),background-color 500ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
+  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1),background-color 250ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
 }
 .repCard:hover {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background-color: white;
 }
 .repCard .repImageWrapper {
   display: inline-block;
@@ -637,7 +638,7 @@ export default {
 }
 
 #app {
-  background-color: #f5f4eb;
+  background-color: #f7f7f0;
 }
 
 h1, h2 {

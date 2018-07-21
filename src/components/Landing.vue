@@ -108,7 +108,7 @@ export default {
           'Content-Type': 'application/json'
         }
       })
-      axiosInstance2.get('https://localelections.usvotefoundation.org/api/v1/states').then(response => {
+      axiosInstance2.get('https://api.usvotefoundation.org/elections/v1/states').then(response => {
         this.$store.commit('setAllStateIDs', response)
         this.search4Elections()
       }).catch(err => {
@@ -137,7 +137,7 @@ export default {
           'Cache-Control': 'no-cache'
         }
       })
-      axiosInstance.get('https://localelections.usvotefoundation.org/api/v1/elections').then(response => {
+      axiosInstance.get('https://api.usvotefoundation.org/elections/v1/elections').then(response => {
         this.$store.commit('setUSVoteElections', response)
         this.search4VoterInfo()
       }).catch(err => {
@@ -153,7 +153,7 @@ export default {
           'Authorization': 'Token ' + process.env.VOTE_KEY
         }
       })
-      axiosInstance3.get('https://localelections.usvotefoundation.org/api/v1/state_voter_information').then(response => {
+      axiosInstance3.get('https://api.usvotefoundation.org/elections/v1/state_voter_information').then(response => {
         console.log('!!!!!!!!! STATE VOTER INFORMATION, BOYO !!!!!!!!! ' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
         this.$store.commit('setVoterInformation', response)
         this.$router.push({path: 'overview'})

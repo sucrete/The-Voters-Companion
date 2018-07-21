@@ -7,7 +7,7 @@
       <div class="simple-navigation-header">
         <button id="lefty" type="button" class="mui-btn"><router-link to="General">General</router-link></button>
         <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-        <button id="righty" type="button" class="mui-btn"><router-link to="Overview">Overview</router-link></button>
+        <button id="righty" type="button" class="mui-btn"><router-link to="Overview">Overview<img class="cycleArrow" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE4NS4zNDMgMTg1LjM0MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg1LjM0MyAxODUuMzQzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNTEuNzA3LDE4NS4zNDNjLTIuNzQxLDAtNS40OTMtMS4wNDQtNy41OTMtMy4xNDljLTQuMTk0LTQuMTk0LTQuMTk0LTEwLjk4MSwwLTE1LjE3NSAgICBsNzQuMzUyLTc0LjM0N0w0NC4xMTQsMTguMzJjLTQuMTk0LTQuMTk0LTQuMTk0LTEwLjk4NywwLTE1LjE3NWM0LjE5NC00LjE5NCwxMC45ODctNC4xOTQsMTUuMTgsMGw4MS45MzQsODEuOTM0ICAgIGM0LjE5NCw0LjE5NCw0LjE5NCwxMC45ODcsMCwxNS4xNzVsLTgxLjkzNCw4MS45MzlDNTcuMjAxLDE4NC4yOTMsNTQuNDU0LDE4NS4zNDMsNTEuNzA3LDE4NS4zNDN6IiBmaWxsPSIjM2IzYzM2Ii8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" /> </router-link></button>
       </div>
 
       <div id="overviewNoticeWrapper">
@@ -370,7 +370,7 @@ p {
 }
 
 #app {
-  background-color: #F5F4EA;
+  background-color: #f7f7f0;
 }
 
 </style>
