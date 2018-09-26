@@ -59,7 +59,19 @@ html {
 }
 #app {
   background-color: #f7f7f0;
-  border-radius: 2px;
+  border-radius: 7px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 46rem;
+  margin: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  text-align: center;
+  box-shadow: 0 7px 28px rgba(0, 0, 0, 0.25);
+  padding: 10px 24px;
+  min-height: 45rem;
+  position: relative;
 }
 
 .hotBod {
@@ -91,7 +103,7 @@ html {
 }
 #overviewMarquee {
   font-size: 350%;
-  color: #353839;
+  color: #353839; /* color --> "jet black" */
   font-weight: 600;
   text-align: left;
   margin-bottom: 1.25rem;
@@ -118,7 +130,7 @@ html {
   transition: color 150ms ease-in-out;
 }
 #takeMeOmh:hover {
-  color: #353839;
+  color: #6bb466;
 }
 #takeMeOmhDaddy {
   top: .5rem;
@@ -134,7 +146,20 @@ html {
   border: none;
   top: -.2rem;
 }
+.arrow {
+  height: 60%;
+  width: auto;
+}
+.arrowL {
+  -webkit-transform: rotate(180deg);     /* Chrome and other webkit browsers */
+  -moz-transform: rotate(180deg);        /* FF */
+  -o-transform: rotate(180deg);          /* Opera */
+  -ms-transform: rotate(180deg);         /* IE9 */
+  transform: rotate(180deg);             /* W3C compliant browsers */
 
+  /* IE8 and below */
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1, M12=0, M21=0, M22=-1, DX=0, DY=0, SizingMethod='auto expand');
+}
 #righty:hover {
   transform: translate(3px, 0px);
   -webkit-transform: translate(3px, 0px);
@@ -145,21 +170,6 @@ html {
 }
 router-link:hover {
   text-decoration: none !important;
-}
-
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  width: 46rem;
-  margin: auto;
-  margin-top: 1.5rem;
-  margin-bottom: 2rem;
-  font-weight: 300;
-  text-align: center;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.17);
-  padding: 10px 24px;
-  min-height: 45rem;
-  position: relative;
 }
 
 body {
@@ -175,7 +185,7 @@ a {
   text-decoration:none !important;
 }
 a:visited:not(#takeMeOmh) {
-  color: #716E10;
+  color: #3b3c36;
 }
 
 
@@ -196,6 +206,6 @@ input, input:focus {
   outline: none;
 }
 #takeMeOmh:visited, #takeMeOmhDaddy:visited {
-  color: #353839 !important;
+  color: #3b3c36 !important;
 }
 </style>

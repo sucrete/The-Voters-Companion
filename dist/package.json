@@ -1,10 +1,14 @@
 {
  "name": "The_Voters_Companion",
  "version": "1.0.0",
- "description": "a platform to enable the voter",
+ "description": "a complete resource for voters",
  "author": "sucrete",
  "private": true,
  "scripts": {
-   "postinstall": "npm install express"
+  "postinstall": "npm install express"
+ },
+ "dependencies": {
+  "body-parser": "^1.18.3",
+  "nodemon": "^1.18.4"
  }
 }

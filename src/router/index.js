@@ -14,9 +14,11 @@ Vue.use(Router)
 //       component: Hello
 //     }
 export default new Router({
+  mode: 'history',
+  hash: false,
   routes: [
     {
-      path: '/',
+      path: '',
       name: 'Landing',
       component: Landing
     },
@@ -34,6 +36,10 @@ export default new Router({
       path: '/timeline',
       name: 'Timeline',
       component: Timeline
-    }
+    },
+    {
+      path: '*',
+      redirect: '/'
+    } // catch all use case
   ]
 })

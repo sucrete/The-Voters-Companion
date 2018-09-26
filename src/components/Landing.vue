@@ -8,12 +8,14 @@
     </a>
     <div class="logoBlock">
       <h1 id="brownType" >THE<br>VOTER'S<br>COMPANION</h1>
+    </div>
 
-    </div>
-    <img id="hrufkins" src="https://cdn.rawgit.com/sucrete/392a487c4fe9b943f8b78e7dfb0a4667/raw/dd949833970ebfd9e1ff2a6391ceabc433d844cc/boldsquare.svg" />
-    <div id="inputEverything">
+    <img id="hrufkins" src="https://cdn.rawgit.com/sucrete/392a487c4fe9b943f8b78e7dfb0a4667/raw/0d949f232054fe1c787ce02d4b123b1b2101bcea/boldsquare.svg" />
+
+    <form id="inputEverything" action="/" method="get">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
-    </div>
+    </form>
+
     <div id="landingInfo">
       Register to vote. <br /> <br />Connect with your representatives. <br /><br />Stay informed.
     </div>
@@ -96,19 +98,17 @@ export default {
     },
     getStates () {
 
-      const axiosInstance2 = axios.create({
+      const axiosInstance2 = axios.create()
+      axiosInstance2.get('https://api.usvotefoundation.org/elections/v1/states',{
         params: {
           limit: 57
           // county_name: countyName
         },
         headers: {
-          'withCredentials': true,
           'Authorization': 'Token ' + process.env.VOTE_KEY,
-          'Cache-Control': 'no-cache',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json, text/plain, */*'
         }
-      })
-      axiosInstance2.get('https://api.usvotefoundation.org/elections/v1/states').then(response => {
+      }).then(response => {
         this.$store.commit('setAllStateIDs', response)
         this.search4Elections()
       }).catch(err => {
@@ -240,8 +240,8 @@ export default {
   position: absolute;
   top: 3rem;
   right: 3rem;
-  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35));
-	-webkit-filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35));
+  /* filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35));
+	-webkit-filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35)); */
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70) */
 }
