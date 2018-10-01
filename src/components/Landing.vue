@@ -12,7 +12,7 @@
 
     <img id="hrufkins" src="https://cdn.rawgit.com/sucrete/392a487c4fe9b943f8b78e7dfb0a4667/raw/0d949f232054fe1c787ce02d4b123b1b2101bcea/boldsquare.svg" />
 
-    <form id="inputEverything" action="/" method="get">
+    <form id="inputEverything" action="/" method="post">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
     </form>
 

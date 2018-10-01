@@ -3,26 +3,23 @@ var express = require('express');
 var path = require('path');
 var serveStatic = require('serve-static');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const request = require('request');
 app = express();
 
-
+const options1 = {
+  url: ''
+}
 app.use(serveStatic(__dirname)); //middleware
 app.use(bodyParser.urlencoded({ extended: false}));
-app.get('/overview:sumthin', function(req, res) {
-  res.send('<div style="background-color: blue;"> content building now<div>')
-  console.log(req)
+app.get('/', function(req, res) {
+
+  res.end('<div style="font-size: 2rem; color: grey;" > content building now </div>')
+  console.log('bigppity boppity boo')
 });
 
-function youreKillingMe (addy) {
-  var options = {
-    method: 'GET'
 
-  }
-}
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
   console.log('listening on localhost: 5000')
 });
-console.log('server started '+ port);
+console.log('server started '+ port + ' bish');

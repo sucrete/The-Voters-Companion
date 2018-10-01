@@ -61,6 +61,12 @@ app.use(devMiddleware)
 // compilation error display
 app.use(hotMiddleware)
 
+app.post('/', function(req, res) {
+
+  res.end('content building now')
+  console.log('bigppity boppity boo')
+})
+
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))

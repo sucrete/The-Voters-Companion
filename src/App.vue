@@ -59,7 +59,7 @@ html {
 }
 #app {
   background-color: #f7f7f0;
-  border-radius: 7px;
+  border-radius: 1%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 46rem;
