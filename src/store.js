@@ -25,11 +25,11 @@ export const store = new Vuex.Store({
   },
   mutations: {
     setUsersAddress (state, payload) {
-      console.log('setUsersAddress was fired')
+      // console.log('setUsersAddress was fired')
       state.form.country.label = payload
     },
     setUsersPostcode (state, payload) {
-      console.log('postcode payload (in STORE): ' + payload)
+      // console.log('postcode payload (in STORE): ' + payload)
       state.form.postcode = payload
     },
     setGoogleResponse (state, payload) {
@@ -43,11 +43,11 @@ export const store = new Vuex.Store({
     },
     setUSVoteElections (state, payload) {
       state.USVoteElections = payload
-      console.log('elections >>>>>>>>>>>>>>' + '\n' + JSON.stringify(payload, null, '\t'))
+      // console.log('elections >>>>>>>>>>>>>>' + '\n' + JSON.stringify(payload, null, '\t'))
     },
     setVoterInformation (state, payload) {
       state.voterInformation = payload
-      console.log('voter info shoved in to the STORE')
+      // console.log('voter info shoved in to the STORE')
     }
   },
   actions: {

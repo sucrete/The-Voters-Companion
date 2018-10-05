@@ -12,9 +12,9 @@
 
     <img id="hrufkins" src="https://cdn.rawgit.com/sucrete/392a487c4fe9b943f8b78e7dfb0a4667/raw/0d949f232054fe1c787ce02d4b123b1b2101bcea/boldsquare.svg" />
 
-    <form id="inputEverything" action="/" method="post">
+    <div id="inputEverything">
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
-    </form>
+    </div>
 
     <div id="landingInfo">
       Register to vote. <br /> <br />Connect with your representatives. <br /><br />Stay informed.
@@ -80,6 +80,7 @@ export default {
     },
     searchAPIs () {
       var state = this.$store.getters.showMeDatState
+
       var noJoke = process.env.GOOGLE_API_KEY
       var postcode = ''
       if (!(state.form.postcode === undefined)) {
@@ -90,7 +91,7 @@ export default {
       var convertedAddressFinal = convertedAddress.split(',').join('%2C')
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
-        console.log('RESPONSE SUCCESS. HERE IT BE ---->   ' + JSON.stringify(response, null, '\t'))
+        // console.log('RESPONSE SUCCESS. HERE IT BE ---->   ' + JSON.stringify(response, null, '\t'))
         this.getStates()
       }).catch(err => {
         console.log('searchAPIs method failed. error----> ' + err)
@@ -98,11 +99,32 @@ export default {
     },
     getStates () {
 
+      const axiosInstanceTest = axios.create()
+      const axiosGetTest = axios.create()
+
+      axiosInstanceTest.post('/',{
+        data: {
+          USVoteKey: process.env.VOTE_KEY
+        }
+      }).then(response => {
+        // console.log('ur post good -----> ' + response.data.stateInfo)
+      }).catch(error => {
+        console.log('u suk and here\'s why ----> ' + error)
+      })
+
+      axiosGetTest.get('/', {
+
+      }).then(response => {
+        console.log('yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + JSON.stringify(response.info, null, '\t'))
+      }).catch(error => {
+        console.log('nope nope nope nope nope' + '\n' + 'nope nope nope nope nope' + '\n' + 'nope nope nope nope nope' + '\n' + 'nope nope nope nope nope' + '\n' + 'nope nope nope nope nope'  + '\n' + error)
+      })
+
       const axiosInstance2 = axios.create()
       axiosInstance2.get('https://api.usvotefoundation.org/elections/v1/states',{
         params: {
           limit: 57
-          // county_name: countyName
+          // county_name: countyNames
         },
         headers: {
           'Authorization': 'Token ' + process.env.VOTE_KEY,
@@ -154,7 +176,7 @@ export default {
         }
       })
       axiosInstance3.get('https://api.usvotefoundation.org/elections/v1/state_voter_information').then(response => {
-        console.log('!!!!!!!!! STATE VOTER INFORMATION, BOYO !!!!!!!!! ' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
+        // console.log('!!!!!!!!! STATE VOTER INFORMATION, BOYO !!!!!!!!! ' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
         this.$store.commit('setVoterInformation', response)
         this.$router.push({path: 'overview'})
       }).catch(err => {
@@ -181,7 +203,6 @@ export default {
   },
   mounted () {
     this.focusHelper()
-
     var placesAutocomplete = places({
       container: document.querySelector('#address-input'),
       type: 'address',
