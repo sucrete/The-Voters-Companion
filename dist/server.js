@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const Dotenv = require('dotenv-webpack');
 
 var express = require('express');
