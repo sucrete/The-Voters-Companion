@@ -107,15 +107,13 @@ export default {
           USVoteKey: process.env.VOTE_KEY
         }
       }).then(response => {
-        // console.log('ur post good -----> ' + response.data.stateInfo)
+        console.log('ur post good -----> ')
       }).catch(error => {
         console.log('u suk and here\'s why ----> ' + error)
       })
 
-      axiosGetTest.get('/', {
-
-      }).then(response => {
-        console.log('yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + JSON.stringify(response.info, null, '\t'))
+      axiosGetTest.get('/').then(response => {
+        console.log('yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + JSON.stringify(response))
       }).catch(error => {
         console.log('nope nope nope nope nope' + '\n' + 'nope nope nope nope nope' + '\n' + 'nope nope nope nope nope' + '\n' + 'nope nope nope nope nope' + '\n' + 'nope nope nope nope nope'  + '\n' + error)
       })

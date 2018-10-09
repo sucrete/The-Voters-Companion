@@ -22,7 +22,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-var stateInfo = null;
+var stateInfo = 'hampton';
 app.post('/', function(req, res) {
 
   var hardUP = req.body.data.USVoteKey;
@@ -56,10 +56,11 @@ app.post('/', function(req, res) {
   return res.send(stateInfo);
 });
 
-app.get('/', function(req, res) {
-  res.send({info: stateInfo});
-  console.log('here\'s some state infer:' + '\n' + stateInfo);
-});
+// router.get('/', function(req, res) {
+//   // res.send({info: stateInfo});
+//   res.json(stateInfo);
+//   console.log('server GET fired')
+// });
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
