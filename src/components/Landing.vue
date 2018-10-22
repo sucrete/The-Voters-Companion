@@ -13,6 +13,7 @@
     <img id="hrufkins" src="https://cdn.rawgit.com/sucrete/392a487c4fe9b943f8b78e7dfb0a4667/raw/0d949f232054fe1c787ce02d4b123b1b2101bcea/boldsquare.svg" />
 
     <div id="inputEverything">
+      <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
     </div>
 
@@ -76,9 +77,9 @@ export default {
     },
     searchEvent () {
       this.show()
-      this.searchAPIs()
+      this.searchGoogleAPI()
     },
-    searchAPIs () {
+    searchGoogleAPI () {
       var state = this.$store.getters.showMeDatState
 
       var noJoke = process.env.GOOGLE_API_KEY
@@ -92,74 +93,74 @@ export default {
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
         // console.log('RESPONSE SUCCESS. HERE IT BE ---->   ' + JSON.stringify(response, null, '\t'))
-        this.getStates()
+        this.getUSVoteInformation()
       }).catch(err => {
-        console.log('searchAPIs method failed. error----> ' + err)
+        console.log('searchGoogleAPI method failed. error----> ' + err)
       })
     },
-    getStates () {
+    getUSVoteInformation () {
+      const axiosUSVotePost = axios.create()
+      const axiosUSVoteGet = axios.create()
+      var state = this.$store.getters.showMeDatState
+      // var allStates = state.allStatesResponse.data.objects
+      var stateName = state.algoliaResponse.administrative
 
-      const axiosInstanceTest = axios.create()
-      const axiosGetTest = axios.create()
-
-      axiosInstanceTest.post('/',{
+      axiosUSVotePost.post('/api/postVoterAPI',{
         data: {
-          USVoteKey: process.env.VOTE_KEY
+          USVoteKey: process.env.VOTE_KEY,
+          voterStateName: stateName
         }
       }).then(response => {
-        console.log('ur post good -----> ')
+        console.log('your USVotePost method occurred')
+        axiosUSVoteGet.get('/api/getVoterAPI').then(response => {
+          console.log('getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + JSON.stringify(response.data))
+          this.$store.commit('setAllStateIDs', response.data.)
+          this.$router.push({path: 'overview'})
+        }).catch(error => {
+          console.log('getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through'  + '\n' + error)
+        })
       }).catch(error => {
-        console.log('u suk and here\'s why ----> ' + error)
+        console.log('POST test error ----->  ' + error)
       })
-
-      axiosGetTest.get('/').then(response => {
-        console.log('yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + 'yep yep yep yep yep' + '\n' + JSON.stringify(response))
-      }).catch(error => {
-        console.log('nope nope nope nope nope' + '\n' + 'nope nope nope nope nope' + '\n' + 'nope nope nope nope nope' + '\n' + 'nope nope nope nope nope' + '\n' + 'nope nope nope nope nope'  + '\n' + error)
-      })
-
-      const axiosInstance2 = axios.create()
-      axiosInstance2.get('https://api.usvotefoundation.org/elections/v1/states',{
-        params: {
-          limit: 57
-          // county_name: countyNames
-        },
-        headers: {
-          'Authorization': 'Token ' + process.env.VOTE_KEY,
-          'Content-Type': 'application/json, text/plain, */*'
-        }
-      }).then(response => {
-        this.$store.commit('setAllStateIDs', response)
-        this.search4Elections()
-      }).catch(err => {
-        console.log('your EOD API call failed. error --> ' + err)
-      })
+      // const axiosInstance2 = axios.create()
+      // axiosInstance2.get('https://api.usvotefoundation.org/elections/v1/states',{
+      //   params: {
+      //     limit: 57
+      //     // county_name: countyNames
+      //   },
+      //   headers: {
+      //     'Authorization': 'Token ' + process.env.VOTE_KEY,
+      //     'Content-Type': 'application/json, text/plain, */*'
+      //   }
+      // }).then(response => {
+      //   this.$store.commit('setAllStateIDs', response)
+      //   this.search4Elections()
+      // }).catch(err => {
+      //   console.log('your EOD API call failed. error --> ' + err)
+      // })
     },
     search4Elections () {
-      var state = this.$store.getters.showMeDatState
-      var allStates = state.allStatesResponse.data.objects
-      var stateName = state.algoliaResponse.administrative
+      // var state = this.$store.getters.showMeDatState
+      // var allStates = state.allStatesResponse.data.objects
+      // var stateName = state.algoliaResponse.administrative
       /* eslint-disable */
       // this.stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
       /* eslint-enable */
-      allStates.forEach(where => {
-        if (where.name === stateName) {
-          this.stateID = where.id
-        }
-      })
 
-      const axiosInstance = axios.create({
+
+      const axiosElectionsPost = axios.create({
         params: {
-          state_id: this.stateID
-        },
-        headers: {
-          'Authorization': 'Token ' + process.env.VOTE_KEY,
-          'Cache-Control': 'no-cache'
+          voterStateID: this.stateID
         }
       })
-      axiosInstance.get('https://api.usvotefoundation.org/elections/v1/elections').then(response => {
-        this.$store.commit('setUSVoteElections', response)
-        this.search4VoterInfo()
+      const axiosElectionsGet = axios.create()
+
+      axiosElectionsPost.post('/api/postElections').then(response => {
+        axiosElectionsGet.get('/api/getElections').then(response => {
+          console.log('elections response in Landing.vue' + '\n' + response)
+          this.$store.commit('setUSVoteElections', response)
+          this.search4VoterInfo()
+        })
       }).catch(err => {
         console.log('your Elections API call failed. error --> ' + err)
       })
@@ -174,7 +175,6 @@ export default {
         }
       })
       axiosInstance3.get('https://api.usvotefoundation.org/elections/v1/state_voter_information').then(response => {
-        // console.log('!!!!!!!!! STATE VOTER INFORMATION, BOYO !!!!!!!!! ' + '\n' + '\n' + '\n' + JSON.stringify(response, null, '\t'))
         this.$store.commit('setVoterInformation', response)
         this.$router.push({path: 'overview'})
       }).catch(err => {
