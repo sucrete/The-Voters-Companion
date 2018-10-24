@@ -113,8 +113,11 @@ export default {
       }).then(response => {
         console.log('your USVotePost method occurred')
         axiosUSVoteGet.get('/api/getVoterAPI').then(response => {
-          console.log('getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + JSON.stringify(response.data))
-          this.$store.commit('setAllStateIDs', response.data.)
+          console.log('getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n')
+          console.log('+ ---------------- VoterAPI ---------------- +' + '\n' + JSON.stringify(response.data))
+          this.$store.commit('setAllStateIDs', response.data.VoterAPI.stateIDs)
+          this.$store.commit('setUSVoteElections', response.data.VoterAPI.electionInfo)
+          this.$store.commit('setVoterInformation', response.data.VoterAPI.voterInfo)
           this.$router.push({path: 'overview'})
         }).catch(error => {
           console.log('getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through'  + '\n' + error)
@@ -146,40 +149,37 @@ export default {
       /* eslint-disable */
       // this.stateID = stateURI.match(/\/([0-9]+)(?=[^\/]*$)/)[1]
       /* eslint-enable */
-
-
-      const axiosElectionsPost = axios.create({
-        params: {
-          voterStateID: this.stateID
-        }
-      })
-      const axiosElectionsGet = axios.create()
-
-      axiosElectionsPost.post('/api/postElections').then(response => {
-        axiosElectionsGet.get('/api/getElections').then(response => {
-          console.log('elections response in Landing.vue' + '\n' + response)
-          this.$store.commit('setUSVoteElections', response)
-          this.search4VoterInfo()
-        })
-      }).catch(err => {
-        console.log('your Elections API call failed. error --> ' + err)
-      })
+      // const axiosElectionsPost = axios.create({
+      //   params: {
+      //     voterStateID: this.stateID
+      //   }
+      // })
+      // const axiosElectionsGet = axios.create()
+      // axiosElectionsPost.post('/api/postElections').then(response => {
+      //   axiosElectionsGet.get('/api/getElections').then(response => {
+      //     console.log('elections response in Landing.vue' + '\n' + response)
+      //     this.$store.commit('setUSVoteElections', response)
+      //     this.search4VoterInfo()
+      //   })
+      // }).catch(err => {
+      //   console.log('your Elections API call failed. error --> ' + err)
+      // })
     },
     search4VoterInfo () {
-      const axiosInstance3 = axios.create({
-        params: {
-          state_id: this.stateID
-        },
-        headers: {
-          'Authorization': 'Token ' + process.env.VOTE_KEY
-        }
-      })
-      axiosInstance3.get('https://api.usvotefoundation.org/elections/v1/state_voter_information').then(response => {
-        this.$store.commit('setVoterInformation', response)
-        this.$router.push({path: 'overview'})
-      }).catch(err => {
-        console.log('STATE VOTER INFORMATION search F003979003979AIIIIIILLLLLLLLLLLLLLEEEDDD!!!!!!!!!' + '\n' + '\n' + '\n' + 'yer err ======> ' + err)
-      })
+      // const axiosInstance3 = axios.create({
+      //   params: {
+      //     state_id: this.stateID
+      //   },
+      //   headers: {
+      //     'Authorization': 'Token ' + process.env.VOTE_KEY
+      //   }
+      // })
+      // axiosInstance3.get('https://api.usvotefoundation.org/elections/v1/state_voter_information').then(response => {
+      //   this.$store.commit('setVoterInformation', response)
+      //   this.$router.push({path: 'overview'})
+      // }).catch(err => {
+      //   console.log('STATE VOTER INFORMATION search F003979003979AIIIIIILLLLLLLLLLLLLLEEEDDD!!!!!!!!!' + '\n' + '\n' + '\n' + 'yer err ======> ' + err)
+      // })
     },
     focusHelper () {
       var daletShin = document.getElementById('address-input')
