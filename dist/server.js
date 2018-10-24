@@ -5,7 +5,7 @@ var express = require('express');
 var path = require('path');
 var serveStatic = require('serve-static');
 const bodyParser = require('body-parser');
-const request = require('request');
+var rp = require('request-promise');
 var router = express.Router();
 
 app = express();
@@ -23,14 +23,15 @@ app.use(function(req, res, next) {
   next();
 });
 
-var VoterAPI = {};
+var VoterAPI = {'karuthers': 'all that\'s fit to print'};
 
 // GET INFORMATION FROM THE U.S. VOTE API
 app.post('/api/postVoterAPI', function(req, res, next) {
-
-  var hardUp = req.body.data.USVoteKey;
+  console.log('\n' + '\t' + '+----------- postVoterAPI started -----------+' + '\n')
+  const hardUP = req.body.data.USVoteKey;
   var stateName = req.body.data.voterStateName;
-  var stateID;
+  console.log('\n' + '\t' + '+----------- stateName = ' + stateName + ' -----------+' + '\n')
+  var stateID = '';
   var statesOptions = {
     uri: 'https://api.usvotefoundation.org/elections/v1/states',
     method: 'GET',
@@ -38,67 +39,70 @@ app.post('/api/postVoterAPI', function(req, res, next) {
       'Authorization': 'Token ' + hardUP,
       'Content-Type': 'application/json, text/plain, */*'
     },
-    params: {
-      limit: 57
-    }
-  };
-  var electionsOptions = {
-    uri: 'https://api.usvotefoundation.org/elections/v1/elections',
-    headers: {
-      'Authorization': 'Token ' + hardUP,
-      'Cache-Control': 'no-cache'
+    qs: {
+      limit: 56
     },
-    params: {
-      state_id: stateID
-    }
+    json: true
   };
-  var voterInfoOptions = {
-    uri: 'https://api.usvotefoundation.org/elections/v1/state_voter_information',
-    headers: {
-      'Authorization': 'Token ' + hardUP
-    },
-    params: {
-      state_id: stateID
-    }
-  };
-  request(statesOptions,
-    function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        VoterAPI.stateIDs = body;
-        console.log('\n' + '\n' + 'working' + '\n' + '\n' + '...thank god' + '\n' + '\n');
-        console.log(JSON.stringify(JSON.parse(VoterAPI), null, '\t'));
-      } else {
-        console.log('states request on server did not work' + '\n' + error);
-      }
-    }
-  );
-  VoterAPI.stateIDs.data.objects.forEach(where => {
-    if (where.name === stateName) {
-      stateID = where.id
-    }
-  });
-  request(electionsOptions,
-    function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        VoterAPI.electionInfo = body;
-        console.log('\n' + '\n' + 'working' + '\n' + '\n' + '...thank god' + '\n' + '\n');
-        console.log(JSON.stringify(JSON.parse(VoterAPI), null, '\t'));
-      } else {
-        console.log('elections request on server did not work' + '\n' + error);
-      }
-    }
-  );
-  request(voterInfoOptions,
-    function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        VoterAPI.voterInfo = body;
-        console.log('\n' + '\n' + 'working' + '\n' + '\n' + '...thank god' + '\n' + '\n');
-        console.log(JSON.stringify(JSON.parse(VoterAPI), null, '\t'));
-      } else {
-        console.log('voterInfo request on server did not work' + '\n' + error);
-      }
-    }
-  );
+  rp(statesOptions)
+    .then(response => {
+      VoterAPI.stateIDs = response;
+      console.log('\n' + '\n' + 'working' + '\n' + '\n' + '...thank god' + '\n' + '\n');
+      console.log(response);
+      response.objects.forEach(where => {
+        if (where.name === stateName) {
+          console.log(where.name);
+          stateID = where.id
+        }
+      });
+      console.log('\n' + '\t' + '+------- stateID = ' + stateID + ' -------+' + '\n')
+      var electionsOptions = {
+        uri: 'https://api.usvotefoundation.org/elections/v1/elections',
+        headers: {
+          'Authorization': 'Token ' + hardUP,
+          'Cache-Control': 'no-cache'
+        },
+        qs: {
+          state_id: stateID
+        }
+      };
+      rp(electionsOptions)
+        .then(response => {
+          VoterAPI.electionInfo = response;
+          console.log('\n' + '\n' + 'twerking' + '\n' + '\n' + '...thank god' + '\n' + '\n');
+          console.log(response);
+          var voterInfoOptions = {
+            uri: 'https://api.usvotefoundation.org/elections/v1/state_voter_information',
+            headers: {
+              'Authorization': 'Token ' + hardUP
+            },
+            qs: {
+              state_id: stateID
+            },
+            json: true
+          };
+          rp(voterInfoOptions)
+            .then(response => {
+              VoterAPI.voterInfo = response;
+              console.log('\n' + '\n' + 'borking' + '\n' + '\n' + '...thank god' + '\n' + '\n');
+              console.log(response);
+              console.log(JSON.stringify(JSON.parse(VoterAPI), null, '\t'));
+            })
+            .catch(err => {
+              console.log('voterInfo call failed. error ----> ' + err)
+            });
+        })
+        .catch(err => {
+          console.log('electionInfo call failed. error ----> ' + err)
+        });
+    })
+    .catch(err => {
+      console.log('electionInfo call failed. error ----> ' + err)
+    });
+  console.log('votey baby ' + JSON.stringify(VoterAPI.karuthers, null, '\t'));
+
+
+
   console.log('\n' + '\n' + 'U.S. Vote Info LOGGED to API')
   next();
 });
