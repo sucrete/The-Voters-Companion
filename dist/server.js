@@ -12,7 +12,7 @@ app = express();
 
 app.use(serveStatic(__dirname)); //middleware
 
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(bodyParser.json());
 
@@ -23,14 +23,18 @@ app.use(function(req, res, next) {
   next();
 });
 
-var VoterAPI = {'karuthers': 'all that\'s fit to print'};
+var VoterAPI = {karuthers: 'all that\'s fit to print',
+  stateIDs: 'bobby',
+  electionInfo: 'bobby again',
+  voterInfo: 'stinger'
+};
 
 // GET INFORMATION FROM THE U.S. VOTE API
 app.post('/api/postVoterAPI', function(req, res, next) {
-  console.log('\n' + '\t' + '+----------- postVoterAPI started -----------+' + '\n')
+  console.log('\n' + '\t' + '+----------- postVoterAPI started -----------+' + '\n');
   const hardUP = req.body.data.USVoteKey;
   var stateName = req.body.data.voterStateName;
-  console.log('\n' + '\t' + '+----------- stateName = ' + stateName + ' -----------+' + '\n')
+  console.log('\n' + '\t' + '+----------- stateName = ' + stateName + ' -----------+' + '\n');
   var stateID = '';
   var statesOptions = {
     uri: 'https://api.usvotefoundation.org/elections/v1/states',
@@ -55,7 +59,7 @@ app.post('/api/postVoterAPI', function(req, res, next) {
           stateID = where.id
         }
       });
-      console.log('\n' + '\t' + '+------- stateID = ' + stateID + ' -------+' + '\n')
+      console.log('\n' + '\n' + '\t' + '+------- stateID = ' + stateID + ' -------+' + '\n')
       var electionsOptions = {
         uri: 'https://api.usvotefoundation.org/elections/v1/elections',
         headers: {
@@ -64,7 +68,8 @@ app.post('/api/postVoterAPI', function(req, res, next) {
         },
         qs: {
           state_id: stateID
-        }
+        },
+        json: true
       };
       rp(electionsOptions)
         .then(response => {
@@ -85,8 +90,10 @@ app.post('/api/postVoterAPI', function(req, res, next) {
             .then(response => {
               VoterAPI.voterInfo = response;
               console.log('\n' + '\n' + 'borking' + '\n' + '\n' + '...thank god' + '\n' + '\n');
-              console.log(response);
-              console.log(JSON.stringify(JSON.parse(VoterAPI), null, '\t'));
+              console.log(response.objects[0].eligibility_requirements[1].items);
+              console.log(JSON.parse(JSON.stringify(response)));
+              console.log('\n' + '\n' + 'U.S. Vote Info LOGGED to API')
+              res.end('the res.end() worked on postVoterAPI method on server');
             })
             .catch(err => {
               console.log('voterInfo call failed. error ----> ' + err)
@@ -97,21 +104,18 @@ app.post('/api/postVoterAPI', function(req, res, next) {
         });
     })
     .catch(err => {
-      console.log('electionInfo call failed. error ----> ' + err)
+      console.log('stateIDs call failed. error ----> ' + err)
     });
   console.log('votey baby ' + JSON.stringify(VoterAPI.karuthers, null, '\t'));
-
-
-
-  console.log('\n' + '\n' + 'U.S. Vote Info LOGGED to API')
-  next();
 });
+
 app.get('/api/getVoterAPI', function(req, res) {
   console.log('GETVOTERAPI method fired on server' + '\n' + '\n' + JSON.stringify(VoterAPI, null, '\t'));
   // res.send({info: stateInfo});
   // make some calls to database, fetch some data, information, check state, etc...
   // convert whatever we want to send (preferably should be an object) to JSON
-  res.send(VoterAPI || 'not able to res.send VoterAPI');
+  res.send(VoterAPI);
+  // res.end('the res.end() worked on getVoterAPI method on server');
 });
 
 var port = process.env.PORT || 5000;

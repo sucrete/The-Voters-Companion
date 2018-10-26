@@ -93,14 +93,13 @@ export default {
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
         // console.log('RESPONSE SUCCESS. HERE IT BE ---->   ' + JSON.stringify(response, null, '\t'))
-        this.getUSVoteInformation()
+        this.postUSVoteInformation()
       }).catch(err => {
         console.log('searchGoogleAPI method failed. error----> ' + err)
       })
     },
-    getUSVoteInformation () {
+    postUSVoteInformation () {
       const axiosUSVotePost = axios.create()
-      const axiosUSVoteGet = axios.create()
       var state = this.$store.getters.showMeDatState
       // var allStates = state.allStatesResponse.data.objects
       var stateName = state.algoliaResponse.administrative
@@ -110,37 +109,30 @@ export default {
           USVoteKey: process.env.VOTE_KEY,
           voterStateName: stateName
         }
-      }).then(response => {
+      }).then(function (response) {
+        this.getUSVoteInformation()
         console.log('your USVotePost method occurred')
-        axiosUSVoteGet.get('/api/getVoterAPI').then(response => {
-          console.log('getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n')
-          console.log('+ ---------------- VoterAPI ---------------- +' + '\n' + JSON.stringify(response.data))
-          this.$store.commit('setAllStateIDs', response.data.VoterAPI.stateIDs)
-          this.$store.commit('setUSVoteElections', response.data.VoterAPI.electionInfo)
-          this.$store.commit('setVoterInformation', response.data.VoterAPI.voterInfo)
-          this.$router.push({path: 'overview'})
-        }).catch(error => {
-          console.log('getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through'  + '\n' + error)
-        })
+        console.log('\n' + 'it worked, bruv!' + '\n' + '\n')
+        console.log(response.data)
       }).catch(error => {
         console.log('POST test error ----->  ' + error)
+        this.getUSVoteInformation()
       })
-      // const axiosInstance2 = axios.create()
-      // axiosInstance2.get('https://api.usvotefoundation.org/elections/v1/states',{
-      //   params: {
-      //     limit: 57
-      //     // county_name: countyNames
-      //   },
-      //   headers: {
-      //     'Authorization': 'Token ' + process.env.VOTE_KEY,
-      //     'Content-Type': 'application/json, text/plain, */*'
-      //   }
-      // }).then(response => {
-      //   this.$store.commit('setAllStateIDs', response)
-      //   this.search4Elections()
-      // }).catch(err => {
-      //   console.log('your EOD API call failed. error --> ' + err)
-      // })
+    },
+    getUSVoteInformation () {
+      const axiosUSVoteGet = axios.create()
+      axiosUSVoteGet.get('/api/getVoterAPI').then(response => {
+        console.log('getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n')
+        console.log('+ ---------------- VoterAPI ---------------- +' + '\n' + JSON.stringify(response.data))
+        // this.$store.commit('setAllStateIDs', response.data.VoterAPI.stateIDs)
+        // this.$store.commit('setUSVoteElections', response.data.VoterAPI.electionInfo)
+        // this.$store.commit('setVoterInformation', response.data.VoterAPI.voterInfo)
+      }).catch(error => {
+        console.log('getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through'  + '\n' + error)
+      })
+    },
+    goSomewhereElse () {
+      this.$router.push({path: 'overview'})
     },
     search4Elections () {
       // var state = this.$store.getters.showMeDatState
