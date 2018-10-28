@@ -90,10 +90,9 @@ app.post('/api/postVoterAPI', function(req, res, next) {
             .then(response => {
               VoterAPI.voterInfo = response;
               console.log('\n' + '\n' + 'borking' + '\n' + '\n' + '...thank god' + '\n' + '\n');
-              console.log(response.objects[0].eligibility_requirements[1].items);
-              console.log(JSON.parse(JSON.stringify(response)));
-              console.log('\n' + '\n' + 'U.S. Vote Info LOGGED to API')
-              res.end('the res.end() worked on postVoterAPI method on server');
+              console.log(response);
+              console.log('\n' + '\n' + 'U.S. Vote Info LOGGED to API');
+              res.status(200).end('the res.end() worked on postVoterAPI method on server');
             })
             .catch(err => {
               console.log('voterInfo call failed. error ----> ' + err)
@@ -106,7 +105,6 @@ app.post('/api/postVoterAPI', function(req, res, next) {
     .catch(err => {
       console.log('stateIDs call failed. error ----> ' + err)
     });
-  console.log('votey baby ' + JSON.stringify(VoterAPI.karuthers, null, '\t'));
 });
 
 app.get('/api/getVoterAPI', function(req, res) {
@@ -115,7 +113,7 @@ app.get('/api/getVoterAPI', function(req, res) {
   // make some calls to database, fetch some data, information, check state, etc...
   // convert whatever we want to send (preferably should be an object) to JSON
   res.send(VoterAPI);
-  // res.end('the res.end() worked on getVoterAPI method on server');
+  res.status(200).end('the res.end() worked on getVoterAPI method on server');
 });
 
 var port = process.env.PORT || 5000;
