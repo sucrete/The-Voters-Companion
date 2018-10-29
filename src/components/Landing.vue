@@ -131,9 +131,10 @@ export default {
       console.log('setInfoAndPush fired')
       this.$store.commit('setUSVoteElections', self.voterAPI.electionInfo)
       this.$store.commit('setVoterInformation', self.voterAPI.voterInfo)
+      // this.$router.push({path: 'overview'})
     },
     goSomewhereElse () {
-      this.$router.push({path: 'overview'})
+
     },
     focusHelper () {
       var daletShin = document.getElementById('address-input')
