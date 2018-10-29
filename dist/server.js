@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
+app.use(function(err, req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -96,6 +96,7 @@ app.post('/api/postVoterAPI', function(req, res, next) {
             })
             .catch(err => {
               console.log('voterInfo call failed. error ----> ' + err)
+              res.status(500).send({ error: err });
             });
         })
         .catch(err => {
@@ -112,7 +113,7 @@ app.get('/api/getVoterAPI', function(req, res) {
   // res.send({info: stateInfo});
   // make some calls to database, fetch some data, information, check state, etc...
   // convert whatever we want to send (preferably should be an object) to JSON
-  res.send(VoterAPI);
+  res.json(VoterAPI);
   res.status(200).end('the res.end() worked on getVoterAPI method on server');
 });
 

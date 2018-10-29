@@ -50,6 +50,7 @@ export default {
       rican: 'challa!',
       stateID: '',
       googvotekey: process.env.GOOGLE_API_KEY,
+      voterAPI: '',
       form: {
         country: {
           label: null,
@@ -93,44 +94,43 @@ export default {
       axios.get('https://www.googleapis.com/civicinfo/v2/representatives?key=' + noJoke + '&address=' + convertedAddressFinal).then(response => {
         this.$store.commit('setGoogleResponse', response)
         // console.log('RESPONSE SUCCESS. HERE IT BE ---->   ' + JSON.stringify(response, null, '\t'))
-        this.postUSVoteInformation()
+        this.postAndGetUSVoteInformation()
       }).catch(err => {
         console.log('searchGoogleAPI method failed. error----> ' + err)
       })
     },
-    postUSVoteInformation () {
+    postAndGetUSVoteInformation () {
       const axiosUSVotePost = axios.create()
       var state = this.$store.getters.showMeDatState
       // var allStates = state.allStatesResponse.data.objects
       var stateName = state.algoliaResponse.administrative
-
       axiosUSVotePost.post('/api/postVoterAPI',{
         data: {
           USVoteKey: process.env.VOTE_KEY,
           voterStateName: stateName
         }
-      }).then(function (response) {
+      }).then(response => {
         console.log('your USVotePost method occurred')
         console.log('\n' + 'it worked, bruv!' + '\n' + '\n')
         console.log(JSON.stringify(response.data, null, '\t'))
         const axiosUSVoteGet = axios.create()
-        axiosUSVoteGet.get('/api/getVoterAPI').then(function (response) {
+        axiosUSVoteGet.get('/api/getVoterAPI').then(response => {
+          // vAPI = response.data
+          self.voterAPI = response.data
           console.log('getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n')
-          console.log('+ ---------------- VoterAPI ---------------- +' + '\n' + JSON.stringify(response.data))
-          // this.$store.commit('setUSVoteElections', response.data.VoterAPI.electionInfo)
-          // this.$store.commit('setVoterInformation', response.data.VoterAPI.voterInfo)
-          // this.goSomewhereElse()
+          console.log('+ ---------------- self.voterAPI ---------------- +' + '\n' + JSON.stringify(self.voterAPI, null, '\t'))
+          this.setInfoAndPush()
         }).catch(function (error) {
           console.log('getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through'  + '\n' + error)
         })
       }).catch(function (error) {
         console.log('POST test error ----->  ' + error)
-        // this.getUSVoteInformation()
       })
-      // this.getUSVoteInformation()
     },
-    getUSVoteInformation () {
-
+    setInfoAndPush () {
+      console.log('setInfoAndPush fired')
+      this.$store.commit('setUSVoteElections', self.voterAPI.electionInfo)
+      this.$store.commit('setVoterInformation', self.voterAPI.voterInfo)
     },
     goSomewhereElse () {
       this.$router.push({path: 'overview'})
