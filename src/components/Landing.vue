@@ -129,9 +129,15 @@ export default {
     },
     setInfoAndPush () {
       console.log('setInfoAndPush fired')
+      var entireGoogleResponse = this.$store.getters.stuper
+      var entireElectionInfoFromThisDotVoterAPI = self.voterAPI.electionInfo
+      var entireVoterInfoFromThisDotVoterAPI = self.voterAPI.voterInfo
+      console.log('entireGoogleResponse' + '\n' + '\n' + JSON.stringify(entireGoogleResponse, null, '\t'))
+      console.log('entireElectionInfoFromThisDotVoterAPI' + '\n' + '\n' + JSON.stringify(entireElectionInfoFromThisDotVoterAPI, null, '\t'))
+
       this.$store.commit('setUSVoteElections', self.voterAPI.electionInfo)
       this.$store.commit('setVoterInformation', self.voterAPI.voterInfo)
-      // this.$router.push({path: 'overview'})
+      this.$router.push({path: 'overview'})
     },
     goSomewhereElse () {
 

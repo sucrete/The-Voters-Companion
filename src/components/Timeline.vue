@@ -96,7 +96,7 @@ export default {
   },
   methods: {
     timeToVoteGuys () {
-      var electionsInfo = this.$store.getters.getElections.data.objects
+      var electionsInfo = this.$store.getters.getElections.objects
       var electionsInfoSorted = electionsInfo.sort(this.sorter)
       console.log('SORTED ELECTIONS ' + '\n' + '\n' + JSON.stringify(electionsInfoSorted, null, '\t'))
       console.log('come now... ' + '\n' + this.getDate())

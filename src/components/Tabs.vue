@@ -37,7 +37,7 @@ export default {
       return string.charAt(0).toUpperCase() + string.slice(1)
     },
     fillItUp () {
-      var voterInfo = this.$store.getters.getVoterInfo.data.objects[0]
+      var voterInfo = this.$store.getters.getVoterInfo.objects[0]
       var voterGenInfo = marked(voterInfo.voting_general_info)
       var voterEligibility = ''
       voterInfo.eligibility_requirements.forEach(headly => {
