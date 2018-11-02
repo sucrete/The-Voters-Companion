@@ -139,9 +139,6 @@ export default {
       this.$store.commit('setVoterInformation', self.voterAPI.voterInfo)
       this.$router.push({path: 'overview'})
     },
-    goSomewhereElse () {
-
-    },
     focusHelper () {
       var daletShin = document.getElementById('address-input')
       var daletSemach = document.getElementById('inputEverything')
