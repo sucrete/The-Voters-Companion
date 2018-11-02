@@ -9,7 +9,8 @@
  },
  "dependencies": {
   "body-parser": "^1.18.3",
-  "request-promise": "^4.2.2",
-  "express": "*"
+  "express": "*",
+  "request": "^2.88.0",
+  "request-promise": "^4.2.2"
  }
 }
