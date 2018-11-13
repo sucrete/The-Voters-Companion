@@ -545,8 +545,8 @@ export default {
   transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1),background-color 250ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
 }
 .repCard:hover {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  background-color: white;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.15);
+  background-color: rgb(250, 250, 247);
 }
 .repCard .repImageWrapper {
   display: inline-block;

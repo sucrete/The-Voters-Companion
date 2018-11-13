@@ -10,7 +10,7 @@
       <h1 id="brownType" >THE<br>VOTER'S<br>COMPANION</h1>
     </div>
 
-    <img id="hrufkins" src="https://cdn.rawgit.com/sucrete/392a487c4fe9b943f8b78e7dfb0a4667/raw/0d949f232054fe1c787ce02d4b123b1b2101bcea/boldsquare.svg" />
+    <img id="hrufkins" :src=" landingSquare " />
 
     <div id="inputEverything">
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
@@ -22,13 +22,14 @@
     </div>
 
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
-      <div class="daletVav">
+
         <div class="image">
           <img style="height: 50px; width: auto; " :src=" lightYellowStar "/>
         </div>
         <span style="font-family: IBM Plex Sans Condensed; font-weight: 600;"> Loading... </span>
-      </div>
+
     </modal>
+
   </div>
 </template>
 
@@ -39,6 +40,7 @@ import axios from 'axios'
 import places from 'places.js'
 import carpet from '../assets/light_yellow_star.png'
 import logoFinal from '../assets/mauve.png'
+import greenSquare from '../assets/votrLandingSquare.svg'
 
 export default {
   name: 'landing',
@@ -47,7 +49,7 @@ export default {
       addy: '',
       logFin: logoFinal,
       lightYellowStar: carpet,
-      rican: 'challa!',
+      landingSquare: greenSquare,
       stateID: '',
       googvotekey: process.env.GOOGLE_API_KEY,
       voterAPI: '',
@@ -145,7 +147,7 @@ export default {
       setTimeout(function () {
         daletShin.focus()
         daletSemach.style.cssText = 'z-index: 700;'
-      }, 500)
+      }, 1500)
     },
     updateValue (val) {
       this.$store.commit('setUsersAddress', val)
@@ -203,20 +205,12 @@ export default {
   width: 19.2rem;
   height: auto;
 }
-#whiteVerticalElement {
-  width: 1.5rem;
-  height: 18rem;
-  z-index: 1;
-  background-color: white;
-  position: absolute;
-  left: calc(50% - .75rem);
-  top: 50%;
-}
+
 #logoLink {
   z-index: 777;
   position: absolute;
-  top: 3rem;
-  right: 3rem;
+  top: 2.1rem;
+  right: 4.8rem;
   /* filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35));
 	-webkit-filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35)); */
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
@@ -245,7 +239,7 @@ export default {
 
 #brownType {
   z-index: 99;
-  color: #3f5586;
+  color: #46474d;
   font-family: 'Roboto Condensed', serif !important;
   text-align: center;
   font-weight: 700;
@@ -258,6 +252,7 @@ export default {
   /* -webkit-text-stroke: 3px #343434; */
 }
 .logoBlock {
+  margin-top: 10px;
   position: relative;
   height: 12.75rem;
   width: 17rem;
@@ -300,6 +295,13 @@ export default {
   font-weight: 600;
   /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
+}
+#address-input {
+  transition: all 0.4s ease-in-out;
+}
+#address-input:focus{
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.15);
 }
 .ap-dropdown-menu {
   position: relative;
@@ -350,84 +352,13 @@ input::-ms-input-placeholder {
   font-size: 1.5rem;
   font-family:Arial;
 }
-#address-input:focus {
-  outline:none;
-}
-
-/* BOTTOM BARS ================================= */
-.bar 	{
-  position:relative;
-  display:block;
-  width:300px; }
-
-.bar:before, .bar:after 	{
-  content:'';
-  height:2px;
-  width:0;
-  bottom:1px;
-  position:absolute;
-  background:#5264AE !important;
-  transition:0.2s ease all;
-  -moz-transition:0.2s ease all;
-  -webkit-transition:0.2s ease all;
-}
-.bar:before {
-  left:50%;
-}
-.bar:after {
-  right:50%;
-}
-
-/* active state */
-#address-input:focus ~ .bar:before, #address-input:focus ~ .bar:after {
-  width:50%;
-}
-
-/* HIGHLIGHTER ================================== */
-.highlight {
-  position:absolute;
-  height:60%;
-  width:100px;
-  top:25%;
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
-}
-
-/* active state */
-#address-input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
-}
-
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
-@-moz-keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
-@keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
 
 /* loading modal below this line ================================= */
 /* The modal-loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN */
 .v--modal {
   border-radius: 100% !important;
   box-sizing: none !important;
-}
-.daletVav {
-  width: 100px;
-  height: 80px;
-  border-radius: 100%;
-  position: absolute;
-  top: 0; right: 0; left: 0; bottom: 0;
-  margin: auto;
+  position: relative;
 }
 .image {
   width: 100px;
@@ -438,14 +369,17 @@ input::-ms-input-placeholder {
   animation: 3s rotate infinite !important;
   opacity: 0;
   color: blue;
-  left: 1.5rem;
+  left: 12rem;
+  position: relative;
 }
-.daletVav span {
+.v--modal-box span {
   display: block;
   width: 100%;
   text-align: center;
-  position: absolute;
-  bottom: 0;
+  position: absolute !important;
+  bottom: 1.5rem;
+  z-index: 778;
+  padding-bottom: 20px;
 }
 
 /* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN  */
@@ -458,56 +392,36 @@ input::-ms-input-placeholder {
   }
   35% {
     transform: rotate(0deg);
+
+  }
+  55% {
     opacity: 1;
   }
   65% {
     transform: rotate(0deg);
     opacity: 1;
   }
-  80% {
+  75% {
     opacity: 0;
   }
-  100% {
+
+  100%{
     transform: rotate(-90deg);
   }
 }
-@keyframes rotate{
-  0% {
-    transform: rotate(90deg);
-  }
-  10% {
-    opacity: 0;
-  }
-  35% {
-    transform: rotate(0deg);
-    opacity: 1;
-  }
-  65% {
-    transform: rotate(0deg);
-    opacity: 1;
-  }
-  80% {
-    opacity: 0;
-  }
-  100% {
-    transform: rotate(-90deg);
-  }
+
+.v--modal-overlay .v--modal-box {
+  overflow: visible !important;
+  position: relative !important;
+  background-color: rgb(172, 189, 177);
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, .25) !important;
 }
-.v--modal-box {
-  border-style: solid;
-  border-width: 7px;
-  border-color: #DAF7A6;
-  -webkit-box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
-  -moz-box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
-  box-shadow:  0 2px 20px 0 rgba(0,0,0,.4);
-  /* box-shadow: 0 2px 20px 0 rgba(0,0,0,.4); */
-  box-sizing: none;
-}
+
 .v--modal-overlay {
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(0, 0, 0, .4);
   border-radius: 0px;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
   border-style: none;
 }
 .scale-enter-active, .scale-leave-active {

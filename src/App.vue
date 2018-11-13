@@ -48,17 +48,16 @@ export default {
   -webkit-filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));
 } */
 html {
-  /* background-color: #E1DCDC; */
-  background: #f2f2f2 url( https://cl.ly/image/381U2k0A3L3S/bg.png );
+  background-color: #fafafa;
   height: 100%;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
 #app {
-  background-color: #f7f7f0;
+  background-color: #fafafa;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 46rem;
@@ -67,10 +66,12 @@ html {
   margin-bottom: 2rem;
   font-weight: 300;
   text-align: center;
-  box-shadow: 0 7px 28px rgba(0, 0, 0, 0.25);
+  box-shadow: -1px 5px 9px rgba(0, 0, 0, 0.12), 1px 3px 7px rgba(0,0,0,0.08);
   padding: 10px 24px;
   min-height: 45rem;
   position: relative;
+  border-radius: 3px;
+  border: 1px solid rgb(164, 182, 150);
 }
 
 .hotBod {
@@ -175,7 +176,7 @@ body {
   margin: 0;
   padding: 0;
   /* 👇 the color behind the 'page' element */
-  background: #f2f2f2 url( https://cl.ly/image/381U2k0A3L3S/bg.png );
+  background: #fafafa;
   height: 100%;
 }
 
