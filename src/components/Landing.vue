@@ -369,17 +369,19 @@ input::-ms-input-placeholder {
   animation: 3s rotate infinite !important;
   opacity: 0;
   color: blue;
-  left: 12rem;
+  top: 2.1rem;
+  left: 3.2rem;
   position: relative;
 }
 .v--modal-box span {
+  color: white;
   display: block;
+  font-size: 115%;
   width: 100%;
   text-align: center;
   position: absolute !important;
-  bottom: 1.5rem;
   z-index: 778;
-  padding-bottom: 20px;
+  bottom: 50px;
 }
 
 /* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN  */
@@ -414,7 +416,7 @@ input::-ms-input-placeholder {
   overflow: visible !important;
   position: relative !important;
   background-color: rgb(172, 189, 177);
-  box-shadow: 3px 3px 7px rgba(0, 0, 0, .25) !important;
+  box-shadow: 0px 8px 12px rgba(58, 68, 41, 0.2), 0px 12px 20px rgba(0, 0, 0, .1), 0px 0px 17px rgba(0, 0, 0, .14)!important;
 }
 
 .v--modal-overlay {
