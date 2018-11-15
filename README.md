@@ -1,3 +1,5 @@
 # The Voter's Companion
 
- A guide to your district, your representatives, and where and when to vote. 🇺🇸
+ A guide to registering, getting to know your representatives, and when and where to vote. 🇺🇸
+
+ demo → https://thevoterscompanion.herokuapp.com/
