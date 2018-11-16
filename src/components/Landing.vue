@@ -434,4 +434,38 @@ input::-ms-input-placeholder {
  transform: scale(0.3) translateY(24px);
 }
 /* loading modal above this line ================================= */
+@media only screen and (max-width: 750px) {
+  #inputEverything {
+    font-size: 100%;
+  }
+  #address-input {
+    width: 88vw !important;
+    padding-top: 5px;
+    right: 1.15vw;
+    padding-left: 9px;
+  }
+  .ap-dropdown-menu {
+    width: 85vw;
+    right: 10vw;
+  }
+  .ap-input-icon {
+    right: 2.5vw;
+  }
+  .ap-icon-clear {
+    right: 2.75vw;
+  }
+  #app {
+    max-height: 99vh;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .ap-input-icon {
+    right: -1.5vw;
+  }
+  .ap-icon-clear {
+    right: -1.25vw;
+  }
+}
+
 </style>

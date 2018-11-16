@@ -208,4 +208,10 @@ input, input:focus {
 #takeMeOmh:visited, #takeMeOmhDaddy:visited {
   color: #3b3c36 !important;
 }
+@media only screen and (max-width: 750px) {
+    #app {
+      width: 98vw;
+      margin-top: 3px !important;
+    }
+}
 </style>
