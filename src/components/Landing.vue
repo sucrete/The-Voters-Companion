@@ -289,15 +289,12 @@ export default {
   width: 36rem;
   margin: 0 auto;
   outline: none;
-  border: none;
   font-size: 130%;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
+  transition: all 0.4s ease-in-out;
   /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
-}
-#address-input {
-  transition: all 0.4s ease-in-out;
 }
 #address-input:focus{
   outline: none;
@@ -434,19 +431,32 @@ input::-ms-input-placeholder {
  transform: scale(0.3) translateY(24px);
 }
 /* loading modal above this line ================================= */
-@media only screen and (max-width: 750px) {
+@media screen and (min-width:300px) and (max-width:568px) {
   #inputEverything {
     font-size: 100%;
+    margin-top: 2.25rem;
   }
   #address-input {
     width: 88vw !important;
     padding-top: 5px;
-    right: 1.15vw;
     padding-left: 9px;
+    position: absolute;
+    right: 2.7vw;
+  }
+  #landingInfo {
+    width: 95vw;
+    right: 1rem;
+  }
+  #logoLink {
+    visibility: hidden;
+  }
+  .logoBlock {
+    top: 14px;
+    right: 4px;
   }
   .ap-dropdown-menu {
-    width: 85vw;
-    right: 10vw;
+    width: 85vw !important;
+    left: 0vw !important;
   }
   .ap-input-icon {
     right: 2.5vw;
@@ -455,16 +465,14 @@ input::-ms-input-placeholder {
     right: 2.75vw;
   }
   #app {
-    max-height: 99vh;
+    min-height: 98.9vh !important;
+    max-height: 99vh !important;
   }
-}
-
-@media only screen and (max-width: 670px) {
-  .ap-input-icon {
-    right: -1.5vw;
-  }
-  .ap-icon-clear {
-    right: -1.25vw;
+  #hrufkins {
+    top: .5rem;
+    left: .5rem;
+    width: 25rem;
+    height: auto;
   }
 }
 
