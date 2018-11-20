@@ -18,7 +18,7 @@
     </div>
 
     <div id="landingInfo">
-      Register to vote. <br /> <br />Connect with your representatives. <br /><br />Stay informed.
+      REGISTER TO VOTE <br /> <br />CONNECT WITH YOUR REPS <br /><br />STAY INFORMED
     </div>
 
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
@@ -199,7 +199,7 @@ export default {
 <style >
 #hrufkins {
   position: absolute;
-  z-index: 101;
+  z-index: 7;
   left: 11.75rem;
   top: 6rem;
   width: 19.2rem;
@@ -219,7 +219,7 @@ export default {
 
 #landingInfo {
   position: relative;
-  color: #3f5586;
+  color: rgb(64, 44, 24);
   font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
   width: 20rem;
@@ -234,18 +234,19 @@ export default {
 }
 
 #app {
-  background-color: #e9f7df;
+  background-color: rgb(222, 232, 207);
 }
 
 #brownType {
   z-index: 99;
-  color: #46474d;
-  font-family: 'Roboto Condensed', serif !important;
+  color: rgb(242, 128, 63);
+  font-family: 'Roboto Condensed', sans-serif !important;
   text-align: center;
   font-weight: 700;
   font-size: 2.5rem;
   line-height: 90%;
-  left: 1.5rem;
+  left: 2.2rem;
+  top: .5rem;
   margin-top: 2.5rem;
   position: absolute;
   text-shadow: 0.08em 0.08em 0 white;
@@ -259,13 +260,8 @@ export default {
   margin: 0 auto;
   top: 7rem;
   /*box-shadow: 10px 10px 20px #334431;*/
-  z-index: 6;
-  background-color: #ebe2cb;
+  z-index: 8;
   /* background-image: url("https://i.imgur.com/HSwsLkl.png"); */
-  border-style: solid;
-  border-width: .75rem;
-  border-color: white;
-  z-index: 100;
 }
 
 .ap-input-icon {
@@ -412,7 +408,7 @@ input::-ms-input-placeholder {
 .v--modal-overlay .v--modal-box {
   overflow: visible !important;
   position: relative !important;
-  background-color: rgb(172, 189, 177);
+  background-color: #e9e8cb;
   box-shadow: 0px 8px 12px rgba(58, 68, 41, 0.2), 0px 12px 20px rgba(0, 0, 0, .1), 0px 0px 17px rgba(0, 0, 0, .14)!important;
 }
 
@@ -432,9 +428,13 @@ input::-ms-input-placeholder {
 }
 /* loading modal above this line ================================= */
 @media screen and (min-width:300px) and (max-width:568px) {
+  * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
   #inputEverything {
     font-size: 100%;
-    margin-top: 2.25rem;
+    margin-top: 3.25rem;
   }
   #address-input {
     width: 88vw !important;
@@ -459,7 +459,7 @@ input::-ms-input-placeholder {
     left: 0vw !important;
   }
   .ap-input-icon {
-    right: 2.5vw;
+    right: -1.5vw;
   }
   .ap-icon-clear {
     right: 2.75vw;
@@ -469,10 +469,20 @@ input::-ms-input-placeholder {
     max-height: 99vh !important;
   }
   #hrufkins {
-    top: .5rem;
-    left: .5rem;
-    width: 25rem;
+    top: .9rem;
     height: auto;
+    left: -.1rem;
+  }
+  .logoBlock {
+    width: 14.6rem;
+    height: 11rem;
+    left: 0px;
+    top: 1.7rem;
+  }
+  #brownType {
+    font-size: 2rem;
+    left: 2.1rem;
+    top: .4rem;
   }
 }
 
