@@ -7,10 +7,11 @@
       <img :src=" logFin "/>
     </a>
     <div class="logoBlock">
+      <img id="hrufkins" :src=" landingSquare " />
       <h1 id="brownType" >THE<br>VOTER'S<br>COMPANION</h1>
     </div>
 
-    <img id="hrufkins" :src=" landingSquare " />
+
 
     <div id="inputEverything">
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
@@ -147,7 +148,7 @@ export default {
       setTimeout(function () {
         daletShin.focus()
         daletSemach.style.cssText = 'z-index: 700;'
-      }, 1500)
+      }, 7000)
     },
     updateValue (val) {
       this.$store.commit('setUsersAddress', val)
@@ -198,10 +199,8 @@ export default {
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
 #hrufkins {
-  position: absolute;
   z-index: 7;
-  left: 11.75rem;
-  top: 6rem;
+  margin: 0 auto;
   width: 19.2rem;
   height: auto;
 }
@@ -219,7 +218,7 @@ export default {
 
 #landingInfo {
   position: relative;
-  color: rgb(64, 44, 24);
+  color: rgb(134, 95, 56);
   font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
   width: 20rem;
@@ -245,18 +244,17 @@ export default {
   font-weight: 700;
   font-size: 2.5rem;
   line-height: 90%;
-  left: 2.2rem;
-  top: .5rem;
-  margin-top: 2.5rem;
-  position: absolute;
+  top: -10.3rem;
+  margin: 0 auto;
+  position: relative;
   text-shadow: 0.08em 0.08em 0 white;
   /* -webkit-text-stroke: 3px #343434; */
 }
 .logoBlock {
   margin-top: 10px;
   position: relative;
-  height: 12.75rem;
-  width: 17rem;
+  height: 15rem;
+  width: 20rem;
   margin: 0 auto;
   top: 7rem;
   /*box-shadow: 10px 10px 20px #334431;*/
@@ -271,7 +269,7 @@ export default {
   right: 4.25rem;
 }
 #inputEverything {
-  margin-top: 8rem;
+  margin-top: 7.5rem;
   margin-left: auto;
   margin-right: auto;
   position: relative;

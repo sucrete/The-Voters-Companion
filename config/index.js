@@ -2,7 +2,6 @@
 
 var path = require('path')
 const Dotenv = require('dotenv-webpack')
-const showdown = require('showdown')
 
 module.exports = {
   module: {

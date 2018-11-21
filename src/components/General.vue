@@ -73,6 +73,9 @@ export default {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   color: #353839;
 }
+#activeBod > * {
+  color: #353839;
+}
 #activeBod > h1, h1 > * {
   margin-bottom: 0.5rem;
   font-family: inherit;
@@ -97,6 +100,7 @@ export default {
 }
 #activeBod > li {
   list-style-type: none;
+  text-indent: 3px;
 }
 .VTURL {
   white-space: nowrap;
@@ -111,6 +115,8 @@ export default {
   width: 37rem;
   margin: 0 auto;
   position: relative;
+  border-spacing: 0;
+  border: 3px solid white;
 }
 .VTRow {
   height: 1.5rem;
@@ -146,8 +152,8 @@ ul {
 ul {
   list-style-type: none;
 }
-#activeBod ul > li {
-  text-indent: -5px;
+ul > li {
+  text-indent: -37px;
 }
 #activeBod ul > li:before {
   content: "- ";
@@ -155,6 +161,9 @@ ul {
 }
 .happiHeader {
   margin-bottom: .75rem;
+}
+.happiHeader:first-of-type {
+  margin-top: 0px !important;
 }
 h2, h6 {
   line-height: 120%;

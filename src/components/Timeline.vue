@@ -5,9 +5,9 @@
     <div class="fullwidth">
       <!-- simple nav header -->
       <div class="simple-navigation-header">
-        <button id="lefty" type="button" class="mui-btn"><router-link to="General"><img class="arrowL arrow" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE4NS4zNDMgMTg1LjM0MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg1LjM0MyAxODUuMzQzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTUxLjcwNywxODUuMzQzYy0yLjc0MSwwLTUuNDkzLTEuMDQ0LTcuNTkzLTMuMTQ5Yy00LjE5NC00LjE5NC00LjE5NC0xMC45ODEsMC0xNS4xNzUgICAgbDc0LjM1Mi03NC4zNDdMNDQuMTE0LDE4LjMyYy00LjE5NC00LjE5NC00LjE5NC0xMC45ODcsMC0xNS4xNzVjNC4xOTQtNC4xOTQsMTAuOTg3LTQuMTk0LDE1LjE4LDBsODEuOTM0LDgxLjkzNCAgICBjNC4xOTQsNC4xOTQsNC4xOTQsMTAuOTg3LDAsMTUuMTc1bC04MS45MzQsODEuOTM5QzU3LjIwMSwxODQuMjkzLDU0LjQ1NCwxODUuMzQzLDUxLjcwNywxODUuMzQzeiIgZmlsbD0iIzNiM2MzNiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />General</router-link></button>
+        <button id="lefty" type="button" class="mui-btn"><router-link to="General"><img hidden class="arrowL" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE4NS4zNDMgMTg1LjM0MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg1LjM0MyAxODUuMzQzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTUxLjcwNywxODUuMzQzYy0yLjc0MSwwLTUuNDkzLTEuMDQ0LTcuNTkzLTMuMTQ5Yy00LjE5NC00LjE5NC00LjE5NC0xMC45ODEsMC0xNS4xNzUgICAgbDc0LjM1Mi03NC4zNDdMNDQuMTE0LDE4LjMyYy00LjE5NC00LjE5NC00LjE5NC0xMC45ODcsMC0xNS4xNzVjNC4xOTQtNC4xOTQsMTAuOTg3LTQuMTk0LDE1LjE4LDBsODEuOTM0LDgxLjkzNCAgICBjNC4xOTQsNC4xOTQsNC4xOTQsMTAuOTg3LDAsMTUuMTc1bC04MS45MzQsODEuOTM5QzU3LjIwMSwxODQuMjkzLDU0LjQ1NCwxODUuMzQzLDUxLjcwNywxODUuMzQzeiIgZmlsbD0iIzNiM2MzNiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />General</router-link></button>
         <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-        <button id="righty" type="button" class="mui-btn"><router-link to="Overview">Overview<img class="arrow" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE4NS4zNDMgMTg1LjM0MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg1LjM0MyAxODUuMzQzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTUxLjcwNywxODUuMzQzYy0yLjc0MSwwLTUuNDkzLTEuMDQ0LTcuNTkzLTMuMTQ5Yy00LjE5NC00LjE5NC00LjE5NC0xMC45ODEsMC0xNS4xNzUgICAgbDc0LjM1Mi03NC4zNDdMNDQuMTE0LDE4LjMyYy00LjE5NC00LjE5NC00LjE5NC0xMC45ODcsMC0xNS4xNzVjNC4xOTQtNC4xOTQsMTAuOTg3LTQuMTk0LDE1LjE4LDBsODEuOTM0LDgxLjkzNCAgICBjNC4xOTQsNC4xOTQsNC4xOTQsMTAuOTg3LDAsMTUuMTc1bC04MS45MzQsODEuOTM5QzU3LjIwMSwxODQuMjkzLDU0LjQ1NCwxODUuMzQzLDUxLjcwNywxODUuMzQzeiIgZmlsbD0iIzNiM2MzNiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" /> </router-link></button>
+        <button id="righty" type="button" class="mui-btn"><router-link to="Overview">Overview<img hidden class="arrowR" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE4NS4zNDMgMTg1LjM0MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg1LjM0MyAxODUuMzQzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTUxLjcwNywxODUuMzQzYy0yLjc0MSwwLTUuNDkzLTEuMDQ0LTcuNTkzLTMuMTQ5Yy00LjE5NC00LjE5NC00LjE5NC0xMC45ODEsMC0xNS4xNzUgICAgbDc0LjM1Mi03NC4zNDdMNDQuMTE0LDE4LjMyYy00LjE5NC00LjE5NC00LjE5NC0xMC45ODcsMC0xNS4xNzVjNC4xOTQtNC4xOTQsMTAuOTg3LTQuMTk0LDE1LjE4LDBsODEuOTM0LDgxLjkzNCAgICBjNC4xOTQsNC4xOTQsNC4xOTQsMTAuOTg3LDAsMTUuMTc1bC04MS45MzQsODEuOTM5QzU3LjIwMSwxODQuMjkzLDU0LjQ1NCwxODUuMzQzLDUxLjcwNywxODUuMzQzeiIgZmlsbD0iIzNiM2MzNiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" /> </router-link></button>
       </div>
 
       <div id="overviewNoticeWrapper">
@@ -206,15 +206,12 @@ export default {
   top: auto;
   margin-left: .75rem;
 }
-.tag {
-  background-color: #33825e !important;
-  font-weight: 500;
-}
-
 .tag-past {
   background-color: #b60000;
 }
-
+ul.timeline {
+  margin-left: -1.3rem;
+}
 .timeline-item-content {
   margin-top: .2rem;
   font-size: 90%;
@@ -246,6 +243,10 @@ export default {
   padding-top: .4rem;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
+  overflow: auto;
+}
+.votingValue:last-child {
+  padding-bottom: 2em;
 }
 .additionalInformation {
   text-align: left;
@@ -253,7 +254,7 @@ export default {
   border-bottom-right-radius: 3px;
   width: inherit;
   padding-left: 1.75rem;
-  margin-top: .2rem;
+  margin-top: 1rem;
   padding-top: .2rem;
   position: relative;
   left: -1.6rem;
@@ -288,7 +289,7 @@ p {
   padding-left: 1.75rem;
   margin-top: .6rem;
   padding-top: .35rem;
-  color: #33825e;
+  color: #588937;
   border-top-right-radius: 5px;
   width: 36.9rem;
 }
@@ -324,8 +325,8 @@ p {
 
 
 .timeline .timeline-item .timeline-marker.is-primary {
-    background-color: #33825e !important;
-    border-color: #33825e !important
+    background-color: #588937 !important;
+    border-color: #588937 !important
 }
 
 
@@ -347,7 +348,7 @@ p {
 }
 
 .timeline .timeline-item.is-primary {
-    border-left-color: #33825e;
+    border-left-color: #588937;
     z-index: 600;
 }
 
@@ -368,7 +369,21 @@ p {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-
+ul {
+  list-style-type: none;
+}
+ul>li {
+    text-indent: 0px;
+}
+.tag {
+  background-color: #588937!important;
+  border-radius: 3px;
+  padding: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  color: white;
+  font-weight: 500;
+}
 #app {
   background-color: #f7f7f0;
 }

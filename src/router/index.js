@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Overview from '@/components/Overview'
-import General from '@/components/General'
-import Timeline from '@/components/Timeline'
-import Landing from '@/components/Landing'
+// import Overview from '@/components/Overview'
+// import General from '@/components/General'
+// import Timeline from '@/components/Timeline'
+// import Landing from '@/components/Landing'
+
+const Overview = () => import('@/components/Overview')
+const General = () => import('@/components/General')
+const Timeline = () => import('@/components/Timeline')
+const Landing = () => import('@/components/Landing')
 
 Vue.use(Router)
 

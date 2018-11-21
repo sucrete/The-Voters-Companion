@@ -146,8 +146,8 @@ html {
   border: none;
   top: -.2rem;
 }
-.arrow {
-  height: 60%;
+.arrowL, .arrowR {
+  height: 45%;
   width: auto;
 }
 .arrowL {
@@ -160,11 +160,11 @@ html {
   /* IE8 and below */
   filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1, M12=0, M21=0, M22=-1, DX=0, DY=0, SizingMethod='auto expand');
 }
-#righty:hover {
+#lefty:hover .arrowL{
   transform: translate(3px, 0px);
   -webkit-transform: translate(3px, 0px);
 }
-#lefty:hover {
+#righty:hover .arrowR {
   transform: translate(-3px, 0px);
   -webkit-transform: translate(-3px, 0px);
 }

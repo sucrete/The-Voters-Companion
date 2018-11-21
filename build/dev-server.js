@@ -4,7 +4,6 @@ var config = require('../config')
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
-var showdown = require('showdown')
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
@@ -93,7 +92,6 @@ module.exports = {
     server.close()
   },
   loaders: [{
-    test:   /\.md/,
-    loader: 'showdown'
+    test:   /\.md/
   }]
 }
