@@ -34,7 +34,7 @@ export default {
       this.active = item
     },
     capitalizeIt (string) {
-      return string.charAt(0).toUpperCase() + string.slice(1)
+      return string.charAt(0).toLowerCase() + string.slice(1)
     },
     fillItUp () {
       var voterInfo = this.$store.getters.getVoterInfo.objects[0]
@@ -43,6 +43,7 @@ export default {
       voterInfo.eligibility_requirements.forEach(headly => {
         this.eligibility += '<h3 class="happiHeader">' + headly.header + '</h3>'
         headly.items.forEach(itemys => {
+          // removed capitalizeIt from itemys.item.name below e.g. "this.capitalizeIt(itemys.item.name)" (between the '<li>' tags)
           this.eligibility += '<li>- ' + this.capitalizeIt(itemys.item.name) + '</li>'
         })
         if (headly.hasOwnProperty('footer')) {
@@ -52,6 +53,8 @@ export default {
       voterInfo.identification_requirements.forEach(credly => {
         this.IDRequirements += '<h3 class="happiHeader">' + credly.header + '</h3>'
         credly.items.forEach(itemysis => {
+          // removed capitalizeIt from itemysis.item.name below e.g. "this.capitalizeIt(itemysis.item.name)" (between the '<li>' tags)
+
           this.IDRequirements += '<li>- ' + this.capitalizeIt(itemysis.item.name) + '</li>'
         })
         if (credly.hasOwnProperty('footer')) {

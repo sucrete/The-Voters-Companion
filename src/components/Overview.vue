@@ -13,7 +13,7 @@
         Officials
       </div>
       <div id="overviewNotice">
-        This page is devoted to your elected officials. They are grouped by regional scope. Each card can be expanded for ways to connect with your representatives.
+        These are your elected officials, grouped by regional scope. Each card can be expanded for ways to stay connected to your representatives.
       </div>
       <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a>
     </div>
@@ -545,7 +545,7 @@ export default {
   transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1),background-color 250ms cubic-bezier(0.645, 0.045, 0.355, 1), transform 500ms cubic-bezier(0.645, 0.045, 0.355, 1), height 500ms cubic-bezier(0.645, 0.045, 0.355, 1), width 500ms cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 500ms cubic-bezier(.25,.8,.25,1);
 }
 .repCard:hover {
-  box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background-color: rgb(252, 252, 250);
 }
 .repCard .repImageWrapper {
@@ -628,7 +628,7 @@ export default {
 .sectionHeader {
   margin-top: .5rem;
   color: #343434;
-  font-family: 'Cambo', serif;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   position: relative;
@@ -636,7 +636,10 @@ export default {
   padding-left: 2rem;
   margin-bottom: .5rem;
 }
-
+.detailsAddress p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
 #app {
   background-color: #f7f7f0;
 }

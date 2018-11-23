@@ -15,7 +15,7 @@
           Timeline
         </div>
         <div id="overviewNotice">
-          This page is devoted to your elections.
+          
         </div>
         <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a>
       </div>
@@ -98,10 +98,8 @@ export default {
     timeToVoteGuys () {
       var electionsInfo = this.$store.getters.getElections.objects
       var electionsInfoSorted = electionsInfo.sort(this.sorter)
-      console.log('SORTED ELECTIONS ' + '\n' + '\n' + JSON.stringify(electionsInfoSorted, null, '\t'))
-      console.log('come now... ' + '\n' + this.getDate())
       var todayHTML = '<li class="timeline-header"><span class="tag is-medium is-primary">Today</span></li>'
-      var futureTagHTML = '<li class="timeline-header"><span class="tag is-medium is-primary">Future</span></li>'
+      // var futureTagHTML = '<li class="timeline-header"><span class="tag is-medium is-primary">Future</span></li>'
       var timelineBitsBetweenNowAndLater = ''
       electionsInfoSorted.forEach(tally => {
         let timelineBit
@@ -109,6 +107,7 @@ export default {
         electionDate.push(electionDate.shift())
         electionDate.join('/')
         var prettyElectionDate = hdate.prettyPrint(electionDate)
+        console.log(prettyElectionDate)
         var timelineBitHeading = '<p class="heading">' + prettyElectionDate + '</p>'
         var votableContentGrid
         var votableHeader = '<div class="votableHeader">' + tally.title + '</div>'
@@ -148,7 +147,7 @@ export default {
         timelineBit = '<li class="timeline-item is-primary"><div class="timeline-marker is-primary"></div><div class="timeline-content">' + timelineBitHeading + timelineBitContent + '</div></li>'
         timelineBitsBetweenNowAndLater += timelineBit
       })
-      this.timelineHTML = '<ul style="width: 650px;" class="timeline">' + todayHTML + timelineBitsBetweenNowAndLater + futureTagHTML + '</ul>'
+      this.timelineHTML = '<ul style="width: 650px;" class="timeline">' + todayHTML + timelineBitsBetweenNowAndLater + '</ul>'
     },
     sorter (a, b) {
       const obj1 = a.election_date

@@ -142,14 +142,6 @@ export default {
       this.$store.commit('setVoterInformation', self.voterAPI.voterInfo)
       this.$router.push({path: 'overview'})
     },
-    focusHelper () {
-      var daletShin = document.getElementById('address-input')
-      var daletSemach = document.getElementById('inputEverything')
-      setTimeout(function () {
-        daletShin.focus()
-        daletSemach.style.cssText = 'z-index: 700;'
-      }, 7000)
-    },
     updateValue (val) {
       this.$store.commit('setUsersAddress', val)
     },
@@ -161,7 +153,6 @@ export default {
     }
   },
   mounted () {
-    this.focusHelper()
     var placesAutocomplete = places({
       container: document.querySelector('#address-input'),
       type: 'address',
@@ -244,7 +235,7 @@ export default {
   font-weight: 700;
   font-size: 2.5rem;
   line-height: 90%;
-  top: -10.3rem;
+  top: -10.1rem;
   margin: 0 auto;
   position: relative;
   text-shadow: 0.08em 0.08em 0 white;
@@ -286,7 +277,7 @@ export default {
   font-size: 130%;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-weight: 600;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
   /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
 }
@@ -432,7 +423,7 @@ input::-ms-input-placeholder {
   }
   #inputEverything {
     font-size: 100%;
-    margin-top: 3.25rem;
+    margin-top: 3rem;
   }
   #address-input {
     width: 88vw !important;
@@ -447,10 +438,6 @@ input::-ms-input-placeholder {
   }
   #logoLink {
     visibility: hidden;
-  }
-  .logoBlock {
-    top: 14px;
-    right: 4px;
   }
   .ap-dropdown-menu {
     width: 85vw !important;
@@ -467,20 +454,21 @@ input::-ms-input-placeholder {
     max-height: 99vh !important;
   }
   #hrufkins {
-    top: .9rem;
+    top: .5rem;
     height: auto;
     left: -.1rem;
+    position: absolute;
   }
   .logoBlock {
     width: 14.6rem;
     height: 11rem;
     left: 0px;
-    top: 1.7rem;
+    top: 1rem;
   }
   #brownType {
     font-size: 2rem;
-    left: 2.1rem;
-    top: .4rem;
+    left: 0rem;
+    top: 3.5rem;
   }
 }
 

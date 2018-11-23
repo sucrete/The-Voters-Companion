@@ -32,7 +32,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600|Cambo|Roboto+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600|Roboto+Condensed:700');
 #bigButton {
   position: absolute;
   right: 1rem;
@@ -126,14 +126,14 @@ html {
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 700;
   font-size: 125%;
-  color: #3c9035;
+  color: #588937;
   transition: color 150ms ease-in-out;
 }
 #takeMeOmh:hover {
   color: #6bb466;
 }
 #takeMeOmhDaddy {
-  top: .5rem;
+  /* top: .5rem; */
   position: relative;
   left: .2rem;
 }
