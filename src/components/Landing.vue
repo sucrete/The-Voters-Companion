@@ -252,7 +252,6 @@ export default {
   z-index: 8;
   /* background-image: url("https://i.imgur.com/HSwsLkl.png"); */
 }
-
 .ap-input-icon {
   right: 4rem;
 }
@@ -330,103 +329,15 @@ input::-ms-input-placeholder {
   position: relative;
 }
 
-#e9_texte {
-  font-size: 1.5rem;
-  font-family:Arial;
-}
-
-/* loading modal below this line ================================= */
-/* The modal-loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN */
-.v--modal {
-  border-radius: 100% !important;
-  box-sizing: none !important;
-  position: relative;
-}
-.image {
-  width: 100px;
-  height: 160px;
-  font-size: 40px;
-  text-align: center;
-  transform-origin: bottom center;
-  animation: 3s rotate infinite !important;
-  opacity: 0;
-  color: blue;
-  top: 2.1rem;
-  left: 3.2rem;
-  position: relative;
-}
-.v--modal-box span {
-  color: white;
-  display: block;
-  font-size: 115%;
-  width: 100%;
-  text-align: center;
-  position: absolute !important;
-  z-index: 778;
-  bottom: 50px;
-}
-
-/* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN  */
-@keyframes rotate{
-  0% {
-    transform: rotate(90deg);
-  }
-  10% {
-    opacity: 0;
-  }
-  35% {
-    transform: rotate(0deg);
-
-  }
-  55% {
-    opacity: 1;
-  }
-  65% {
-    transform: rotate(0deg);
-    opacity: 1;
-  }
-  75% {
-    opacity: 0;
-  }
-
-  100%{
-    transform: rotate(-90deg);
-  }
-}
-
-.v--modal-overlay .v--modal-box {
-  overflow: visible !important;
-  position: relative !important;
-  background-color: #e9e8cb;
-  box-shadow: 0px 8px 12px rgba(58, 68, 41, 0.2), 0px 12px 20px rgba(0, 0, 0, .1), 0px 0px 17px rgba(0, 0, 0, .14)!important;
-}
-
-.v--modal-overlay {
-  background-color: rgba(0, 0, 0, .4);
-  border-radius: 0px;
-  /* width: 100vw;
-  height: 100vh; */
-  border-style: none;
-}
-.scale-enter-active, .scale-leave-active {
- transition: all 0.5s;
-}
-.scale-enter, .scale-leave-active {
- opacity: 0;
- transform: scale(0.3) translateY(24px);
-}
 /* loading modal above this line ================================= */
-@media screen and (min-width:300px) and (max-width:568px) {
-  * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  }
+@media screen and (min-width:250px) and (max-width:320px) {
+
   #inputEverything {
     font-size: 100%;
-    margin-top: 3rem;
+    margin-top: 2.5rem;
   }
   #address-input {
-    width: 88vw !important;
+
     padding-top: 5px;
     padding-left: 9px;
     position: absolute;
@@ -436,22 +347,15 @@ input::-ms-input-placeholder {
     width: 95vw;
     right: 1rem;
   }
-  #logoLink {
-    visibility: hidden;
-  }
   .ap-dropdown-menu {
     width: 85vw !important;
-    left: 0vw !important;
+    left: -1vw !important;
   }
   .ap-input-icon {
     right: -1.5vw;
   }
   .ap-icon-clear {
     right: 2.75vw;
-  }
-  #app {
-    min-height: 98.9vh !important;
-    max-height: 99vh !important;
   }
   #hrufkins {
     top: .5rem;
@@ -469,6 +373,41 @@ input::-ms-input-placeholder {
     font-size: 2rem;
     left: 0rem;
     top: 3.5rem;
+  }
+}
+@media screen and (min-width:320px) and (max-width:375px) {
+  .logoBlock {
+    top: 1.3rem;
+    left: -1px;
+  }
+  #landingInfo {
+    font-size: 1.2rem;
+  }
+  #inputEverything {
+    font-size: 100%;
+    margin-top: 2.5rem;
+
+  }
+  #address-input {
+    padding-top: 6px;
+    padding-left: 9px;
+    right: 1.5vw;
+  }
+}
+@media screen and (max-width:415px) {
+  #logoLink {
+    visibility: hidden;
+  }
+  * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+  #landingInfo {
+    width: 95vw;
+    right: 1rem;
+  }
+  #address-input {
+    width: 88vw !important;
   }
 }
 
