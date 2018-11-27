@@ -337,7 +337,6 @@ input::-ms-input-placeholder {
     margin-top: 2.5rem;
   }
   #address-input {
-
     padding-top: 5px;
     padding-left: 9px;
     position: absolute;
@@ -348,7 +347,6 @@ input::-ms-input-placeholder {
     right: 1rem;
   }
   .ap-dropdown-menu {
-    width: 85vw !important;
     left: -1vw !important;
   }
   .ap-input-icon {
@@ -375,26 +373,72 @@ input::-ms-input-placeholder {
     top: 3.5rem;
   }
 }
-@media screen and (min-width:320px) and (max-width:375px) {
+@media screen and (min-width:320px) and (max-width:374px) {
   .logoBlock {
     top: 1.3rem;
     left: -1px;
   }
-  #landingInfo {
-    font-size: 1.2rem;
-  }
   #inputEverything {
     font-size: 100%;
-    margin-top: 2.5rem;
+    margin-top: 2.7rem;
 
   }
   #address-input {
     padding-top: 6px;
     padding-left: 9px;
-    right: 1.5vw;
   }
 }
-@media screen and (max-width:415px) {
+@media screen and (min-width:375px) and (max-width: 413px) {
+  #address-input {
+    right: 1.5vw;
+  }
+  #inputEverything {
+    font-size: 100%;
+    margin-top: 2.5rem;
+  }
+  .logoBlock {
+    top: 1.3rem;
+    left: -2px;
+    width: 18.5rem;
+  }
+  #brownType {
+    top: -10rem;
+  }
+  #landingInfo {
+    top: 1.3rem;
+  }
+  .ap-input-icon {
+    right: -1vw;
+  }
+}
+@media screen and (min-width:414px) and (max-width: 500px) {
+  .logoBlock {
+    top: 2.5rem;
+    left: -2px;
+  }
+  #inputEverything {
+    margin-top: 4rem;
+  }
+  #address-input {
+    padding-top: 5px;
+  }
+  .ap-input-icon {
+    right: 1px;
+  }
+}
+@media screen and (max-width: 500px) {
+  #landingInfo {
+    width: 95vw;
+    right: 1rem;
+  }
+  #address-input {
+    width: 88vw !important;
+  }
+  .ap-dropdown-menu {
+    width: 85vw !important;
+  }
+}
+@media screen and (max-width: 692) {
   #logoLink {
     visibility: hidden;
   }
@@ -403,11 +447,7 @@ input::-ms-input-placeholder {
   -moz-osx-font-smoothing: grayscale;
   }
   #landingInfo {
-    width: 95vw;
-    right: 1rem;
-  }
-  #address-input {
-    width: 88vw !important;
+    font-size: 1.2rem;
   }
 }
 
