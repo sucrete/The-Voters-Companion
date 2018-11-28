@@ -253,7 +253,12 @@ export default {
   /* background-image: url("https://i.imgur.com/HSwsLkl.png"); */
 }
 .ap-input-icon {
-  right: 4rem;
+    border: 0;
+    background: transparent;
+    position: relative;
+    top: -2.2rem;
+    left: 24.9em;
+    outline: none;
 }
 .ap-icon-clear {
   right: 4.25rem;
@@ -353,7 +358,7 @@ input::-ms-input-placeholder {
     right: -1.5vw;
   }
   .ap-icon-clear {
-    right: 2.75vw;
+    margin-right: .6em;
   }
   #hrufkins {
     top: .5rem;
@@ -422,15 +427,14 @@ input::-ms-input-placeholder {
   #address-input {
     padding-top: 5px;
   }
-  .ap-input-icon {
-    right: 1px;
-  }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
   #landingInfo {
     width: 95vw;
     right: 1rem;
   }
+}
+@media screen and (max-width: 640px) {
   #address-input {
     width: 88vw !important;
   }
@@ -438,7 +442,7 @@ input::-ms-input-placeholder {
     width: 85vw !important;
   }
 }
-@media screen and (max-width: 692) {
+@media screen and (max-width: 692px) {
   #logoLink {
     visibility: hidden;
   }
