@@ -215,11 +215,11 @@ export default {
   width: 20rem;
   height: 13rem;
   top: 1rem;
-  line-height: 110%;
+  line-height: 75%;
   padding: 1rem;
   z-index: 88;
   margin: 0 auto;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 700;
 }
 
@@ -290,9 +290,11 @@ export default {
   box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.15);
 }
 .ap-dropdown-menu {
-  position: relative;
+  margin-top: 0px;
+  position: absolute;
   width: 34rem;
-  left: 4.25rem !important;
+  top: 3.1em !important;
+  left: 5.1em !important;
 }
 input:focus {
   outline: none;
@@ -402,12 +404,13 @@ input::-ms-input-placeholder {
     margin-top: 2.5rem;
   }
   .logoBlock {
-    top: 1.3rem;
+    top: 2rem;
     left: -2px;
     width: 18.5rem;
   }
   #brownType {
     top: -10rem;
+    left: 3px;
   }
   #landingInfo {
     top: 1.3rem;
@@ -434,14 +437,6 @@ input::-ms-input-placeholder {
     right: 1rem;
   }
 }
-@media screen and (max-width: 640px) {
-  #address-input {
-    width: 88vw !important;
-  }
-  .ap-dropdown-menu {
-    width: 85vw !important;
-  }
-}
 @media screen and (max-width: 692px) {
   #logoLink {
     visibility: hidden;
@@ -454,5 +449,54 @@ input::-ms-input-placeholder {
     font-size: 1.2rem;
   }
 }
+@media screen and (min-width: 400px) and (max-width: 413px) {
+  .ap-dropdown-menu {
+    left: 5vw !important;
+  }
+}
+@media screen and (min-width: 414px) and (max-width: 433px) {
+  .ap-dropdown-menu {
+    left: 6.5vw !important;
+  }
+}
+@media screen and (min-width: 434px) and (max-width: 467px) {
+  .ap-dropdown-menu {
+    left: 7vw !important;
+  }
+}
+@media screen and (min-width: 468px) and (max-width: 524px) {
+  .ap-dropdown-menu {
+    left: 7.5vw !important;
+  }
+}
+@media screen and (min-width: 525px) and (max-width: 557px) {
+  .ap-dropdown-menu {
+    left: 8vw !important;
+  }
+}
+@media screen and (min-width: 558px) and (max-width: 597px) {
+  .ap-dropdown-menu {
+    left: 8.25vw !important;
+  }
+}
+@media screen and (min-width: 598px) and (max-width: 635px) {
+  .ap-dropdown-menu {
+    left: 8.5vw !important;
+  }
+}
+@media screen and (min-width: 636px) and (max-width: 750px) {
+  .ap-dropdown-menu {
+    left: 9vw !important;
+  }
+}
+@media screen and (max-width: 750px) {
+  #address-input {
+    width: 76vw !important;
+  }
+  .ap-dropdown-menu {
+    width: 73vw !important;
+  }
+}
+
 
 </style>
