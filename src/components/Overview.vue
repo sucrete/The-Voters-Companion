@@ -13,7 +13,7 @@
         Officials
       </div>
       <div id="overviewNotice">
-        These are your elected officials, grouped by regional scope. Each card can be expanded for ways to stay connected to your representatives.
+        These are your elected officials, grouped by regional scope. Each card can be expanded for more information on how to connect with your representatives.
       </div>
       <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a>
     </div>
