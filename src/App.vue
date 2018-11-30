@@ -107,6 +107,7 @@ html {
   font-weight: 600;
   text-align: left;
   margin-bottom: 1.25rem;
+  text-shadow: 0px 2px 4px rgba(0,0,0,0.2);
 }
 .simple-navigation-header {
   color: #3c9035;

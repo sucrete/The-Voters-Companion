@@ -213,8 +213,7 @@ export default {
   font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
   width: 20rem;
-  height: 13rem;
-  top: 1rem;
+  /* top: 1rem; */
   line-height: 75%;
   padding: 1rem;
   z-index: 88;
@@ -341,13 +340,11 @@ input::-ms-input-placeholder {
 
   #inputEverything {
     font-size: 100%;
-    margin-top: 2.5rem;
+    margin-top: 3.1rem;
   }
   #address-input {
-    padding-top: 5px;
     padding-left: 9px;
     position: absolute;
-    right: 2.7vw;
   }
   #landingInfo {
     width: 95vw;
@@ -357,10 +354,10 @@ input::-ms-input-placeholder {
     left: -1vw !important;
   }
   .ap-input-icon {
-    right: -1.5vw;
+    /* right: -1.5vw; */
   }
   .ap-icon-clear {
-    margin-right: .6em;
+    /* margin-right: .6em; */
   }
   #hrufkins {
     top: .5rem;
@@ -387,17 +384,16 @@ input::-ms-input-placeholder {
   }
   #inputEverything {
     font-size: 100%;
-    margin-top: 2.7rem;
+    margin-top: 3.1rem;
 
   }
   #address-input {
-    padding-top: 6px;
     padding-left: 9px;
   }
 }
 @media screen and (min-width:375px) and (max-width: 413px) {
   #address-input {
-    right: 1.5vw;
+
   }
   #inputEverything {
     font-size: 100%;
@@ -412,9 +408,7 @@ input::-ms-input-placeholder {
     top: -10rem;
     left: 3px;
   }
-  #landingInfo {
-    top: 1.3rem;
-  }
+
   .ap-input-icon {
     right: -1vw;
   }
@@ -428,7 +422,6 @@ input::-ms-input-placeholder {
     margin-top: 4rem;
   }
   #address-input {
-    padding-top: 5px;
   }
 }
 @media screen and (max-width: 480px) {
@@ -449,9 +442,10 @@ input::-ms-input-placeholder {
     font-size: 1.2rem;
   }
 }
-@media screen and (min-width: 400px) and (max-width: 413px) {
+
+@media screen and (min-width: 365px) and (max-width: 413px) {
   .ap-dropdown-menu {
-    left: 5vw !important;
+    left: 6vw !important;
   }
 }
 @media screen and (min-width: 414px) and (max-width: 433px) {
@@ -492,9 +486,15 @@ input::-ms-input-placeholder {
 @media screen and (max-width: 750px) {
   #address-input {
     width: 76vw !important;
+    padding-top: 6px;
+    /* padding-bottom: .4em; */
   }
   .ap-dropdown-menu {
     width: 73vw !important;
+  }
+  .ap-input-icon {
+    right: -35.5vw;
+    left: unset;
   }
 }
 
