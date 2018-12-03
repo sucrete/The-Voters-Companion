@@ -4,8 +4,8 @@
     <md-tabs id="navTabs" md-alignment="centered">
       <md-tab v-bind:style="styleObject" id="tab-home" class="magicTab md-ripple-off md-no-ink" md-label="General" v-on:click="makeActive( generalInfo )"></md-tab>
       <md-tab id="tab-pages"  class="magicTab" md-label="Eligibility" v-on:click="makeActive( eligibility )"></md-tab>
-      <md-tab id="tab-posts"  class="magicTab" md-label="Identification Requirements" v-on:click="makeActive( IDRequirements )"></md-tab>
-      <md-tab id="tab-settings"  class="magicTab" md-label="Voter's Tools" v-on:click="makeActive( voteTools )"></md-tab>
+      <md-tab id="tab-posts"  class="magicTab" md-label="ID Needed" v-on:click="makeActive( IDRequirements )"></md-tab>
+      <md-tab id="tab-settings"  class="magicTab" md-label="Tools" v-on:click="makeActive( voteTools )"></md-tab>
     </md-tabs>
 
     <p id="activeBod" v-html="active">  </p>

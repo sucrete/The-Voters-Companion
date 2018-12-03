@@ -40,7 +40,7 @@ import axios from 'axios'
 // import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import places from 'places.js'
 import carpet from '../assets/light_yellow_star.png'
-import logoFinal from '../assets/mauve.png'
+import logoFinal from '../assets/mauve2.png'
 import greenSquare from '../assets/votrLandingSquare.svg'
 
 export default {
@@ -353,12 +353,7 @@ input::-ms-input-placeholder {
   .ap-dropdown-menu {
     left: -1vw !important;
   }
-  .ap-input-icon {
-    /* right: -1.5vw; */
-  }
-  .ap-icon-clear {
-    /* margin-right: .6em; */
-  }
+
   #hrufkins {
     top: .5rem;
     height: auto;
@@ -385,16 +380,15 @@ input::-ms-input-placeholder {
   #inputEverything {
     font-size: 100%;
     margin-top: 3.1rem;
-
   }
   #address-input {
     padding-left: 9px;
   }
+  .ap-input-icon {
+    right: -34vw !important;
+  }
 }
 @media screen and (min-width:375px) and (max-width: 413px) {
-  #address-input {
-
-  }
   #inputEverything {
     font-size: 100%;
     margin-top: 2.5rem;
@@ -403,14 +397,6 @@ input::-ms-input-placeholder {
     top: 2rem;
     left: -2px;
     width: 18.5rem;
-  }
-  #brownType {
-    top: -10rem;
-    left: 3px;
-  }
-
-  .ap-input-icon {
-    right: -1vw;
   }
 }
 @media screen and (min-width:414px) and (max-width: 500px) {
@@ -421,31 +407,17 @@ input::-ms-input-placeholder {
   #inputEverything {
     margin-top: 4rem;
   }
-  #address-input {
-  }
 }
-@media screen and (max-width: 480px) {
-  #landingInfo {
-    width: 95vw;
-    right: 1rem;
-  }
-}
-@media screen and (max-width: 692px) {
-  #logoLink {
-    visibility: hidden;
-  }
-  * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  }
-  #landingInfo {
-    font-size: 1.2rem;
-  }
-}
-
 @media screen and (min-width: 365px) and (max-width: 413px) {
   .ap-dropdown-menu {
     left: 6vw !important;
+  }
+  #brownType {
+    top: -10rem;
+    left: 3px;
+  }
+  .ap-input-icon {
+    right: -34vw !important;
   }
 }
 @media screen and (min-width: 414px) and (max-width: 433px) {
@@ -481,6 +453,24 @@ input::-ms-input-placeholder {
 @media screen and (min-width: 636px) and (max-width: 750px) {
   .ap-dropdown-menu {
     left: 9vw !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  #landingInfo {
+    width: 95vw;
+    right: 1rem;
+  }
+}
+@media screen and (max-width: 692px) {
+  #logoLink {
+    visibility: hidden;
+  }
+  * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+  #landingInfo {
+    font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 750px) {

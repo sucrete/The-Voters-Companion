@@ -129,6 +129,7 @@ html {
   font-size: 125%;
   color: #588937;
   transition: color 150ms ease-in-out;
+  text-align: center;
 }
 #takeMeOmh:hover {
   color: #6bb466;
@@ -136,7 +137,7 @@ html {
 #takeMeOmhDaddy {
   /* top: .5rem; */
   position: relative;
-  left: .2rem;
+  /* left: .2rem; */
 }
 .mui-btn {
   width: 125px;
@@ -301,19 +302,18 @@ input, input:focus {
       min-height: 98.9vh !important;
     }
     .simple-navigation-header {
-      width: revert;
+      width: 85vw;
     }
     #overviewNoticeWrapper {
       height: 250px;
-      padding-top: 2em;
-      padding-left: 1.75em;
     }
     #overviewMarquee {
       font-size: 250%;
       margin-bottom: .3em;
     }
     #overviewNotice {
-      padding-right: 1em;
+      padding-right: 3em;
+      padding-left: .2em;
     }
 }
 </style>

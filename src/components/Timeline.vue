@@ -103,21 +103,11 @@ export default {
       var timelineBitsBetweenNowAndLater = ''
       electionsInfoSorted.forEach(tally => {
         let timelineBit
-        console.log('<{{{{{{{{{{{{{{{{{{{{{{{{{{tally.election_date}}}}}}}}}}}}}}}}}}}}}}}}}}}}>' + '\n' + tally.election_date)
-        console.log('<{{{{{{{{{{{{{{{{{{{{{{{{{{hdate tally.election_date}}}}}}}}}}}}}}}}}}}}}}}}}}}}>' + '\n' + hdate.prettyPrint(tally.election_date))
         var electionDateArray = tally.election_date.split('-')
-        console.log('<{{{{{{{{{{{{{{{{{{{{{{{{{{electionDate}}}}}}}}}}}}}}}}}}}}}}}}}}}}>' + '\n' + electionDateArray)
         var firstElement = electionDateArray.shift()
-        console.log('<{{{{{{{{{{{{{{{{{{{{{{{{{{firstElement}}}}}}}}}}}}}}}}}}}}}}}}}}}}>' + '\n' + firstElement)
         electionDateArray.push(firstElement)
-        console.log('<{{{{{{{{{{{{{{{{{{{{{{{{{{electionDate}}}}}}}}}}}}}}}}}}}}}}}}}}}}>' + '\n' + electionDateArray)
-
         var electionDate = electionDateArray.join('/')
-        console.log(typeof electionDate)
-        console.log('<{{{{{{{{{{{{{{{{{{{{{{{{{{electionDate}}}}}}}}}}}}}}}}}}}}}}}}}}}}>' + '\n' + electionDate)
-
         var prettyElectionDate = hdate.prettyPrint(electionDate)
-        console.log('<{{{{{{{{{{{{{{{{{{{{{{{{{{prettyElectionDate}}}}}}}}}}}}}}}}}}}}}}}}}}}}>' + '\n' + prettyElectionDate)
         var timelineBitHeading = '<p class="heading">' + prettyElectionDate + '</p>'
         var votableContentGrid
         var votableHeader = '<div class="votableHeader">' + tally.title + '</div>'
@@ -396,7 +386,11 @@ ul>li {
 #app {
   background-color: #f7f7f0;
 }
-
+@media screen and (max-width: 700px) {
+  #timelineBod {
+    margin-left: -1rem;
+  }
+}
 </style>
 
 <!-- alert.vue -->

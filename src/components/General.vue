@@ -168,5 +168,15 @@ ul > li {
 h2, h6 {
   line-height: 120%;
 }
-
+@media screen and (max-width: 750px) {
+  .md-button-content {
+    font-size: 100%;
+  }
+  #activeBod {
+    left: -2vw;
+  }
+  .VTName {
+    width: 15vw;
+  }
+}
 </style>
