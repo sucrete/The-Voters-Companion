@@ -14,7 +14,7 @@
       <div id="overviewNotice">
         All the info you need to vote in your state.
       </div>
-      <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a>
+      <!-- <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a> -->
     </div>
 
     <!-- body -->
@@ -29,12 +29,12 @@
 
 <script>
 import TabRouter from './Tabs.vue'
-import registerBi from '../assets/76pix.png'
+// import registerBi from '../assets/76pix.png'
 export default {
   name: 'district',
   data () {
     return {
-      register: registerBi
+      // register: registerBi
     }
   },
   methods: {

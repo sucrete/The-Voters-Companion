@@ -199,12 +199,12 @@ export default {
 #logoLink {
   z-index: 777;
   position: absolute;
-  top: 2.1rem;
-  right: 4.8rem;
-  /* filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35));
-	-webkit-filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35)); */
+  top: 2.4rem;
+  right: 6.5rem;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+	-webkit-filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
-    filter:drop-shadow(4px 4px 0 #A57F70) */
+    filter:drop-shadow(4px 4px 0 #A57F70)*/
 }
 
 #landingInfo {

@@ -17,7 +17,7 @@
         <div id="overviewNotice">
 
         </div>
-        <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a>
+        <!-- <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a> -->
       </div>
       <!-- body -->
       <div class="hotBod">
@@ -84,13 +84,13 @@
 <script>
 /* eslint-disable */
 var hdate = require('human-date')
-import registerBi from '../assets/76pix.png'
+// import registerBi from '../assets/76pix.png'
 export default {
   name: 'timeline',
   data () {
     return {
       whatAPrimaryIs: '',
-      register: registerBi,
+      // register: registerBi,
       timelineHTML: ''
     }
   },
