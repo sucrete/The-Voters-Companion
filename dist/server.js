@@ -9,7 +9,6 @@ var rp = require('request-promise');
 var router = express.Router();
 var compression = require('compression');
 
-
 app = express();
 
 app.use(serveStatic(__dirname)); //middleware

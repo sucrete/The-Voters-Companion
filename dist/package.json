@@ -1,7 +1,7 @@
 {
  "name": "The_Voters_Companion",
  "version": "1.0.0",
- "description": "a complete resource for voters",
+ "description": "easy-to-navigate resource created to empower American voters",
  "author": "sucrete",
  "private": true,
  "scripts": {
@@ -9,6 +9,7 @@
  },
  "dependencies": {
   "body-parser": "^1.18.3",
+  "compression": "^1.7.3",
   "express": "*",
   "node": "^10.13.0",
   "request": "^2.88.0",
