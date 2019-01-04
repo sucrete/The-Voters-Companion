@@ -223,21 +223,21 @@ export default {
 }
 
 #app {
-  background-color: rgb(222, 232, 207);
+  background-color: rgb(226, 232, 217);
 }
 
 #brownType {
   z-index: 99;
   color: rgb(242, 128, 63);
-  font-family: 'Roboto Condensed', sans-serif !important;
+  font-family: 'Francois One', sans-serif !important;
   text-align: center;
-  font-weight: 700;
-  font-size: 2.5rem;
-  line-height: 90%;
-  top: -10.1rem;
+  font-weight: 400;
+  font-size: 2.4em;
+  line-height: 110%;
+  top: -4.9em;
   margin: 0 auto;
   position: relative;
-  text-shadow: 0.08em 0.08em 0 white;
+  /* text-shadow: 0.08em 0.08em 0 white; */
   /* -webkit-text-stroke: 3px #343434; */
 }
 .logoBlock {

@@ -32,7 +32,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600|Roboto+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=Alegreya:700i|Averia+Libre:700|Averia+Sans+Libre|Averia+Serif+Libre|Boogaloo|Francois+One|Gudea:700|Open+Sans+Condensed:700|Oswald:700|IBM+Plex+Sans+Condensed:400,500,600|Roboto+Condensed:700');
 #bigButton {
   position: absolute;
   right: 1rem;
@@ -70,7 +70,7 @@ html {
   padding: 10px 24px;
   min-height: 45rem;
   position: relative;
-  border-radius: 3px;
+  /* border-radius: 3px; */
   border: 1px solid rgb(164, 182, 150);
 }
 
@@ -300,6 +300,7 @@ input, input:focus {
       width: 98vw;
       margin-top: 3px !important;
       min-height: 98.9vh !important;
+      box-shadow: -1px 5px 9px rgba(0, 0, 0, 0.0), 1px 3px 7px rgba(0,0,0,0.0)
     }
     .simple-navigation-header {
       width: 85vw;
