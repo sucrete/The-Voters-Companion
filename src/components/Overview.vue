@@ -15,7 +15,7 @@
       <div id="overviewNotice">
         These are your elected officials, grouped by regional scope. Each card can be expanded for more information on how to connect with your representatives.
       </div>
-      <!-- <a id="bigButtonLink"><img id="bigButton" :src=" register " hidden></a> -->
+      <a id="bigButtonLink"><img id="bigButton" :src=" register "></a>
     </div>
 
     <div id="dimScreen"></div>
@@ -34,12 +34,12 @@
 
 <script>
 /* eslint-disable */
-// import registerBi from '../assets/76pix.png'
+import registerBi from '../assets/registerBadge.png'
 export default {
   name: 'overview',
   data () {
     return {
-      // register: registerBi,
+      register: registerBi,
       msg: ''
     }
   },
