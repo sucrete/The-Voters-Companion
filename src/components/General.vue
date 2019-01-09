@@ -14,7 +14,9 @@
       <div id="overviewNotice">
         All the info you need to vote in your state.
       </div>
-      <a id="bigButtonLink"><img id="bigButton" :src=" register "></a>
+      <a id="bigButtonLink" v-if="presentBadge" target="_blank" v-bind:href="regURL">
+        <img id="bigButton" :src=" register ">
+      </a>
     </div>
 
     <!-- body -->
@@ -34,7 +36,9 @@ export default {
   name: 'district',
   data () {
     return {
-      register: registerBi
+      register: registerBi,
+      presentBadge: this.$store.getters.shouldIDisplayBadge,
+      regURL: this.$store.getters.getUserBadgeURL
     }
   },
   methods: {

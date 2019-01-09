@@ -15,7 +15,9 @@
       <div id="overviewNotice">
         These are your elected officials, grouped by regional scope. Each card can be expanded for more information on how to connect with your representatives.
       </div>
-      <a id="bigButtonLink"><img id="bigButton" :src=" register "></a>
+      <a id="bigButtonLink" v-if="presentBadge" target="_blank" v-bind:href="regURL">
+        <img id="bigButton" :src=" register ">
+      </a>
     </div>
 
     <div id="dimScreen"></div>
@@ -40,7 +42,9 @@ export default {
   data () {
     return {
       register: registerBi,
-      msg: ''
+      msg: '',
+      presentBadge: this.$store.getters.shouldIDisplayBadge,
+      regURL: this.$store.getters.getUserBadgeURL
     }
   },
   methods: {
@@ -55,9 +59,9 @@ export default {
     for (var i = divisionKeys.length - 1; i >= 0; i--) {
       reversedKeys.push(divisionKeys[i])
     }
-    console.log(JSON.stringify(GState.data, null, '\t'))
-    console.log('YOUR reversedKeys VARIABLE IS ---> ' + JSON.stringify(reversedKeys, null, '\t'))
-    console.log('NUMBER OF DIVISIONS = ' + reversedKeys.length)
+    // console.log(JSON.stringify(GState.data, null, '\t'))
+    // console.log('YOUR reversedKeys VARIABLE IS ---> ' + JSON.stringify(reversedKeys, null, '\t'))
+    // console.log('NUMBER OF DIVISIONS = ' + reversedKeys.length)
 
     var overviewBod = document.getElementById('overviewBody')
     // credit for toTitleCase() -> https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript/196991#196991
@@ -81,7 +85,7 @@ export default {
           var upperCasedDivisionName = toTitleCase(divisions[reversedKeys[ttt]].name)
           if (upperCasedDivisionName.endsWith('City')) {
             var upperCasedDivisionNameArray = upperCasedDivisionName.split(' ')
-            console.log(upperCasedDivisionNameArray)
+            // console.log(upperCasedDivisionNameArray)
             upperCasedDivisionNameArray.pop()
             upperCasedDivisionName = 'City of ' + upperCasedDivisionNameArray.join(' ')
           }
@@ -148,7 +152,7 @@ export default {
                 var gridWrapper = document.createElement('div')
                 gridWrapper.className = ('gridContainer')
                 var theOfficial = GState.data.officials[thing2.index]
-                console.log('THIS GUY/GALS PARTY ---> ' + theOfficial.party)
+                // console.log('THIS GUY/GALS PARTY ---> ' + theOfficial.party)
                 var party = theOfficial.party
                 var partyLetter = ''
                 if (party === 'Republican') {
@@ -183,7 +187,7 @@ export default {
                       }
                     }
                     addressSaver += cityStateZip
-                    console.log(addressSaver)
+                    // console.log(addressSaver)
                   }
                 }
                 console.log(addressSaver)
@@ -306,7 +310,7 @@ export default {
               setTimeout(function () {
                 kunta.style.cssText = ('z-index: 1;')
               }, 500)
-              console.log('parentNode ======= ' + this.parentNode.className)
+              // console.log('parentNode ======= ' + this.parentNode.className)
               e.stopPropagation()
               e.preventDefault()
             })

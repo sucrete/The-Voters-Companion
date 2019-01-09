@@ -7,6 +7,8 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   strict: true,
   state: {
+    displayQuestionMark: false,
+    badgeURL: null,
     googvotekey: process.env.GOOGLE_API_KEY,
     usVoteKey: process.env.VOTE_KEY,
     form: {
@@ -24,6 +26,12 @@ export const store = new Vuex.Store({
     holla: 'ghost!'
   },
   mutations: {
+    setUserBadgeURL (state, payload) {
+      state.badgeURL = payload
+    },
+    displayBadgeQuestionMark (state, payload) {
+      state.displayQuestionMark = payload
+    },
     setUsersAddress (state, payload) {
       // console.log('setUsersAddress was fired')
       state.form.country.label = payload
@@ -60,6 +68,14 @@ export const store = new Vuex.Store({
 
   },
   getters: {
+    getUserBadgeURL: state => {
+      let ubu = state
+      return ubu.badgeURL
+    },
+    shouldIDisplayBadge: state => {
+      let gggggget = state
+      return gggggget.displayQuestionMark
+    },
     showMeDatState: state => {
       var bb = state
       return bb

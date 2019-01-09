@@ -115,13 +115,13 @@ export default {
       }).then(response => {
         console.log('your USVotePost method occurred')
         console.log('\n' + 'it worked, bruv!' + '\n' + '\n')
-        console.log(JSON.stringify(response.data, null, '\t'))
+        // console.log(JSON.stringify(response.data, null, '\t'))
         const axiosUSVoteGet = axios.create()
         axiosUSVoteGet.get('/api/getVoterAPI').then(response => {
           // vAPI = response.data
           self.voterAPI = response.data
           console.log('getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n' + 'getUSVote went through' + '\n')
-          console.log('+ ---------------- self.voterAPI ---------------- +' + '\n' + JSON.stringify(self.voterAPI, null, '\t'))
+          // console.log('+ ---------------- self.voterAPI ---------------- +' + '\n' + JSON.stringify(self.voterAPI, null, '\t'))
           this.setInfoAndPush()
         }).catch(function (error) {
           console.log('getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through' + '\n' + 'getVoterAPI DIDN\'T go through'  + '\n' + error)
@@ -135,9 +135,19 @@ export default {
       var entireGoogleResponse = this.$store.getters.stuper
       var entireElectionInfoFromThisDotVoterAPI = self.voterAPI.electionInfo
       var entireVoterInfoFromThisDotVoterAPI = self.voterAPI.voterInfo
-      console.log('entireGoogleResponse' + '\n' + '\n' + JSON.stringify(entireGoogleResponse, null, '\t'))
-      console.log('entireElectionInfoFromThisDotVoterAPI' + '\n' + '\n' + JSON.stringify(entireElectionInfoFromThisDotVoterAPI, null, '\t'))
-
+      // console.log('entireGoogleResponse' + '\n' + '\n' + JSON.stringify(entireGoogleResponse, null, '\t'))
+      // console.log('entireElectionInfoFromThisDotVoterAPI' + '\n' + '\n' + JSON.stringify(entireElectionInfoFromThisDotVoterAPI, null, '\t'))
+      const LTArray = self.voterAPI.voterInfo.objects[0].lookup_tools
+      for (var dubs = 0; dubs < LTArray.length; dubs++) {
+        if (LTArray[dubs].lookup_tool.id === 4) {
+          if (!(LTArray[dubs].url === undefined)) {
+            let ourURL = LTArray[dubs].url
+            this.$store.commit('setUserBadgeURL', LTArray[dubs].url)
+            console.log('\t' + '🖖' + '\n' + 'SUCCESS!' + '\n' + '\t' + '🎉' + '\n' + this.$store.getters.getUserBadgeURL)
+            this.$store.commit('displayBadgeQuestionMark', true)
+          }
+        }
+      }
       this.$store.commit('setUSVoteElections', self.voterAPI.electionInfo)
       this.$store.commit('setVoterInformation', self.voterAPI.voterInfo)
       this.$router.push({path: 'overview'})

@@ -17,7 +17,9 @@
         <div id="overviewNotice">
 
         </div>
-        <a id="bigButtonLink"><img id="bigButton" :src=" register "></a>
+        <a id="bigButtonLink" v-if="presentBadge" target="_blank" v-bind:href="regURL">
+          <img id="bigButton" :src=" register ">
+        </a>
       </div>
       <!-- body -->
       <div class="hotBod">
@@ -91,7 +93,9 @@ export default {
     return {
       whatAPrimaryIs: '',
       register: registerBi,
-      timelineHTML: ''
+      timelineHTML: '',
+      presentBadge: this.$store.getters.shouldIDisplayBadge,
+      regURL: this.$store.getters.getUserBadgeURL
     }
   },
   methods: {
