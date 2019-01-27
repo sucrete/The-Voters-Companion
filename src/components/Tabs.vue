@@ -13,7 +13,7 @@
 </template>
 
 <script>
-let marked = require('marked')
+var marked = require('marked')
 
 export default {
   name: 'TabRouter',

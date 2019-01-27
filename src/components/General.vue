@@ -107,7 +107,7 @@ export default {
   text-indent: 3px;
 }
 .VTURL {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
 }

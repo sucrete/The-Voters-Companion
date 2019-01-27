@@ -32,12 +32,11 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=Alegreya:700i|Averia+Libre:700|Averia+Sans+Libre|Averia+Serif+Libre|Boogaloo|Francois+One|Gudea:700|Open+Sans+Condensed:700|Oswald:700|IBM+Plex+Sans+Condensed:400,500,600|Roboto+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=Francois+One|IBM+Plex+Sans+Condensed:400,500,600|Roboto+Condensed:700');
 #bigButton {
   position: absolute;
   right: 1rem;
   z-index: 888;
-  transition: all 250ms ease-in-out;
   top: 6.7em;
   /* first drop shadow handles the v light shadow and the second handles the sharper shadow drop-shadow(1px 14px 6px rgba(15, 13, 2, 0.07)) */
   filter: drop-shadow(1px 5px 3px rgba(15, 13, 2, 0.2)) drop-shadow(0px -5px 5px rgb(173, 39, 15, .2));
@@ -316,6 +315,9 @@ input, input:focus {
     #overviewNotice {
       padding-right: 3em;
       padding-left: .2em;
+    }
+    #bigButton {
+      visibility: hidden;
     }
 }
 </style>

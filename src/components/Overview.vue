@@ -36,6 +36,7 @@
 
 <script>
 /* eslint-disable */
+import anime from '../../node_modules/animejs/lib/anime.js'
 import registerBi from '../assets/registerBadge.png'
 export default {
   name: 'overview',
@@ -48,8 +49,41 @@ export default {
     }
   },
   methods: {
+
   },
   mounted () {
+    if (this.$store.getters.shouldIDisplayBadge) {
+      let bigButtn = document.getElementById('bigButton')
+
+      // var buttonEl = document.querySelector('button');
+
+      function animateButton(scale, duration, elasticity) {
+        anime.remove(bigButtn)
+        anime({
+          targets: bigButtn,
+          scale: scale,
+          duration: duration,
+          elasticity: 200,
+          rotate:
+            {value: [-3, 3], duration: 250, elasticity: 100}
+        })
+      }
+      function animateButtonBack(scale, duration, elasticity) {
+        anime.remove(bigButtn)
+        anime({
+          targets: bigButtn,
+          scale: scale,
+          duration: duration,
+          elasticity: 200
+        })
+      }
+      function enterButton() { animateButton(1.03, 350) }
+      function leaveButton() { animateButtonBack(1.0, 200) }
+
+      bigButtn.addEventListener('mouseenter', enterButton, false)
+      bigButtn.addEventListener('mouseleave', leaveButton, false)
+    }
+
     var state = this.$store.getters.showMeDatState
     var GState = state.googleResponse
     var divisions = GState.data.divisions

@@ -27,7 +27,7 @@
         <div class="image">
           <img style="height: 50px; width: auto; " :src=" lightYellowStar "/>
         </div>
-        <span style="font-family: IBM Plex Sans Condensed; font-weight: 600;"> Loading... </span>
+        <span style="font-family: Francois One; font-weight: 400;"> Loading... </span>
 
     </modal>
 
@@ -209,8 +209,8 @@ export default {
 #logoLink {
   z-index: 777;
   position: absolute;
-  top: 2.4rem;
-  right: 6.5rem;
+  top: 3em;
+  right: 8em;
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
 	-webkit-filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
@@ -220,7 +220,7 @@ export default {
 #landingInfo {
   position: relative;
   color: rgb(134, 95, 56);
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Francois One', sans-serif;
   text-align: center;
   width: 20rem;
   /* top: 1rem; */
@@ -229,7 +229,7 @@ export default {
   z-index: 88;
   margin: 0 auto;
   font-size: 1.3rem;
-  font-weight: 700;
+  /* font-weight: 700; */
 }
 
 #app {
@@ -288,8 +288,8 @@ export default {
   margin: 0 auto;
   outline: none;
   font-size: 130%;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
+  font-family: 'Francois One', sans-serif;
+  font-weight: 400;
   transition: all 0.2s ease-in-out;
   /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
@@ -309,36 +309,36 @@ input:focus {
   outline: none;
   border: none;
   color: #696969;
-  font-weight: 600;
+  font-weight: 400;
 }
 input::-webkit-input-placeholder {
   color: #696969 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
+  font-family: 'Francois One', sans-serif;
+  font-weight: 400;
 }
 input:-moz-placeholder {
   /* Firefox 18- */
   color: #696969 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
+  font-family: 'Francois One', sans-serif;
+  font-weight: 400;
 }
 input::-moz-placeholder {
   /* Firefox 19+ */
   color: #696969 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
+  font-family: 'Francois One', sans-serif;
+  font-weight: 400;
 }
 input:-ms-input-placeholder {
   /* IE 10+ */
   color: #696969 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
+  font-family: 'Francois One', sans-serif;
+  font-weight: 400;
 }
 input::-ms-input-placeholder {
   /* Edge */
   color: #696969 !important;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 600;
+  font-family: 'Francois One', sans-serif;
+  font-weight: 400;
 }
 
 #landing {
