@@ -112,7 +112,7 @@ export default {
   text-overflow: ellipsis;
 }
 .VTName {
-  width: 25rem;
+  width: 8em;
   font-weight: 500;
 }
 .VTTable {
