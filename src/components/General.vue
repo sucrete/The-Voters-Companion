@@ -158,6 +158,7 @@ ul {
 }
 ul > li {
   text-indent: -37px;
+  padding-inline-start: 3px;
 }
 #activeBod ul > li:before {
   content: "- ";

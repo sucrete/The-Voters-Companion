@@ -2,11 +2,10 @@
 // const Dotenv = require('dotenv-webpack');
 
 var express = require('express');
-var path = require('path');
+
 var serveStatic = require('serve-static');
 const bodyParser = require('body-parser');
 var rp = require('request-promise');
-var router = express.Router();
 var compression = require('compression');
 
 app = express();
