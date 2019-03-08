@@ -32,7 +32,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=Francois+One|IBM+Plex+Sans+Condensed:400,500,600|Roboto+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 #bigButton {
   position: absolute;
   right: 1rem;
@@ -64,7 +64,6 @@ html {
   margin: auto;
   margin-top: 1.5rem;
   margin-bottom: 2rem;
-  font-weight: 300;
   text-align: center;
   box-shadow: -1px 5px 9px rgba(0, 0, 0, 0.12), 1px 3px 7px rgba(0,0,0,0.08);
   padding: 10px 24px;
@@ -85,13 +84,15 @@ html {
   font-size: 130%;
   width: 20rem;
   text-align: left;
-  line-height: 140%;
+  line-height: 130%;
   height: 12rem;
-  padding-left: .4rem;
+  padding-left: .7em;
+  font-weight: 400;
+  letter-spacing: .04em;
 }
 #overviewNoticeWrapper {
   background-color: rgba(230, 230, 230, 0.8);
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-family: 'Karla', sans-serif;
   width: 100%;
   padding-left: 1.75rem;
   padding-top: 2.2rem;
@@ -102,16 +103,17 @@ html {
   margin-top: .4rem;
 }
 #overviewMarquee {
-  font-size: 350%;
-  color: #353839; /* color --> "jet black" */
-  font-weight: 600;
+  font-size: 200%;
+  color: #5b524a;; /* color --> "jet black" */
   text-align: left;
   margin-bottom: 1.25rem;
   text-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+  font-weight: 400;
+  letter-spacing: .08em;
 }
 .simple-navigation-header {
   color: #3c9035;
-  width: 42.5rem;
+  width: 47em;
   font-size: 105%;
   margin: 0 auto;
   position: relative;
@@ -124,12 +126,13 @@ html {
 }
 
 #takeMeOmh {
-  font-family: 'Francois One', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-weight: 400;
   font-size: 137%;
   color: #588937;
   transition: color 150ms ease-in-out;
   text-align: center;
+  letter-spacing: .1em;
 }
 #takeMeOmh:hover {
   color: #6bb466;
@@ -141,7 +144,6 @@ html {
 }
 .mui-btn {
   width: 125px;
-  font-weight: 500;
   font-size: 14px;
   background-color: #f7f7f0;
   transition: all 250ms ease-in-out;
@@ -151,6 +153,8 @@ html {
 .arrowL, .arrowR {
   height: 45%;
   width: auto;
+  text-transform: uppercase;
+  letter-spacing: .07em;
 }
 .arrowL {
   -webkit-transform: rotate(180deg);     /* Chrome and other webkit browsers */
@@ -193,7 +197,7 @@ a:visited:not(#takeMeOmh) {
 
 h1 {
   font-size: 34px;
-  font-weight: 300;
+
   line-height: 40px;
   margin: 0;
   padding: 0;
@@ -212,7 +216,7 @@ input, input:focus {
 }
 #e9_texte {
   font-size: 1.5rem;
-  font-family:Arial;
+  font-family: 'Karla', sans-serif;
 }
 
 /* loading modal below this line ================================= */

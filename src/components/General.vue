@@ -3,13 +3,13 @@
   <div class="district">
     <!-- simple nav header -->
     <div class="simple-navigation-header">
-      <button id="lefty" type="button" class="mui-btn"><router-link to="Overview">Overview</router-link></button>
+      <button id="lefty" type="button" class="mui-btn"><router-link to="Overview">OVERVIEW</router-link></button>
       <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-      <button id="righty" type="button" class="mui-btn"><router-link to="Timeline">Timeline</router-link></button>
+      <button id="righty" type="button" class="mui-btn"><router-link to="Timeline">TIMELINE</router-link></button>
     </div>
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
-        Voter's Tools
+        VOTER'S TOOLS
       </div>
       <div id="overviewNotice">
         All the info you need to vote in your state.
@@ -60,9 +60,10 @@ export default {
   background-color: #f7f7f0 !important;
 }
 .md-button-content {
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-weight: 500;
   font-size: 105%;
+  letter-spacing: .08em;
 }
 #activeBod {
   background-color: #f7f7f0;
@@ -74,8 +75,9 @@ export default {
   text-align: left;
   z-index: 5;
   position: relative;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  color: #353839;
+  font-family: 'Karla', sans-serif;
+  line-height: 130%;
+  color: #5b524a;;
 }
 #activeBod > * {
   color: #353839;

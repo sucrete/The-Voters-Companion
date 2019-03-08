@@ -3,14 +3,14 @@
   <div class="overview">
     <!-- simple nav header -->
     <div class="simple-navigation-header">
-      <button id="lefty" type="button" class="mui-btn"><router-link to="timeline">Timeline</router-link></button>
+      <button id="lefty" type="button" class="mui-btn"><router-link to="timeline">TIMELINE</router-link></button>
       <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-      <button id="righty" type="button" class="mui-btn"><router-link to="general">General</router-link></button>
+      <button id="righty" type="button" class="mui-btn"><router-link to="general">GENERAL</router-link></button>
     </div>
     <!-- body -->
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
-        Officials
+        OFFICIALS
       </div>
       <div id="overviewNotice">
         These are your elected officials, grouped by regional scope. Each card can be expanded for more information on how to connect with your representatives.

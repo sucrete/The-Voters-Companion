@@ -3,19 +3,22 @@
   <div id="landing">
     <!-- example of syntax needed to insert image with vue -->
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
+    <div id="USVoteHeader">
+      MADE WITH SUPPORT FROM THE U.S. VOTE FOUNDATION
+    </div>
     <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank">
-      <img :src=" logFin "/>
+      <img hidden :src=" logFin "/>
     </a>
     <div class="logoBlock">
-      <img id="hrufkins" :src=" landingSquare " />
-      <h1 id="brownType" >THE<br>VOTER'S<br>COMPANION</h1>
+      <img hidden id="hrufkins" :src=" landingSquare " />
+      <h1 id="brownType" >THE  VOTER'S  COMPANION</h1>
     </div>
 
 
 
     <div id="inputEverything">
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
-      <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
+      <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="WHAT IS YOUR ADDRESS?" />
     </div>
 
     <div id="landingInfo">
@@ -27,7 +30,7 @@
         <div class="image">
           <img style="height: 50px; width: auto; " :src=" lightYellowStar "/>
         </div>
-        <span style="font-family: Francois One; font-weight: 400;"> Loading... </span>
+        <span style="font-family: Karla; color: #5b524a;"> LOADING... </span>
 
     </modal>
 
@@ -216,47 +219,55 @@ export default {
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70)*/
 }
-
+#USVoteHeader {
+  font-family: 'Karla', sans-serif;
+  font-size: 100%;
+  letter-spacing: .1em;
+  color: #5b524a;
+  margin: 0 auto;
+  position: relative;
+  top: 7em;
+  text-align: center;
+}
 #landingInfo {
   position: relative;
-  color: rgb(134, 95, 56);
-  font-family: 'Francois One', sans-serif;
+  color: #5b524a;
+  font-family: 'Karla', sans-serif;
   text-align: center;
   width: 20rem;
   /* top: 1rem; */
   line-height: 75%;
-  padding: 1rem;
+  padding: 2em;
+  letter-spacing: .1em;
   z-index: 88;
   margin: 0 auto;
-  font-size: 1.3rem;
+  font-size: 1.3em;
   /* font-weight: 700; */
 }
 
 #app {
-  background-color: rgb(226, 232, 217);
+  background-color: rgb(251, 250, 245);
 }
 
 #brownType {
   z-index: 99;
   color: rgb(242, 128, 63);
-  font-family: 'Francois One', sans-serif !important;
+  font-family: 'Karla', sans-serif !important;
   text-align: center;
   font-weight: 400;
-  font-size: 2.4em;
+  font-size: 2em;
   line-height: 110%;
-  top: -4.9em;
   margin: 0 auto;
   position: relative;
+  letter-spacing: .1em;
   /* text-shadow: 0.08em 0.08em 0 white; */
   /* -webkit-text-stroke: 3px #343434; */
 }
 .logoBlock {
   margin-top: 10px;
   position: relative;
-  height: 15rem;
-  width: 20rem;
   margin: 0 auto;
-  top: 7rem;
+  top: 7em;
   /*box-shadow: 10px 10px 20px #334431;*/
   z-index: 8;
   /* background-image: url("https://i.imgur.com/HSwsLkl.png"); */
@@ -279,17 +290,18 @@ export default {
   position: relative;
 }
 #address-input {
-  padding-left: 1rem;
+  padding-left: 15px;
   display:block;
   border:none;
   background-color: white;
   position: relative;
-  width: 36rem;
+  width: 35em;
   margin: 0 auto;
   outline: none;
-  font-size: 130%;
-  font-family: 'Francois One', sans-serif;
-  font-weight: 400;
+  font-size: 90%;
+  letter-spacing: .1em;
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
   transition: all 0.2s ease-in-out;
   /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
@@ -301,7 +313,7 @@ export default {
 .ap-dropdown-menu {
   margin-top: 0px;
   position: absolute;
-  width: 34rem;
+  width: 26em;
   top: 3.1em !important;
   left: 5.1em !important;
 }
@@ -313,31 +325,31 @@ input:focus {
 }
 input::-webkit-input-placeholder {
   color: #696969 !important;
-  font-family: 'Francois One', sans-serif;
+  font-family: ' Karla', sans-serif;
   font-weight: 400;
 }
 input:-moz-placeholder {
   /* Firefox 18- */
   color: #696969 !important;
-  font-family: 'Francois One', sans-serif;
+  font-family: ' Karla', sans-serif;
   font-weight: 400;
 }
 input::-moz-placeholder {
   /* Firefox 19+ */
   color: #696969 !important;
-  font-family: 'Francois One', sans-serif;
+  font-family: ' Karla', sans-serif;
   font-weight: 400;
 }
 input:-ms-input-placeholder {
   /* IE 10+ */
   color: #696969 !important;
-  font-family: 'Francois One', sans-serif;
+  font-family: ' Karla', sans-serif;
   font-weight: 400;
 }
 input::-ms-input-placeholder {
   /* Edge */
   color: #696969 !important;
-  font-family: 'Francois One', sans-serif;
+  font-family: ' Karla', sans-serif;
   font-weight: 400;
 }
 
