@@ -14,15 +14,17 @@
       <h1 id="brownType" >THE  VOTER'S  COMPANION</h1>
     </div>
 
-
-
     <div id="inputEverything">
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="WHAT IS YOUR ADDRESS?" />
     </div>
 
-    <div id="landingInfo">
-      REGISTER TO VOTE <br /> <br />CONNECT WITH YOUR REPS <br /><br />STAY INFORMED
+    <div class="button-wrapper">
+      <div class="button spin3d">
+        <span id="aa">REGISTER TO VOTE</span>
+        <span id="bb">CONNECT WITH YOUR REPRESENTATIVES</span>
+        <span id="cc">STAY INFORMED</span>
+      </div>
     </div>
 
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
@@ -228,6 +230,178 @@ export default {
   position: relative;
   top: 7em;
   text-align: center;
+}
+.button-wrapper {
+  color: #5b524a;
+  margin: 0 auto;
+  margin-top: .1em;
+}
+.button {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  display: block;
+  font-size: 100%;
+  margin: 0 10px;
+  position: relative;
+}
+#aa, #bb, #cc {
+  font-smoothing: antialiased !important;
+  font-smooth: always;
+}
+
+.button.spin3d {
+  height: 40px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.button.spin3d span {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transition: all cubic-bezier(0, 0, 0.2, 1);
+  text-align: left;
+  line-height: 40px;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+.button.spin3d #aa {
+  -webkit-animation: rollOutaa1 8s, rollOutaa2 8s 8s infinite;
+  animation: rollOutaa1 8s, rollOutaa2 8s 8s infinite;
+}
+.button.spin3d #bb {
+  -webkit-animation: rollOutbb 8s infinite;
+  animation: rollOutbb 8s infinite;
+}
+.button.spin3d #cc {
+  -webkit-animation: rollOutcc 8s infinite;
+  animation: rollOutcc 8s infinite;
+}
+
+@keyframes rollOutaa1 {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+  25% {
+    -webkit-transform: rotateX(0deg) translateZ(20px);
+            transform: rotateX(0deg) translateZ(20px);
+    opacity: 1;
+  }
+  26% {
+    opacity: 0;
+  }
+  27% {
+    -webkit-transform: rotateX(-90deg) translateZ(20px);
+            transform: rotateX(-90deg) translateZ(20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(-90deg) translateZ(20px);
+            transform: rotateX(-90deg) translateZ(20px);
+    opacity: 0;
+  }
+}
+@keyframes rollOutbb {
+  0% {
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+    opacity: 0;
+    }
+  25% {
+    -webkit-transform: rotateX(90deg) translateZ(20px);
+    transform: rotateX(90deg) translateZ(20px);
+  }
+  26% {
+    opacity: 0;
+  }
+  27% {
+    -webkit-transform: rotateX(0deg) translateZ(20px);
+    transform: rotateX(0deg) translateZ(20px);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: rotateX(0deg) translateZ(20px);
+    transform: rotateX(0deg) translateZ(20px);
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  52% {
+    -webkit-transform: rotateX(-90deg) translateZ(20px);
+    transform: rotateX(-90deg) translateZ(20px);
+  }
+  100% {
+    -webkit-transform: rotateX(-90deg) translateZ(20px);
+    transform: rotateX(-90deg) translateZ(20px);
+  }
+}
+@keyframes rollOutcc {
+  0% {
+    -webkit-transform: rotateX(90deg) translateZ(20px);
+            transform: rotateX(90deg) translateZ(20px);
+  }
+  50% {
+    -webkit-transform: rotateX(90deg) translateZ(20px);
+            transform: rotateX(90deg) translateZ(20px);
+    opacity: 0;
+  }
+  51% {
+    opacity: 0;
+  }
+  52% {
+    -webkit-transform: rotateX(0deg) translateZ(20px);
+    transform: rotateX(0deg) translateZ(20px);
+    opacity: 1;
+  }
+  97% {
+    -webkit-transform: rotateX(0deg) translateZ(20px);
+    transform: rotateX(0deg) translateZ(20px);
+    opacity: 1;
+  }
+  98.1% {
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(-90deg) translateZ(20px);
+    transform: rotateX(-90deg) translateZ(20px);
+    opacity: 0;
+  }
+}
+@keyframes rollOutaa2 {
+  0% {
+    -webkit-transform: rotateX(90deg) translateZ(20px);
+            transform: rotateX(90deg) translateZ(20px);
+    opacity: 0;
+  }
+  1% {
+    opacity: 0;
+  }
+  2% {
+    -webkit-transform: rotateX(0deg) translateZ(20px);
+            transform: rotateX(0deg) translateZ(20px);
+    opacity: 1;
+  }
+  25% {
+    -webkit-transform: rotateX(0deg) translateZ(20px);
+            transform: rotateX(0deg) translateZ(20px);
+    opacity: 1;
+  }
+  26% {
+    opacity: 0;
+  }
+  27% {
+    -webkit-transform: rotateX(-90deg) translateZ(20px);
+            transform: rotateX(-90deg) translateZ(20px);
+  }
+  100% {
+    -webkit-transform: rotateX(-90deg) translateZ(20px);
+            transform: rotateX(-90deg) translateZ(20px);
+  }
 }
 #landingInfo {
   position: relative;
