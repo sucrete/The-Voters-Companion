@@ -80,15 +80,15 @@ html {
 }
 
 #overviewNotice {
-  color: rgb(113, 106, 56);
+  color: rgb(94, 94, 90);
   font-size: 130%;
   width: 20rem;
   text-align: left;
-  line-height: 130%;
+  line-height: 150%;
   height: 12rem;
   padding-left: .7em;
   font-weight: 400;
-  letter-spacing: .04em;
+  letter-spacing: .07em;
 }
 #overviewNoticeWrapper {
   background-color: rgba(230, 230, 230, 0.8);
@@ -106,7 +106,7 @@ html {
   font-size: 200%;
   color: #5b524a;; /* color --> "jet black" */
   text-align: left;
-  margin-bottom: 1.25rem;
+  margin-bottom: .5em;
   text-shadow: 0px 2px 4px rgba(0,0,0,0.2);
   font-weight: 400;
   letter-spacing: .06em;
@@ -131,15 +131,15 @@ html {
   font-weight: 700;
   font-size: 127%;
   color: rgb(242, 128, 63);
-  transition: color 150ms ease-in-out;
+  transition: color 100ms ease-in-out;
   text-align: center;
-  letter-spacing: .1em;
+  letter-spacing: .09em;
 }
 #takeMeOmh:hover {
   color: rgb(226, 119, 59);
 }
 #takeMeOmhDaddy {
-  /* top: .5rem; */
+  top: -.2em;
   position: relative;
   /* left: .2rem; */
 }
@@ -153,24 +153,36 @@ html {
   letter-spacing: .07em;
   box-sizing: border-box;
 }
-.arrowL, .arrowR {
+#lefty, #righty {
+  position: relative;
+}
+
+.leftArrow, .rightArrow {
+  transition: transform 120ms;
   height: 45%;
   width: auto;
   text-transform: uppercase;
+  position: relative;
+  top: -.1em;
 }
-
-#lefty:hover .arrowL{
-  transform: translate(3px, 0px);
-  -webkit-transform: translate(3px, 0px);
+.leftArrow {
+  margin-right: .5em;
 }
-#righty:hover .arrowR {
+.rightArrow {
+  margin-left: .5em;
+}
+#lefty:hover .leftArrow {
   transform: translate(-3px, 0px);
   -webkit-transform: translate(-3px, 0px);
+}
+#righty:hover .rightArrow {
+  transform: translate(3px, 0px);
+  -webkit-transform: translate(3px, 0px);
 }
 a:hover {
   text-decoration: none !important;
   font-weight: 400 !important;
-  box-sizing: inherit !important;
+  box-sizing: border-box !important;
 }
 
 body {
@@ -184,7 +196,6 @@ body {
 a {
   color: rgb(91, 82, 74);
   text-decoration: none !important;
-
 }
 a:visited {
   color: #5b524a !important;
@@ -276,7 +287,7 @@ input, input:focus {
 .v--modal-overlay .v--modal-box {
   overflow: visible !important;
   position: relative !important;
-  background-color: #e9e8cb;
+  background-color: #888888;
   box-shadow: 0px 8px 12px rgba(58, 68, 41, 0.2), 0px 12px 20px rgba(0, 0, 0, .1), 0px 0px 17px rgba(0, 0, 0, .14)!important;
 }
 

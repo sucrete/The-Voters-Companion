@@ -3,9 +3,19 @@
   <div class="overview">
     <!-- simple nav header -->
     <div class="simple-navigation-header">
-      <button id="lefty" type="button" class="mui-btn"><router-link to="timeline">TIMELINE</router-link></button>
+      <button id="lefty" type="button" class="mui-btn">
+        <router-link to="timeline">
+          <img class="leftArrow" :src=" leftArrow "/>
+          TIMELINE
+        </router-link>
+      </button>
       <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-      <button id="righty" type="button" class="mui-btn"><router-link to="general">GENERAL</router-link></button>
+      <button id="righty" type="button" class="mui-btn">
+        <router-link to="toolkit">
+          TOOLKIT
+          <img class="rightArrow" :src=" rightArrow "/>
+        </router-link>
+      </button>
     </div>
     <!-- body -->
     <div id="overviewNoticeWrapper">
@@ -37,12 +47,16 @@
 <script>
 /* eslint-disable */
 // import anime from '../../node_modules/animejs/lib/anime.js'
+import LArrow from '../assets/left-arrow.svg'
+import RArrow from '../assets/right-arrow.svg'
 import registerBi from '../assets/registerBadge.png'
 export default {
   name: 'overview',
   data () {
     return {
       register: registerBi,
+      leftArrow: LArrow,
+      rightArrow: RArrow,
       msg: '',
       presentBadge: this.$store.getters.shouldIDisplayBadge,
       regURL: this.$store.getters.getUserBadgeURL

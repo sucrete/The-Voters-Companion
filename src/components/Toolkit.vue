@@ -3,16 +3,24 @@
   <div class="district">
     <!-- simple nav header -->
     <div class="simple-navigation-header">
-      <button id="lefty" type="button" class="mui-btn"><router-link to="Overview">OVERVIEW</router-link></button>
+      <button id="lefty" type="button" class="mui-btn">
+        <router-link to="Overview">
+          <img class="leftArrow" :src=" leftArrow "/>OVERVIEW
+        </router-link>
+      </button>
       <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-      <button id="righty" type="button" class="mui-btn"><router-link to="Timeline">TIMELINE</router-link></button>
+      <button id="righty" type="button" class="mui-btn">
+        <router-link to="Timeline">
+          TIMELINE<img class="rightArrow" :src=" rightArrow "/>
+        </router-link>
+      </button>
     </div>
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
         Voter's Toolkit
       </div>
       <div id="overviewNotice">
-        All the info you need to vote in your state.
+        Equip yourself with the information you need to vote.
       </div>
       <a id="bigButtonLink" v-if="presentBadge" target="_blank" v-bind:href="regURL">
         <img id="bigButton" :src=" register ">
@@ -32,11 +40,16 @@
 <script>
 import TabRouter from './Tabs.vue'
 import registerBi from '../assets/registerBadge.png'
+import LArrow from '../assets/left-arrow.svg'
+import RArrow from '../assets/right-arrow.svg'
+
 export default {
   name: 'district',
   data () {
     return {
       register: registerBi,
+      leftArrow: LArrow,
+      rightArrow: RArrow,
       presentBadge: this.$store.getters.shouldIDisplayBadge,
       regURL: this.$store.getters.getUserBadgeURL
     }

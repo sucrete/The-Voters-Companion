@@ -35,9 +35,9 @@
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
 
         <div class="image">
-          <img style="height: 50px; width: auto; " :src=" lightYellowStar "/>
+          <img style="width: 23px; height: auto;" :src=" lightYellowStar "/>
         </div>
-        <span style="font-family: Karla; color: #5b524a;"> LOADING... </span>
+        <span style="font-family: Karla; color: #5b524a; text-align: center;"> LOADING... </span>
 
     </modal>
 
@@ -259,7 +259,7 @@ img.star {
   top: 0.5em;
 }
 .buttonWrapper {
-  color: #5b524a;
+  color: #655c55;
   width: 100%;
 }
 .button {
@@ -472,13 +472,14 @@ img.star {
   z-index: 8;
   /* background-image: url("https://i.imgur.com/HSwsLkl.png"); */
 }
-.ap-input-icon {
-    border: 0;
-    background: transparent;
-    position: relative;
-    top: -2.2rem;
-    left: 24.9em;
-    outline: none;
+.ap-input-icon svg {
+  border: 0;
+  background: transparent;
+  position: relative;
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+  outline: none;
+  right: 7.5em;
 }
 .ap-icon-clear {
   right: 4.25rem;
@@ -490,6 +491,7 @@ img.star {
   position: relative;
 }
 #address-input {
+  color: rgb(91, 82, 74) !important;
   padding-left: 15px;
   display:block;
   border:none;
@@ -498,60 +500,47 @@ img.star {
   width: 35em;
   margin: 0 auto;
   outline: none;
-  font-size: 90%;
-  letter-spacing: .1em;
+  font-size: 100%;
+  letter-spacing: .08em;
   font-family: 'Karla', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
   /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
 }
-#address-input:focus{
+#address-input:hover::placeholder {
+  color: rgb(91, 82, 74);
+}
+#address-input:focus {
   outline: none;
+  color: rgb(91, 82, 74) !important;
   box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.15);
 }
+
 .ap-dropdown-menu {
   margin-top: 0px;
-  position: absolute;
-  width: 26em;
+  /* width: 26em;
   top: 3.1em !important;
-  left: 5.1em !important;
+  left: 5.1em !important; */
 }
 input:focus {
   outline: none;
   border: none;
-  color: #696969;
+  /* color: #6b6255 !important; */
   font-weight: 400;
+  font-size: 100% !important;
 }
-input::-webkit-input-placeholder {
-  color: #696969 !important;
-  font-family: ' Karla', sans-serif;
-  font-weight: 400;
+
+input::placeholder {
+  color: rgb(144, 138, 128) !important;
 }
-input:-moz-placeholder {
+input:-ms-input-placeholder, input::-ms-input-placeholder {
   /* Firefox 18- */
-  color: #696969 !important;
+  color: rgb(144, 138, 128) !important;
   font-family: ' Karla', sans-serif;
-  font-weight: 400;
 }
-input::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #696969 !important;
-  font-family: ' Karla', sans-serif;
-  font-weight: 400;
-}
-input:-ms-input-placeholder {
-  /* IE 10+ */
-  color: #696969 !important;
-  font-family: ' Karla', sans-serif;
-  font-weight: 400;
-}
-input::-ms-input-placeholder {
-  /* Edge */
-  color: #696969 !important;
-  font-family: ' Karla', sans-serif;
-  font-weight: 400;
-}
+
 
 #landing {
   position: relative;
