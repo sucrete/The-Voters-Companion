@@ -10,7 +10,6 @@
       <img hidden :src=" logFin "/>
     </a>
     <div class="logoBlock">
-      <img hidden id="hrufkins" :src=" landingSquare " />
       <h1 id="brownType" >THE  VOTER'S  COMPANION</h1>
     </div>
 
@@ -18,12 +17,18 @@
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="WHAT IS YOUR ADDRESS?" />
     </div>
-
-    <div class="button-wrapper">
-      <div class="button spin3d">
-        <span id="aa">REGISTER TO VOTE</span>
-        <span id="bb">CONNECT WITH YOUR REPRESENTATIVES</span>
-        <span id="cc">STAY INFORMED</span>
+    <div id="infoAndStarsWrapper">
+      <div class="buttonWrapper">
+        <div class="button spin3d">
+          <span id="aa">REGISTER TO VOTE</span>
+          <span id="bb">CONNECT WITH YOUR REPRESENTATIVES</span>
+          <span id="cc">STAY INFORMED</span>
+        </div>
+      </div>
+      <div id="starsWrapper">
+        <img class="star" :src=" starOne "/>
+        <img class="star" :src=" starTwo "/>
+        <img class="star" :src=" starThree "/>
       </div>
     </div>
 
@@ -42,11 +47,12 @@
 <script>
 /* eslint-disable */
 import axios from 'axios'
-// import image from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import places from 'places.js'
-import carpet from '../assets/light_yellow_star.png'
+import carpet from '../assets/yellow_star.svg'
+import star1 from '../assets/starOne.svg'
+import star2 from '../assets/starTwo.svg'
+import star3 from '../assets/starThree.svg'
 import logoFinal from '../assets/mauve2.png'
-import greenSquare from '../assets/votrLandingSquare.svg'
 
 export default {
   name: 'landing',
@@ -55,7 +61,9 @@ export default {
       addy: '',
       logFin: logoFinal,
       lightYellowStar: carpet,
-      landingSquare: greenSquare,
+      starOne: star1,
+      starTwo: star2,
+      starThree: star3,
       stateID: '',
       googvotekey: process.env.GOOGLE_API_KEY,
       voterAPI: '',
@@ -204,6 +212,7 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
+
 #hrufkins {
   z-index: 7;
   margin: 0 auto;
@@ -231,10 +240,27 @@ export default {
   top: 7em;
   text-align: center;
 }
-.button-wrapper {
+
+#infoAndStarsWrapper {
+  width: 37em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  height: 45px;
+}
+img.star {
+  height: 20px;
+  width: auto;
+  margin-left: .5em;
+}
+#starsWrapper {
+  position: absolute;
+  right: .8em;
+  top: 0.5em;
+}
+.buttonWrapper {
   color: #5b524a;
-  margin: 0 auto;
-  margin-top: .1em;
+  width: 100%;
 }
 .button {
   -webkit-backface-visibility: hidden;
