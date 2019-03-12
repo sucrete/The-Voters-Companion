@@ -6,7 +6,7 @@ import Router from 'vue-router'
 // import Landing from '@/components/Landing'
 
 const Overview = () => import('@/components/Overview')
-const General = () => import('@/components/General')
+const Toolkit = () => import('@/components/Toolkit')
 const Timeline = () => import('@/components/Timeline')
 const Landing = () => import('@/components/Landing')
 
@@ -24,22 +24,22 @@ export default new Router({
   routes: [
     {
       path: '',
-      name: 'Landing',
+      name: 'landing',
       component: Landing
     },
     {
       path: '/overview',
-      name: 'Overview',
+      name: 'overview',
       component: Overview
     },
     {
-      path: '/general',
-      name: 'General',
-      component: General
+      path: '/toolkit',
+      name: 'toolkit',
+      component: Toolkit
     },
     {
       path: '/timeline',
-      name: 'Timeline',
+      name: 'timeline',
       component: Timeline
     },
     {

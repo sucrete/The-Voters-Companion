@@ -10,7 +10,7 @@
     <!-- body -->
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
-        OFFICIALS
+        Officials
       </div>
       <div id="overviewNotice">
         These are your elected officials, grouped by regional scope. Each card can be expanded for more information on how to connect with your representatives.

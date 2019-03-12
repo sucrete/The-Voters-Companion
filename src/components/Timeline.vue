@@ -5,14 +5,14 @@
     <div class="fullwidth">
       <!-- simple nav header -->
       <div class="simple-navigation-header">
-        <button id="lefty" type="button" class="mui-btn"><router-link to="General"><img hidden class="arrowL" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE4NS4zNDMgMTg1LjM0MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg1LjM0MyAxODUuMzQzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTUxLjcwNywxODUuMzQzYy0yLjc0MSwwLTUuNDkzLTEuMDQ0LTcuNTkzLTMuMTQ5Yy00LjE5NC00LjE5NC00LjE5NC0xMC45ODEsMC0xNS4xNzUgICAgbDc0LjM1Mi03NC4zNDdMNDQuMTE0LDE4LjMyYy00LjE5NC00LjE5NC00LjE5NC0xMC45ODcsMC0xNS4xNzVjNC4xOTQtNC4xOTQsMTAuOTg3LTQuMTk0LDE1LjE4LDBsODEuOTM0LDgxLjkzNCAgICBjNC4xOTQsNC4xOTQsNC4xOTQsMTAuOTg3LDAsMTUuMTc1bC04MS45MzQsODEuOTM5QzU3LjIwMSwxODQuMjkzLDU0LjQ1NCwxODUuMzQzLDUxLjcwNywxODUuMzQzeiIgZmlsbD0iIzNiM2MzNiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />GENERAL</router-link></button>
+        <button id="lefty" type="button" class="mui-btn"><router-link to="General">GENERAL</router-link></button>
         <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-        <button id="righty" type="button" class="mui-btn"><router-link to="Overview">OVERVIEW<img hidden class="arrowR" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE4NS4zNDMgMTg1LjM0MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTg1LjM0MyAxODUuMzQzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTUxLjcwNywxODUuMzQzYy0yLjc0MSwwLTUuNDkzLTEuMDQ0LTcuNTkzLTMuMTQ5Yy00LjE5NC00LjE5NC00LjE5NC0xMC45ODEsMC0xNS4xNzUgICAgbDc0LjM1Mi03NC4zNDdMNDQuMTE0LDE4LjMyYy00LjE5NC00LjE5NC00LjE5NC0xMC45ODcsMC0xNS4xNzVjNC4xOTQtNC4xOTQsMTAuOTg3LTQuMTk0LDE1LjE4LDBsODEuOTM0LDgxLjkzNCAgICBjNC4xOTQsNC4xOTQsNC4xOTQsMTAuOTg3LDAsMTUuMTc1bC04MS45MzQsODEuOTM5QzU3LjIwMSwxODQuMjkzLDU0LjQ1NCwxODUuMzQzLDUxLjcwNywxODUuMzQzeiIgZmlsbD0iIzNiM2MzNiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" /> </router-link></button>
+        <button id="righty" type="button" class="mui-btn"><router-link to="Overview">OVERVIEW</router-link></button>
       </div>
 
       <div id="overviewNoticeWrapper">
         <div id="overviewMarquee">
-          TIMELINE
+          Timeline
         </div>
         <div id="overviewNotice">
 

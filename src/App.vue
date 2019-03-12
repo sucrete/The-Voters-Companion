@@ -109,7 +109,8 @@ html {
   margin-bottom: 1.25rem;
   text-shadow: 0px 2px 4px rgba(0,0,0,0.2);
   font-weight: 400;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
+  padding-left: .4em;
 }
 .simple-navigation-header {
   color: #3c9035;
@@ -127,15 +128,15 @@ html {
 
 #takeMeOmh {
   font-family: 'Karla', sans-serif;
-  font-weight: 400;
-  font-size: 137%;
-  color: #588937;
+  font-weight: 700;
+  font-size: 127%;
+  color: rgb(242, 128, 63);
   transition: color 150ms ease-in-out;
   text-align: center;
   letter-spacing: .1em;
 }
 #takeMeOmh:hover {
-  color: #6bb466;
+  color: rgb(226, 119, 59);
 }
 #takeMeOmhDaddy {
   /* top: .5rem; */
@@ -144,28 +145,20 @@ html {
 }
 .mui-btn {
   width: 125px;
-  font-size: 14px;
+  font-size: 84%;
+  font-weight: 400;
   background-color: #f7f7f0;
-  transition: all 250ms ease-in-out;
   border: none;
   top: -.2rem;
+  letter-spacing: .07em;
+  box-sizing: border-box;
 }
 .arrowL, .arrowR {
   height: 45%;
   width: auto;
   text-transform: uppercase;
-  letter-spacing: .07em;
 }
-.arrowL {
-  -webkit-transform: rotate(180deg);     /* Chrome and other webkit browsers */
-  -moz-transform: rotate(180deg);        /* FF */
-  -o-transform: rotate(180deg);          /* Opera */
-  -ms-transform: rotate(180deg);         /* IE9 */
-  transform: rotate(180deg);             /* W3C compliant browsers */
 
-  /* IE8 and below */
-  filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1, M12=0, M21=0, M22=-1, DX=0, DY=0, SizingMethod='auto expand');
-}
 #lefty:hover .arrowL{
   transform: translate(3px, 0px);
   -webkit-transform: translate(3px, 0px);
@@ -174,8 +167,10 @@ html {
   transform: translate(-3px, 0px);
   -webkit-transform: translate(-3px, 0px);
 }
-router-link:hover {
+a:hover {
   text-decoration: none !important;
+  font-weight: 400 !important;
+  box-sizing: inherit !important;
 }
 
 body {
@@ -187,17 +182,17 @@ body {
 }
 
 a {
-  color: #3b3c36;
-  text-decoration:none !important;
-}
-a:visited:not(#takeMeOmh) {
-  color: #3b3c36;
-}
+  color: rgb(91, 82, 74);
+  text-decoration: none !important;
 
+}
+a:visited {
+  color: #5b524a !important;
+  text-decoration: none !important;
+}
 
 h1 {
   font-size: 34px;
-
   line-height: 40px;
   margin: 0;
   padding: 0;
@@ -212,7 +207,7 @@ input, input:focus {
   outline: none;
 }
 #takeMeOmh:visited, #takeMeOmhDaddy:visited {
-  color: #3b3c36 !important;
+  color: #5b524a !important;
 }
 #e9_texte {
   font-size: 1.5rem;

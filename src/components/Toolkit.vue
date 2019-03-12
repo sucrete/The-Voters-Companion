@@ -9,7 +9,7 @@
     </div>
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
-        VOTER'S TOOLS
+        Voter's Toolkit
       </div>
       <div id="overviewNotice">
         All the info you need to vote in your state.
