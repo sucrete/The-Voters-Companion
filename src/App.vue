@@ -48,7 +48,7 @@ export default {
 } */
 
 html {
-  background-color: #fafafa;
+  background-color: whitesmoke;
   height: 100%;
   /* box-sizing: border-box; */
 }
@@ -57,7 +57,6 @@ html {
   box-sizing: inherit;
 }
 #app {
-  background-color: #fafafa;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 46rem;
@@ -69,8 +68,8 @@ html {
   padding: 10px 24px;
   min-height: 45rem;
   position: relative;
-  /* border-radius: 3px; */
-  border: 1px solid rgb(164, 182, 150);
+  border-radius: 3px;
+
 }
 
 .hotBod {

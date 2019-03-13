@@ -9,14 +9,16 @@
     <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank">
       <img hidden :src=" logFin "/>
     </a>
-    <div class="logoBlock">
-      <h1 id="brownType" >THE  VOTER'S  COMPANION</h1>
+    <hr noshade  size="1" id="topLine"/>
+    <h1 id="siteTitle" >THE  VOTER'S  COMPANION</h1>
+    <div id="subtitle">
+      A RESOURCE FOR ELIGIBLE U.S. VOTERS
     </div>
-
     <div id="inputEverything">
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="WHAT IS YOUR ADDRESS?" />
     </div>
+    <hr noshade size="1" id="bottomLine"/>
     <div id="infoAndStarsWrapper">
       <div class="buttonWrapper">
         <div class="button spin3d">
@@ -37,7 +39,7 @@
         <div class="image">
           <img style="width: 23px; height: auto;" :src=" lightYellowStar "/>
         </div>
-        <span style="font-family: Karla; color: #5b524a; text-align: center;"> LOADING... </span>
+        <span style="font-family: Karla; color: #948b83; text-align: center;"> LOADING... </span>
 
     </modal>
 
@@ -212,12 +214,29 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
+#app {
+  background-color: white;
+}
 
-#hrufkins {
-  z-index: 7;
+#USVoteHeader {
+  font-family: 'Karla', sans-serif;
+  letter-spacing: .1em;
+  color: #6f6861;
+  margin-top: 6em;
+  margin-bottom: .5em;
+  position: relative;
+  text-align: center;
+  font-size: 100%;
+}
+#topLine, #bottomLine {
+  position: relative;
+  width: 36em;
+  top: 1em;
   margin: 0 auto;
-  width: 19.2rem;
-  height: auto;
+  display: block;
+  border: 0;
+  border-top: 1px solid #948b83;
+  padding: 0;
 }
 
 #logoLink {
@@ -230,15 +249,94 @@ export default {
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70)*/
 }
-#USVoteHeader {
-  font-family: 'Karla', sans-serif;
-  font-size: 100%;
-  letter-spacing: .1em;
-  color: #5b524a;
-  margin: 0 auto;
-  position: relative;
-  top: 7em;
+
+#siteTitle {
+  z-index: 99;
+  color: rgb(242, 128, 63);
+  font-family: 'Karla', sans-serif !important;
   text-align: center;
+  font-weight: 400;
+  font-size: 2.3em;
+  line-height: 110%;
+  margin-top: 3.7em;
+  position: relative;
+  letter-spacing: .1em;
+  /* text-shadow: 0.08em 0.08em 0 white; */
+  /* -webkit-text-stroke: 3px #343434; */
+}
+#subtitle {
+  position: relative;
+  color: #6f6861;
+  margin-top: 1.7em;
+  text-align: center;
+  letter-spacing: .1em;
+  font-size: 85%;
+}
+#inputEverything {
+  margin-top: 10.8em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  margin-bottom: 1.2em;
+}
+#address-input {
+  color: rgb(91, 82, 74) !important;
+  padding-left: 15px;
+  display:block;
+  background-color: #f0f7f0;
+  position: relative;
+  width: 35em;
+  margin: 0 auto;
+  outline: none;
+  font-size: 100%;
+  letter-spacing: .08em;
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.15), inset 1px 1px 2px rgba(0,0,0,.25), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+}
+
+#address-input:focus {
+  outline: none;
+  color: rgb(91, 82, 74) !important;
+
+}
+.ap-input-icon svg {
+  border: 0;
+  background: transparent;
+  position: relative;
+  -webkit-transform: translateY(7%);
+  transform: translateY(7%);
+  outline: none;
+  right: 7.5em;
+}
+.ap-icon-clear {
+  right: 4.25rem;
+}
+.ap-dropdown-menu {
+  margin-top: 0px;
+  /* width: 26em;
+  top: 3.1em !important;
+  left: 5.1em !important; */
+}
+input:focus {
+  outline: none;
+  border: none;
+  /* color: #6b6255 !important; */
+  font-weight: 400;
+  font-size: 100% !important;
+}
+
+input::placeholder {
+  color: rgb(144, 138, 128) !important;
+}
+#inputEverything:hover #address-input::placeholder {
+  color: rgb(91, 82, 74);
 }
 
 #infoAndStarsWrapper {
@@ -247,9 +345,10 @@ export default {
   margin-right: auto;
   position: relative;
   height: 45px;
+  margin-top: 1.5em;
 }
 img.star {
-  height: 20px;
+  height: 23px;
   width: auto;
   margin-left: .5em;
 }
@@ -259,7 +358,7 @@ img.star {
   top: 0.5em;
 }
 .buttonWrapper {
-  color: #655c55;
+  color: #6f6861;
   width: 100%;
 }
 .button {
@@ -274,7 +373,6 @@ img.star {
   font-smoothing: antialiased !important;
   font-smooth: always;
 }
-
 .button.spin3d {
   height: 40px;
   -webkit-transform-style: preserve-3d;
@@ -307,6 +405,159 @@ img.star {
   animation: rollOutcc 8s infinite;
 }
 
+
+#landing {
+  position: relative;
+}
+
+/* loading modal above this line ================================= */
+@media screen and (min-width:250px) and (max-width:320px) {
+
+  #inputEverything {
+    font-size: 100%;
+    margin-top: 3.1rem;
+  }
+  #address-input {
+    padding-left: 9px;
+    position: absolute;
+  }
+  #landingInfo {
+    width: 95vw;
+    right: 1rem;
+  }
+  .ap-dropdown-menu {
+    left: -1vw !important;
+  }
+
+  #hrufkins {
+    top: .5rem;
+    height: auto;
+    left: -.1rem;
+    position: absolute;
+  }
+  .logoBlock {
+    width: 14.6rem;
+    height: 11rem;
+    left: 0px;
+    top: 1rem;
+  }
+
+}
+@media screen and (min-width:320px) and (max-width:374px) {
+  .logoBlock {
+    top: 1.3rem;
+    left: -1px;
+  }
+  #inputEverything {
+    font-size: 100%;
+    margin-top: 3.1rem;
+  }
+  #address-input {
+    padding-left: 9px;
+  }
+  .ap-input-icon {
+    right: -34vw !important;
+  }
+}
+@media screen and (min-width:375px) and (max-width: 413px) {
+  #inputEverything {
+    font-size: 100%;
+    margin-top: 2.5rem;
+  }
+  .logoBlock {
+    top: 2rem;
+    left: -2px;
+    width: 18.5rem;
+  }
+}
+@media screen and (min-width:414px) and (max-width: 500px) {
+  .logoBlock {
+    top: 2.5rem;
+    left: -2px;
+  }
+  #inputEverything {
+    margin-top: 4rem;
+  }
+}
+@media screen and (min-width: 365px) and (max-width: 413px) {
+  .ap-dropdown-menu {
+    left: 6vw !important;
+  }
+  #brownType {
+    top: -10rem;
+    left: 3px;
+  }
+  .ap-input-icon {
+    right: -34vw !important;
+  }
+}
+@media screen and (min-width: 414px) and (max-width: 433px) {
+  .ap-dropdown-menu {
+    left: 6.5vw !important;
+  }
+}
+@media screen and (min-width: 434px) and (max-width: 467px) {
+  .ap-dropdown-menu {
+    left: 7vw !important;
+  }
+}
+@media screen and (min-width: 468px) and (max-width: 524px) {
+  .ap-dropdown-menu {
+    left: 7.5vw !important;
+  }
+}
+@media screen and (min-width: 525px) and (max-width: 557px) {
+  .ap-dropdown-menu {
+    left: 8vw !important;
+  }
+}
+@media screen and (min-width: 558px) and (max-width: 597px) {
+  .ap-dropdown-menu {
+    left: 8.25vw !important;
+  }
+}
+@media screen and (min-width: 598px) and (max-width: 635px) {
+  .ap-dropdown-menu {
+    left: 8.5vw !important;
+  }
+}
+@media screen and (min-width: 636px) and (max-width: 750px) {
+  .ap-dropdown-menu {
+    left: 9vw !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  #landingInfo {
+    width: 95vw;
+    right: 1rem;
+  }
+}
+@media screen and (max-width: 692px) {
+  #logoLink {
+    visibility: hidden;
+  }
+  * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+  #landingInfo {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  #address-input {
+    width: 76vw !important;
+    padding-top: 6px;
+    /* padding-bottom: .4em; */
+  }
+  .ap-dropdown-menu {
+    width: 73vw !important;
+  }
+  .ap-input-icon {
+    right: -35.5vw;
+    left: unset;
+  }
+}
 @keyframes rollOutaa1 {
   0% {
     -webkit-transform: rotateX(0deg);
@@ -427,275 +678,6 @@ img.star {
   100% {
     -webkit-transform: rotateX(-90deg) translateZ(20px);
             transform: rotateX(-90deg) translateZ(20px);
-  }
-}
-#landingInfo {
-  position: relative;
-  color: #5b524a;
-  font-family: 'Karla', sans-serif;
-  text-align: center;
-  width: 20rem;
-  /* top: 1rem; */
-  line-height: 75%;
-  padding: 2em;
-  letter-spacing: .1em;
-  z-index: 88;
-  margin: 0 auto;
-  font-size: 1.3em;
-  /* font-weight: 700; */
-}
-
-#app {
-  background-color: rgb(251, 250, 245);
-}
-
-#brownType {
-  z-index: 99;
-  color: rgb(242, 128, 63);
-  font-family: 'Karla', sans-serif !important;
-  text-align: center;
-  font-weight: 400;
-  font-size: 2em;
-  line-height: 110%;
-  margin: 0 auto;
-  position: relative;
-  letter-spacing: .1em;
-  /* text-shadow: 0.08em 0.08em 0 white; */
-  /* -webkit-text-stroke: 3px #343434; */
-}
-.logoBlock {
-  margin-top: 10px;
-  position: relative;
-  margin: 0 auto;
-  top: 7em;
-  /*box-shadow: 10px 10px 20px #334431;*/
-  z-index: 8;
-  /* background-image: url("https://i.imgur.com/HSwsLkl.png"); */
-}
-.ap-input-icon svg {
-  border: 0;
-  background: transparent;
-  position: relative;
-  -webkit-transform: translateY(0%);
-  transform: translateY(0%);
-  outline: none;
-  right: 7.5em;
-}
-.ap-icon-clear {
-  right: 4.25rem;
-}
-#inputEverything {
-  margin-top: 7.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-#address-input {
-  color: rgb(91, 82, 74) !important;
-  padding-left: 15px;
-  display:block;
-  border:none;
-  background-color: white;
-  position: relative;
-  width: 35em;
-  margin: 0 auto;
-  outline: none;
-  font-size: 100%;
-  letter-spacing: .08em;
-  font-family: 'Karla', sans-serif;
-  font-weight: 400;
-  transition: all 0.2s ease-in-out;
-  text-transform: uppercase;
-  /* border-bottom: 1px solid rgba(77, 166, 70, 0.35);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px rgba(77, 166, 70, 0.35), 0 1px 0 rgba(77, 166, 70, 0.35); */
-}
-#address-input:hover::placeholder {
-  color: rgb(91, 82, 74);
-}
-#address-input:focus {
-  outline: none;
-  color: rgb(91, 82, 74) !important;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.15);
-}
-
-.ap-dropdown-menu {
-  margin-top: 0px;
-  /* width: 26em;
-  top: 3.1em !important;
-  left: 5.1em !important; */
-}
-input:focus {
-  outline: none;
-  border: none;
-  /* color: #6b6255 !important; */
-  font-weight: 400;
-  font-size: 100% !important;
-}
-
-input::placeholder {
-  color: rgb(144, 138, 128) !important;
-}
-input:-ms-input-placeholder, input::-ms-input-placeholder {
-  /* Firefox 18- */
-  color: rgb(144, 138, 128) !important;
-  font-family: ' Karla', sans-serif;
-}
-
-
-#landing {
-  position: relative;
-}
-
-/* loading modal above this line ================================= */
-@media screen and (min-width:250px) and (max-width:320px) {
-
-  #inputEverything {
-    font-size: 100%;
-    margin-top: 3.1rem;
-  }
-  #address-input {
-    padding-left: 9px;
-    position: absolute;
-  }
-  #landingInfo {
-    width: 95vw;
-    right: 1rem;
-  }
-  .ap-dropdown-menu {
-    left: -1vw !important;
-  }
-
-  #hrufkins {
-    top: .5rem;
-    height: auto;
-    left: -.1rem;
-    position: absolute;
-  }
-  .logoBlock {
-    width: 14.6rem;
-    height: 11rem;
-    left: 0px;
-    top: 1rem;
-  }
-  #brownType {
-    font-size: 2rem;
-    left: 0rem;
-    top: 3.5rem;
-  }
-}
-@media screen and (min-width:320px) and (max-width:374px) {
-  .logoBlock {
-    top: 1.3rem;
-    left: -1px;
-  }
-  #inputEverything {
-    font-size: 100%;
-    margin-top: 3.1rem;
-  }
-  #address-input {
-    padding-left: 9px;
-  }
-  .ap-input-icon {
-    right: -34vw !important;
-  }
-}
-@media screen and (min-width:375px) and (max-width: 413px) {
-  #inputEverything {
-    font-size: 100%;
-    margin-top: 2.5rem;
-  }
-  .logoBlock {
-    top: 2rem;
-    left: -2px;
-    width: 18.5rem;
-  }
-}
-@media screen and (min-width:414px) and (max-width: 500px) {
-  .logoBlock {
-    top: 2.5rem;
-    left: -2px;
-  }
-  #inputEverything {
-    margin-top: 4rem;
-  }
-}
-@media screen and (min-width: 365px) and (max-width: 413px) {
-  .ap-dropdown-menu {
-    left: 6vw !important;
-  }
-  #brownType {
-    top: -10rem;
-    left: 3px;
-  }
-  .ap-input-icon {
-    right: -34vw !important;
-  }
-}
-@media screen and (min-width: 414px) and (max-width: 433px) {
-  .ap-dropdown-menu {
-    left: 6.5vw !important;
-  }
-}
-@media screen and (min-width: 434px) and (max-width: 467px) {
-  .ap-dropdown-menu {
-    left: 7vw !important;
-  }
-}
-@media screen and (min-width: 468px) and (max-width: 524px) {
-  .ap-dropdown-menu {
-    left: 7.5vw !important;
-  }
-}
-@media screen and (min-width: 525px) and (max-width: 557px) {
-  .ap-dropdown-menu {
-    left: 8vw !important;
-  }
-}
-@media screen and (min-width: 558px) and (max-width: 597px) {
-  .ap-dropdown-menu {
-    left: 8.25vw !important;
-  }
-}
-@media screen and (min-width: 598px) and (max-width: 635px) {
-  .ap-dropdown-menu {
-    left: 8.5vw !important;
-  }
-}
-@media screen and (min-width: 636px) and (max-width: 750px) {
-  .ap-dropdown-menu {
-    left: 9vw !important;
-  }
-}
-@media screen and (max-width: 480px) {
-  #landingInfo {
-    width: 95vw;
-    right: 1rem;
-  }
-}
-@media screen and (max-width: 692px) {
-  #logoLink {
-    visibility: hidden;
-  }
-  * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  }
-  #landingInfo {
-    font-size: 1.2rem;
-  }
-}
-@media screen and (max-width: 750px) {
-  #address-input {
-    width: 76vw !important;
-    padding-top: 6px;
-    /* padding-bottom: .4em; */
-  }
-  .ap-dropdown-menu {
-    width: 73vw !important;
-  }
-  .ap-input-icon {
-    right: -35.5vw;
-    left: unset;
   }
 }
 
