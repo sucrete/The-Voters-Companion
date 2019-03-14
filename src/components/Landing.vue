@@ -4,7 +4,7 @@
     <!-- example of syntax needed to insert image with vue -->
     <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
     <div id="USVoteHeader">
-      MADE WITH SUPPORT FROM THE U.S. VOTE FOUNDATION
+      MADE WITH SUPPORT FROM THE <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. VOTE FOUNDATION</a>
     </div>
     <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank">
       <img hidden :src=" logFin "/>
@@ -12,7 +12,7 @@
     <hr noshade  size="1" id="topLine"/>
     <h1 id="siteTitle" >THE  VOTER'S  COMPANION</h1>
     <div id="subtitle">
-      A RESOURCE FOR ELIGIBLE U.S. VOTERS
+      FOR U.S. VOTERS
     </div>
     <div id="inputEverything">
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
@@ -39,7 +39,7 @@
         <div class="image">
           <img style="width: 23px; height: auto;" :src=" lightYellowStar "/>
         </div>
-        <span style="font-family: Karla; color: #948b83; text-align: center;"> LOADING... </span>
+        <span style="font-family: Karla; color: cornsilk; text-align: center;"> LOADING... </span>
 
     </modal>
 
@@ -222,11 +222,17 @@ export default {
   font-family: 'Karla', sans-serif;
   letter-spacing: .1em;
   color: #6f6861;
-  margin-top: 6em;
+  margin-top: 5em;
   margin-bottom: .5em;
   position: relative;
   text-align: center;
-  font-size: 100%;
+  font-size: 1.2em;
+}
+#usvLink {
+  text-decoration:none;
+}
+#usvLink:visited {
+  color: #6f6861;
 }
 #topLine, #bottomLine {
   position: relative;
@@ -256,9 +262,9 @@ export default {
   font-family: 'Karla', sans-serif !important;
   text-align: center;
   font-weight: 400;
-  font-size: 2.3em;
+  font-size: 2.5em;
   line-height: 110%;
-  margin-top: 3.7em;
+  margin-top: 3.5em;
   position: relative;
   letter-spacing: .1em;
   /* text-shadow: 0.08em 0.08em 0 white; */
@@ -267,23 +273,22 @@ export default {
 #subtitle {
   position: relative;
   color: #6f6861;
-  margin-top: 1.7em;
+  margin-top: 1.6em;
   text-align: center;
   letter-spacing: .1em;
   font-size: 85%;
 }
 #inputEverything {
-  margin-top: 10.8em;
+  margin-top: 11em;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   margin-bottom: 1.2em;
 }
 #address-input {
-  color: rgb(91, 82, 74) !important;
   padding-left: 15px;
   display:block;
-  background-color: #f0f7f0;
+  background-color: rgb(242, 242, 242);
   position: relative;
   width: 35em;
   margin: 0 auto;
@@ -301,10 +306,20 @@ export default {
   box-shadow: inset 0 3px 5px rgba(0,0,0,.15), inset 1px 1px 2px rgba(0,0,0,.25), 0 -1px 1px #FFF, 0 1px 0 #FFF;
 }
 
-#address-input:focus {
+input:focus {
   outline: none;
-  color: rgb(91, 82, 74) !important;
-
+  color: #807973 !important;
+  background-color: white;
+}
+input:hover::-webkit-input-placeholder {
+  color: #807973 !important;
+}
+#address-input:hover {
+  background-color: white !important;
+}
+#address-input:focus {
+  color: #807973 !important;
+  background-color: white !important;
 }
 .ap-input-icon svg {
   border: 0;
@@ -333,10 +348,7 @@ input:focus {
 }
 
 input::placeholder {
-  color: rgb(144, 138, 128) !important;
-}
-#inputEverything:hover #address-input::placeholder {
-  color: rgb(91, 82, 74);
+  color: rgb(166, 161, 154) !important;
 }
 
 #infoAndStarsWrapper {
