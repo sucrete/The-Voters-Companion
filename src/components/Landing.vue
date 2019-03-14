@@ -289,7 +289,7 @@ a#usvLink {
 #address-input {
   padding-left: 15px;
   display:block;
-  color: #b6aaa1;
+  color: #c9bfb7;
   background-color: rgb(89, 99, 72);
   position: relative;
   width: 35em;
@@ -308,17 +308,20 @@ a#usvLink {
 
 input:focus {
   outline: none;
-  color: #b6aaa1 !important;
+  color: #c9bfb7 !important;
   background-color: rgb(102, 113, 83);
 }
 input:hover::-webkit-input-placeholder {
-  color: #b6aaa1 !important;
+  color: #c9bfb7 !important;
+}
+input:focus::-webkit-input-placeholder {
+  color: #c9bfb7;
 }
 #address-input:hover {
   background-color: rgb(102, 113, 83) !important;
 }
 #address-input:focus {
-  color: #b6aaa1 !important;
+  color: #c9bfb7 !important;
   background-color: rgb(102, 113, 83)!important;
 }
 .ap-input {
@@ -351,7 +354,7 @@ input:focus {
 }
 
 input::placeholder {
-  color: rgb(166, 161, 154) !important;
+  color: rgb(175, 168, 161) !important;
 }
 
 #infoAndStarsWrapper {
