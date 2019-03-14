@@ -149,7 +149,7 @@ export default {
               officialObject.index = corazon
               officialObject.repTitle = GOffice.name
               officialObject.repName = GState.data.officials[corazon].name
-              officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'http://www.polinef.ac.id/images/welcome/photo3x41.jpg'
+              officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'https://wabar.asn.au/staging/wp-content/themes/wabar/img/user-placeholder.jpg'
               if (corazon === 0) {
                 officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
               } else if (corazon === 1) {

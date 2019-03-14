@@ -51,9 +51,9 @@
 import axios from 'axios'
 import places from 'places.js'
 import carpet from '../assets/yellow_star.svg'
-import star1 from '../assets/starOne.svg'
-import star2 from '../assets/starTwo.svg'
-import star3 from '../assets/starThree.svg'
+import star1 from '../assets/starOneLight.svg'
+import star2 from '../assets/starTwoLight.svg'
+import star3 from '../assets/starThreeLight.svg'
 import logoFinal from '../assets/mauve2.png'
 
 export default {
@@ -215,24 +215,25 @@ export default {
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
 #app {
-  background-color: white;
+  background-color: #796f61;
 }
 
 #USVoteHeader {
   font-family: 'Karla', sans-serif;
   letter-spacing: .1em;
-  color: #6f6861;
+  color: #c5bfb9;
   margin-top: 5em;
   margin-bottom: .5em;
   position: relative;
   text-align: center;
   font-size: 1.2em;
 }
-#usvLink {
+a#usvLink {
+  color: #c5bfb9 !important;
   text-decoration:none;
 }
 #usvLink:visited {
-  color: #6f6861;
+  color: #c5bfb9;
 }
 #topLine, #bottomLine {
   position: relative;
@@ -241,7 +242,7 @@ export default {
   margin: 0 auto;
   display: block;
   border: 0;
-  border-top: 1px solid #948b83;
+  border-top: 1px solid #c5bfb9;
   padding: 0;
 }
 
@@ -258,7 +259,7 @@ export default {
 
 #siteTitle {
   z-index: 99;
-  color: rgb(242, 128, 63);
+  color: rgb(228, 159, 96);
   font-family: 'Karla', sans-serif !important;
   text-align: center;
   font-weight: 400;
@@ -272,7 +273,7 @@ export default {
 }
 #subtitle {
   position: relative;
-  color: #6f6861;
+  color: #c5bfb9;
   margin-top: 1.6em;
   text-align: center;
   letter-spacing: .1em;
@@ -288,7 +289,8 @@ export default {
 #address-input {
   padding-left: 15px;
   display:block;
-  background-color: rgb(242, 242, 242);
+  color: #b6aaa1;
+  background-color: rgb(89, 99, 72);
   position: relative;
   width: 35em;
   margin: 0 auto;
@@ -297,29 +299,30 @@ export default {
   letter-spacing: .08em;
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  transition: all 0.2s ease-in-out;
+  transition: all 300ms ease-in-out;
   text-transform: uppercase;
   height: 34px;
-  border-radius: 5px;
-  border: 1px solid transparent;
-  border-bottom: 1px solid #DDD;
-  box-shadow: inset 0 3px 5px rgba(0,0,0,.15), inset 1px 1px 2px rgba(0,0,0,.25), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  border-radius: .3em;
+  box-shadow: inset 0px 2px 8px 0px rgba(51, 45, 40, 0.38), inset 0px 1px 3px -2px rgba(43, 40, 36, 0.43), 0 1px 1px 0px rgb(142, 130, 114);
 }
 
 input:focus {
   outline: none;
-  color: #807973 !important;
-  background-color: white;
+  color: #b6aaa1 !important;
+  background-color: rgb(102, 113, 83);
 }
 input:hover::-webkit-input-placeholder {
-  color: #807973 !important;
+  color: #b6aaa1 !important;
 }
 #address-input:hover {
-  background-color: white !important;
+  background-color: rgb(102, 113, 83) !important;
 }
 #address-input:focus {
-  color: #807973 !important;
-  background-color: white !important;
+  color: #b6aaa1 !important;
+  background-color: rgb(102, 113, 83)!important;
+}
+.ap-input {
+  border: none !important;
 }
 .ap-input-icon svg {
   border: 0;
@@ -359,27 +362,20 @@ input::placeholder {
   height: 45px;
   margin-top: 1.5em;
 }
-img.star {
-  height: 23px;
-  width: auto;
-  margin-left: .5em;
-}
-#starsWrapper {
-  position: absolute;
-  right: .8em;
-  top: 0.5em;
-}
+
 .buttonWrapper {
-  color: #6f6861;
   width: 100%;
 }
 .button {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   display: block;
-  font-size: 100%;
+  font-family: 'Karla', sans-serif;
+  color: #c5bfb9;
+  font-size: 1.2em;
   margin: 0 10px;
   position: relative;
+  letter-spacing: .08em;
 }
 #aa, #bb, #cc {
   font-smoothing: antialiased !important;
@@ -416,7 +412,16 @@ img.star {
   -webkit-animation: rollOutcc 8s infinite;
   animation: rollOutcc 8s infinite;
 }
-
+img.star {
+  height: 23px;
+  width: auto;
+  margin-left: .5em;
+}
+#starsWrapper {
+  position: absolute;
+  right: .8em;
+  top: 0.5em;
+}
 
 #landing {
   position: relative;
@@ -441,12 +446,6 @@ img.star {
     left: -1vw !important;
   }
 
-  #hrufkins {
-    top: .5rem;
-    height: auto;
-    left: -.1rem;
-    position: absolute;
-  }
   .logoBlock {
     width: 14.6rem;
     height: 11rem;
