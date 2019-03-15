@@ -65,6 +65,7 @@ html {
   margin-top: 1.5rem;
   margin-bottom: 5em;
   text-align: center;
+  /* box-shadow inspiration from Domenico on https://codepen.io/ryandom/pen/ALQkWq*/
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, .17), 0 0.8rem 0.8rem rgba(0, 0, 0, .1), 0 1.6rem 1.5rem rgba(0, 0, 0, .1), 0 3.2rem 3.2rem rgba(0, 0, 0, .1);
   padding: 10px 24px;
   min-height: 52em;

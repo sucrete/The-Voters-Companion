@@ -315,7 +315,7 @@ input:hover::-webkit-input-placeholder {
   color: #c9bfb7 !important;
 }
 input:focus::-webkit-input-placeholder {
-  color: #c9bfb7;
+  color: #c9bfb7 !important;
 }
 #address-input:hover {
   background-color: rgb(102, 113, 83) !important;
