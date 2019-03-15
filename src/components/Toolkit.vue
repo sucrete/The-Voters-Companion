@@ -199,4 +199,7 @@ h2, h6 {
     width: 15vw;
   }
 }
+#app {
+  margin-bottom: 10em;
+}
 </style>

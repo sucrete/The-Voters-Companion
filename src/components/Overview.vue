@@ -425,7 +425,7 @@ export default {
 .repCard .gridContainer {
 }
 .gridContainer {
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-family: 'Karla', sans-serif;
   text-align: left;
   z-index: 5;
   top: .5rem;
@@ -445,7 +445,7 @@ export default {
   grid-column-start: 2;
   grid-column-end: 3;
   font-size: 115%;
-  font-weight: 500;
+  font-weight: 700;
   border-bottom: 1px solid #d1cccc;
   opacity: 1;
   -webkit-transition-delay: 0ms;
@@ -582,7 +582,7 @@ export default {
   opacity: 0;
 }
 .repCard {
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-family: 'Karla', sans-serif;
   width: inherit;
   height: inherit;
   cursor: pointer;
@@ -680,13 +680,14 @@ export default {
 .sectionHeader {
   margin-top: .5rem;
   color: #343434;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-family: 'Karla', sans-serif;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   position: relative;
   font-size: 130%;
   padding-left: 2rem;
   margin-bottom: .5rem;
+  letter-spacing: .08em;
 }
 .detailsAddress p {
   margin-block-start: 0em;
@@ -694,6 +695,7 @@ export default {
 }
 #app {
   background-color: #f7f7f0;
+  margin-bottom: 10em;
 }
 
 h1, h2 {

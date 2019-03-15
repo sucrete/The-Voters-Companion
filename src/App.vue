@@ -48,7 +48,7 @@ export default {
 } */
 
 html {
-  background-color: rgb(199, 199, 199);
+  background-color: rgb(190, 190, 190);
   height: 100%;
   /* box-sizing: border-box; */
 }
@@ -57,18 +57,19 @@ html {
   box-sizing: inherit;
 }
 #app {
+  background-color:rgb(190, 190, 190);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 46rem;
   margin: auto;
   margin-top: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: -1px 5px 9px rgba(0, 0, 0, 0.12), 1px 3px 7px rgba(0,0,0,0.08);
+  margin-bottom: 5em;
+  text-align: center;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, .17), 0 0.8rem 0.8rem rgba(0, 0, 0, .1), 0 1.6rem 1.5rem rgba(0, 0, 0, .1), 0 3.2rem 3.2rem rgba(0, 0, 0, .1);
   padding: 10px 24px;
-  min-height: 50em;
+  min-height: 52em;
   position: relative;
   border-radius: 3px;
-
 }
 
 .hotBod {

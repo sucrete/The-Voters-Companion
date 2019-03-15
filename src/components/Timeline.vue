@@ -401,6 +401,7 @@ ul>li {
 }
 #app {
   background-color: #f7f7f0;
+  margin-bottom: 10em;
 }
 @media screen and (max-width: 700px) {
   #timelineBod {
