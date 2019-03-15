@@ -41,7 +41,15 @@
  -->
       </div>
     </div>
+    <!-- <footer class="appFooter">
+      <div id="footerInfo" style="float: left;">
+        footer info for all
+      </div>
+      <img id="footerLogo" :src=" logFin " />
+    </footer> -->
   </div>
+
+
 </template>
 
 <script>
@@ -50,6 +58,8 @@
 import LArrow from '../assets/left-arrow.svg'
 import RArrow from '../assets/right-arrow.svg'
 import registerBi from '../assets/registerBadge.png'
+import logoFinal from '../assets/mauve2.png'
+
 export default {
   name: 'overview',
   data () {
@@ -57,6 +67,7 @@ export default {
       register: registerBi,
       leftArrow: LArrow,
       rightArrow: RArrow,
+      logFin: logoFinal,
       msg: '',
       presentBadge: this.$store.getters.shouldIDisplayBadge,
       regURL: this.$store.getters.getUserBadgeURL
@@ -402,7 +413,12 @@ export default {
 </script>
 
 <style >
-
+#appFooter {
+  position: absolute;
+  top: 15em;
+  width: 32em;
+  height: auto;
+}
 #dimScreen {
   position:fixed;
   padding:0;
