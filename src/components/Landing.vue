@@ -215,7 +215,7 @@ export default {
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
 #app {
-  background-color: #796f61;
+  background-color: #4d5975;
 }
 
 #USVoteHeader {
@@ -259,7 +259,7 @@ a#usvLink {
 
 #siteTitle {
   z-index: 99;
-  color: rgb(228, 159, 96);
+  color: #F1AC6E;
   font-family: 'Karla', sans-serif !important;
   text-align: center;
   font-weight: 400;
@@ -303,7 +303,7 @@ a#usvLink {
   text-transform: uppercase;
   height: 34px;
   border-radius: .3em;
-  box-shadow: inset 0px 2px 8px 0px rgba(51, 45, 40, 0.38), inset 0px 1px 3px -2px rgba(43, 40, 36, 0.43), 0 1px 1px 0px rgb(142, 130, 114);
+  box-shadow: inset 0px 2px 8px 0px rgba(51, 45, 40, 0.38), inset 0px 1px 3px -2px rgba(43, 40, 36, 0.43), 0 1px 1px 0px rgb(138, 125, 156);
 }
 
 input:focus {
