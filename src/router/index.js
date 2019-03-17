@@ -5,10 +5,11 @@ import Router from 'vue-router'
 // import Timeline from '@/components/Timeline'
 // import Landing from '@/components/Landing'
 
-const Overview = () => import('@/components/Overview')
+const Officials = () => import('@/components/Officials')
 const Toolkit = () => import('@/components/Toolkit')
 const Timeline = () => import('@/components/Timeline')
 const Landing = () => import('@/components/Landing')
+const Main = () => import('@/components/Main')
 
 Vue.use(Router)
 
@@ -23,14 +24,19 @@ export default new Router({
   hash: false,
   routes: [
     {
+      path: '/main',
+      name: 'main',
+      component: Main
+    },
+    {
       path: '',
       name: 'landing',
       component: Landing
     },
     {
-      path: '/overview',
-      name: 'overview',
-      component: Overview
+      path: '/officials',
+      name: 'officials',
+      component: Officials
     },
     {
       path: '/toolkit',

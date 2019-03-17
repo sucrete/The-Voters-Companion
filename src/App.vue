@@ -181,8 +181,6 @@ html {
 }
 a:hover {
   text-decoration: none !important;
-  font-weight: 400 !important;
-  box-sizing: border-box !important;
 }
 
 body {
@@ -194,7 +192,6 @@ body {
 }
 
 a {
-  color: rgb(91, 82, 74);
   text-decoration: none !important;
 }
 a:visited {

@@ -1,11 +1,11 @@
 /* eslint-disable */
 <template>
-  <div class="district">
+  <div class="Toolkit">
     <!-- simple nav header -->
-    <div class="simple-navigation-header">
+    <!-- <div class="simple-navigation-header">
       <button id="lefty" type="button" class="mui-btn">
-        <router-link to="Overview">
-          <img class="leftArrow" :src=" leftArrow "/>OVERVIEW
+        <router-link to="Officials">
+          <img class="leftArrow" :src=" leftArrow "/>OFFICIALS
         </router-link>
       </button>
       <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
@@ -14,7 +14,7 @@
           TIMELINE<img class="rightArrow" :src=" rightArrow "/>
         </router-link>
       </button>
-    </div>
+    </div> -->
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
         Voter's Toolkit
@@ -31,7 +31,7 @@
 
     <div class="hotBod">
 
-      <TabRouter :md-ripple="false"></TabRouter>
+      <TabRouter></TabRouter>
 
     </div>
   </div>
@@ -44,7 +44,7 @@ import LArrow from '../assets/left-arrow.svg'
 import RArrow from '../assets/right-arrow.svg'
 
 export default {
-  name: 'district',
+  name: 'Toolkit',
   data () {
     return {
       register: registerBi,

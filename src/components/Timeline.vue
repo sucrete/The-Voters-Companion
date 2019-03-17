@@ -1,23 +1,9 @@
 <template>
   <!-- eslint-disable -->
-  <div id="timeline">
+  <div id="Timeline">
 
     <div class="fullwidth">
-      <!-- simple nav header -->
-      <div class="simple-navigation-header">
-        <button id="lefty" type="button" class="mui-btn">
-          <router-link to="toolkit">
-            <img class="leftArrow" :src=" leftArrow "/>TOOLKIT
-          </router-link>
-        </button>
-        <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-        <button id="righty" type="button" class="mui-btn">
-          <router-link to="Overview">
-            OVERVIEW<img class="rightArrow" :src=" rightArrow "/>
-          </router-link>
-        </button>
-      </div>
-
+  
       <div id="overviewNoticeWrapper">
         <div id="overviewMarquee">
           Timeline
@@ -94,17 +80,12 @@
 <script>
 /* eslint-disable */
 var hdate = require('human-date')
-import registerBi from '../assets/registerBadge.png'
-import LArrow from '../assets/left-arrow.svg'
-import RArrow from '../assets/right-arrow.svg'
+
 export default {
-  name: 'timeline',
+  name: 'Timeline',
   data () {
     return {
       whatAPrimaryIs: '',
-      register: registerBi,
-      leftArrow: LArrow,
-      rightArrow: RArrow,
       timelineHTML: '',
       presentBadge: this.$store.getters.shouldIDisplayBadge,
       regURL: this.$store.getters.getUserBadgeURL

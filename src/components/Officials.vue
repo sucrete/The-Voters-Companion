@@ -1,23 +1,6 @@
 <template>
-<!-- eslint-disable -->
-  <div class="overview">
-    <!-- simple nav header -->
-    <div class="simple-navigation-header">
-      <button id="lefty" type="button" class="mui-btn">
-        <router-link to="timeline">
-          <img class="leftArrow" :src=" leftArrow "/>
-          TIMELINE
-        </router-link>
-      </button>
-      <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-      <button id="righty" type="button" class="mui-btn">
-        <router-link to="toolkit">
-          TOOLKIT
-          <img class="rightArrow" :src=" rightArrow "/>
-        </router-link>
-      </button>
-    </div>
-    <!-- body -->
+  <div class="Officials">
+    troubleshooting
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
         Officials
@@ -25,123 +8,59 @@
       <div id="overviewNotice">
         These are your elected officials, grouped by regional scope. Each card can be expanded for more information on how to connect with your representatives.
       </div>
-      <a id="bigButtonLink" v-if="presentBadge" target="_blank" v-bind:href="regURL">
-        <img id="bigButton" :src=" register ">
-      </a>
     </div>
 
     <div id="dimScreen"></div>
 
     <div class="hotBod">
-      <div id="overviewBody" style="">
-<!--
-█▀▀█ █░░ █░░█ █▀▀▀ 　 █░░█ ▀▀█▀▀ █▀▄▀█ █░░ 　 ▀█▀ █▀▀▄　  █░░█ █▀▀ █▀▀█ █▀▀
-█░░█ █░░ █░░█ █░▀█ 　 █▀▀█ ░░█░░ █░▀░█ █░░ 　 ▒█░ █░░█ 　 █▀▀█ █▀▀ █▄▄▀ █▀▀
-█▀▀▀ ▀▀▀ ░▀▀▀ ▀▀▀▀ 　 ▀░░▀ ░░▀░░ ▀░░░▀ ▀▀▀ 　 ▄█▄ ▀░░▀ 　 ▀░░▀ ▀▀▀ ▀░▀▀ ▀▀▀
- -->
+      <div id="overviewBody">
+
       </div>
     </div>
-    <!-- <footer class="appFooter">
-      <div id="footerInfo" style="float: left;">
-        footer info for all
-      </div>
-      <img id="footerLogo" :src=" logFin " />
-    </footer> -->
   </div>
-
 
 </template>
 
 <script>
-/* eslint-disable */
-// import anime from '../../node_modules/animejs/lib/anime.js'
-import LArrow from '../assets/left-arrow.svg'
-import RArrow from '../assets/right-arrow.svg'
-import registerBi from '../assets/registerBadge.png'
-import logoFinal from '../assets/mauve2.png'
 
 export default {
-  name: 'overview',
+  name: 'Officials',
   data () {
-    return {
-      register: registerBi,
-      leftArrow: LArrow,
-      rightArrow: RArrow,
-      logFin: logoFinal,
-      msg: '',
-      presentBadge: this.$store.getters.shouldIDisplayBadge,
-      regURL: this.$store.getters.getUserBadgeURL
-    }
+    return {}
   },
   methods: {
-
-  },
-  mounted () {
-    // if (this.$store.getters.shouldIDisplayBadge) {
-    //   let bigButtn = document.getElementById('bigButton')
-    //
-    //   // var buttonEl = document.querySelector('button');
-    //
-    //   function animateButton(scale, duration, elasticity) {
-    //     anime.remove(bigButtn)
-    //     anime({
-    //       targets: bigButtn,
-    //       scale: scale,
-    //       duration: duration,
-    //       elasticity: 200,
-    //       rotate:
-    //         {value: [-3, 3], duration: 250, elasticity: 100}
-    //     })
-    //   }
-    //   function animateButtonBack(scale, duration, elasticity) {
-    //     anime.remove(bigButtn)
-    //     anime({
-    //       targets: bigButtn,
-    //       scale: scale,
-    //       duration: duration,
-    //       elasticity: 200
-    //     })
-    //   }
-    //   function enterButton() { animateButton(1.03, 350) }
-    //   function leaveButton() { animateButtonBack(1.0, 200) }
-    //
-    //   bigButtn.addEventListener('mouseenter', enterButton, false)
-    //   bigButtn.addEventListener('mouseleave', leaveButton, false)
-    // }
-
-    var state = this.$store.getters.showMeDatState
-    var GState = state.googleResponse
-    var divisions = GState.data.divisions
-    var divisionKeys = []
-    divisionKeys = Object.getOwnPropertyNames(divisions)
-    var reversedKeys = []
-    for (var i = divisionKeys.length - 1; i >= 0; i--) {
-      reversedKeys.push(divisionKeys[i])
-    }
-    // console.log(JSON.stringify(GState.data, null, '\t'))
-    // console.log('YOUR reversedKeys VARIABLE IS ---> ' + JSON.stringify(reversedKeys, null, '\t'))
-    // console.log('NUMBER OF DIVISIONS = ' + reversedKeys.length)
-
-    var overviewBod = document.getElementById('overviewBody')
-    // credit for toTitleCase() -> https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript/196991#196991
-    function toTitleCase (str) {
+    toTitleCase: function (str) {
+      // credit for toTitleCase() -> https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript/196991#196991
       return str.replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
       })
-    }
+    },
+    domMaker: function () {
+      var screenMask = document.getElementById('dimScreen')
+      var toggleIt = () => {
+        screenMask.classList.toggle('bopped')
+      }
+      var state = this.$store.getters.showMeDatState
+      var GState = state.googleResponse
+      var divisions = GState.data.divisions
+      var divisionKeys = []
+      divisionKeys = Object.getOwnPropertyNames(divisions)
+      var reversedKeys = []
+      for (var i = divisionKeys.length - 1; i >= 0; i--) {
+        reversedKeys.push(divisionKeys[i])
+      }
+      // console.log(JSON.stringify(GState.data, null, '\t'))
+      // console.log('YOUR reversedKeys VARIABLE IS ---> ' + JSON.stringify(reversedKeys, null, '\t'))
+      // console.log('NUMBER OF DIVISIONS = ' + reversedKeys.length)
+      var overviewBod = document.getElementById('overviewBody')
 
-    const boppeddd = document.getElementById('dimScreen')
-    const toggleIt = function () {
-      boppeddd.classList.toggle('bopped')
-    }
-    const DOMMaker = function () {
       for (let ttt = 1; ttt < reversedKeys.length; ttt++) {
         if (divisions[reversedKeys[ttt]].hasOwnProperty('officeIndices')) {
           var sectionHeader = document.createElement('h1')
           sectionHeader.className = ('sectionHeader')
           var sectionBody = document.createElement('div')
           sectionBody.className = ('sectionBody')
-          var upperCasedDivisionName = toTitleCase(divisions[reversedKeys[ttt]].name)
+          var upperCasedDivisionName = this.toTitleCase(divisions[reversedKeys[ttt]].name)
           if (upperCasedDivisionName.endsWith('City')) {
             var upperCasedDivisionNameArray = upperCasedDivisionName.split(' ')
             // console.log(upperCasedDivisionNameArray)
@@ -249,7 +168,6 @@ export default {
                     // console.log(addressSaver)
                   }
                 }
-                console.log(addressSaver)
                 expandedAddress.innerHTML = '<p>' + addressSaver + '</p>'
                 var expandedPhone = document.createElement('div')
                 var theOfficialPhone = theOfficial.phones[0] || 'unavailable'
@@ -378,48 +296,46 @@ export default {
           })
         }
       }
-    }
-    DOMMaker()
-    document.addEventListener('click', function (event) {
-      var neo = document.querySelector('.selected')
-      var isClickInside = neo.contains(event.target)
-      if (!isClickInside) {
-        // the click was outside the specifiedElement, do something
-        neo.classList.remove('selected')
-        boppeddd.classList.remove('bopped')
-        neo.style.transform = ''
-        neo.style.removeProperty('-webkit-transform')
-        neo.style.cssText = ('z-index: 556;')
-        neo.childNodes.forEach(sabotage => {
-          if (sabotage.className === 'gridContainer engaged') {
-            sabotage.remove()
-          }
-        })
-        setTimeout(function () {
-          neo.style.cssText = ('z-index: 1;')
-        }, 500)
-        for (var ggg = 0; ggg < neo.childNodes.length; ggg++) {
-          if (neo.childNodes[ggg].className === 'repImageWrapper') {
-            var notes = neo.childNodes[ggg].firstChild
-            notes.style.transform = ''
-            notes.style.removeProperty('-webkit-transform')
+      document.addEventListener('click', function (event) {
+        var neo = document.querySelector('.selected')
+        var isClickInside = neo.contains(event.target)
+        if (!isClickInside) {
+          // the click was outside the specifiedElement, do something
+          neo.classList.remove('selected')
+          screenMask.classList.remove('bopped')
+          neo.style.transform = ''
+          neo.style.removeProperty('-webkit-transform')
+          neo.style.cssText = ('z-index: 556;')
+          neo.childNodes.forEach(sabotage => {
+            if (sabotage.className === 'gridContainer engaged') {
+              sabotage.remove()
+            }
+          })
+          setTimeout(function () {
+            neo.style.cssText = ('z-index: 1;')
+          }, 500)
+          for (var ggg = 0; ggg < neo.childNodes.length; ggg++) {
+            if (neo.childNodes[ggg].className === 'repImageWrapper') {
+              var notes = neo.childNodes[ggg].firstChild
+              notes.style.transform = ''
+              notes.style.removeProperty('-webkit-transform')
+            }
           }
         }
-      }
-    })
+        event.stopPropagation()
+        event.preventDefault()
+      })
+    }
+  },
+  mounted () {
+    this.domMaker()
   }
 }
-
 </script>
 
 <style >
-#appFooter {
-  position: absolute;
-  top: 15em;
-  width: 32em;
-  height: auto;
-}
-#dimScreen {
+
+/* #dimScreen {
   position:fixed;
   padding:0;
   margin:0;
@@ -437,9 +353,8 @@ export default {
   opacity: 1;
   z-index: 777;
   background: rgba(255, 255, 255, 0.34);
-}
-.repCard .gridContainer {
-}
+} */
+
 .gridContainer {
   font-family: 'Karla', sans-serif;
   text-align: left;

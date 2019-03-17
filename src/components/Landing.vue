@@ -165,7 +165,7 @@ export default {
       }
       this.$store.commit('setUSVoteElections', self.voterAPI.electionInfo)
       this.$store.commit('setVoterInformation', self.voterAPI.voterInfo)
-      this.$router.push({path: 'overview'})
+      this.$router.push({path: 'main'})
     },
     updateValue (val) {
       this.$store.commit('setUsersAddress', val)
