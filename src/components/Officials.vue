@@ -16,7 +16,7 @@
               {{ item.division }}
             </div>
             <div v-for="rep in item.representatives">
-              <img :src="rep.repPhotoURL" /> <br/>
+              <img style="height: 200px; width: auto;":src="rep.repPhotoURL" /> <br/>
               <span>{{ rep.repName }}</span><br />
               <span>{{ rep.repTitle }}</span><br /></br/>
 
@@ -36,7 +36,10 @@ export default {
     return {
       googleState: this.$store.getters.showMeDatState.googleResponse,
       divisionKeys: [],
-      divisionsAndOfficials: []
+      divisionsAndOfficials: [],
+      phoneIconURL: 'https://i.imgur.com/kXKmZrE.png',
+      linkIconURL: 'https://i.imgur.com/7O903TX.png',
+      locationIconURL: 'https://i.imgur.com/6rxdk4T.png'
     }
   },
   methods: {
@@ -59,12 +62,7 @@ export default {
       this.divisionKeys = storer
       console.log('logo drive hhh ' + this.divisionKeys)
     },
-    domMaker: function () {
-      console.log('DIVISIONS ---> ' + JSON.stringify(this.divisionKeys, null, '\t'))
-      // console.log(JSON.stringify(self.googleState.data, null, '\t'))
-      // console.log('YOUR reversedKeys VARIABLE IS ---> ' + JSON.stringify(reversedKeys, null, '\t'))
-      // console.log('NUMBER OF DIVISIONS = ' + reversedKeys.length)
-      var overviewBod = document.getElementById('officialsBody')
+    dataShaker: function () {
       var GState = this.googleState
       var divs = GState.data.divisions
       var keys = this.divisionKeys
@@ -99,285 +97,67 @@ export default {
             })
           })
           this.divisionsAndOfficials.push(superSaver)
+
+          // superSaver.representatives.forEach(thing2 => {
+          //   var theOfficial = GState.data.officials[thing2.index]
+          //   // console.log('THIS GUY/GALS PARTY ---> ' + theOfficial.party)
+          //   var party = theOfficial.party
+          //   var partyLetter = ''
+          //   if (party === 'Republican') {
+          //     partyLetter = ' (R)'
+          //   } else if (party === 'Democrat') {
+          //     partyLetter = ' (D)'
+          //   } else if (party === 'Independent') {
+          //     partyLetter = ' (I)'
+          //   }
+          //   var theOfficialAddress = theOfficial.address[0] || null
+          //   var addressSaver = null
+          //   var theOfficialPropertyNames = Object.getOwnPropertyNames(theOfficial)
+          //   for (var yyy = 0; yyy < theOfficialPropertyNames.length; yyy++) {
+          //     if (theOfficialPropertyNames[yyy] === 'address') {
+          //       addressSaver = ''
+          //       var theOfficialAddressPropertyNames = Object.getOwnPropertyNames(theOfficialAddress)
+          //       var cityStateZip = theOfficialAddress.city + ', ' + theOfficialAddress.state + ' ' + theOfficialAddress.zip
+          //       for (var vvv = 0; vvv < theOfficialAddressPropertyNames.length; vvv++) {
+          //         if (theOfficialAddressPropertyNames[vvv].includes('line')) {
+          //           addressSaver += theOfficialAddress[theOfficialAddressPropertyNames[vvv]] + '<br />'
+          //         }
+          //       }
+          //       addressSaver += cityStateZip
+          //     }
+          //   }
+          //   var theOfficialPhone = theOfficial.phones[0] || 'unavailable'
+          //   var theOfficialURL = theOfficial.urls[0] || 'unavailable'
+          //
+          //   for (var ppp = 0; ppp < theOfficialPropertyNames.length; ppp++) {
+          //     if (theOfficialPropertyNames[ppp] === 'channels') {
+          //       var channels = theOfficial.channels
+          //       channels.forEach(Chanel => {
+          //         if (!(Chanel.type === 'GooglePlus')) {
+          //           var channel = Chanel.type
+          //           var channelID = Chanel.id
+          //           if (channel === 'YouTube') {
+          //             channelIcon.href = 'http://www.youtube.com/' + channelID
+          //             channelIconPic.src = 'https://i.imgur.com/b4J5pf1.png'
+          //           } else if (channel === 'Facebook') {
+          //             channelIcon.href = 'http://www.facebook.com/' + channelID
+          //             channelIconPic.src = 'https://i.imgur.com/MvZ9x3Z.png'
+          //           } else if (channel === 'Twitter') {
+          //             channelIcon.href = 'http://www.twitter.com/' + channelID
+          //             channelIconPic.src = 'https://i.imgur.com/ZnowWs0.png'
+          //           }
+          //         }
+          //       })
+          //     }
+          //   }
+          // })
         }
       }
-      console.log('this.divisionsAndOfficials equals ---> ' + JSON.stringify(this.divisionsAndOfficials, null, '\t'))
-      for (let ttt = 0; ttt < keys.length; ttt++) {
-        if (divs[keys[ttt]].hasOwnProperty('officeIndices')) {
-          var sectionHeader = document.createElement('h1')
-          sectionHeader.className = ('sectionHeader')
-          var sectionBody = document.createElement('div')
-          sectionBody.className = ('sectionBody')
-          var upperCasedDivisionName = this.toTitleCase(divs[keys[ttt]].name)
-          if (upperCasedDivisionName.endsWith('City')) {
-            var upperCasedDivisionNameArray = upperCasedDivisionName.split(' ')
-            // console.log(upperCasedDivisionNameArray)
-            upperCasedDivisionNameArray.pop()
-            upperCasedDivisionName = 'City of ' + upperCasedDivisionNameArray.join(' ')
-          }
-          console.log('🇲🇽 🇲🇽 🇲🇽')
-          var aaa = document.createTextNode(upperCasedDivisionName)
-          sectionHeader.appendChild(aaa)
-          overviewBod.appendChild(sectionHeader)
-          overviewBod.appendChild(sectionBody)
-          var officialFaceNameTitle = []
-          divs[keys[ttt]].officeIndices.forEach(thing1 => {
-            console.log('🎬  🎬  🎬 ')
-            var GOffice = GState.data.offices[thing1]
-            GOffice.officialIndices.forEach(function (corazon) {
-              var officialObject = {}
-              officialObject.index = corazon
-              officialObject.repTitle = GOffice.name
-              officialObject.repName = GState.data.officials[corazon].name
-              officialObject.repPhotoURL = GState.data.officials[corazon].photoUrl || 'https://wabar.asn.au/staging/wp-content/themes/wabar/img/user-placeholder.jpg'
-              if (corazon === 0) {
-                officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
-              } else if (corazon === 1) {
-                officialObject.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
-              }
-              officialFaceNameTitle.push(officialObject)
-            })
-          })
-          console.log('🧗 🧗 🧗')
-          officialFaceNameTitle.forEach(thing2 => {
-            console.log('🏄‍♂️ 🏄‍♂️ 🏄‍♂️')
-            var repWrapper = document.createElement('div')
-            repWrapper.className = ('cardWrapper')
-            var lilDivvy = document.createElement('div')
-            var lilDivvyNode = document.createTextNode('✕')
-            lilDivvy.className = ('deselect-rep')
-            lilDivvy.appendChild(lilDivvyNode)
-            var tableElement = document.createElement('div')
-            tableElement.classList.add('repCard')
-            tableElement.addEventListener('click', function (e) {
-              if (!(this.classList.contains('selected'))) {
-                this.classList.add('selected')
-                var w = window
-                var d = document
-                var h = d.documentElement
-                var g = d.getElementsByTagName('body')[0]
-                var x = w.innerWidth || h.clientWidth || g.clientWidth
-                var y = w.innerHeight || h.clientHeight || g.clientHeight
-                var cardSpecs = this.getBoundingClientRect()
-                var boxx = cardSpecs.x + (cardSpecs.width / 2)
-                var boxy = cardSpecs.y + (cardSpecs.height / 2)
-                var windowx = (x / 2)
-                var windowy = (y / 2)
-                var movementalongx = windowx - (boxx + 172)
-                var movementalongy = windowy - (boxy + 15)
-                this.style.cssText = 'transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); -webkit-transform: translate(' + movementalongx + 'px, ' + movementalongy + 'px); z-index: 888;'
-                var imageNode = null
-                var sparklingDiamond = this.childNodes
-                for (var hhh = 0; hhh < sparklingDiamond.length; hhh++) {
-                  if (sparklingDiamond[hhh].className === 'repImageWrapper') {
-                    imageNode = sparklingDiamond[hhh].firstChild
-                    var imageSpecs = imageNode.getBoundingClientRect()
-                    var imagex = imageSpecs.x + (imageSpecs.width / 2)
-                    var moveimagealongx = movementalongx - ((windowx - imagex) - 66)
-                    var moveimagealongy = 22.5
-                    imageNode.style.cssText = 'transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px); -webkit-transform: scale(1.5) translateX(' + moveimagealongx + 'px) translateY(' + moveimagealongy + 'px);'
-                  }
-                }
-                var gridWrapper = document.createElement('div')
-                gridWrapper.className = ('gridContainer')
-                var theOfficial = GState.data.officials[thing2.index]
-                // console.log('THIS GUY/GALS PARTY ---> ' + theOfficial.party)
-                var party = theOfficial.party
-                var partyLetter = ''
-                if (party === 'Republican') {
-                  partyLetter = ' (R)'
-                } else if (party === 'Democrat') {
-                  partyLetter = ' (D)'
-                } else if (party === 'Independent') {
-                  partyLetter = ' (I)'
-                }
-                var expandedName = document.createElement('div')
-                var expandedNameNode = document.createTextNode(thing2.repName + partyLetter)
-                expandedName.appendChild(expandedNameNode)
-                expandedName.className = ('detailsName')
-                var expandedTitle = document.createElement('div')
-                var expandedTitleNode = document.createTextNode(thing2.repTitle)
-                expandedTitle.appendChild(expandedTitleNode)
-                expandedTitle.className = ('detailsTitle')
-                var expandedAddress = document.createElement('div')
-                expandedAddress.className = ('detailsAddress')
-                var theOfficialAddress = theOfficial.address[0] || null
-                var addressSaver
-                var theOfficialPropertyNames = Object.getOwnPropertyNames(theOfficial)
-                for (var yyy = 0; yyy < theOfficialPropertyNames.length; yyy++) {
-                  if (theOfficialPropertyNames[yyy] === 'address') {
-                    addressSaver = ''
-                    var theOfficialAddressPropertyNames = Object.getOwnPropertyNames(theOfficialAddress)
-                    var cityStateZip = theOfficialAddress.city + ', ' + theOfficialAddress.state + ' ' + theOfficialAddress.zip
-                    for (var vvv = 0; vvv < theOfficialAddressPropertyNames.length; vvv++) {
-                      if (theOfficialAddressPropertyNames[vvv].includes('line')) {
-                        addressSaver += theOfficialAddress[theOfficialAddressPropertyNames[vvv]] + '<br />'
-                      }
-                    }
-                    addressSaver += cityStateZip
-                    // console.log(addressSaver)
-                  }
-                }
-                expandedAddress.innerHTML = '<p>' + addressSaver + '</p>'
-                var expandedPhone = document.createElement('div')
-                var theOfficialPhone = theOfficial.phones[0] || 'unavailable'
-                var expandedPhoneNode = document.createTextNode(theOfficialPhone)
-                expandedPhone.appendChild(expandedPhoneNode)
-                expandedPhone.className = ('detailsPhone')
-                var expandedURL = document.createElement('a')
-                var theOfficialURL = theOfficial.urls[0] || 'unavailable'
-                var expandedURLNode = document.createTextNode(theOfficialURL)
-                expandedURL.appendChild(expandedURLNode)
-                expandedURL.setAttribute('rel', 'noopener noreferrer')
-                expandedURL.setAttribute('href', theOfficialURL)
-                expandedURL.setAttribute('target', '_blank')
-                expandedURL.className = ('detailsURL')
-                var channelsSubgrid = document.createElement('div')
-                channelsSubgrid.className = ('detailsChannels')
-                for (var ppp = 0; ppp < theOfficialPropertyNames.length; ppp++) {
-                  if (theOfficialPropertyNames[ppp] === 'channels') {
-                    var channels = theOfficial.channels
-                    channels.forEach(Chanel => {
-                      if (!(Chanel.type === 'GooglePlus')) {
-                        var channel = Chanel.type
-                        var channelID = Chanel.id
-                        var channelIcon = document.createElement('a')
-                        var channelIconPic = document.createElement('img')
-                        channelIcon.className = ('iconBox')
-                        channelIconPic.className = (channel)
-                        if (channel === 'YouTube') {
-                          channelIcon.href = 'http://www.youtube.com/' + channelID
-                          channelIconPic.src = 'https://i.imgur.com/b4J5pf1.png'
-                        } else if (channel === 'Facebook') {
-                          channelIcon.href = 'http://www.facebook.com/' + channelID
-                          channelIconPic.src = 'https://i.imgur.com/MvZ9x3Z.png'
-                        } else if (channel === 'Twitter') {
-                          channelIcon.href = 'http://www.twitter.com/' + channelID
-                          channelIconPic.src = 'https://i.imgur.com/ZnowWs0.png'
-                        }
-                        channelIcon.setAttribute('target', '_blank')
-                        channelIcon.setAttribute('rel', 'noopener noreferrer')
-                        channelIcon.appendChild(channelIconPic)
-                        channelsSubgrid.appendChild(channelIcon)
-                      }
-                    })
-                  }
-                }
-                var phoneIcon = document.createElement('img')
-                var URLIcon = document.createElement('img')
-                var placeIcon = document.createElement('img')
-                phoneIcon.className = ('detailsPhoneIcon')
-                URLIcon.className = ('detailsURLIcon')
-                placeIcon.className = ('detailsAddressIcon')
-                phoneIcon.src = 'https://i.imgur.com/kXKmZrE.png'
-                URLIcon.src = 'https://i.imgur.com/7O903TX.png'
-                placeIcon.src = 'https://i.imgur.com/6rxdk4T.png'
-                gridWrapper.appendChild(expandedName)
-                gridWrapper.appendChild(expandedTitle)
-                gridWrapper.appendChild(expandedAddress)
-                gridWrapper.appendChild(expandedPhone)
-                gridWrapper.appendChild(expandedURL)
-                gridWrapper.appendChild(channelsSubgrid)
-                gridWrapper.appendChild(phoneIcon)
-                gridWrapper.appendChild(URLIcon)
-                gridWrapper.appendChild(placeIcon)
-                tableElement.appendChild(gridWrapper)
-                setTimeout(function () {
-                  gridWrapper.className += ' engaged'
-                }, 200)
-              }
-              e.stopPropagation()
-              e.preventDefault()
-            })
-            var imageWrapper = document.createElement('div')
-            imageWrapper.className = ('repImageWrapper')
-            var figureImage = document.createElement('img')
-            figureImage.className = ('repImage')
-            figureImage.classList.add('md-image')
-            figureImage.setAttribute('src', thing2.repPhotoURL)
-            var tableWrapper = document.createElement('div')
-            tableWrapper.className = ('tableWrapper')
-            var tableRow2 = document.createElement('tr')
-            var tableCell2 = document.createElement('td')
-            tableCell2.className = ('repName')
-            var textNope2 = document.createTextNode(thing2.repName)
-            tableCell2.appendChild(textNope2)
-            tableRow2.appendChild(tableCell2)
-            var tableRow3 = document.createElement('tr')
-            var tableCell3 = document.createElement('td')
-            tableCell3.className = ('repTitle')
-            var textNope3 = document.createTextNode(thing2.repTitle)
-            tableCell3.appendChild(textNope3)
-            tableRow3.appendChild(tableCell3)
-            imageWrapper.appendChild(figureImage)
-            tableElement.appendChild(imageWrapper)
-            tableWrapper.appendChild(tableRow2)
-            tableWrapper.appendChild(tableRow3)
-            tableElement.appendChild(tableWrapper)
-            tableElement.appendChild(lilDivvy)
-            lilDivvy.addEventListener('click', function (e) {
-              var kunta = this.parentNode
-              kunta.classList.remove('selected')
-              kunta.style.transform = ''
-              kunta.style.removeProperty('-webkit-transform')
-              kunta.style.cssText = ('z-index: 555;')
-              kunta.childNodes.forEach(sabotage => {
-                if (sabotage.className === 'gridContainer engaged') {
-                  sabotage.remove()
-                }
-              })
-              for (var ggg = 0; ggg < kunta.childNodes.length; ggg++) {
-                if (kunta.childNodes[ggg].className === 'repImageWrapper') {
-                  var notes = kunta.childNodes[ggg].firstChild
-                  notes.style.transform = ''
-                  notes.style.removeProperty('-webkit-transform')
-                }
-              }
-              setTimeout(function () {
-                kunta.style.cssText = ('z-index: 1;')
-              }, 500)
-              // console.log('parentNode ======= ' + this.parentNode.className)
-              e.stopPropagation()
-              e.preventDefault()
-            })
-            repWrapper.appendChild(tableElement)
-            sectionBody.appendChild(repWrapper)
-          })
-        }
-      }
-      document.addEventListener('click', function (event) {
-        var neo = document.querySelector('.selected')
-        var isClickInside = neo.contains(event.target)
-        if (!isClickInside) {
-          // the click was outside the specifiedElement, do something
-          neo.classList.remove('selected')
-          neo.style.transform = ''
-          neo.style.removeProperty('-webkit-transform')
-          neo.style.cssText = ('z-index: 556;')
-          neo.childNodes.forEach(sabotage => {
-            if (sabotage.className === 'gridContainer engaged') {
-              sabotage.remove()
-            }
-          })
-          setTimeout(function () {
-            neo.style.cssText = ('z-index: 1;')
-          }, 500)
-          for (var ggg = 0; ggg < neo.childNodes.length; ggg++) {
-            if (neo.childNodes[ggg].className === 'repImageWrapper') {
-              var notes = neo.childNodes[ggg].firstChild
-              notes.style.transform = ''
-              notes.style.removeProperty('-webkit-transform')
-            }
-          }
-        }
-        event.stopPropagation()
-        event.preventDefault()
-      })
     }
   },
   mounted () {
     this.importData()
-    this.domMaker()
+    this.dataShaker()
   }
 }
 </script>
