@@ -1,20 +1,27 @@
 <template>
   <div class="Officials">
-    troubleshooting
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
         Officials
       </div>
       <div id="overviewNotice">
-        These are your elected officials, grouped by regional scope. Each card can be expanded for more information on how to connect with your representatives.
+        These are your elected officials, grouped by regional scope.
       </div>
     </div>
 
-    <div id="dimScreen"></div>
-
     <div class="hotBod">
-      <div id="overviewBody">
+      <div id="officialsBody">
+        <div v-for="item in divisionsAndOfficials">
+            <div class="sectionHeader">
+              {{ item.division }}
+            </div>
+            <div v-for="rep in item.representatives">
+              <img :src="rep.repPhotoURL" /> <br/>
+              <span>{{ rep.repName }}</span><br />
+              <span>{{ rep.repTitle }}</span><br /></br/>
 
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -26,7 +33,11 @@
 export default {
   name: 'Officials',
   data () {
-    return {}
+    return {
+      googleState: this.$store.getters.showMeDatState.googleResponse,
+      divisionKeys: [],
+      divisionsAndOfficials: []
+    }
   },
   methods: {
     toTitleCase: function (str) {
@@ -35,44 +46,83 @@ export default {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
       })
     },
+    importData: function () {
+      var divisions = this.$store.getters.showMeDatState.googleResponse.data.divisions
+      var divisionQuays = []
+      divisionQuays = Object.getOwnPropertyNames(divisions)
+      var storer = []
+      // reversing the division keys and removing the "obj" add-on
+      for (var i = divisionQuays.length - 1; i >= 0; i--) {
+        storer.push(divisionQuays[i])
+      }
+      storer.shift()
+      this.divisionKeys = storer
+      console.log('logo drive hhh ' + this.divisionKeys)
+    },
     domMaker: function () {
-      var screenMask = document.getElementById('dimScreen')
-      var toggleIt = () => {
-        screenMask.classList.toggle('bopped')
-      }
-      var state = this.$store.getters.showMeDatState
-      var GState = state.googleResponse
-      var divisions = GState.data.divisions
-      var divisionKeys = []
-      divisionKeys = Object.getOwnPropertyNames(divisions)
-      var reversedKeys = []
-      for (var i = divisionKeys.length - 1; i >= 0; i--) {
-        reversedKeys.push(divisionKeys[i])
-      }
-      // console.log(JSON.stringify(GState.data, null, '\t'))
+      console.log('DIVISIONS ---> ' + JSON.stringify(this.divisionKeys, null, '\t'))
+      // console.log(JSON.stringify(self.googleState.data, null, '\t'))
       // console.log('YOUR reversedKeys VARIABLE IS ---> ' + JSON.stringify(reversedKeys, null, '\t'))
       // console.log('NUMBER OF DIVISIONS = ' + reversedKeys.length)
-      var overviewBod = document.getElementById('overviewBody')
+      var overviewBod = document.getElementById('officialsBody')
+      var GState = this.googleState
+      var divs = GState.data.divisions
+      var keys = this.divisionKeys
 
-      for (let ttt = 1; ttt < reversedKeys.length; ttt++) {
-        if (divisions[reversedKeys[ttt]].hasOwnProperty('officeIndices')) {
+      for (let ttt = 0; ttt < keys.length; ttt++) {
+        if (divs[keys[ttt]].hasOwnProperty('officeIndices')) {
+          var upperCasedDivisionName1 = this.toTitleCase(divs[keys[ttt]].name)
+          if (upperCasedDivisionName1.endsWith('City')) {
+            var upperCasedDivisionNameArray1 = upperCasedDivisionName1.split(' ')
+            upperCasedDivisionNameArray1.pop()
+            upperCasedDivisionName1 = 'City of ' + upperCasedDivisionNameArray1.join(' ')
+          }
+          var superSaver = {}
+          superSaver.division = upperCasedDivisionName1
+          superSaver.representatives = []
+          console.log('🇲🇽 🇲🇽 🇲🇽  uno')
+          divs[keys[ttt]].officeIndices.forEach(thing1 => {
+            var GOffice1 = GState.data.offices[thing1]
+            // below is the biodata for each representative using GOffice indices on GState.data e.g. GState.data.officials[GOffice1.officialIndices[1]]
+            GOffice1.officialIndices.forEach(corazon => {
+              var officialObject1 = {}
+              officialObject1.index = corazon
+              officialObject1.repTitle = GOffice1.name
+              officialObject1.repName = GState.data.officials[corazon].name
+              officialObject1.repPhotoURL = GState.data.officials[corazon].photoUrl || 'https://wabar.asn.au/staging/wp-content/themes/wabar/img/user-placeholder.jpg'
+              if (corazon === 0) {
+                officialObject1.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DEE46500000578-5035763-image-m-11_1509461782123.jpg'
+              } else if (corazon === 1) {
+                officialObject1.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
+              }
+              superSaver.representatives.push(officialObject1)
+            })
+          })
+          this.divisionsAndOfficials.push(superSaver)
+        }
+      }
+      console.log('this.divisionsAndOfficials equals ---> ' + JSON.stringify(this.divisionsAndOfficials, null, '\t'))
+      for (let ttt = 0; ttt < keys.length; ttt++) {
+        if (divs[keys[ttt]].hasOwnProperty('officeIndices')) {
           var sectionHeader = document.createElement('h1')
           sectionHeader.className = ('sectionHeader')
           var sectionBody = document.createElement('div')
           sectionBody.className = ('sectionBody')
-          var upperCasedDivisionName = this.toTitleCase(divisions[reversedKeys[ttt]].name)
+          var upperCasedDivisionName = this.toTitleCase(divs[keys[ttt]].name)
           if (upperCasedDivisionName.endsWith('City')) {
             var upperCasedDivisionNameArray = upperCasedDivisionName.split(' ')
             // console.log(upperCasedDivisionNameArray)
             upperCasedDivisionNameArray.pop()
             upperCasedDivisionName = 'City of ' + upperCasedDivisionNameArray.join(' ')
           }
+          console.log('🇲🇽 🇲🇽 🇲🇽')
           var aaa = document.createTextNode(upperCasedDivisionName)
           sectionHeader.appendChild(aaa)
           overviewBod.appendChild(sectionHeader)
           overviewBod.appendChild(sectionBody)
           var officialFaceNameTitle = []
-          divisions[reversedKeys[ttt]].officeIndices.forEach(thing1 => {
+          divs[keys[ttt]].officeIndices.forEach(thing1 => {
+            console.log('🎬  🎬  🎬 ')
             var GOffice = GState.data.offices[thing1]
             GOffice.officialIndices.forEach(function (corazon) {
               var officialObject = {}
@@ -88,7 +138,9 @@ export default {
               officialFaceNameTitle.push(officialObject)
             })
           })
+          console.log('🧗 🧗 🧗')
           officialFaceNameTitle.forEach(thing2 => {
+            console.log('🏄‍♂️ 🏄‍♂️ 🏄‍♂️')
             var repWrapper = document.createElement('div')
             repWrapper.className = ('cardWrapper')
             var lilDivvy = document.createElement('div')
@@ -99,7 +151,6 @@ export default {
             tableElement.classList.add('repCard')
             tableElement.addEventListener('click', function (e) {
               if (!(this.classList.contains('selected'))) {
-                toggleIt()
                 this.classList.add('selected')
                 var w = window
                 var d = document
@@ -157,7 +208,6 @@ export default {
                   if (theOfficialPropertyNames[yyy] === 'address') {
                     addressSaver = ''
                     var theOfficialAddressPropertyNames = Object.getOwnPropertyNames(theOfficialAddress)
-                    console.log('theOfficialAddressPropertyNames =======> ' + JSON.stringify(theOfficialAddressPropertyNames, null, '\t'))
                     var cityStateZip = theOfficialAddress.city + ', ' + theOfficialAddress.state + ' ' + theOfficialAddress.zip
                     for (var vvv = 0; vvv < theOfficialAddressPropertyNames.length; vvv++) {
                       if (theOfficialAddressPropertyNames[vvv].includes('line')) {
@@ -267,7 +317,6 @@ export default {
             tableElement.appendChild(lilDivvy)
             lilDivvy.addEventListener('click', function (e) {
               var kunta = this.parentNode
-              toggleIt()
               kunta.classList.remove('selected')
               kunta.style.transform = ''
               kunta.style.removeProperty('-webkit-transform')
@@ -302,7 +351,6 @@ export default {
         if (!isClickInside) {
           // the click was outside the specifiedElement, do something
           neo.classList.remove('selected')
-          screenMask.classList.remove('bopped')
           neo.style.transform = ''
           neo.style.removeProperty('-webkit-transform')
           neo.style.cssText = ('z-index: 556;')
@@ -328,32 +376,13 @@ export default {
     }
   },
   mounted () {
+    this.importData()
     this.domMaker()
   }
 }
 </script>
 
 <style >
-
-/* #dimScreen {
-  position:fixed;
-  padding:0;
-  margin:0;
-
-  opacity: 0;
-  transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-
-  top:0;
-  left:0;
-
-  width: 100%;
-  height: 100%;
-}
-#dimScreen.bopped {
-  opacity: 1;
-  z-index: 777;
-  background: rgba(255, 255, 255, 0.34);
-} */
 
 .gridContainer {
   font-family: 'Karla', sans-serif;

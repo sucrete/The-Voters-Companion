@@ -104,7 +104,7 @@ html {
 }
 #overviewMarquee {
   font-size: 200%;
-  color: #5b524a;; /* color --> "jet black" */
+  color: #5b524a;
   text-align: left;
   margin-bottom: .5em;
   text-shadow: 0px 2px 4px rgba(0,0,0,0.2);

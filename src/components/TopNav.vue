@@ -2,11 +2,11 @@
 <template>
   <v-tabs
     right
-    color="#4d5975"
+    color="blue-grey lighten-4"
   >
-    <v-tabs-slider color="white"></v-tabs-slider>
+    <v-tabs-slider color="#ffa03a"></v-tabs-slider>
 
-    <v-tab :key="1">
+    <v-tab :key="i">
       {{ i }}
     </v-tab>
     <v-tab :key="ii">
@@ -17,16 +17,14 @@
     </v-tab>
 
     <v-tabs-items>
-      <v-tab-item :key="1">
-          Goob
-          <Timeline></Timeline>
+      <v-tab-item :key="i">
+        <Officials></Officials>
       </v-tab-item>
       <v-tab-item :key="ii">
-        <Toolkit></Toolkit>
+        <Timeline></Timeline>
       </v-tab-item>
       <v-tab-item :key="iii">
-
-        <Officials></Officials>
+        <Toolkit></Toolkit>
       </v-tab-item>
     </v-tabs-items>
   </v-tabs>

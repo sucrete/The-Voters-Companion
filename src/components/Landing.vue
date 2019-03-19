@@ -147,19 +147,17 @@ export default {
     },
     setInfoAndPush () {
       console.log('setInfoAndPush fired')
-      var entireGoogleResponse = this.$store.getters.stuper
-      var entireElectionInfoFromThisDotVoterAPI = self.voterAPI.electionInfo
-      var entireVoterInfoFromThisDotVoterAPI = self.voterAPI.voterInfo
-      // console.log('entireGoogleResponse' + '\n' + '\n' + JSON.stringify(entireGoogleResponse, null, '\t'))
-      // console.log('entireElectionInfoFromThisDotVoterAPI' + '\n' + '\n' + JSON.stringify(entireElectionInfoFromThisDotVoterAPI, null, '\t'))
-      const LTArray = self.voterAPI.voterInfo.objects[0].lookup_tools
-      for (var dubs = 0; dubs < LTArray.length; dubs++) {
-        if (LTArray[dubs].lookup_tool.id === 4) {
-          if (!(LTArray[dubs].url === undefined)) {
-            let ourURL = LTArray[dubs].url
-            this.$store.commit('setUserBadgeURL', LTArray[dubs].url)
-            console.log('\t' + '🖖' + '\n' + 'SUCCESS!' + '\n' + '\t' + '🎉' + '\n' + this.$store.getters.getUserBadgeURL)
-            this.$store.commit('displayBadgeQuestionMark', true)
+    
+      if (self.voterAPI.voterInfo.objects[0].lookup_tools) {
+        var LTArray = self.voterAPI.voterInfo.objects[0].lookup_tools
+        for (var dubs = 0; dubs < LTArray.length; dubs++) {
+          if (LTArray[dubs].lookup_tool.id === 4) {
+            if (!(LTArray[dubs].url === undefined)) {
+              let ourURL = LTArray[dubs].url
+              this.$store.commit('setUserBadgeURL', LTArray[dubs].url)
+              console.log('\t' + '🖖' + '\n' + 'SUCCESS!' + '\n' + '\t' + '🎉' + '\n' + this.$store.getters.getUserBadgeURL)
+              this.$store.commit('displayBadgeQuestionMark', true)
+            }
           }
         }
       }
