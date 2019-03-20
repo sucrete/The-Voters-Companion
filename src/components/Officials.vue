@@ -19,7 +19,6 @@
               <img style="height: 200px; width: auto;":src="rep.repPhotoURL" /> <br/>
               <span>{{ rep.repName }}</span><br />
               <span>{{ rep.repTitle }}</span><br /></br/>
-
             </div>
         </div>
       </div>
@@ -60,13 +59,12 @@ export default {
       }
       storer.shift()
       this.divisionKeys = storer
-      console.log('logo drive hhh ' + this.divisionKeys)
     },
     dataShaker: function () {
       var GState = this.googleState
       var divs = GState.data.divisions
       var keys = this.divisionKeys
-
+      console.log(JSON.stringify(GState, null, '\t'))
       for (let ttt = 0; ttt < keys.length; ttt++) {
         if (divs[keys[ttt]].hasOwnProperty('officeIndices')) {
           var upperCasedDivisionName1 = this.toTitleCase(divs[keys[ttt]].name)
@@ -80,9 +78,11 @@ export default {
           superSaver.representatives = []
           console.log('🇲🇽 🇲🇽 🇲🇽  uno')
           divs[keys[ttt]].officeIndices.forEach(thing1 => {
+            console.log('🇲🇽 🇲🇽 🇲🇽  dos')
             var GOffice1 = GState.data.offices[thing1]
             // below is the biodata for each representative using GOffice indices on GState.data e.g. GState.data.officials[GOffice1.officialIndices[1]]
             GOffice1.officialIndices.forEach(corazon => {
+              console.log('🇲🇽 🇲🇽 🇲🇽  tres')
               var officialObject1 = {}
               officialObject1.index = corazon
               officialObject1.repTitle = GOffice1.name
@@ -93,71 +93,95 @@ export default {
               } else if (corazon === 1) {
                 officialObject1.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
               }
+              console.log('🇨🇵🇨🇵🇨🇵')
+              var theOfficial = GState.data.officials[corazon]
+              var theOfficialPropertyNames = Object.getOwnPropertyNames(theOfficial)
+              officialObject1.party = theOfficial.party
+              var addressLine1 = 'not available'
+              var addressLine2 = 'not available'
+              if (theOfficial.address !== undefined) {
+                var officialAddress = theOfficial.address[0]
+                console.log('all them property names on the Official' + theOfficialPropertyNames)
+                for (var yyy = 0; yyy < theOfficialPropertyNames.length; yyy++) {
+                  console.log('🇧🇦🇧🇦🇧🇦')
+                  if (theOfficialPropertyNames[yyy] === 'address') {
+                    var theOfficialAddressPropertyNames = Object.getOwnPropertyNames(officialAddress)
+                    var cityStateZip = officialAddress.city + ', ' + officialAddress.state + ' ' + officialAddress.zip
+                    for (var vvv = 0; vvv < theOfficialAddressPropertyNames.length; vvv++) {
+                      if (theOfficialAddressPropertyNames[vvv].includes('line')) {
+                        addressLine1 = officialAddress[theOfficialAddressPropertyNames[vvv]]
+                      }
+                    }
+                    addressLine2 = cityStateZip
+                  }
+                }
+              }
+              console.log('🇲🇽 🇲🇽 🇲🇽  cuatro')
+              officialObject1.addressLine1 = addressLine1
+              console.log('🇯🇵🇯🇵🇯🇵  coco')
+              officialObject1.addressLine2 = addressLine2
+              console.log('🇦🇶🇦🇶🇦🇶')
+              var naw = 'not available'
+              if (theOfficial.phones !== undefined) {
+                officialObject1.phone = theOfficial.phones[0]
+              } else {
+                officialObject1.phone = naw
+              }
+              console.log('🇧🇷🇧🇷🇧🇷' + officialObject1.phone + 'official index on this loop is:   ' + corazon)
+              if (theOfficial.urls !== undefined) {
+                console.log('🇧🇬🇧🇬🇧🇬 nope it\'s here')
+                officialObject1.website = theOfficial.urls[0]
+                console.log('sup from the other side 🇧🇬🇧🇬🇧🇬')
+              } else {
+                officialObject1.website = naw
+              }
+              console.log('🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵  ' + officialObject1.website)
+              officialObject1.channels = []
+              console.log('🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵 ' + theOfficialPropertyNames.length + ' 🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵 ')
+              // for (var ppp = 0; ppp < theOfficialPropertyNames.length; ppp++) {
+              //   console.log('🇲🇽 🇲🇽 🇲🇽  cinco')
+              //   if (theOfficialPropertyNames[ppp] === 'channels') {
+              //     console.log('🇲🇽 🇲🇽 🇲🇽  seis')
+              //     theOfficial.channels.forEach(Chanel => {
+              //       console.log('🇲🇽 🇲🇽 🇲🇽  seite')
+              //       var channelKeep = {}
+              //       channelKeep.channelIcon = ''
+              //       channelKeep.channelLink = ''
+              //       if (!(Chanel.type === 'GooglePlus')) {
+              //         if (Chanel.type === 'YouTube') {
+              //           channelKeep.channelLink = 'http://www.youtube.com/' + Chanel.id
+              //           channelKeep.channelIcon = 'https://i.imgur.com/b4J5pf1.png'
+              //         } else if (Chanel.type === 'Facebook') {
+              //           channelKeep.channelLink = 'http://www.facebook.com/' + Chanel.id
+              //           channelKeep.channelIcon = 'https://i.imgur.com/MvZ9x3Z.png'
+              //         } else if (Chanel.type === 'Twitter') {
+              //           channelKeep.channelLink = 'http://www.twitter.com/' + Chanel.id
+              //           channelKeep.channelIcon = 'https://i.imgur.com/ZnowWs0.png'
+              //         }
+              //       }
+              //       officialObject1.channels.push(channelKeep)
+              //     })
+              //   } else {
+              //     break
+              //   }
+              // }
+              // complete push for an individual representative below
               superSaver.representatives.push(officialObject1)
             })
           })
+          console.log('🇲🇽 🇲🇽 🇲🇽  ocho')
           this.divisionsAndOfficials.push(superSaver)
-
-          // superSaver.representatives.forEach(thing2 => {
-          //   var theOfficial = GState.data.officials[thing2.index]
-          //   // console.log('THIS GUY/GALS PARTY ---> ' + theOfficial.party)
-          //   var party = theOfficial.party
-          //   var partyLetter = ''
-          //   if (party === 'Republican') {
-          //     partyLetter = ' (R)'
-          //   } else if (party === 'Democrat') {
-          //     partyLetter = ' (D)'
-          //   } else if (party === 'Independent') {
-          //     partyLetter = ' (I)'
-          //   }
-          //   var theOfficialAddress = theOfficial.address[0] || null
-          //   var addressSaver = null
-          //   var theOfficialPropertyNames = Object.getOwnPropertyNames(theOfficial)
-          //   for (var yyy = 0; yyy < theOfficialPropertyNames.length; yyy++) {
-          //     if (theOfficialPropertyNames[yyy] === 'address') {
-          //       addressSaver = ''
-          //       var theOfficialAddressPropertyNames = Object.getOwnPropertyNames(theOfficialAddress)
-          //       var cityStateZip = theOfficialAddress.city + ', ' + theOfficialAddress.state + ' ' + theOfficialAddress.zip
-          //       for (var vvv = 0; vvv < theOfficialAddressPropertyNames.length; vvv++) {
-          //         if (theOfficialAddressPropertyNames[vvv].includes('line')) {
-          //           addressSaver += theOfficialAddress[theOfficialAddressPropertyNames[vvv]] + '<br />'
-          //         }
-          //       }
-          //       addressSaver += cityStateZip
-          //     }
-          //   }
-          //   var theOfficialPhone = theOfficial.phones[0] || 'unavailable'
-          //   var theOfficialURL = theOfficial.urls[0] || 'unavailable'
-          //
-          //   for (var ppp = 0; ppp < theOfficialPropertyNames.length; ppp++) {
-          //     if (theOfficialPropertyNames[ppp] === 'channels') {
-          //       var channels = theOfficial.channels
-          //       channels.forEach(Chanel => {
-          //         if (!(Chanel.type === 'GooglePlus')) {
-          //           var channel = Chanel.type
-          //           var channelID = Chanel.id
-          //           if (channel === 'YouTube') {
-          //             channelIcon.href = 'http://www.youtube.com/' + channelID
-          //             channelIconPic.src = 'https://i.imgur.com/b4J5pf1.png'
-          //           } else if (channel === 'Facebook') {
-          //             channelIcon.href = 'http://www.facebook.com/' + channelID
-          //             channelIconPic.src = 'https://i.imgur.com/MvZ9x3Z.png'
-          //           } else if (channel === 'Twitter') {
-          //             channelIcon.href = 'http://www.twitter.com/' + channelID
-          //             channelIconPic.src = 'https://i.imgur.com/ZnowWs0.png'
-          //           }
-          //         }
-          //       })
-          //     }
-          //   }
-          // })
         }
       }
+      console.log('📛📛📛 ➖➖➖➖➖➖➖➖ all rep info ➖➖➖➖➖➖➖➖  📛📛📛' + '\n' + JSON.stringify(this.divisionsAndOfficials, null, '\t'))
     }
   },
-  mounted () {
+  beforeMount () {
     this.importData()
     this.dataShaker()
+  },
+  mounted () {
+
   }
 }
 </script>
