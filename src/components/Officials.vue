@@ -11,24 +11,69 @@
 
     <div class="hotBod">
       <div id="officialsBody">
-        <div v-for="item in divisionsAndOfficials">
-            <div class="sectionHeader">
-              {{ item.division }}
-            </div>
-            <div v-for="rep in item.representatives">
-              <img style="height: 200px; width: auto;" :src="rep.repPhotoURL" /> <br/>
-              <span>{{ rep.repName }}</span><br />
-              <span>{{ rep.repTitle }}</span><br /></br/>
-            </div>
+
+      <!-- NEW CONTAINER FOR CREATING CARDS BELOW -->
+
+      <div v-for="item in divisionsAndOfficials">
+        <div class="sectionHeader">
+          {{ item.division }}
         </div>
+        <v-container
+          fluid
+          grid-list-lg
+        >
+          <v-layout row wrap>
+            <v-flex xs12 sm6 md6 v-for="rep in item.representatives">
+              <v-card color="white" class="mb-2 pb-0">
+
+                <v-layout row>
+
+                  <v-flex xs7 class="pt-1 pr-0 pb-0 mb-0 pl-3">
+                    <v-card-title class="pt-4 pr-0 pb-2 mb-0" primary-title>
+                      <div>
+                        <div class="repName text-xs-left" xs7>
+                          {{ rep.repName }}
+                        </div>
+                      </div>
+                    </v-card-title>
+                    <v-card-text class="text-xs-left mt-0 pt-0 pb-0 repTitle">
+                      {{ rep.repTitle }}
+                    </v-card-text>
+                  </v-flex>
+                  <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
+                  <v-flex xs5 sm7 md7 class="pr-4 pt-0 mt-3 mb-0 pb-0">
+                    <v-img :src="rep.repPhotoURL"></v-img>
+                  </v-flex>
+
+                </v-layout>
+
+                <v-card-actions class="pt-0 mt-2">
+                  <v-spacer></v-spacer>
+                  <v-btn icon @click="show = !show">
+                     Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+                  </v-btn>
+                </v-card-actions>
+
+                <v-slide-y-transition>
+                  <v-card-text class="text-xs-left" v-show="show">
+                    I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+                  </v-card-text>
+                </v-slide-y-transition>
+
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
       </div>
+
+      <!-- OLD CONTAINER BELOW -->
       <v-container
         fluid
         grid-list-lg
       >
         <v-layout row wrap>
 
-          <v-flex xs12 sm6 md6>
+          <v-flex  xs12 sm6 md6>
             <v-card color="white" class="mb-2 pb-0">
 
               <v-layout row>
@@ -36,94 +81,11 @@
                 <v-flex xs7 class="pt-1 pr-0 pb-0 mb-0 pl-3">
                   <v-card-title class="pt-4 pr-0 pb-2 mb-0" primary-title>
                     <div>
-                      <div class="repName text-xs-left" xs7>Rep Name</div>
+                      <div class="repName text-xs-left" xs7>Donald J. Trump</div>
                     </div>
                   </v-card-title>
-                  <v-card-text class="text-xs-left mt-0 pt-0 pb-0">
-                    Rep Title<br />
-                    Rep Party
-                  </v-card-text>
-                </v-flex>
-                <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
-                <v-flex xs5 sm7 md7 class="pr-4 pt-0 mt-3 mb-0 pb-0">
-                  <v-img
-                    src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Nancy_Pelosi_2012.jpg"
-                  ></v-img>
-                </v-flex>
-
-              </v-layout>
-
-              <v-card-actions class="pt-0 mt-2">
-                <v-spacer></v-spacer>
-                <v-btn icon @click="show = !show">
-                   Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-
-              <v-slide-y-transition>
-                <v-card-text class="text-xs-left" v-show="show">
-                  I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-                </v-card-text>
-              </v-slide-y-transition>
-
-            </v-card>
-          </v-flex>
-
-          <v-flex xs12 sm6 md6>
-            <v-card color="white" class="mb-2 pb-0">
-
-              <v-layout row>
-
-                <v-flex xs7 class="pt-1 pr-0 pb-0 mb-0 pl-3">
-                  <v-card-title class="pt-4 pr-0 pb-2 mb-0" primary-title>
-                    <div>
-                      <div class="repName text-xs-left" xs7>Rep Name</div>
-                    </div>
-                  </v-card-title>
-                  <v-card-text class="text-xs-left mt-0 pt-0 pb-0">
-                    Rep Title<br />
-                    Rep Party
-                  </v-card-text>
-                </v-flex>
-                <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
-                <v-flex xs5 sm7 md7 class="pr-4 pt-0 mt-3 mb-0 pb-0">
-                  <v-img
-                    src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Nancy_Pelosi_2012.jpg"
-                  ></v-img>
-                </v-flex>
-
-              </v-layout>
-
-              <v-card-actions class="pt-0 mt-2">
-                <v-spacer></v-spacer>
-                <v-btn icon @click="show = !show">
-                   Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-
-              <v-slide-y-transition>
-                <v-card-text class="text-xs-left" v-show="show">
-                  I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-                </v-card-text>
-              </v-slide-y-transition>
-
-            </v-card>
-          </v-flex>
-
-          <v-flex xs12 sm6 md6>
-            <v-card color="white" class="mb-2 pb-0">
-
-              <v-layout row>
-
-                <v-flex xs7 class="pt-1 pr-0 pb-0 mb-0 pl-3">
-                  <v-card-title class="pt-4 pr-0 pb-2 mb-0" primary-title>
-                    <div>
-                      <div class="repName text-xs-left" xs7>Rep Name</div>
-                    </div>
-                  </v-card-title>
-                  <v-card-text class="text-xs-left mt-0 pt-0 pb-0">
-                    Rep Title<br />
-                    Rep Party
+                  <v-card-text class="text-xs-left mt-0 pt-0 pb-0 repTitle">
+                    President of the United States
                   </v-card-text>
                 </v-flex>
                 <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
@@ -163,8 +125,7 @@
                     </div>
                   </v-card-title>
                   <v-card-text class="text-xs-left mt-0 pt-0 pb-0 repTitle">
-                    Rep Title<br />
-                    Rep Party
+                    Rep Title
                   </v-card-text>
                 </v-flex>
                 <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
@@ -203,9 +164,88 @@
                       <div class="repName text-xs-left" xs7>Rep Name</div>
                     </div>
                   </v-card-title>
-                  <v-card-text class="text-xs-left mt-0 pt-0 pb-0">
-                    Rep Title<br />
-                    Rep Party
+                  <v-card-text class="text-xs-left mt-0 pt-0 pb-0 repTitle">
+                    Rep Title
+                  </v-card-text>
+                </v-flex>
+                <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
+                <v-flex xs5 sm7 md7 class="pr-4 pt-0 mt-3 mb-0 pb-0">
+                  <v-img
+                    src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Nancy_Pelosi_2012.jpg"
+                  ></v-img>
+                </v-flex>
+
+              </v-layout>
+
+              <v-card-actions class="pt-0 mt-2">
+                <v-spacer></v-spacer>
+                <v-btn icon @click="show = !show">
+                   Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+                </v-btn>
+              </v-card-actions>
+
+              <v-slide-y-transition>
+                <v-card-text class="text-xs-left" v-show="show">
+                  I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+                </v-card-text>
+              </v-slide-y-transition>
+
+            </v-card>
+          </v-flex>
+
+          <v-flex xs12 sm6 md6>
+            <v-card color="white" class="mb-2 pb-0">
+
+              <v-layout row>
+
+                <v-flex xs7 class="pt-1 pr-0 pb-0 mb-0 pl-3">
+                  <v-card-title class="pt-4 pr-0 pb-2 mb-0" primary-title>
+                    <div>
+                      <div class="repName text-xs-left" xs7>Rep Name</div>
+                    </div>
+                  </v-card-title>
+                  <v-card-text class="text-xs-left mt-0 pt-0 pb-0 repTitle">
+                    Rep Title
+                  </v-card-text>
+                </v-flex>
+                <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
+                <v-flex xs5 sm7 md7 class="pr-4 pt-0 mt-3 mb-0 pb-0">
+                  <v-img
+                    src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Nancy_Pelosi_2012.jpg"
+                  ></v-img>
+                </v-flex>
+
+              </v-layout>
+
+              <v-card-actions class="pt-0 mt-2">
+                <v-spacer></v-spacer>
+                <v-btn icon @click="show = !show">
+                   Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+                </v-btn>
+              </v-card-actions>
+
+              <v-slide-y-transition>
+                <v-card-text class="text-xs-left" v-show="show">
+                  I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+                </v-card-text>
+              </v-slide-y-transition>
+
+            </v-card>
+          </v-flex>
+
+          <v-flex xs12 sm6 md6>
+            <v-card color="white" class="mb-2 pb-0">
+
+              <v-layout row>
+
+                <v-flex xs7 class="pt-1 pr-0 pb-0 mb-0 pl-3">
+                  <v-card-title class="pt-4 pr-0 pb-2 mb-0" primary-title>
+                    <div>
+                      <div class="repName text-xs-left" xs7>Rep Name</div>
+                    </div>
+                  </v-card-title>
+                  <v-card-text class="text-xs-left mt-0 pt-0 pb-0 repTitle">
+                    Rep Title
                   </v-card-text>
                 </v-flex>
                 <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
@@ -237,7 +277,7 @@
       </v-container>
     </div>
   </div>
-
+</div>
 </template>
 
 <script>
@@ -422,14 +462,11 @@ export default {
 .v-responsive.v-image {
   position: relative;
   border-radius: 50%;
-  background-position: center center;
-  background-size: cover;                      /* <------ */
+  background-position: center 70%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
-.repName {
-  font-size: 120%;
-}
 .layout.row {
   /* height: 160px; */
 }
@@ -459,20 +496,23 @@ h1, h2 {
   .v-responsive {
     right: .1em;
   }
-  .layout.row {
-    /* height: 150px; */
-  }
 }
 @media only screen and (min-width: 600px) {
   .v-responsive.v-image {
-    height: 125px;
-    width: 125px;
+    height: 115px;
+    width: 115px;
   }
   .v-btn.v-btn--icon.theme--light {
     margin-right: .1em;
   }
   .container.grid-list-lg .layout:only-child {
     margin: 0em;
+  }
+  .repName {
+    font-size: 100%;
+  }
+  .repTitle {
+    font-size: 80%;
   }
 }
 @media only screen and (min-width: 700px) and (max-width: 749px) {
