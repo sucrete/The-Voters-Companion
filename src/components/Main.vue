@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopNav></TopNav>
+    <TopNav class="topnav"></TopNav>
   </div>
 </template>
 
@@ -15,5 +15,7 @@ export default {
 </script>
 
 <style>
-
+.topnav {
+  
+}
 </style>

@@ -147,7 +147,7 @@ export default {
     },
     setInfoAndPush () {
       console.log('setInfoAndPush fired')
-    
+
       if (self.voterAPI.voterInfo.objects[0].lookup_tools) {
         var LTArray = self.voterAPI.voterInfo.objects[0].lookup_tools
         for (var dubs = 0; dubs < LTArray.length; dubs++) {
@@ -220,7 +220,7 @@ export default {
   font-family: 'Karla', sans-serif;
   letter-spacing: .1em;
   color: #c5bfb9;
-  margin-top: 5em;
+  padding-top: 5em;
   margin-bottom: .5em;
   position: relative;
   text-align: center;

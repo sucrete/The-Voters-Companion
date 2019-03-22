@@ -48,26 +48,30 @@ export default {
 } */
 
 html {
-  background-color: rgb(190, 190, 190);
+  background: #d2d1d1;
   height: 100%;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+.v-tabs {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
 #app {
-  background-color:rgb(190, 190, 190);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 46rem;
   margin: auto;
-  margin-top: 1.5rem;
+  margin-top: 1.5em;
   margin-bottom: 5em;
   text-align: center;
-  /* box-shadow inspiration from Domenico on https://codepen.io/ryandom/pen/ALQkWq*/
+  /* box-shadow from Domenico on https://codepen.io/ryandom/pen/ALQkWq*/
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, .17), 0 0.8rem 0.8rem rgba(0, 0, 0, .1), 0 1.6rem 1.5rem rgba(0, 0, 0, .1), 0 3.2rem 3.2rem rgba(0, 0, 0, .1);
-  padding: 10px 24px;
+  /* padding: 10px 24px; */
   min-height: 52em;
   position: relative;
   border-radius: 3px;
@@ -99,8 +103,6 @@ html {
   padding-bottom: 1rem;
   position: relative;
   margin-bottom: -.99rem;
-  border-radius: 3px;
-  margin-top: .4rem;
 }
 #overviewMarquee {
   font-size: 200%;
@@ -187,8 +189,8 @@ body {
   margin: 0;
   padding: 0;
   /* 👇 the color behind the 'page' element */
-  background: #fafafa;
   height: 100%;
+  display: block;
 }
 
 a {

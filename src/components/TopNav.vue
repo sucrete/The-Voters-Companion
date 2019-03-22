@@ -12,7 +12,7 @@
     <v-tab :key="ii">
       {{ ii }}
     </v-tab>
-    <v-tab :key="iii">
+    <v-tab class="mr-4" :key="iii">
       {{ iii }}
     </v-tab>
 
@@ -54,4 +54,5 @@ export default {
 </script>
 
 <style>
+
 </style>

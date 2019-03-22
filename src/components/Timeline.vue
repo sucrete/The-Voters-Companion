@@ -3,7 +3,7 @@
   <div id="Timeline">
 
     <div class="fullwidth">
-  
+
       <div id="overviewNoticeWrapper">
         <div id="overviewMarquee">
           Timeline
@@ -381,7 +381,7 @@ ul>li {
   font-weight: 500;
 }
 #app {
-  background-color: #f7f7f0;
+  background-color: #f7f7f3;
   margin-bottom: 10em;
 }
 @media screen and (max-width: 700px) {
