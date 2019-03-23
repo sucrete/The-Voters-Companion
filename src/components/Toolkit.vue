@@ -48,7 +48,6 @@ export default {
 
 <style >
 #app {
-  background-color: rgb(250, 250, 250);
   padding-bottom: 16em;
 }
 footer {

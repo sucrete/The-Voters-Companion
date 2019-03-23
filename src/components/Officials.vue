@@ -49,14 +49,17 @@
 
                 <v-card-actions class="pt-0 mt-2">
                   <v-spacer></v-spacer>
-                  <v-btn icon @click="show = !show">
+                  <v-btn v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels" icon @click="show = !show">
                      Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
                   </v-btn>
                 </v-card-actions>
 
                 <v-slide-y-transition>
-                  <v-card-text class="text-xs-left" v-show="show">
-                    I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+                  <v-card-text class="text-xs-left repInfo" v-show="show">
+                    {{ rep.addressLine1 }} <br />
+                    {{ rep.addressLine2 }} <br />
+                    <br />
+                    {{ rep.phone }}
                   </v-card-text>
                 </v-slide-y-transition>
 
@@ -159,7 +162,6 @@ export default {
       var GState = this.googleState
       var divs = GState.data.divisions
       var keys = this.divisionKeys
-      console.log(JSON.stringify(GState, null, '\t'))
       for (let ttt = 0; ttt < keys.length; ttt++) {
         if (divs[keys[ttt]].hasOwnProperty('officeIndices')) {
           var upperCasedDivisionName1 = this.toTitleCase(divs[keys[ttt]].name)
@@ -171,13 +173,10 @@ export default {
           var superSaver = {}
           superSaver.division = upperCasedDivisionName1
           superSaver.representatives = []
-          console.log('🇲🇽 🇲🇽 🇲🇽  uno')
           divs[keys[ttt]].officeIndices.forEach(thing1 => {
-            console.log('🇲🇽 🇲🇽 🇲🇽  dos')
             var GOffice1 = GState.data.offices[thing1]
             // below is the biodata for each representative using GOffice indices on GState.data e.g. GState.data.officials[GOffice1.officialIndices[1]]
             GOffice1.officialIndices.forEach(corazon => {
-              console.log('🇲🇽 🇲🇽 🇲🇽  tres')
               var officialObject1 = {}
               officialObject1.index = corazon
               officialObject1.repTitle = GOffice1.name
@@ -188,17 +187,14 @@ export default {
               } else if (corazon === 1) {
                 officialObject1.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
               }
-              console.log('🇨🇵🇨🇵🇨🇵')
               var theOfficial = GState.data.officials[corazon]
               var theOfficialPropertyNames = Object.getOwnPropertyNames(theOfficial)
               officialObject1.party = theOfficial.party
-              var addressLine1 = 'not available'
-              var addressLine2 = 'not available'
+              var addressLine1 = null
+              var addressLine2 = null
               if (theOfficial.address !== undefined) {
                 var officialAddress = theOfficial.address[0]
-                console.log('all them property names on the Official' + theOfficialPropertyNames)
                 for (var yyy = 0; yyy < theOfficialPropertyNames.length; yyy++) {
-                  console.log('🇧🇦🇧🇦🇧🇦')
                   if (theOfficialPropertyNames[yyy] === 'address') {
                     var theOfficialAddressPropertyNames = Object.getOwnPropertyNames(officialAddress)
                     var cityStateZip = officialAddress.city + ', ' + officialAddress.state + ' ' + officialAddress.zip
@@ -211,34 +207,22 @@ export default {
                   }
                 }
               }
-              console.log('🇲🇽 🇲🇽 🇲🇽  cuatro')
               officialObject1.addressLine1 = addressLine1
-              console.log('🇯🇵🇯🇵🇯🇵  coco')
               officialObject1.addressLine2 = addressLine2
-              console.log('🇦🇶🇦🇶🇦🇶')
-              var naw = 'not available'
               if (theOfficial.phones !== undefined) {
                 officialObject1.phone = theOfficial.phones[0]
               } else {
-                officialObject1.phone = naw
+                officialObject1.phone = null
               }
-              console.log('🇧🇷🇧🇷🇧🇷' + officialObject1.phone + 'official index on this loop is:   ' + corazon)
               if (theOfficial.urls !== undefined) {
-                console.log('🇧🇬🇧🇬🇧🇬 nope it\'s here')
                 officialObject1.website = theOfficial.urls[0]
-                console.log('sup from the other side 🇧🇬🇧🇬🇧🇬')
               } else {
-                officialObject1.website = naw
+                officialObject1.website = null
               }
-              console.log('🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵  ' + officialObject1.website)
               officialObject1.channels = []
-              console.log('🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵 ' + theOfficialPropertyNames.length + ' 🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵🇯🇵 ')
               for (var ppp = 0; ppp < theOfficialPropertyNames.length; ppp++) {
-                console.log('🇲🇽 🇲🇽 🇲🇽  cinco')
                 if (theOfficialPropertyNames[ppp] === 'channels') {
-                  console.log('🇲🇽 🇲🇽 🇲🇽  seis')
                   theOfficial.channels.forEach(Chanel => {
-                    console.log('🇲🇽 🇲🇽 🇲🇽  seite')
                     var channelKeep = {}
                     channelKeep.channelIcon = ''
                     channelKeep.channelLink = ''
@@ -264,7 +248,6 @@ export default {
               superSaver.representatives.push(officialObject1)
             })
           })
-          console.log('🇲🇽 🇲🇽 🇲🇽  ocho')
           this.divisionsAndOfficials.push(superSaver)
         }
       }
@@ -275,8 +258,10 @@ export default {
     this.importData()
     this.dataShaker()
   },
-  mounted () {
-
+  computed: {
+    // infoCondition (obj) {
+    //   return obj.channels !== undefined || obj.addressLine1 !== null || obj.addressLine2 !== null || obj.phone !== null
+    // }
   },
   components: {
 
@@ -287,7 +272,6 @@ export default {
 <style >
 
 #app {
-  background-color: rgb(250, 250, 250);
   padding-bottom: 16em;
 }
 footer {

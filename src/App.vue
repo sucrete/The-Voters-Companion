@@ -132,73 +132,7 @@ html {
   letter-spacing: .06em;
   padding-left: .4em;
 }
-.simple-navigation-header {
-  color: #3c9035;
-  width: 47em;
-  font-size: 105%;
-  margin: 0 auto;
-  position: relative;
-  background-color: transparent;
-  height: 4rem;
-  z-index: 5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-#takeMeOmh {
-  font-family: 'Karla', sans-serif;
-  font-weight: 700;
-  font-size: 127%;
-  color: rgb(242, 128, 63);
-  transition: color 100ms ease-in-out;
-  text-align: center;
-  letter-spacing: .09em;
-}
-#takeMeOmh:hover {
-  color: rgb(226, 119, 59);
-}
-#takeMeOmhDaddy {
-  top: -.2em;
-  position: relative;
-  /* left: .2rem; */
-}
-.mui-btn {
-  width: 125px;
-  font-size: 84%;
-  font-weight: 400;
-  background-color: #f7f7f0;
-  border: none;
-  top: -.2rem;
-  letter-spacing: .07em;
-  box-sizing: border-box;
-}
-#lefty, #righty {
-  position: relative;
-}
-
-.leftArrow, .rightArrow {
-  transition: transform 120ms;
-  height: 45%;
-  width: auto;
-  text-transform: uppercase;
-  position: relative;
-  top: -.1em;
-}
-.leftArrow {
-  margin-right: .5em;
-}
-.rightArrow {
-  margin-left: .5em;
-}
-#lefty:hover .leftArrow {
-  transform: translate(-3px, 0px);
-  -webkit-transform: translate(-3px, 0px);
-}
-#righty:hover .rightArrow {
-  transform: translate(3px, 0px);
-  -webkit-transform: translate(3px, 0px);
-}
 a:hover {
   text-decoration: none !important;
 }

@@ -133,7 +133,6 @@ export default {
 
 <style >
 #app {
-  background-color: rgb(250, 250, 250);
   padding-bottom: 16em;
 }
 footer {
@@ -340,7 +339,6 @@ ul>li {
   font-weight: 500;
 }
 #app {
-  background-color: #f7f7f3;
   margin-bottom: 10em;
 }
 @media screen and (max-width: 700px) {
