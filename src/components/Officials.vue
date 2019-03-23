@@ -42,7 +42,7 @@
                   </v-flex>
                   <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
                   <v-flex xs5 sm7 md7 class="pr-4 pt-0 mt-3 mb-0 pb-0">
-                    <v-img :src="rep.repPhotoURL"></v-img>
+                    <v-img position="50% 2%" :src="rep.repPhotoURL"></v-img>
                   </v-flex>
 
                 </v-layout>
@@ -90,7 +90,7 @@
                 </v-flex>
                 <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
                 <v-flex xs5 sm7 md7 class="pr-4 pt-0 mt-3 mb-0 pb-0">
-                  <v-img
+                  <v-img position="50% 25%"
                     src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Nancy_Pelosi_2012.jpg"
                   ></v-img>
                 </v-flex>
@@ -285,12 +285,16 @@ export default {
 </script>
 
 <style >
+
 #app {
   background-color: rgb(250, 250, 250);
   padding-bottom: 16em;
 }
 footer {
   display: block;
+}
+#overviewNoticeWrapper {
+  margin-bottom: .7em;
 }
 .v-btn--icon, .v-btn--icon:before {
   border-radius: 20px;
@@ -309,10 +313,9 @@ footer {
   font-size: 20px !important;
 }
 
-.v-responsive.v-image {
+.v-image__image.v-image__image--cover {
   position: relative;
   border-radius: 50%;
-  background-position: 50% 25%%;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -321,16 +324,15 @@ footer {
   /* height: 160px; */
 }
 .sectionHeader {
-  margin-top: .5rem;
   color: #343434;
   font-family: 'Karla', sans-serif;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   /* position: relative; */
   font-size: 130%;
-  padding-left: 2rem;
-  margin-bottom: .5rem;
+  padding-left: 2em;
   letter-spacing: .08em;
+  padding-bottom: .65em;
 }
 
 h1, h2 {
