@@ -1,26 +1,12 @@
 /* eslint-disable */
 <template>
-  <div class="Toolkit">
-    <!-- simple nav header -->
-    <!-- <div class="simple-navigation-header">
-      <button id="lefty" type="button" class="mui-btn">
-        <router-link to="Officials">
-          <img class="leftArrow" :src=" leftArrow "/>OFFICIALS
-        </router-link>
-      </button>
-      <a href="/" id="takeMeOmhDaddy"><p id="takeMeOmh">THE VOTER'S COMPANION</p></a>
-      <button id="righty" type="button" class="mui-btn">
-        <router-link to="Timeline">
-          TIMELINE<img class="rightArrow" :src=" rightArrow "/>
-        </router-link>
-      </button>
-    </div> -->
+  <div style="position: relative;" class="Toolkit">
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
         Voter's Toolkit
       </div>
       <div id="overviewNotice">
-        Equip yourself with the information you need to vote.
+
       </div>
       <a id="bigButtonLink" v-if="presentBadge" target="_blank" v-bind:href="regURL">
         <img id="bigButton" :src=" register ">
@@ -40,16 +26,12 @@
 <script>
 import TabRouter from './Tabs.vue'
 import registerBi from '../assets/registerBadge.png'
-import LArrow from '../assets/left-arrow.svg'
-import RArrow from '../assets/right-arrow.svg'
 
 export default {
   name: 'Toolkit',
   data () {
     return {
       register: registerBi,
-      leftArrow: LArrow,
-      rightArrow: RArrow,
       presentBadge: this.$store.getters.shouldIDisplayBadge,
       regURL: this.$store.getters.getUserBadgeURL
     }
@@ -65,7 +47,13 @@ export default {
 </script>
 
 <style >
-
+#app {
+  background-color: rgb(250, 250, 250);
+  padding-bottom: 16em;
+}
+footer {
+  display: block;
+}
 #navTabs {
   margin-top: 1rem;
 }
@@ -199,7 +187,5 @@ h2, h6 {
     width: 15vw;
   }
 }
-#app {
-  margin-bottom: 10em;
-}
+
 </style>

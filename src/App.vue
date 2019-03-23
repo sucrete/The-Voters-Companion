@@ -2,16 +2,22 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <footer>
+      a bunch of stuff
+      <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank">
+        <img :src=" logFin "/>
+      </a>
+    </footer>
   </div>
 </template>
 
 <script>
-
+import logoFinal from './assets/mauve2.png'
 export default {
   name: 'app',
   data () {
     return {
-      addy: '',
+      logFin: logoFinal,
       bolstarMsg: 'you did it kiddo',
       civicData: '',
       params: '',
@@ -46,7 +52,18 @@ export default {
   filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));
   -webkit-filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));
 } */
-
+footer {
+position: absolute;
+background-color: rgba(214, 214, 214, 0.47);
+height: 15em;
+width: 97%;
+bottom: 0px;
+color: #3e3830;
+margin: .67em .7em;
+padding: 16px;
+border-radius: 5px;
+display: block;
+}
 html {
   background: #d2d1d1;
   height: 100%;
@@ -75,6 +92,7 @@ html {
   min-height: 52em;
   position: relative;
   border-radius: 3px;
+  padding-bottom: 16em;
 }
 
 .hotBod {
@@ -306,10 +324,12 @@ input, input:focus {
 }
 @media only screen and (max-width: 750px) {
     #app {
-      width: 98vw;
-      margin-top: 3px !important;
-      min-height: 98.9vh !important;
-      box-shadow: -1px 5px 9px rgba(0, 0, 0, 0.0), 1px 3px 7px rgba(0,0,0,0.0)
+      width: 100vw;
+      min-height: 100vh !important;
+      padding-bottom: 0px;
+      margin-bottom: 0px !important;
+      margin-top: 0px;
+      box-shadow: 0 0 0 0 rgba(0,0,0, .0)
     }
     .simple-navigation-header {
       width: 85vw;
@@ -325,8 +345,6 @@ input, input:focus {
       padding-right: 3em;
       padding-left: .2em;
     }
-    #bigButton {
-      visibility: hidden;
-    }
+
 }
 </style>

@@ -6,9 +6,7 @@
     <div id="USVoteHeader">
       MADE WITH SUPPORT FROM THE <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. VOTE FOUNDATION</a>
     </div>
-    <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank">
-      <img hidden :src=" logFin "/>
-    </a>
+
     <hr noshade  size="1" id="topLine"/>
     <h1 id="siteTitle" >THE  VOTER'S  COMPANION</h1>
     <div id="subtitle">
@@ -35,12 +33,10 @@
     </div>
 
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
-
         <div class="image">
           <img style="width: 23px; height: auto;" :src=" lightYellowStar "/>
         </div>
         <span style="font-family: Karla; color: cornsilk; text-align: center;"> LOADING... </span>
-
     </modal>
 
   </div>
@@ -54,14 +50,11 @@ import carpet from '../assets/yellow_star.svg'
 import star1 from '../assets/starOneLight.svg'
 import star2 from '../assets/starTwoLight.svg'
 import star3 from '../assets/starThreeLight.svg'
-import logoFinal from '../assets/mauve2.png'
 
 export default {
   name: 'landing',
   data () {
     return {
-      addy: '',
-      logFin: logoFinal,
       lightYellowStar: carpet,
       starOne: star1,
       starTwo: star2,
@@ -212,8 +205,12 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
+footer {
+  display: none;
+}
 #app {
   background-color: #4d5975;
+  padding-bottom: 0em;
 }
 
 #USVoteHeader {
