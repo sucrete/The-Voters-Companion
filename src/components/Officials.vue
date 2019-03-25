@@ -49,7 +49,7 @@
 
                 <v-card-actions class="pt-0 mt-2">
                   <div v-if="rep.website" class="text-xs-center">
-                    <a :href="rep.website" target="_blank"><v-btn outline round>Website</v-btn></a>
+                    <a :href="rep.website" target="_blank"><v-btn depressed round class="repButton ml-1">Website</v-btn></a>
                   </div>
                   <v-spacer></v-spacer>
                   <v-btn v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels[0]" icon @click="show = !show">
@@ -105,7 +105,7 @@
 
               <v-card-actions class="pt-0 mt-2">
                 <div class="text-xs-center">
-                  <a href="http://www.google.com" target="_blank"><v-btn flat round>Website</v-btn></a>
+                  <a href="http://www.google.com" target="_blank"><v-btn depressed round>Website</v-btn></a>
                 </div>
                 <v-spacer></v-spacer>
                 <v-btn icon @click="show = !show">
@@ -276,6 +276,9 @@ export default {
 </script>
 
 <style >
+.repButton {
+  color: #8e8984;
+}
 .spacer {
   min-height: 44px;
 }
