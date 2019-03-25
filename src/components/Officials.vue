@@ -48,13 +48,16 @@
                 </v-layout>
 
                 <v-card-actions class="pt-0 mt-2">
+                  <div v-if="rep.website" class="text-xs-center">
+                    <a :href="rep.website" target="_blank"><v-btn outline round>Website</v-btn></a>
+                  </div>
                   <v-spacer></v-spacer>
-                  <v-btn v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels" icon @click="show = !show">
+                  <v-btn v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels[0]" icon @click="show = !show">
                      Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
                   </v-btn>
                 </v-card-actions>
 
-                <v-slide-y-transition>
+                <v-slide-y-transition v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels[0]">
                   <v-card-text class="text-xs-left repInfo" v-show="show">
                     {{ rep.addressLine1 }} <br />
                     {{ rep.addressLine2 }} <br />
@@ -101,6 +104,9 @@
               </v-layout>
 
               <v-card-actions class="pt-0 mt-2">
+                <div class="text-xs-center">
+                  <a href="http://www.google.com" target="_blank"><v-btn flat round>Website</v-btn></a>
+                </div>
                 <v-spacer></v-spacer>
                 <v-btn icon @click="show = !show">
                    Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
@@ -270,7 +276,9 @@ export default {
 </script>
 
 <style >
-
+.spacer {
+  min-height: 44px;
+}
 #app {
   padding-bottom: 16em;
 }

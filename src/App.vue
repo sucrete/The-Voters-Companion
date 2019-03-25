@@ -65,7 +65,7 @@ border-radius: 5px;
 display: block;
 }
 html {
-  background: #d2d1d1;
+  background: linen url( "https://cl.ly/image/381U2k0A3L3S/bg.png" );
   height: 100%;
   box-sizing: border-box;
 }
