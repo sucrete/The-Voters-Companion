@@ -39,6 +39,9 @@ export default {
 <style>
 
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+.v-tabs__div {
+  cursor: pointer;
+}
 #bigButton {
   position: absolute;
   right: 1rem;

@@ -49,11 +49,11 @@
 
                 <v-card-actions class="pt-0 mt-2">
                   <div v-if="rep.website" class="text-xs-center">
-                    <a :href="rep.website" target="_blank"><v-btn depressed round class="repButton ml-1">Website</v-btn></a>
+                    <a :href="rep.website" target="_blank"><v-btn depressed round small outline class="repButton ml-1">Website</v-btn></a>
                   </div>
                   <v-spacer></v-spacer>
-                  <v-btn v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels[0]" icon @click="show = !show">
-                     Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+                  <v-btn class="infoButton" v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels[0]" icon @click="show = !show">
+                     <v-icon style="font-size: 1.3em;">{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
                   </v-btn>
                 </v-card-actions>
 
@@ -104,12 +104,12 @@
               </v-layout>
 
               <v-card-actions class="pt-0 mt-2">
-                <div class="text-xs-center">
-                  <a href="http://www.google.com" target="_blank"><v-btn depressed round>Website</v-btn></a>
+                <div class="text-xs-center buttonWrapper" >
+                  <a href="http://www.google.com" target="_blank"><v-btn class="repButton mr-2" small depressed round outline>Website</v-btn></a>
                 </div>
                 <v-spacer></v-spacer>
-                <v-btn icon @click="show = !show">
-                   Info <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+                <v-btn class="infoButton" icon @click="show = !show">
+                   <v-icon style="font-size: 1.5em;">{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
                 </v-btn>
               </v-card-actions>
 
@@ -276,8 +276,17 @@ export default {
 </script>
 
 <style >
+.buttonWrapper {
+  margin-left: .5em;
+}
 .repButton {
-  color: #8e8984;
+  color: #8e8984 !important;
+}
+.repButton:hover {
+  color: #363433 !important;
+}
+.repButton {
+  font-size: 80%;
 }
 .spacer {
   min-height: 44px;
@@ -291,19 +300,7 @@ footer {
 #overviewNoticeWrapper {
   margin-bottom: .7em;
 }
-.v-btn--icon, .v-btn--icon:before {
-  border-radius: 20px;
-}
-.v-btn--icon {
-  min-width: 4.5em;
-  height: 36px;
-  width: 45px;
-  padding-left: .6em;
-}
-.v-btn {
-  font-weight: 400;
-  text-transform: none;
-}
+
 .headline {
   font-size: 20px !important;
 }
