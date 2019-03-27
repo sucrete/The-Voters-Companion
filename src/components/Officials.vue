@@ -52,13 +52,13 @@
                     <a :href="rep.website" target="_blank"><v-btn depressed round small outline class="repButton ml-1">Website</v-btn></a>
                   </div>
                   <v-spacer></v-spacer>
-                  <v-btn class="infoButton" v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels[0]" icon @click="show = !show">
-                     <v-icon style="font-size: 1.3em;">{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+                  <v-btn class="infoButton mr-1" v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels[0]" icon @click="rep.show = !rep.show">
+                     <v-icon style="font-size: 1.3em;">{{ rep.show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
                   </v-btn>
                 </v-card-actions>
 
                 <v-slide-y-transition v-if="rep.phone || rep.addressLine1 || rep.addressLine2 || rep.channels[0]">
-                  <v-card-text class="text-xs-left repInfo" v-show="show">
+                  <v-card-text class="text-xs-left repInfo" v-show="rep.show">
                     {{ rep.addressLine1 }} <br />
                     {{ rep.addressLine2 }} <br />
                     <br />
@@ -185,6 +185,7 @@ export default {
             GOffice1.officialIndices.forEach(corazon => {
               var officialObject1 = {}
               officialObject1.index = corazon
+              officialObject1.show = false
               officialObject1.repTitle = GOffice1.name
               officialObject1.repName = GState.data.officials[corazon].name
               officialObject1.repPhotoURL = GState.data.officials[corazon].photoUrl || 'https://wabar.asn.au/staging/wp-content/themes/wabar/img/user-placeholder.jpg'
