@@ -3,7 +3,6 @@
   <div style="position: relative;" class="Toolkit">
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
-        Voter's Toolkit
       </div>
       <div id="overviewNotice">
 

@@ -2,7 +2,6 @@
   <div class="Officials">
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee">
-        Officials
       </div>
       <div id="overviewNotice">
         These are your elected officials, grouped by regional scope.
@@ -29,7 +28,7 @@
                 <v-layout row>
 
                   <v-flex xs7 class="pt-1 pr-0 pb-0 mb-0 pl-3 repTopText">
-                    <v-card-title class="pt-4 pr-0 pb-2 mb-0" primary-title>
+                    <v-card-title class="pt-3 pr-0 pb-2 mb-0" primary-title>
                       <div>
                         <div class="repName text-xs-left" xs7>
                           {{ rep.repName }}
@@ -277,6 +276,9 @@ export default {
 </script>
 
 <style >
+.repTitle {
+  line-height: 125%;
+}
 .buttonWrapper {
   margin-left: .5em;
 }
@@ -290,16 +292,13 @@ export default {
   font-size: 80%;
 }
 .spacer {
-  min-height: 44px;
+  min-height: 34px;
 }
 #app {
   padding-bottom: 16em;
 }
 footer {
   display: block;
-}
-#overviewNoticeWrapper {
-  margin-bottom: .7em;
 }
 
 .headline {

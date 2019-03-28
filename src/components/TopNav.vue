@@ -2,9 +2,11 @@
 <template>
   <v-tabs
     right
-    color="blue-grey lighten-4"
+    color="#acb4c5"
   >
-    <v-tabs-slider color="#ffa03a"></v-tabs-slider>
+    <span><a class="tabTitle" href="/"><span>The</span>Voter's Companion</a></span>
+    <v-spacer></v-spacer>
+    <v-tabs-slider color="white"></v-tabs-slider>
 
     <v-tab :key="i">
       {{ i }}
@@ -12,7 +14,7 @@
     <v-tab :key="ii">
       {{ ii }}
     </v-tab>
-    <v-tab class="mr-4" :key="iii">
+    <v-tab class="mr-2" :key="iii">
       {{ iii }}
     </v-tab>
 
@@ -54,5 +56,34 @@ export default {
 </script>
 
 <style>
+.v-tabs__item {
+  color: white !important;
+  letter-spacing: .065em;
+  font-weight: 500;
+}
+.v-tabs__item.v-tabs__item--active {
 
+}
+.tabTitle {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+  padding-left: 2.3em;
+  color: #2b3b80 !important;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  letter-spacing: .05em;
+}
+.tabTitle:visited {
+  color: #2b3b80 !important;
+}
+.tabTitle span {
+  position:absolute;
+  left: 1.5em;
+  font-size: .6em;
+  -ms-transform: translateY(-10%);
+  transform: translateY(-10%);
+}
 </style>

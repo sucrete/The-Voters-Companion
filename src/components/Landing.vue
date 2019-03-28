@@ -8,13 +8,13 @@
     </div>
 
     <hr noshade  size="1" id="topLine"/>
-    <h1 id="siteTitle" >THE  VOTER'S  COMPANION</h1>
-    <div id="subtitle">
+    <h1 id="siteTitle" >The<br />Voter's<br /> Companion</h1>
+    <div id="subtitle" hidden>
       FOR U.S. VOTERS
     </div>
     <div id="inputEverything">
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
-      <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="WHAT IS YOUR ADDRESS?" />
+      <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
     </div>
     <hr noshade size="1" id="bottomLine"/>
     <div id="infoAndStarsWrapper">
@@ -209,7 +209,7 @@ footer {
   display: none;
 }
 #app {
-  background-color: #4d5975;
+  background-color: #acb4c5;
   padding-bottom: 0em;
 }
 
@@ -223,12 +223,11 @@ footer {
   text-align: center;
   font-size: 1.2em;
 }
-a#usvLink {
-  color: #c5bfb9 !important;
-  text-decoration:none;
+#USVoteHeader, a#usvLink, a#usvLink:visited, #subtitle, .button {
+  color: #fff !important;
 }
-#usvLink:visited {
-  color: #c5bfb9;
+a#usvLink {
+  text-decoration:none;
 }
 #topLine, #bottomLine {
   position: relative;
@@ -237,7 +236,7 @@ a#usvLink {
   margin: 0 auto;
   display: block;
   border: 0;
-  border-top: 1px solid #c5bfb9;
+  border-top: 1px solid #f5f4f4;
   padding: 0;
 }
 
@@ -254,25 +253,26 @@ a#usvLink {
 
 #siteTitle {
   z-index: 99;
-  color: #F1AC6E;
-  font-family: 'Karla', sans-serif !important;
-  text-align: center;
-  font-weight: 400;
-  font-size: 2.5em;
-  line-height: 110%;
-  margin-top: 3.5em;
+  font-family: 'Roboto', sans-serif;
+  color: #2b3b80;
+  text-align: left;
+  font-size: 4.5em;
+  line-height: 100%;
+  font-weight: 900;
+  margin-top: .9em;
+  padding-left: 1.6em;
   position: relative;
-  letter-spacing: .1em;
+  letter-spacing: .05em;
   /* text-shadow: 0.08em 0.08em 0 white; */
   /* -webkit-text-stroke: 3px #343434; */
 }
 #subtitle {
   position: relative;
-  color: #c5bfb9;
+  font-family: 'Karla', sans-serif;
   margin-top: 1.6em;
   text-align: center;
   letter-spacing: .1em;
-  font-size: 85%;
+  font-size: 1.2em;
 }
 #inputEverything {
   margin-top: 11em;
@@ -284,8 +284,8 @@ a#usvLink {
 #address-input {
   padding-left: 15px;
   display:block;
-  color: #c9bfb7;
-  background-color: rgb(89, 99, 72);
+  color: #807b77;
+  background-color: #d2d1d0;
   position: relative;
   width: 35em;
   margin: 0 auto;
@@ -295,30 +295,32 @@ a#usvLink {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
   transition: all 300ms ease-in-out;
-  text-transform: uppercase;
   height: 34px;
   border-radius: .3em;
-  box-shadow: inset 0px 2px 8px 0px rgba(51, 45, 40, 0.38), inset 0px 1px 3px -2px rgba(43, 40, 36, 0.43), 0 1px 1px 0px rgb(138, 125, 156);
+  box-shadow: inset 0px 2px 6px 0px rgb(150, 153, 158), inset 0px 1px 19px -7px rgb(146, 153, 167), 0 1px 1px 0px rgb(227, 229, 236);
 }
 
 input:focus {
   outline: none;
-  color: #c9bfb7 !important;
-  background-color: rgb(102, 113, 83);
+  color: #605c59 !important;
+  background-color: #dad7d5;
 }
 input:hover::-webkit-input-placeholder {
-  color: #c9bfb7 !important;
+  color: #605c59 !important;
 }
 input:focus::-webkit-input-placeholder {
-  color: #c9bfb7 !important;
+  color: #605c59 !important;
 }
 #address-input:hover {
-  background-color: rgb(102, 113, 83) !important;
+  background-color: #dad7d5 !important;
 }
 #address-input:focus {
-  color: #c9bfb7 !important;
-  background-color: rgb(102, 113, 83)!important;
+  color: #605c59 !important;
+  background-color: #dad7d5 !important;
 }
+/* #address-input:focus, #address-input:hover {
+  box-shadow: inset 0 1px 1px 0px rgb(249, 249, 249);
+} */
 .ap-input {
   border: none !important;
 }
@@ -329,16 +331,17 @@ input:focus::-webkit-input-placeholder {
   -webkit-transform: translateY(7%);
   transform: translateY(7%);
   outline: none;
-  right: 7.5em;
+  right: 5em;
+  top: .09em;
 }
 .ap-icon-clear {
   right: 4.25rem;
 }
 .ap-dropdown-menu {
   margin-top: 0px;
-  /* width: 26em;
-  top: 3.1em !important;
-  left: 5.1em !important; */
+  width: 35em;
+  top: 2.8em !important;
+  left: 5.45em !important;
 }
 input:focus {
   outline: none;
@@ -349,7 +352,7 @@ input:focus {
 }
 
 input::placeholder {
-  color: rgb(175, 168, 161) !important;
+  color: #807b77 !important;
 }
 
 #infoAndStarsWrapper {
@@ -369,7 +372,6 @@ input::placeholder {
           backface-visibility: hidden;
   display: block;
   font-family: 'Karla', sans-serif;
-  color: #c5bfb9;
   font-size: 1.2em;
   margin: 0 10px;
   position: relative;

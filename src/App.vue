@@ -38,7 +38,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+@import url('https://fonts.googleapis.com/css?family=Karla:400|Roboto:400,500,700,900');
 .v-tabs__div {
   cursor: pointer;
 }
@@ -123,16 +123,17 @@ html {
   padding-top: 2.2rem;
   padding-bottom: 1rem;
   position: relative;
-  margin-bottom: -.99rem;
+  margin-bottom: 0em;
 }
 #overviewMarquee {
   font-size: 200%;
   color: #5b524a;
+  font-family: 'Roboto', sans-serif;
   text-align: left;
   margin-bottom: .5em;
   text-shadow: 0px 2px 4px rgba(0,0,0,0.2);
-  font-weight: 400;
-  letter-spacing: .06em;
+  font-weight: 500;
+  letter-spacing: .08em;
   padding-left: .4em;
 }
 

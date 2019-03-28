@@ -6,16 +6,116 @@
 
       <div id="overviewNoticeWrapper">
         <div id="overviewMarquee">
-          Timeline
         </div>
         <div id="overviewNotice">
 
         </div>
-        <a id="bigButtonLink" v-if="presentBadge" target="_blank" v-bind:href="regURL">
+        <a hidden id="bigButtonLink" v-if="presentBadge" target="_blank" v-bind:href="regURL">
           <img id="bigButton" :src=" register ">
         </a>
       </div>
       <!-- body -->
+
+      <v-container class="timelineContainer" style="max-width: 42em;">
+        <v-timeline dense>
+          <v-timeline-item
+            class="mb-3"
+            hide-dot
+          >
+            <span>for space</span>
+          </v-timeline-item>
+          <v-timeline-item
+            class="mb-4"
+            medium
+            color="orange"
+          >
+            <span>TODAY</span>
+          </v-timeline-item>
+
+          <v-timeline-item
+            class="mb-3"
+            color="grey"
+            icon-color="grey lighten-2"
+            small
+          >
+            <v-layout justify-space-between>
+              <v-flex xs7 text-xs-left>This order was archived.</v-flex>
+              <v-flex xs5 text-xs-right>15:26 EDT</v-flex>
+            </v-layout>
+          </v-timeline-item>
+
+          <v-timeline-item
+            class="mb-3"
+            small
+            color="blue"
+          >
+            <v-layout justify-space-between>
+              <v-flex xs7>
+                <v-chip
+                  class="white--text ml-0"
+                  color="purple"
+                  label
+                  small
+                >
+                  APP
+                </v-chip>
+                Digital Downloads fulfilled 1 item.
+              </v-flex>
+              <v-flex xs5 text-xs-right>15:25 EDT</v-flex>
+            </v-layout>
+          </v-timeline-item>
+
+          <v-timeline-item
+            class="mb-3"
+            color="grey"
+            small
+          >
+            <v-layout justify-space-between>
+              <v-flex xs7>
+                Order confirmation email was sent to John Leider (john@vuetifyjs.com).
+              </v-flex>
+              <v-flex xs5 text-xs-right>15:25 EDT</v-flex>
+            </v-layout>
+          </v-timeline-item>
+
+          <v-timeline-item
+            class="mb-3"
+            hide-dot
+          >
+            <v-btn
+              class="mx-0"
+              color="white"
+            >
+              Resend Email
+            </v-btn>
+          </v-timeline-item>
+
+          <v-timeline-item
+            class="mb-3"
+            color="grey"
+            small
+          >
+            <v-layout justify-space-between>
+              <v-flex xs7>
+                A $15.00 USD payment was processed on PayPal Express Checkout
+              </v-flex>
+              <v-flex xs5 text-xs-right>15:25 EDT</v-flex>
+            </v-layout>
+          </v-timeline-item>
+
+          <v-timeline-item
+            color="grey"
+            small
+          >
+            <v-layout justify-space-between>
+              <v-flex xs7>
+                John Leider placed this order on Online Store (checkout #1937432132572).
+              </v-flex>
+              <v-flex xs5 text-xs-right>15:25 EDT</v-flex>
+            </v-layout>
+          </v-timeline-item>
+        </v-timeline>
+      </v-container>
       <div class="hotBod">
 
 
@@ -134,6 +234,9 @@ export default {
 <style >
 #app {
   padding-bottom: 16em;
+}
+.timelineContainer {
+  padding-top: 0px;
 }
 footer {
   display: block;
