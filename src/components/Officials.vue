@@ -25,7 +25,7 @@
             <v-flex xs12 sm6 md6 class="cardWrapperFlex" v-for="rep in item.representatives">
               <v-card color="white" class="mb-2 pb-0">
 
-                <v-layout row>
+                <v-layout class="thisClass" row>
 
                   <v-flex xs7 class="pt-1 pr-0 pb-0 mb-0 pl-3 repTopText">
                     <v-card-title class="pt-3 pr-0 pb-2 mb-0" primary-title>
@@ -305,7 +305,7 @@ footer {
   font-size: 20px !important;
 }
 
-.v-image__image.v-image__image--cover {
+.flex.pr-4.pt-0.mt-3.mb-0.pb-0.xs5.sm7.md7 .v-responsive.v-image .v-image__image.v-image__image--cover {
   position: relative;
   border-radius: 50%;
   background-size: cover;
