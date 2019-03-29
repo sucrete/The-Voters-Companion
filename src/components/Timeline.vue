@@ -19,18 +19,36 @@
       <v-container class="timelineContainer" style="max-width: 42em;">
         <v-timeline dense>
           <v-timeline-item
-            class="mb-3"
+            class="mb-2"
             hide-dot
           >
-            <span>for space</span>
           </v-timeline-item>
           <v-timeline-item
             class="mb-4"
             medium
             color="orange"
           >
-            <span>TODAY</span>
+            <v-layout justify-space-between>
+              <v-flex xs7 text-xs-left>TODAY</v-flex>
+              <v-flex xs5 text-xs-right> {{ todaysdate }}</v-flex>
+            </v-layout>
           </v-timeline-item>
+
+           <!-- 🎐 🎐 🎐 new item iterator below 🎐 🎐 🎐 -->
+
+          <v-timeline-item
+            class="mb-3"
+            color="grey"
+            icon-color="grey lighten-2"
+            small
+          >
+            <v-layout justify-space-between>
+              <v-flex xs7 text-xs-left>This order was archived.</v-flex>
+              <v-flex xs5 text-xs-right>15:26 EDT</v-flex>
+            </v-layout>
+          </v-timeline-item>
+
+          <!-- 🧲 🧲 🧲 old timeline items below 🧲 🧲 🧲 -->
 
           <v-timeline-item
             class="mb-3"
@@ -138,7 +156,91 @@ export default {
       whatAPrimaryIs: '',
       timelineHTML: '',
       presentBadge: this.$store.getters.shouldIDisplayBadge,
-      regURL: this.$store.getters.getUserBadgeURL
+      regURL: this.$store.getters.getUserBadgeURL,
+      electionTimelineObject: [],
+      dummyInfo: [
+        {
+      		"prettyElectionDate": "March 5th, 2019",
+      		"electionTitle": "Fresno County General Election",
+      		"additionalInformation": "This election is for Board of Supervisors District 2",
+      		"newVoterRegistrationDates": [
+      			"Mon Feb 18, 2019",
+      			"Received by Mon Feb 18, 2019",
+      			"Online by Mon Feb 18, 2019 11:59PM PST",
+      			"Postmarked by Mon Feb 18, 2019 11:59PM PST"
+      		],
+      		"absenteeBallotReturnDates": [
+      			"Received by Fri Mar 8, 2019",
+      			"Postmarked by Tue Mar 5, 2019",
+      			"Post received by Fri Mar 8, 2019",
+      			"Hand Delivered by Tue Mar 5, 2019 8:00PM PST"
+      		],
+      		"absenteeBallotRequestDates": [
+      			"Tue Feb 26, 2019",
+      			"Received by Tue Feb 26, 2019"
+      		],
+      		"inPersonAbsenteeVotingToFrom": "none on record",
+      		"earlyVotingToFrom": "Deadline Dates Vary by Locality - Contact Local Election Office",
+      		"electionType": "General",
+      		"color": "0"
+      	},
+      	{
+      		"prettyElectionDate": "March 12th, 2019",
+      		"electionTitle": "Orange County General Election",
+      		"additionalInformation": "This election is for Board of Supervisors District 3",
+      		"newVoterRegistrationDates": [
+      			"Mon Feb 25, 2019",
+      			"Received by Mon Feb 25, 2019",
+      			"Online by Mon Feb 25, 2019 11:59PM PST",
+      			"Postmarked by Mon Feb 25, 2019 11:59PM PST"
+      		],
+      		"absenteeBallotReturnDates": [
+      			"Received by Fri Mar 15, 2019",
+      			"Postmarked by Tue Mar 12, 2019",
+      			"Post received by Fri Mar 15, 2019",
+      			"Hand Delivered by Tue Mar 12, 2019 8:00PM PDT"
+      		],
+      		"absenteeBallotRequestDates": [
+      			"Tue Mar 5, 2019",
+      			"Received by Tue Mar 5, 2019"
+      		],
+      		"inPersonAbsenteeVotingToFrom": "none on record",
+      		"earlyVotingToFrom": "Deadline Dates Vary by Locality - Contact Local Election Office",
+      		"electionType": "General",
+      		"color": "1"
+      	},
+      	{
+      		"prettyElectionDate": "March 12th, 2019",
+      		"electionTitle": "City of Riverside General Election",
+      		"additionalInformation": "This election will be for City Council - Wards 1, 3, 5, 7",
+      		"newVoterRegistrationDates": [
+      			"Mon May 20, 2019",
+      			"Received by Mon May 20, 2019",
+      			"Online by Mon May 20, 2019 11:59PM PDT",
+      			"Postmarked by Mon May 20, 2019 11:59PM PDT"
+      		],
+      		"absenteeBallotReturnDates": [
+      			"Received by Fri Jun 7, 2019",
+      			"Postmarked by Tue Jun 4, 2019",
+      			"Post received by Fri Jun 7, 2019",
+      			"Hand Delivered by Tue Jun 4, 2019 8:00PM PDT"
+      		],
+      		"absenteeBallotRequestDates": [
+      			"Tue May 28, 2019",
+      			"Received by Tue May 28, 2019"
+      		],
+      		"inPersonAbsenteeVotingToFrom": "none on record",
+      		"earlyVotingToFrom": "Deadline Dates Vary by Locality - Contact Local Election Office",
+      		"electionType": "General",
+      		"color": "2"
+      	}
+      ]
+      timelineColors: {
+        '0': '#cedcf1',
+        '1': '#adb5c4',
+        '2': '#29417e'
+      },
+      todaysdate: 'March 29, 2019'
     }
   },
   components: {
@@ -148,56 +250,54 @@ export default {
     timeToVoteGuys () {
       var electionsInfo = this.$store.getters.getElections.objects
       var electionsInfoSorted = electionsInfo.sort(this.sorter)
-      var todayHTML = '<li class="timeline-header"><span class="tag is-medium is-primary">Today</span></li>'
-      // var futureTagHTML = '<li class="timeline-header"><span class="tag is-medium is-primary">Future</span></li>'
-      var timelineBitsBetweenNowAndLater = ''
+      // colorIndex key: 0 = baby blue (#cedcf1), 1 = dusty blue (#adb5c4), 2 = strong blue (#29417e)
+      var colorIndex = 0
       electionsInfoSorted.forEach(tally => {
-        let timelineBit
+        var timelineItemSaver = {}
         var electionDateArray = tally.election_date.split('-')
         var firstElement = electionDateArray.shift()
         electionDateArray.push(firstElement)
         var electionDate = electionDateArray.join('/')
-        var prettyElectionDate = hdate.prettyPrint(electionDate)
-        var timelineBitHeading = '<p class="heading">' + prettyElectionDate + '</p>'
-        var votableContentGrid
-        var votableHeader = '<div class="votableHeader">' + tally.title + '</div>'
-        var allNewVoterRegistrationDates = ''
-        var allAbsenteeBallotReturnDates = ''
-        var allAbsenteeBallotRequestDates = ''
-        var inPersonAbsenteeVotingToFrom = 'none on record'
-        var earlyVotingToFrom = 'none on record'
-        var additionalInformation = ''
+        // your TIMELINE ITEM date below (ie prettyElectionDate)
+        timelineItemSaver.prettyElectionDate = hdate.prettyPrint(electionDate)
+        // the TITLE OF THE ELECTION below (ie electionTitle)
+        timelineItemSaver.electionTitle = tally.title
+        // "additional information", quote, but often very explanatory
+        timelineItemSaver.additionalInformation = null
         if (!(tally.additional_information === '')) {
-          additionalInformation = '<em class="additionalInformation">' + tally.additional_information + '</em>'
+           timelineItemSaver.additionalInformation = tally.additional_information
         }
+        timelineItemSaver.newVoterRegistrationDates = []
+        timelineItemSaver.absenteeBallotReturnDates = []
+        timelineItemSaver.absenteeBallotRequestDates = []
+        timelineItemSaver.inPersonAbsenteeVotingToFrom = 'none on record'
+        timelineItemSaver.earlyVotingToFrom = 'none on record'
+        timelineItemSaver.electionType = tally.election_type.name || null
         tally.dates.forEach(booger => {
           if (booger.kind === 'DRD') {
-            allNewVoterRegistrationDates += '<div class="votingDates">' + booger.date_human_readable + '</div><br />'
+            timelineItemSaver.newVoterRegistrationDates.push(booger.date_human_readable)
           } else if (booger.kind === 'DBED') {
-            allAbsenteeBallotReturnDates += '<div class="votingDates">' + booger.date_human_readable + '</div><br />'
+            timelineItemSaver.absenteeBallotReturnDates.push(booger.date_human_readable)
           } else if (booger.kind === 'DBRD') {
-            allAbsenteeBallotRequestDates += '<div class="votingDates">' + booger.date_human_readable + '</div><br />'
+            timelineItemSaver.absenteeBallotRequestDates.push(booger.date_human_readable)
           } else if (booger.kind === 'AVF') {
-            inPersonAbsenteeVotingToFrom = booger.date_human_readable
+            timelineItemSaver.inPersonAbsenteeVotingToFrom = booger.date_human_readable
           } else if (booger.kind === 'AVT') {
-            inPersonAbsenteeVotingToFrom += ' - ' + booger.date_human_readable
+            timelineItemSaver.inPersonAbsenteeVotingToFrom += ' - ' + booger.date_human_readable
           } else if (booger.kind === 'EVF') {
-            earlyVotingToFrom = booger.date_human_readable
+            timelineItemSaver.earlyVotingToFrom = booger.date_human_readable
           } else if (booger.kind === 'EVT') {
-            earlyVotingToFrom += ' - ' + booger.date_human_readable
+            timelineItemSaver.earlyVotingToFrom += ' - ' + booger.date_human_readable
           }
         })
-        var newVoterRegistration = '<div class="votingType">New Voter Registration</div><div class=votingValue>' + allNewVoterRegistrationDates + '</div>'
-        var absenteeBallotReturn = '<div class="votingType">Absentee Ballot Return</div><div class=votingValue>' + allAbsenteeBallotReturnDates + '</div>'
-        var absenteeBallotRequest = '<div class="votingType">Absentee Ballot Request</div><div class=votingValue>' + allAbsenteeBallotRequestDates + '</div>'
-        var inPersonAbsenteeVoting = '<div class="votingType">In-Person Absentee Voting</div><div class=votingValue>' + inPersonAbsenteeVotingToFrom + '</div>'
-        var earlyVoting = '<div class="votingType">Early Voting</div><div class=votingValue>' + earlyVotingToFrom + '</div>'
-        votableContentGrid = newVoterRegistration + absenteeBallotRequest + absenteeBallotReturn + inPersonAbsenteeVoting + earlyVoting
-        var timelineBitContent = votableHeader + '<div class="timeline-item-content">' + votableContentGrid + '</div>' + additionalInformation
-        timelineBit = '<li class="timeline-item is-primary"><div class="timeline-marker is-primary"></div><div class="timeline-content">' + timelineBitHeading + timelineBitContent + '</div></li>'
-        timelineBitsBetweenNowAndLater += timelineBit
+        if (colorIndex === 3) {
+          colorIndex = 0
+        }
+        timelineItemSaver.color = colorIndex.toString()
+        colorIndex += 1
+        this.electionTimelineObject.push(timelineItemSaver)
       })
-      this.timelineHTML = '<ul style="width: 650px;" class="timeline">' + todayHTML + timelineBitsBetweenNowAndLater + '</ul>'
+      console.log('🎾🎾🎾🎾🎾🎾🎾🎾🎾' + JSON.stringify(this.electionTimelineObject, null, '\t') + '🎾🎾🎾🎾🎾🎾🎾🎾🎾')
     },
     sorter (a, b) {
       const obj1 = a.election_date
