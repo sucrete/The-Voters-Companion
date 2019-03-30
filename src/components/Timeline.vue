@@ -17,7 +17,7 @@
       <!-- body -->
 
       <v-container class="timelineContainer" style="max-width: 42em;">
-        <v-timeline dense>
+        <v-timeline align-top dense>
           <v-timeline-item
             class="mb-2"
             hide-dot
@@ -37,15 +37,38 @@
            <!-- 🎐 🎐 🎐 new item iterator below 🎐 🎐 🎐 -->
 
           <v-timeline-item
+            v-for="votable in dummyInfo"
             class="mb-3"
             color="grey"
-            icon-color="grey lighten-2"
+            icon-color="timelineColors[votable.color]"
             small
           >
             <v-layout justify-space-between>
-              <v-flex xs7 text-xs-left>This order was archived.</v-flex>
-              <v-flex xs5 text-xs-right>15:26 EDT</v-flex>
+              <v-flex xs7 text-xs-left>{{ votable.prettyElectionDate }}</v-flex>
+              <v-flex xs5 text-xs-right>38 days from today</v-flex>
             </v-layout>
+            <div class="title text-xs-left">{{ votable.electionTitle }}</div>
+            <div class="text-xs-left font-italic subheading">
+              {{ votable.additionalInformation }}
+            </div>
+            <div class="votableInfo text-xs-left">
+              <span>New Voter Registration Dates:</span>
+              <ul>
+                <li v-for="info in votable.newVoterRegistrationDates">{{ info }}</li>
+              </ul>
+              <span>Absentee Ballot Request Dates:</span>
+              <ul>
+                <li v-for="info in votable.absenteeBallotRequestDates">{{ info }}</li>
+              </ul>
+              <span>Absentee Ballot Return Dates:</span>
+              <ul>
+                <li v-for="info in votable.absenteeBallotReturnDates">{{ info }}</li>
+              </ul>
+              <span>In Person Absentee Voting Window:</span>
+              <span style="padding-left: .3em;">{{ votable.inPersonAbsenteeVotingToFrom }}</span>
+              <span>Early Voting Window:</span>
+              <span style="padding-left: .3em;">{{ votable.earlyVotingToFrom }}</span>
+            </div>
           </v-timeline-item>
 
           <!-- 🧲 🧲 🧲 old timeline items below 🧲 🧲 🧲 -->
@@ -234,7 +257,7 @@ export default {
       		"electionType": "General",
       		"color": "2"
       	}
-      ]
+      ],
       timelineColors: {
         '0': '#cedcf1',
         '1': '#adb5c4',
@@ -380,7 +403,9 @@ ul.timeline {
   grid-row-gap: .2rem;
   width: 37rem;
 }
-
+.votableInfo, .votableInfo *{
+  display: block;
+}
 .votingType {
   grid-column-start: 1;
   grid-column-end: 2;
