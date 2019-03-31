@@ -10,9 +10,6 @@
         <div id="overviewNotice">
 
         </div>
-        <a hidden id="bigButtonLink" v-if="presentBadge" target="_blank" v-bind:href="regURL">
-          <img id="bigButton" :src=" register ">
-        </a>
       </div>
       <!-- body -->
 
@@ -30,7 +27,7 @@
           >
             <v-layout justify-space-between>
               <v-flex xs7 text-xs-left>TODAY</v-flex>
-              <v-flex xs5 text-xs-right> {{ todaysdate }}</v-flex>
+              <v-flex xs5 text-xs-right> {{ returnPrettyDate(todaysDate) }}</v-flex>
             </v-layout>
           </v-timeline-item>
 
@@ -39,13 +36,12 @@
           <v-timeline-item
             v-for="votable in dummyInfo"
             class="mb-3"
-            color="grey"
-            icon-color="timelineColors[votable.color]"
+            v-bind:color="votable.color"
             small
           >
             <v-layout justify-space-between>
-              <v-flex xs7 text-xs-left>{{ votable.prettyElectionDate }}</v-flex>
-              <v-flex xs5 text-xs-right>38 days from today</v-flex>
+              <v-flex xs7 text-xs-left>{{ returnPrettyDate(votable.electionDate) }}</v-flex>
+              <v-flex xs5 text-xs-right>{{ returnRelativeTime(votable.electionDate) }}</v-flex>
             </v-layout>
             <div class="title text-xs-left">{{ votable.electionTitle }}</div>
             <div class="text-xs-left font-italic subheading">
@@ -183,79 +179,76 @@ export default {
       electionTimelineObject: [],
       dummyInfo: [
         {
-      		"prettyElectionDate": "March 5th, 2019",
-      		"electionTitle": "Fresno County General Election",
-      		"additionalInformation": "This election is for Board of Supervisors District 2",
+      		"electionDate": "04/30/2019",
+      		"electionTitle": "North Carolina District 3 Special Primary Election",
+      		"additionalInformation": "Special Election for Congressional District 3",
       		"newVoterRegistrationDates": [
-      			"Mon Feb 18, 2019",
-      			"Received by Mon Feb 18, 2019",
-      			"Online by Mon Feb 18, 2019 11:59PM PST",
-      			"Postmarked by Mon Feb 18, 2019 11:59PM PST"
+      			"Fri Apr 5, 2019"
       		],
       		"absenteeBallotReturnDates": [
-      			"Received by Fri Mar 8, 2019",
-      			"Postmarked by Tue Mar 5, 2019",
-      			"Post received by Fri Mar 8, 2019",
-      			"Hand Delivered by Tue Mar 5, 2019 8:00PM PST"
+      			"Tue Apr 30, 2019"
       		],
       		"absenteeBallotRequestDates": [
-      			"Tue Feb 26, 2019",
-      			"Received by Tue Feb 26, 2019"
+      			"Tue Apr 23, 2019"
       		],
       		"inPersonAbsenteeVotingToFrom": "none on record",
-      		"earlyVotingToFrom": "Deadline Dates Vary by Locality - Contact Local Election Office",
-      		"electionType": "General",
-      		"color": "0"
+      		"earlyVotingToFrom": "Thu Apr 11, 2019 - Sat Apr 27, 2019",
+      		"electionType": "Special Primary",
+      		"color": "#cedcf1"
       	},
       	{
-      		"prettyElectionDate": "March 12th, 2019",
-      		"electionTitle": "Orange County General Election",
-      		"additionalInformation": "This election is for Board of Supervisors District 3",
+      		"electionDate": "05/14/2019",
+      		"electionTitle": "North Carolina District 9 New Primary Election",
+      		"additionalInformation": "New Election for Congressional District 9",
       		"newVoterRegistrationDates": [
-      			"Mon Feb 25, 2019",
-      			"Received by Mon Feb 25, 2019",
-      			"Online by Mon Feb 25, 2019 11:59PM PST",
-      			"Postmarked by Mon Feb 25, 2019 11:59PM PST"
+      			"Fri Apr 19, 2019"
       		],
       		"absenteeBallotReturnDates": [
-      			"Received by Fri Mar 15, 2019",
-      			"Postmarked by Tue Mar 12, 2019",
-      			"Post received by Fri Mar 15, 2019",
-      			"Hand Delivered by Tue Mar 12, 2019 8:00PM PDT"
+      			"Tue May 14, 2019"
       		],
       		"absenteeBallotRequestDates": [
-      			"Tue Mar 5, 2019",
-      			"Received by Tue Mar 5, 2019"
+      			"Tue May 7, 2019"
       		],
       		"inPersonAbsenteeVotingToFrom": "none on record",
-      		"earlyVotingToFrom": "Deadline Dates Vary by Locality - Contact Local Election Office",
-      		"electionType": "General",
-      		"color": "1"
+      		"earlyVotingToFrom": "Thu Apr 25, 2019 - Sat May 11, 2019",
+      		"electionType": "Special Primary",
+      		"color": "#adb5c4"
       	},
       	{
-      		"prettyElectionDate": "March 12th, 2019",
-      		"electionTitle": "City of Riverside General Election",
-      		"additionalInformation": "This election will be for City Council - Wards 1, 3, 5, 7",
+      		"electionDate": "07/09/2019",
+      		"electionTitle": "North Carolina District 3 Special Election",
+      		"additionalInformation": "Special Election for Congressional District 3",
       		"newVoterRegistrationDates": [
-      			"Mon May 20, 2019",
-      			"Received by Mon May 20, 2019",
-      			"Online by Mon May 20, 2019 11:59PM PDT",
-      			"Postmarked by Mon May 20, 2019 11:59PM PDT"
+      			"Fri Jun 14, 2019"
       		],
       		"absenteeBallotReturnDates": [
-      			"Received by Fri Jun 7, 2019",
-      			"Postmarked by Tue Jun 4, 2019",
-      			"Post received by Fri Jun 7, 2019",
-      			"Hand Delivered by Tue Jun 4, 2019 8:00PM PDT"
+      			"Tue Jul 9, 2019"
       		],
       		"absenteeBallotRequestDates": [
-      			"Tue May 28, 2019",
-      			"Received by Tue May 28, 2019"
+      			"Tue Jul 2, 2019"
       		],
       		"inPersonAbsenteeVotingToFrom": "none on record",
-      		"earlyVotingToFrom": "Deadline Dates Vary by Locality - Contact Local Election Office",
-      		"electionType": "General",
-      		"color": "2"
+      		"earlyVotingToFrom": "Thu Jun 20, 2019 - Sat Jul 6, 2019",
+      		"electionType": "Special General",
+      		"color": "#29417e"
+      	},
+      	{
+      		"electionDate": "09/10/2019",
+      		"electionTitle": "North Carolina District 9 New Election",
+      		"additionalInformation": "New Election for Congressional District 9",
+      		"newVoterRegistrationDates": [
+      			"Fri Aug 16, 2019"
+      		],
+      		"absenteeBallotReturnDates": [
+      			"Tue Sep 10, 2019"
+      		],
+      		"absenteeBallotRequestDates": [
+      			"Tue Sep 3, 2019"
+      		],
+      		"inPersonAbsenteeVotingToFrom": "none on record",
+      		"earlyVotingToFrom": "Thu Aug 22, 2019 - Sat Sep 7, 2019",
+      		"electionType": "Special",
+      		"color": "#cedcf1"
       	}
       ],
       timelineColors: {
@@ -263,13 +256,27 @@ export default {
         '1': '#adb5c4',
         '2': '#29417e'
       },
-      todaysdate: 'March 29, 2019'
+      todaysDate: '',
+      relativeTime: ''
     }
   },
   components: {
 
   },
   methods: {
+    returnRelativeTime (date) {
+      return hdate.relativeTime(date)
+    },
+    returnPrettyDate (date) {
+      return hdate.prettyPrint(date)
+    },
+    getTodaysDate () {
+      var today = new Date()
+      var dd = String(today.getDate()).padStart(2, '0')
+      var mm = String(today.getMonth() + 1).padStart(2, '0') // January is 0!
+      var yyyy = today.getFullYear()
+      this.todaysDate = mm + '/' + dd + '/' + yyyy
+    },
     timeToVoteGuys () {
       var electionsInfo = this.$store.getters.getElections.objects
       var electionsInfoSorted = electionsInfo.sort(this.sorter)
@@ -282,7 +289,7 @@ export default {
         electionDateArray.push(firstElement)
         var electionDate = electionDateArray.join('/')
         // your TIMELINE ITEM date below (ie prettyElectionDate)
-        timelineItemSaver.prettyElectionDate = hdate.prettyPrint(electionDate)
+        timelineItemSaver.electionDate = electionDate
         // the TITLE OF THE ELECTION below (ie electionTitle)
         timelineItemSaver.electionTitle = tally.title
         // "additional information", quote, but often very explanatory
@@ -316,7 +323,7 @@ export default {
         if (colorIndex === 3) {
           colorIndex = 0
         }
-        timelineItemSaver.color = colorIndex.toString()
+        timelineItemSaver.color = this.timelineColors[colorIndex.toString()]
         colorIndex += 1
         this.electionTimelineObject.push(timelineItemSaver)
       })
@@ -349,6 +356,7 @@ export default {
   },
   mounted () {
     this.timeToVoteGuys()
+    this.getTodaysDate()
   }
 }
 
