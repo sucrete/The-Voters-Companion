@@ -26,8 +26,8 @@
             color="orange"
           >
             <v-layout justify-space-between>
-              <v-flex xs7 text-xs-left>TODAY</v-flex>
-              <v-flex xs5 text-xs-right> {{ returnPrettyDate(todaysDate) }}</v-flex>
+              <v-flex xs7 text-xs-left class="todayElement title">TODAY</v-flex>
+              <v-flex xs5 text-xs-right class="todayElement title"> {{ returnPrettyDate(todaysDate) }}</v-flex>
             </v-layout>
           </v-timeline-item>
 
@@ -37,34 +37,53 @@
             v-for="votable in dummyInfo"
             class="mb-3"
             v-bind:color="votable.color"
-            small
+            medium
           >
-            <v-layout justify-space-between>
+            <v-layout justify-space-between class="mb-2">
               <v-flex xs7 text-xs-left>{{ returnPrettyDate(votable.electionDate) }}</v-flex>
               <v-flex xs5 text-xs-right>{{ returnRelativeTime(votable.electionDate) }}</v-flex>
             </v-layout>
-            <div class="title text-xs-left">{{ votable.electionTitle }}</div>
+            <div class="title text-xs-left mb-2">{{ votable.electionTitle }}</div>
             <div class="text-xs-left font-italic subheading">
               {{ votable.additionalInformation }}
             </div>
-            <div class="votableInfo text-xs-left">
-              <span>New Voter Registration Dates:</span>
-              <ul>
-                <li v-for="info in votable.newVoterRegistrationDates">{{ info }}</li>
-              </ul>
-              <span>Absentee Ballot Request Dates:</span>
-              <ul>
-                <li v-for="info in votable.absenteeBallotRequestDates">{{ info }}</li>
-              </ul>
-              <span>Absentee Ballot Return Dates:</span>
-              <ul>
-                <li v-for="info in votable.absenteeBallotReturnDates">{{ info }}</li>
-              </ul>
-              <span>In Person Absentee Voting Window:</span>
-              <span style="padding-left: .3em;">{{ votable.inPersonAbsenteeVotingToFrom }}</span>
-              <span>Early Voting Window:</span>
-              <span style="padding-left: .3em;">{{ votable.earlyVotingToFrom }}</span>
-            </div>
+            <v-list class="timelineList">
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>New Voter Registration Dates</v-list-tile-title>
+                  <v-list-tile-sub-title v-for="info in votable.newVoterRegistrationDates">{{ info }}</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>Absentee Ballot Request Dates</v-list-tile-title>
+                  <v-list-tile-sub-title v-for="info in votable.newVoterRegistrationDates">{{ info }}</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>Absentee Ballot Return Dates</v-list-tile-title>
+                  <v-list-tile-sub-title v-for="info in votable.absenteeBallotReturnDates">{{ info }}</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>Window for In-Person Absentee Voting</v-list-tile-title>
+                  <v-list-tile-sub-title>{{ votable.inPersonAbsenteeVotingToFrom }}</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>Window for Early Voting</v-list-tile-title>
+                  <v-list-tile-sub-title>{{ votable.earlyVotingToFrom }}</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+
+            </v-list>
           </v-timeline-item>
 
           <!-- 🧲 🧲 🧲 old timeline items below 🧲 🧲 🧲 -->
@@ -363,6 +382,10 @@ export default {
 </script>
 
 <style >
+.todayElement {
+  position: relative;
+  top: 1em;
+}
 #app {
   padding-bottom: 16em;
 }
@@ -399,6 +422,11 @@ footer {
 }
 ul.timeline {
   margin-left: -1.3rem;
+}
+.timelineList {
+  background-color: transparent !important;
+  position: relative;
+  left: -.9em;
 }
 .timeline-item-content {
   margin-top: .2rem;
