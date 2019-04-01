@@ -65,10 +65,13 @@ export default {
   letter-spacing: .065em;
   font-weight: 400;
 }
+.v-tabs__container {
+  height: 55px;
+}
 a .flagLogo {
   margin: 0;
   position: absolute;
-  left: .5em;
+  left: .6em;
   top: 50%;
   height: 2.7em;
   width: auto;

@@ -295,7 +295,7 @@ export default {
   min-height: 34px;
 }
 #app {
-  padding-bottom: 16em;
+  padding-bottom: 15.5em;
 }
 footer {
   display: block;

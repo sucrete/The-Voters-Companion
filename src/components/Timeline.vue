@@ -13,37 +13,30 @@
       </div>
       <!-- body -->
 
-      <v-container class="timelineContainer" style="max-width: 42em;">
+      <v-container class="timelineContainer pb-0" style="max-width: 42em;">
         <v-timeline align-top dense>
           <v-timeline-item
-            class="mb-2"
-            hide-dot
-          >
-          </v-timeline-item>
-          <v-timeline-item
             class="mb-4"
-            medium
+            small
             color="orange"
           >
-            <v-layout justify-space-between>
-              <v-flex xs7 text-xs-left class="todayElement title">TODAY</v-flex>
-              <v-flex xs5 text-xs-right class="todayElement title"> {{ returnPrettyDate(todaysDate) }}</v-flex>
+            <v-layout justify-space-between class="subheading">
+              <v-flex xs7 text-xs-left class="todayElement">TODAY</v-flex>
+              <v-flex xs5 text-xs-right class="todayElement"> {{ returnPrettyDate(todaysDate) }}</v-flex>
             </v-layout>
           </v-timeline-item>
-
-           <!-- 🎐 🎐 🎐 new item iterator below 🎐 🎐 🎐 -->
 
           <v-timeline-item
             v-for="votable in dummyInfo"
-            class="mb-3"
+            class="mt-2 eachItem"
             v-bind:color="votable.color"
-            medium
+            small
           >
-            <v-layout justify-space-between class="mb-2">
+            <v-layout justify-space-between class="subheading mb-1">
               <v-flex xs7 text-xs-left>{{ returnPrettyDate(votable.electionDate) }}</v-flex>
               <v-flex xs5 text-xs-right>{{ returnRelativeTime(votable.electionDate) }}</v-flex>
             </v-layout>
-            <div class="title text-xs-left mb-2">{{ votable.electionTitle }}</div>
+            <div class="text-xs-left mb-2 subheading font-weight-bold">{{ votable.electionTitle }}</div>
             <div class="text-xs-left font-italic subheading">
               {{ votable.additionalInformation }}
             </div>
@@ -88,7 +81,7 @@
 
           <!-- 🧲 🧲 🧲 old timeline items below 🧲 🧲 🧲 -->
 
-          <v-timeline-item
+          <!-- <v-timeline-item
             class="mb-3"
             color="grey"
             icon-color="grey lighten-2"
@@ -169,17 +162,9 @@
               </v-flex>
               <v-flex xs5 text-xs-right>15:25 EDT</v-flex>
             </v-layout>
-          </v-timeline-item>
+          </v-timeline-item> -->
         </v-timeline>
       </v-container>
-      <div class="hotBod">
-
-
-        <br />
-
-        <div id="timelineBod" v-html="timelineHTML">  </div>
-
-      </div>
     </div>
   </div>
 </template>
@@ -382,12 +367,15 @@ export default {
 </script>
 
 <style >
+.eachItem:last-child {
+  padding-bottom: 60px;
+}
 .todayElement {
   position: relative;
   top: 1em;
 }
 #app {
-  padding-bottom: 16em;
+  padding-bottom: 15.5em;
 }
 .timelineContainer {
   padding-top: 0px;

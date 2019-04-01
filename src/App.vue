@@ -57,7 +57,7 @@ export default {
 } */
 footer {
 position: absolute;
-background-color: rgba(214, 214, 214, 0.47);
+background-color: rgb(235, 235, 235);
 height: 15em;
 width: 97%;
 bottom: 0px;
@@ -95,7 +95,7 @@ html {
   min-height: 52em;
   position: relative;
   border-radius: 3px;
-  padding-bottom: 16em;
+  padding-bottom: 15.5em;
 }
 
 .hotBod {

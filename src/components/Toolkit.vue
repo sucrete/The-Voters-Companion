@@ -47,7 +47,7 @@ export default {
 
 <style >
 #app {
-  padding-bottom: 16em;
+  padding-bottom: 15.5em;
 }
 footer {
   display: block;
