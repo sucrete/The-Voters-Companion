@@ -1,13 +1,45 @@
 <template>
-  <div>
-    <!-- <md-tabs id="navTabs" md-alignment="centered">
-      <md-tab v-bind:style="styleObject" id="tab-home" class="magicTab md-ripple-off md-no-ink" md-label="General" v-on:click="makeActive( generalInfo )"></md-tab>
-      <md-tab id="tab-pages"  class="magicTab" md-label="Eligibility" v-on:click="makeActive( eligibility )"></md-tab>
-      <md-tab id="tab-posts"  class="magicTab" md-label="ID Needed" v-on:click="makeActive( IDRequirements )"></md-tab>
-      <md-tab id="tab-settings"  class="magicTab" md-label="Tools" v-on:click="makeActive( voteTools )"></md-tab>
-    </md-tabs>
+  <div id="Tabs">
+    <div id="overviewNoticeWrapper">
+      <div id="overviewMarquee">
+      </div>
+      <div id="overviewNotice">
+      </div>
+    </div>
 
-    <p id="activeBod" v-html="active">  </p> -->
+    <v-tabs class="knowledgeTabs"
+      v-model="active"
+      style="margin: 0 auto; width: 27.75em;"
+      hide-slider
+      centered>
+      <v-tab :key="i">
+        {{ i }}
+      </v-tab>
+      <v-tab :key="ii">
+        {{ ii }}
+      </v-tab>
+      <v-tab  :key="iii">
+        {{ iii }}
+      </v-tab>
+      <v-tab :key="iv">
+        {{ iv }}
+      </v-tab>
+
+      <v-tabs-items>
+        <v-tab-item :key="i" v-html="generalInfo">
+          <!-- {{ generalInfo }} -->
+        </v-tab-item>
+        <v-tab-item :key="ii" v-html="IDRequirements">
+          <!-- {{ IDRequirements }} -->
+        </v-tab-item>
+        <v-tab-item :key="iii" v-html="eligibility">
+          <!-- {{ eligibility }} -->
+        </v-tab-item>
+        <v-tab-item :key="iv" v-html="resources">
+          <!-- {{ resources }} -->
+        </v-tab-item>
+      </v-tabs-items>
+    </v-tabs>
   </div>
 </template>
 
@@ -15,14 +47,18 @@
 var marked = require('marked')
 
 export default {
-  name: 'TabRouter',
+  name: 'Tabs',
   data () {
     return {
       active: '...1',
       generalInfo: '',
       eligibility: '',
       IDRequirements: '',
-      voteTools: '',
+      resources: '<div>nothing to see here</div>',
+      i: 'General',
+      ii: 'ID Requirements',
+      iii: 'Eligibility',
+      iv: 'Resources',
       styleObject: {
         color: '#716E10'
       }
@@ -67,7 +103,7 @@ export default {
         tableElementsKeeper += '<tr class="VTRow">' + votersToolsName + votersToolsURL + '</tr>'
       })
       var votersToolsTable = '<table class="VTTable">' + tableElementsKeeper + '</table>'
-      this.voteTools = votersToolsTable
+      this.resources = votersToolsTable
     },
     convertNewLines (str) {
       var flippedstring = str.split('\r\n').join('<br />')
@@ -81,5 +117,31 @@ export default {
 </script>
 
 <style>
-
+/* the toolkit tabs container */
+.v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper {
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+  margin-top: 1.5em;
+  margin-bottom: 2em;
+  border-radius: 2px;
+  height: 36px;
+}
+/* the individual tabs */
+.v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper .v-tabs__container.v-tabs__container--centered .v-tabs__div .v-tabs__item {
+  color: rgb(54, 54, 54) !important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  letter-spacing: .0em;
+  font-size: 14px;
+  padding: 6px 7px;
+}
+.v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper .v-tabs__container.v-tabs__container--centered .v-tabs__div {
+  height: 36px;
+}
+/* inactive tabs given lighter text */
+.v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper .v-tabs__container.v-tabs__container--centered .v-tabs__div .v-tabs__item:not(.v-tabs__item--active) {
+  color: rgb(174,174,174) !important;
+}
+.v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper .v-tabs__container.v-tabs__container--centered .v-tabs__div .v-tabs__item.v-tabs__item--active {
+  background-color: rgb(229,229,229);
+}
 </style>

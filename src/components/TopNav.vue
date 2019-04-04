@@ -4,9 +4,9 @@
     right
     color="#acb4c5"
   >
-      <a href="/">
-        <img class="flagLogo" :src=" flagLogo ">
-      </a>
+    <a href="/">
+      <img class="flagLogo" :src=" flagLogo ">
+    </a>
     <v-spacer></v-spacer>
     <v-tabs-slider color="white"></v-tabs-slider>
 
@@ -37,7 +37,7 @@
 <script>
 import Officials from './Officials.vue'
 import Timeline from './Timeline.vue'
-import Toolkit from './Toolkit.vue'
+import Toolkit from './Tabs.vue'
 import Lagos from '../assets/flagLogo.svg'
 
 export default {

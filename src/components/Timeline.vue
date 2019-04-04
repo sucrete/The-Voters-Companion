@@ -21,8 +21,8 @@
             color="orange"
           >
             <v-layout justify-space-between class="subheading">
-              <v-flex xs7 text-xs-left class="todayElement">TODAY</v-flex>
-              <v-flex xs5 text-xs-right class="todayElement"> {{ returnPrettyDate(todaysDate) }}</v-flex>
+              <v-flex xs7 text-xs-left class="todayElement">{{ returnPrettyDate(todaysDate) }}</v-flex>
+              <v-flex xs5 text-xs-right class="todayElement">TODAY</v-flex>
             </v-layout>
           </v-timeline-item>
 
@@ -32,7 +32,7 @@
             v-bind:color="votable.color"
             small
           >
-            <v-layout justify-space-between class="subheading mb-1">
+            <v-layout justify-space-between class="subheading mb-2">
               <v-flex xs7 text-xs-left>{{ returnPrettyDate(votable.electionDate) }}</v-flex>
               <v-flex xs5 text-xs-right>{{ returnRelativeTime(votable.electionDate) }}</v-flex>
             </v-layout>

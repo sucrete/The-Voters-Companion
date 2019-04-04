@@ -55,15 +55,7 @@ footer {
 #navTabs {
   margin-top: 1rem;
 }
-.md-tabs-navigation {
-  background-color: #f7f7f0 !important;
-}
-.md-button-content {
-  font-family: 'Karla', sans-serif;
-  font-weight: 500;
-  font-size: 105%;
-  letter-spacing: .08em;
-}
+
 #activeBod {
   background-color: #f7f7f0;
   width: 40rem;
