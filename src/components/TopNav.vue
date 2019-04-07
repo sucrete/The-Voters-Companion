@@ -22,13 +22,13 @@
 
     <v-tabs-items>
       <v-tab-item :key="i">
-        <Officials></Officials>
-      </v-tab-item>
-      <v-tab-item :key="ii">
         <Timeline></Timeline>
       </v-tab-item>
+      <v-tab-item :key="ii">
+        <Resources></Resources>
+      </v-tab-item>
       <v-tab-item :key="iii">
-        <Toolkit></Toolkit>
+        <Officials></Officials>
       </v-tab-item>
     </v-tabs-items>
   </v-tabs>
@@ -37,7 +37,7 @@
 <script>
 import Officials from './Officials.vue'
 import Timeline from './Timeline.vue'
-import Toolkit from './Tabs.vue'
+import Resources from './Resources.vue'
 import Lagos from '../assets/flagLogo.svg'
 
 export default {
@@ -45,16 +45,16 @@ export default {
   data () {
     return {
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      i: 'Officials',
-      ii: 'Timeline',
-      iii: 'Knowledge',
+      i: 'Timeline',
+      ii: 'Resources',
+      iii: 'Officials',
       flagLogo: Lagos
     }
   },
   components: {
     Officials,
     Timeline,
-    Toolkit
+    Resources
   }
 }
 </script>

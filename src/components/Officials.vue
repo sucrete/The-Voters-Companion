@@ -4,7 +4,7 @@
       <div id="overviewMarquee">
       </div>
       <div id="overviewNotice">
-        These are your elected officials, grouped by regional scope.
+        These are your elected officials, grouped by region.
       </div>
     </div>
 
@@ -24,7 +24,7 @@
           <v-layout row wrap>
             <v-flex xs12 sm6 md6 class="cardWrapperFlex" v-for="rep in item.representatives">
               <v-hover>
-                <v-card color="white" class="mb-2 pb-0" slot-scope="{ hover }" :class="`elevation-${hover ? 6 : 2}`">
+                <v-card color="white" class="mb-2 pb-0" :class="`elevation-${rep.show ? 5 : 2}`">
 
                   <v-layout class="thisClass" row>
 
@@ -83,8 +83,7 @@
           <v-flex  xs12 sm6 md6>
             <v-hover>
               <v-card color="white"
-              slot-scope="{ hover }"
-              :class="`elevation-${hover ? 5 : 2}`"
+              :class="`elevation-${show ? 5 : 2}`"
               class="mb-2 pb-0">
 
                 <v-layout row>
@@ -176,6 +175,7 @@ export default {
     dataShaker: function () {
       var GState = this.googleState
       var divs = GState.data.divisions
+      console.log(JSON.stringify(GState, null, '\t'))
       var keys = this.divisionKeys
       for (let ttt = 0; ttt < keys.length; ttt++) {
         if (divs[keys[ttt]].hasOwnProperty('officeIndices')) {

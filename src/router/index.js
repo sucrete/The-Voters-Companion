@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Officials = () => import('@/components/Officials')
-const Toolkit = () => import('@/components/Toolkit')
+const Resources = () => import('@/components/Resources')
 const Timeline = () => import('@/components/Timeline')
 const Landing = () => import('@/components/Landing')
 const Main = () => import('@/components/Main')
@@ -19,7 +19,7 @@ export default new Router({
   hash: false,
   routes: [
     {
-      path: '/main',
+      path: '/Main',
       name: 'main',
       component: Main
     },
@@ -29,17 +29,17 @@ export default new Router({
       component: Landing
     },
     {
-      path: '/officials',
+      path: '/Officials',
       name: 'officials',
       component: Officials
     },
     {
-      path: '/toolkit',
-      name: 'toolkit',
-      component: Toolkit
+      path: '/Resources',
+      name: 'resources',
+      component: Resources
     },
     {
-      path: '/timeline',
+      path: '/Timeline',
       name: 'timeline',
       component: Timeline
     },
