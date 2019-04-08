@@ -240,17 +240,6 @@ a#usvLink {
   padding: 0;
 }
 
-#logoLink {
-  z-index: 777;
-  position: absolute;
-  top: 3em;
-  right: 8em;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
-	-webkit-filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
-  /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
-    filter:drop-shadow(4px 4px 0 #A57F70)*/
-}
-
 #siteTitle {
   z-index: 99;
   font-family: 'Roboto', sans-serif;

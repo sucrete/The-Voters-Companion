@@ -67,6 +67,16 @@ padding: 16px;
 border-radius: 5px;
 display: block;
 }
+#logoLink {
+  z-index: 777;
+  position: relative;
+  top: .3em;
+  right: -10.7em;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+	-webkit-filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+  /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
+    filter:drop-shadow(4px 4px 0 #A57F70)*/
+}
 html {
   background: linen url( "https://cl.ly/image/381U2k0A3L3S/bg.png" );
   height: 100%;

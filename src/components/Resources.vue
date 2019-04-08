@@ -19,10 +19,17 @@
         <v-tab-item :key="iii" v-html="eligibility">  </v-tab-item>
       </v-tabs-items>
     </v-tabs>
-    <div id="resourcesSpacer" style="height: 15em;"></div>
+    <div id="resourcesSpacer" style="height: 53em;"></div>
     <div id="additionalResources">
       <h4>Additional Government Resources for {{ stateName }}</h4>
-      <p v-html="resources"></p>
+      <v-list class="govResourcesList">
+        <v-list-tile v-for="lilinfos in resourcesAPI">
+          <v-list-tile-content class="text-xs-left">
+            <v-list-tile-title>{{ lilinfos.votersToolsName }}</v-list-tile-title>
+            <v-list-tile-sub-title class="govResourcesListSubtitle"><a href="lilinfos.votersToolsURL" target="_blank">{{ lilinfos.votersToolsURL }}</a></v-list-tile-sub-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
     </div>
   </div>
 </template>
@@ -45,6 +52,7 @@ export default {
       styleObject: {
         color: '#716E10'
       },
+      resourcesAPI: [],
       stateName: 'Missouri'
     }
   },
@@ -80,14 +88,12 @@ export default {
           this.IDRequirements += '<p><em>' + credly.footer + '</em></p>'
         }
       })
-      var tableElementsKeeper = ''
       voterInfo.lookup_tools.forEach(tooly => {
-        var votersToolsName = '<td class="VTName VTCell">' + tooly.lookup_tool.name + '</td>'
-        var votersToolsURL = '<td class="VTURL VTCell"><a href="' + tooly.url + '" target="_blank">' + tooly.url + '</a></td>'
-        tableElementsKeeper += '<tr class="VTRow">' + votersToolsName + votersToolsURL + '</tr>'
+        var tableElementsKeeper = {}
+        tableElementsKeeper.votersToolsName = tooly.lookup_tool.name
+        tableElementsKeeper.votersToolsURL = tooly.url
+        this.resourcesAPI.push(tableElementsKeeper)
       })
-      var votersToolsTable = '<table class="VTTable">' + tableElementsKeeper + '</table>'
-      this.resources = votersToolsTable
     },
     convertNewLines (str) {
       var flippedstring = str.split('\r\n').join('<br />')
@@ -104,7 +110,7 @@ export default {
 #additionalResources {
   background-color: rgba(204, 219, 242, .5);
   position: absolute;
-  height: 15em;
+  min-height: 15em;
   width: 97%;
   bottom: 0px;
   color: #3e3830;
