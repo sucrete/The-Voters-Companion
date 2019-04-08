@@ -19,14 +19,14 @@
         <v-tab-item :key="iii" v-html="eligibility">  </v-tab-item>
       </v-tabs-items>
     </v-tabs>
-    <div id="resourcesSpacer" style="height: 53em;"></div>
+    <div id="resourcesSpacer"></div>
     <div id="additionalResources">
-      <h4>Additional Government Resources for {{ stateName }}</h4>
+      <span class="headline">Additional Government Resources for {{ stateName }}</span>
       <v-list class="govResourcesList">
-        <v-list-tile v-for="lilinfos in resourcesAPI">
+        <v-list-tile v-for="lilinfos in dummyResourcesAPI">
           <v-list-tile-content class="text-xs-left">
             <v-list-tile-title>{{ lilinfos.votersToolsName }}</v-list-tile-title>
-            <v-list-tile-sub-title class="govResourcesListSubtitle"><a href="lilinfos.votersToolsURL" target="_blank">{{ lilinfos.votersToolsURL }}</a></v-list-tile-sub-title>
+            <v-list-tile-sub-title class="govResourcesListSubtitle"><a :href="lilinfos.votersToolsURL" target="_blank">{{ lilinfos.votersToolsURL }}</a></v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 var marked = require('marked')
 
 export default {
@@ -53,7 +54,33 @@ export default {
         color: '#716E10'
       },
       resourcesAPI: [],
-      stateName: 'Missouri'
+      dummyResourcesAPI: [
+        {
+          'votersToolsName': 'State Elections Website',
+          'votersToolsURL': 'http://www.elections.ny.gov/INDEX.html'
+        },
+        {
+          'votersToolsName': 'Where is my Polling Place?',
+          'votersToolsURL': 'https://voterlookup.elections.state.ny.us/votersearch.aspx'
+        },
+        {
+          'votersToolsName': 'Can I Register to Vote Online?',
+          'votersToolsURL': 'https://dmv.ny.gov/more-info/electronic-voter-registration-application'
+      	},
+      	{
+          'votersToolsName': 'Am I Registered?',
+          'votersToolsURL': 'https://voterlookup.elections.state.ny.us/'
+      	},
+      	{
+          'votersToolsName': 'Overseas / Military Voter Information',
+          'votersToolsURL': 'http://www.elections.ny.gov/VotingMilitaryFed.html'
+      	},
+      	{
+          'votersToolsName': 'State Voter Registration FAQ',
+          'votersToolsURL': 'http://www.elections.ny.gov/FAQ.html'
+      	}
+      ],
+      stateName: 'New York'
     }
   },
   methods: {
@@ -107,8 +134,11 @@ export default {
 </script>
 
 <style>
+#resourcesSpacer {
+  min-height: 27em;
+}
 #additionalResources {
-  background-color: rgba(204, 219, 242, .5);
+  background-color: rgba(204, 219, 242, .3);
   position: absolute;
   min-height: 15em;
   width: 97%;
@@ -145,6 +175,10 @@ export default {
 .v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper .v-tabs__container.v-tabs__container--centered .v-tabs__div .v-tabs__item:not(.v-tabs__item--active) {
   color: rgb(174,174,174) !important;
 }
+.v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper .v-tabs__container.v-tabs__container--centered .v-tabs__div .v-tabs__item:not(.v-tabs__item--active):hover {
+  color: rgb(124, 124, 124) !important;
+  background-color: rgb(230, 230, 230) !important;
+}
 .v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper .v-tabs__container.v-tabs__container--centered .v-tabs__div .v-tabs__item.v-tabs__item--active {
   background-color: rgb(229,229,229);
 }
@@ -153,6 +187,9 @@ export default {
 }
 .v-tabs.knowledgeTabs .v-window .v-window__container.v-window__container--is-active {
   min-height: 55em !important;
+}
+.v-tabs__container.v-tabs__container--centered.v-tabs__container--overflow {
+  transform: translateX(0px) !important;
 }
 .VTURL {
   /* white-space: nowrap; */
@@ -182,6 +219,9 @@ export default {
 .tabItem {
   position: relative;
   cursor: pointer;
+}
+.govResourcesList {
+  background-color: transparent !important;
 }
 .tabButton {
   font-family: 'IBM Plex Sans Condensed', sans-serif;
@@ -224,6 +264,9 @@ h2, h6 {
 @media screen and (max-width: 750px) {
   .VTName {
     width: 15vw;
+  }
+  #resourcesSpacer {
+    min-height: 29em;
   }
 }
 </style>
