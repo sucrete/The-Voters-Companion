@@ -101,22 +101,24 @@ export default {
       this.generalInfo = marked(generalInfo)
       this.stateName = voterInfo.state.name
       voterInfo.eligibility_requirements.forEach(headly => {
-        this.eligibility += '<h3 class="happiHeader">' + headly.header + '</h3>'
+        this.eligibility += '<span class="happiHeader">' + headly.header + '</span> <ul>'
         headly.items.forEach(itemys => {
           // removed capitalizeIt from itemys.item.name below e.g. "this.capitalizeIt(itemys.item.name)" (between the '<li>' tags)
           this.eligibility += '<li>- ' + this.capitalizeIt(itemys.item.name) + '</li>'
         })
+        this.eligibility += '</ul>'
         if (headly.hasOwnProperty('footer')) {
           this.eligibility += '<p><em>' + headly.footer + '</em></p>'
         }
       })
       voterInfo.identification_requirements.forEach(credly => {
-        this.IDRequirements += '<h3 class="happiHeader">' + credly.header + '</h3>'
+        this.IDRequirements += '<span class="happiHeader">' + credly.header + '</span> <ul>'
         credly.items.forEach(itemysis => {
           // removed capitalizeIt from itemysis.item.name below e.g. "this.capitalizeIt(itemysis.item.name)" (between the '<li>' tags)
 
           this.IDRequirements += '<li>- ' + this.capitalizeIt(itemysis.item.name) + '</li>'
         })
+        this.IDRequirements += '</ul>'
         if (credly.hasOwnProperty('footer')) {
           this.IDRequirements += '<p><em>' + credly.footer + '</em></p>'
         }
@@ -141,7 +143,6 @@ export default {
 
 <style>
 #resourcesSpacer {
-  /* min-height: 27em; */
 }
 #additionalResources {
   background-color: rgba(204, 219, 242, .3);
@@ -165,9 +166,13 @@ export default {
   text-align: left;
 }
 .v-tabs.knowledgeTabs .v-window {
+  font-family: 'Roboto', sans-serif;
   position: relative;
-  width: 40em;
-  left: -9em;
+  width: 35em;
+  left: -8em;
+  line-height: 1.444444;
+  font-size: 16px;
+  font-style: normal;
 }
 .v-tabs.knowledgeTabs .v-window > * {
   text-align: left;
@@ -186,7 +191,7 @@ export default {
   margin-left: 0;
   margin-right: 0;
 }
-/* inactive tabs given lighter text */
+/* inactive tabs are a given lighter text */
 .v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper .v-tabs__container.v-tabs__container--centered .v-tabs__div .v-tabs__item:not(.v-tabs__item--active) {
   color: rgb(174,174,174) !important;
 }
@@ -198,37 +203,19 @@ export default {
   background-color: rgb(229,229,229);
 }
 .v-window-item h1 {
-
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(75, 75, 75);
+}
+.v-window-item h2 {
+  font-weight: 500;
+  font-size: 16px;
 }
 .v-tabs.knowledgeTabs .v-window .v-window__container.v-window__container--is-active {
   min-height: 55em !important;
 }
 .v-tabs__container.v-tabs__container--centered.v-tabs__container--overflow {
   transform: translateX(0px) !important;
-}
-.VTURL {
-  /* white-space: nowrap; */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.VTName {
-  width: 8em;
-  font-weight: 500;
-}
-.VTTable {
-  width: 37rem;
-  margin: 0 auto;
-  position: relative;
-  border-spacing: 0;
-  border: 3px solid white;
-}
-.VTRow {
-  height: 1.5rem;
-}
-.VTCell {
-  padding: .75rem;
-  border: 2px solid white;
-  background-color: rgba(230, 230, 230, 0.8);
 }
 
 .tabItem {
@@ -238,20 +225,6 @@ export default {
 .govResourcesList {
   background-color: transparent !important;
 }
-.tabButton {
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-weight: 500;
-  color: #62624c;
-  background-color: #f7f7f0;
-  padding: .5rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  margin-left: .5rem;
-  outline: none;
-  border-bottom: none;
-  border: none;
-  cursor: pointer;
-}
 
 ul {
   margin: 0;
@@ -260,28 +233,21 @@ ul {
   list-style-type: none;
 }
 ul > li {
-  text-indent: -37px;
+  list-style-type: none;
+  text-indent: 1.5em;
   padding-inline-start: 3px;
 }
-#activeBod ul > li:before {
-  content: "- ";
-  text-indent: -5px;
-}
+
 .happiHeader {
-  margin-bottom: .75rem;
+  margin-bottom: 1em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
-.happiHeader:first-of-type {
+/* .happiHeader:first-of-type {
   margin-top: 0px !important;
-}
-h2, h6 {
-  line-height: 120%;
-}
+} */
+
 @media screen and (max-width: 750px) {
-  .VTName {
-    width: 15vw;
-  }
-  #resourcesSpacer {
-    min-height: 29em;
-  }
+
 }
 </style>
