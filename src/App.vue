@@ -57,7 +57,7 @@ export default {
 } */
 footer {
 position: absolute;
-background-color: rgb(235, 235, 235);
+background-color: rgb(243, 243, 243);
 height: 15em;
 width: 97%;
 bottom: 0px;

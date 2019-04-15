@@ -21,9 +21,9 @@
     </v-tabs>
     <div id="resourcesSpacer"></div>
     <div id="additionalResources">
-      <span class="headline">Additional Government Resources for {{ stateName }}</span>
+      <span class="headline">Additional Government Resources for {{ stateName }} Voters</span>
       <v-list class="govResourcesList">
-        <v-list-tile v-for="lilinfos in dummyResourcesAPI">
+        <v-list-tile v-for="lilinfos in resourcesObject">
           <v-list-tile-content class="text-xs-left">
             <v-list-tile-title>{{ lilinfos.votersToolsName }}</v-list-tile-title>
             <v-list-tile-sub-title class="govResourcesListSubtitle"><a :href="lilinfos.votersToolsURL" target="_blank">{{ lilinfos.votersToolsURL }}</a></v-list-tile-sub-title>
@@ -42,7 +42,6 @@ export default {
   name: 'Resources',
   data () {
     return {
-      active: '...1',
       generalInfo: '<span>all kinds of great shi</span>',
       eligibility: '',
       IDRequirements: '',
@@ -53,8 +52,8 @@ export default {
       styleObject: {
         color: '#716E10'
       },
-      resourcesAPI: [],
-      dummyResourcesAPI: [
+      resourcesObject: [],
+      dummyresourcesObject: [
         {
           'votersToolsName': 'State Elections Website',
           'votersToolsURL': 'http://www.elections.ny.gov/INDEX.html'
@@ -92,8 +91,15 @@ export default {
     },
     fillItUp () {
       var voterInfo = this.$store.getters.getVoterInfo.objects[0]
-      this.generalInfo = marked(voterInfo.voting_general_info)
-      this.active = this.generalInfo
+      var pollingPlaceRegex = /\[Find\smy\spolling\splace\](.*?)\\r/is
+      var generalInfo = voterInfo.voting_general_info
+      var testRegex = /[Find my polling place]/
+      var newGeneralInfo = generalInfo.replace(pollingPlaceRegex, 'HOCKUM')
+      var coolShi = generalInfo.match(pollingPlaceRegex)
+      var testCoolShi = generalInfo.match(testRegex)
+      console.log('polling Place Regex test ' + '\n' + newGeneralInfo + '\n' + ' 🛢️ 🛢️ 🛢️ type of === ' + typeof (newGeneralInfo) + '\n' + 'cool shi === ' + coolShi + '\n test cool shi ==' + testCoolShi)
+      this.generalInfo = marked(generalInfo)
+      this.stateName = voterInfo.state.name
       voterInfo.eligibility_requirements.forEach(headly => {
         this.eligibility += '<h3 class="happiHeader">' + headly.header + '</h3>'
         headly.items.forEach(itemys => {
@@ -119,7 +125,7 @@ export default {
         var tableElementsKeeper = {}
         tableElementsKeeper.votersToolsName = tooly.lookup_tool.name
         tableElementsKeeper.votersToolsURL = tooly.url
-        this.resourcesAPI.push(tableElementsKeeper)
+        this.resourcesObject.push(tableElementsKeeper)
       })
     },
     convertNewLines (str) {
@@ -135,11 +141,11 @@ export default {
 
 <style>
 #resourcesSpacer {
-  min-height: 27em;
+  /* min-height: 27em; */
 }
 #additionalResources {
   background-color: rgba(204, 219, 242, .3);
-  position: absolute;
+  /* position: absolute; */
   min-height: 15em;
   width: 97%;
   bottom: 0px;
@@ -156,6 +162,15 @@ export default {
   margin-bottom: 2em;
   border-radius: 2px;
   height: 36px;
+  text-align: left;
+}
+.v-tabs.knowledgeTabs .v-window {
+  position: relative;
+  width: 40em;
+  left: -9em;
+}
+.v-tabs.knowledgeTabs .v-window > * {
+  text-align: left;
 }
 /* the individual tabs */
 .v-tabs.knowledgeTabs .v-tabs__bar.theme--light .v-tabs__wrapper .v-tabs__container.v-tabs__container--centered .v-tabs__div .v-tabs__item {

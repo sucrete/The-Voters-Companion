@@ -175,7 +175,6 @@ export default {
     dataShaker: function () {
       var GState = this.googleState
       var divs = GState.data.divisions
-      console.log(JSON.stringify(GState, null, '\t'))
       var keys = this.divisionKeys
       for (let ttt = 0; ttt < keys.length; ttt++) {
         if (divs[keys[ttt]].hasOwnProperty('officeIndices')) {
@@ -204,27 +203,12 @@ export default {
                 officialObject1.repPhotoURL = 'http://i.dailymail.co.uk/i/pix/2017/10/31/14/45DE40EA00000578-5035763-image-a-10_1509461772135.jpg'
               }
               var theOfficial = GState.data.officials[corazon]
-              var theOfficialPropertyNames = Object.getOwnPropertyNames(theOfficial)
               officialObject1.party = theOfficial.party
-              var addressLine1 = null
-              var addressLine2 = null
               if (theOfficial.address !== undefined) {
-                var officialAddress = theOfficial.address[0]
-                for (var yyy = 0; yyy < theOfficialPropertyNames.length; yyy++) {
-                  if (theOfficialPropertyNames[yyy] === 'address') {
-                    var theOfficialAddressPropertyNames = Object.getOwnPropertyNames(officialAddress)
-                    var cityStateZip = officialAddress.city + ', ' + officialAddress.state + ' ' + officialAddress.zip
-                    for (var vvv = 0; vvv < theOfficialAddressPropertyNames.length; vvv++) {
-                      if (theOfficialAddressPropertyNames[vvv].includes('line')) {
-                        addressLine1 = officialAddress[theOfficialAddressPropertyNames[vvv]]
-                      }
-                    }
-                    addressLine2 = cityStateZip
-                  }
-                }
+                var _oa = theOfficial.address[0]
+                officialObject1.addressLine1 = _oa.line2
+                officialObject1.addressLine2 = _oa.city + ', ' + _oa.state + ' ' + _oa.zip
               }
-              officialObject1.addressLine1 = addressLine1
-              officialObject1.addressLine2 = addressLine2
               if (theOfficial.phones !== undefined) {
                 officialObject1.phone = theOfficial.phones[0]
               } else {
@@ -236,29 +220,25 @@ export default {
                 officialObject1.website = null
               }
               officialObject1.channels = []
-              for (var ppp = 0; ppp < theOfficialPropertyNames.length; ppp++) {
-                if (theOfficialPropertyNames[ppp] === 'channels') {
-                  theOfficial.channels.forEach(Chanel => {
-                    var channelKeep = {}
-                    channelKeep.channelIcon = ''
-                    channelKeep.channelLink = ''
-                    if (!(Chanel.type === 'GooglePlus')) {
-                      if (Chanel.type === 'YouTube') {
-                        channelKeep.channelLink = 'http://www.youtube.com/' + Chanel.id
-                        channelKeep.channelIcon = 'https://i.imgur.com/b4J5pf1.png'
-                      } else if (Chanel.type === 'Facebook') {
-                        channelKeep.channelLink = 'http://www.facebook.com/' + Chanel.id
-                        channelKeep.channelIcon = 'https://i.imgur.com/MvZ9x3Z.png'
-                      } else if (Chanel.type === 'Twitter') {
-                        channelKeep.channelLink = 'http://www.twitter.com/' + Chanel.id
-                        channelKeep.channelIcon = 'https://i.imgur.com/ZnowWs0.png'
-                      }
+              if (!(theOfficial.channels === undefined)) {
+                theOfficial.channels.forEach(Chanel => {
+                  var channelKeep = {}
+                  channelKeep.channelIcon = ''
+                  channelKeep.channelLink = ''
+                  if (!(Chanel.type === 'GooglePlus')) {
+                    if (Chanel.type === 'YouTube') {
+                      channelKeep.channelLink = 'http://www.youtube.com/' + Chanel.id
+                      channelKeep.channelIcon = 'https://i.imgur.com/b4J5pf1.png'
+                    } else if (Chanel.type === 'Facebook') {
+                      channelKeep.channelLink = 'http://www.facebook.com/' + Chanel.id
+                      channelKeep.channelIcon = 'https://i.imgur.com/MvZ9x3Z.png'
+                    } else if (Chanel.type === 'Twitter') {
+                      channelKeep.channelLink = 'http://www.twitter.com/' + Chanel.id
+                      channelKeep.channelIcon = 'https://i.imgur.com/ZnowWs0.png'
                     }
-                    officialObject1.channels.push(channelKeep)
-                  })
-                } else {
-                  break
-                }
+                  }
+                  officialObject1.channels.push(channelKeep)
+                })
               }
               // complete push for an individual representative below
               superSaver.representatives.push(officialObject1)
@@ -267,7 +247,7 @@ export default {
           this.divisionsAndOfficials.push(superSaver)
         }
       }
-      console.log('📛📛📛 ➖➖➖➖➖➖➖➖ all rep info ➖➖➖➖➖➖➖➖  📛📛📛' + '\n' + JSON.stringify(this.divisionsAndOfficials, null, '\t'))
+      // console.log('📛📛📛 ➖➖➖➖➖➖➖➖ all rep info ➖➖➖➖➖➖➖➖  📛📛📛' + '\n' + JSON.stringify(this.divisionsAndOfficials, null, '\t'))
     }
   },
   beforeMount () {
