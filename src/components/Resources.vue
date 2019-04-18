@@ -87,7 +87,7 @@ export default {
       this.active = item
     },
     capitalizeIt (string) {
-      return string.charAt(0).toLowerCase() + string.slice(1)
+      return string.charAt(0).toUpperCase() + string.slice(1)
     },
     fillItUp () {
       var voterInfo = this.$store.getters.getVoterInfo.objects[0]
@@ -104,23 +104,22 @@ export default {
         this.eligibility += '<span class="happiHeader">' + headly.header + '</span> <ul>'
         headly.items.forEach(itemys => {
           // removed capitalizeIt from itemys.item.name below e.g. "this.capitalizeIt(itemys.item.name)" (between the '<li>' tags)
-          this.eligibility += '<li>- ' + this.capitalizeIt(itemys.item.name) + '</li>'
+          this.eligibility += '<li>' + this.capitalizeIt(itemys.item.name) + '</li>'
         })
         this.eligibility += '</ul>'
         if (headly.hasOwnProperty('footer')) {
-          this.eligibility += '<p><em>' + headly.footer + '</em></p>'
+          this.eligibility += '<p id="resourcesFooter"><em>' + headly.footer + '</em></p>'
         }
       })
       voterInfo.identification_requirements.forEach(credly => {
         this.IDRequirements += '<span class="happiHeader">' + credly.header + '</span> <ul>'
         credly.items.forEach(itemysis => {
           // removed capitalizeIt from itemysis.item.name below e.g. "this.capitalizeIt(itemysis.item.name)" (between the '<li>' tags)
-
-          this.IDRequirements += '<li>- ' + this.capitalizeIt(itemysis.item.name) + '</li>'
+          this.IDRequirements += '<li>' + this.capitalizeIt(itemysis.item.name) + '</li>'
         })
         this.IDRequirements += '</ul>'
         if (credly.hasOwnProperty('footer')) {
-          this.IDRequirements += '<p><em>' + credly.footer + '</em></p>'
+          this.IDRequirements += '<p id="resourcesFooter"><em>' + credly.footer + '</em></p>'
         }
       })
       voterInfo.lookup_tools.forEach(tooly => {
@@ -130,6 +129,15 @@ export default {
         this.resourcesObject.push(tableElementsKeeper)
       })
     },
+    insertIcon () {
+      var ourHeading = document.getElementById('find-my-polling-place')
+      var aLink = ourHeading.childNodes[0]
+      var ourLink = aLink.getAttribute('href')
+      var iconHTML = '<i aria-hidden="true" class="v-icon material-icons" style="color: white; font-size: 18px;">place</i>'
+      var buttonHTML = '<form action="' + ourLink + '" method="get" target="_blank"><button id="find-my-trolling-place"> ' + iconHTML + ' Find My Polling Place </button></form>'
+      ourHeading.insertAdjacentHTML('beforebegin', buttonHTML)
+      ourHeading.parentNode.removeChild(ourHeading)
+    },
     convertNewLines (str) {
       var flippedstring = str.split('\r\n').join('<br />')
       return flippedstring
@@ -137,12 +145,41 @@ export default {
   },
   mounted () {
     this.fillItUp()
+    this.$nextTick(function () {
+      this.insertIcon()
+    })
   }
 }
 </script>
 
 <style>
-#resourcesSpacer {
+#find-my-trolling-place {
+  background-color: #ff9800;
+  color: white !important;
+  width: 95%;
+  will-change: box-shadow;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+  border-radius: 28px;
+  align-items: center;
+  border-radius: 2px;
+  display: inline-flex;
+  height: 36px;
+  flex: 0 0 auto;
+  font-size: 16px;
+  font-weight: 500;
+  justify-content: center;
+  margin: 6px 8px;
+  min-width: 88px;
+  outline: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;
+  position: relative;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 #additionalResources {
   background-color: rgba(204, 219, 242, .3);
@@ -168,8 +205,8 @@ export default {
 .v-tabs.knowledgeTabs .v-window {
   font-family: 'Roboto', sans-serif;
   position: relative;
-  width: 35em;
-  left: -8em;
+  width: 34em;
+  left: -7.7em;
   line-height: 1.444444;
   font-size: 16px;
   font-style: normal;
@@ -205,7 +242,7 @@ export default {
 .v-window-item h1 {
   font-size: 18px;
   font-weight: 500;
-  color: rgb(75, 75, 75);
+  color: #2b3b80;
 }
 .v-window-item h2 {
   font-weight: 500;
@@ -234,10 +271,12 @@ ul {
 }
 ul > li {
   list-style-type: none;
-  text-indent: 1.5em;
+  text-indent: -.5em;
   padding-inline-start: 3px;
 }
-
+li:before {
+  content: '· '
+}
 .happiHeader {
   margin-bottom: 1em;
   font-family: 'Roboto', sans-serif;
@@ -246,7 +285,9 @@ ul > li {
 /* .happiHeader:first-of-type {
   margin-top: 0px !important;
 } */
-
+em {
+  color: grey;
+}
 @media screen and (max-width: 750px) {
 
 }

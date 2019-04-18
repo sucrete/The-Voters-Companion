@@ -243,7 +243,7 @@ a#usvLink {
 #siteTitle {
   z-index: 99;
   font-family: 'Roboto', sans-serif;
-  color: #2b3b80;
+  color: #374584;
   text-align: left;
   font-size: 4.5em;
   line-height: 100%;
@@ -252,6 +252,7 @@ a#usvLink {
   padding-left: 1.6em;
   position: relative;
   letter-spacing: .05em;
+  top: .8em;
   /* text-shadow: 0.08em 0.08em 0 white; */
   /* -webkit-text-stroke: 3px #343434; */
 }
@@ -324,7 +325,7 @@ input:focus::-webkit-input-placeholder {
   top: .09em;
 }
 .ap-icon-clear {
-  right: 4.25rem;
+  right: 1.5em;
 }
 .ap-dropdown-menu {
   margin-top: 0px;
