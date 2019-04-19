@@ -72,66 +72,6 @@
           </v-layout>
         </v-container>
       </div>
-
-      <!-- OLD CONTAINER BELOW -->
-      <v-container
-        fluid
-        grid-list-lg
-      >
-        <v-layout row wrap>
-
-          <v-flex  xs12 sm6 md6>
-            <v-hover>
-              <v-card color="white"
-              :class="`elevation-${show ? 5 : 2}`"
-              class="mb-2 pb-0">
-
-                <v-layout row>
-
-                  <v-flex xs7 class="pt-1 pr-0 pb-0 mb-0 pl-3">
-                    <v-card-title
-                    class="pt-4 pr-0 pb-2 mb-0"
-                    primary-title
-                    >
-                      <div>
-                        <div class="repName text-xs-left" xs7>Donald J. Trump</div>
-                      </div>
-                    </v-card-title>
-                    <v-card-text class="text-xs-left mt-0 pt-0 pb-0 repTitle">
-                      President of the United States
-                    </v-card-text>
-                  </v-flex>
-                  <!-- 🇺🇸 testing picture breakpoints below 🇺🇸 -->
-                  <v-flex xs5 sm7 md7 class="pr-4 pt-0 mt-3 mb-0 pb-0">
-                    <v-img position="50% 25%"
-                      src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Nancy_Pelosi_2012.jpg"
-                    ></v-img>
-                  </v-flex>
-
-                </v-layout>
-
-                <v-card-actions class="pt-0 mt-2">
-                  <div class="text-xs-center buttonWrapper" >
-                    <a href="http://www.google.com" target="_blank"><v-btn class="repButton mr-2" small depressed round outline>Website</v-btn></a>
-                  </div>
-                  <v-spacer></v-spacer>
-                  <v-btn class="infoButton" icon @click="show = !show">
-                     <v-icon style="font-size: 1.5em;">{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-                  </v-btn>
-                </v-card-actions>
-
-                <v-slide-y-transition>
-                  <v-card-text class="text-xs-left" v-show="show">
-                    I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-                  </v-card-text>
-                </v-slide-y-transition>
-
-              </v-card>
-            </v-hover>
-          </v-flex>
-
-        </v-layout>
-      </v-container>
     </div>
   </div>
 </div>
@@ -268,6 +208,7 @@ export default {
 <style >
 .repTitle {
   line-height: 125%;
+  color: grey;
 }
 .buttonWrapper {
   margin-left: .5em;
@@ -284,9 +225,7 @@ export default {
 .spacer {
   min-height: 34px;
 }
-#app {
-  padding-bottom: 15.5em;
-}
+
 footer {
   display: block;
 }
@@ -396,6 +335,60 @@ h1, h2 {
   }
   .repName {
     font-size: 150%;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .container.grid-list-lg .layout .flex.cardWrapperFlex {
+    margin: 0 auto;
+  }
+  .repButton {
+    bottom: -.5em;
+    font-size: 90%;
+  }
+  .repName {
+    font-size: 125%;
+  }
+  .repTitle {
+    font-size: 105%;
+  }
+  .v-card__title {
+    padding-top: 7px !important;
+  }
+  .v-card__actions {
+    margin-top: 0px !important;
+    height: 55px;
+  }
+  .v-responsive.v-image {
+    height: 125px;
+    width: 125px;
+    left: -.9em;
+  }
+  .sectionHeader {
+  }
+}
+@media only screen and (min-width: 350px) and (max-width: 432) {
+  .repButton {
+    bottom: -.5em;
+    font-size: 90%;
+  }
+  .repName {
+    font-size: 125%;
+  }
+  .repTitle {
+    font-size: 105%;
+  }
+  .v-card__title {
+    padding-top: 7px !important;
+  }
+  .v-card__actions {
+    margin-top: 0px !important;
+    height: 55px;
+  }
+}
+@media screen and (min-width: 350px) and (max-width: 500px) {
+  .v-responsive.v-image {
+    height: calc(155px - 5vw);
+    width: calc(155px - 5vw);
   }
 }
 </style>

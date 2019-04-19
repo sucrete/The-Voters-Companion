@@ -210,7 +210,6 @@ footer {
 }
 #app {
   background-color: #acb4c5;
-  padding-bottom: 0em;
 }
 
 #USVoteHeader {
@@ -417,7 +416,7 @@ img.star {
   position: relative;
 }
 
-/* loading modal above this line ================================= */
+
 @media screen and (min-width:250px) and (max-width:320px) {
 
   #inputEverything {
@@ -533,6 +532,33 @@ img.star {
     right: 1rem;
   }
 }
+@media screen and (max-width: 375px) and (max-height: 700px) {
+  #siteTitle {
+    font-size: 4em;
+    padding-left: .7em;
+    letter-spacing: .02em;
+    margin-top: 2.1em;
+    margin-bottom: 1.3em;
+  }
+  #USVoteHeader {
+    padding-top: 2.5em;
+    font-size: .95em;
+  }
+  #address-input {
+    width: 85vw !important;
+  }
+  .buttonWrapper {
+    font-size: .95em;
+    margin-left: .75em;
+  }
+  #starsWrapper {
+    display: flex;
+    width: 78vw;
+    margin-left: 2.9em;
+    margin-top: 3em;
+    justify-content: space-between;
+  }
+}
 @media screen and (max-width: 692px) {
   #logoLink {
     visibility: hidden;
@@ -557,6 +583,9 @@ img.star {
   .ap-input-icon {
     right: -35.5vw;
     left: unset;
+  }
+  #topLine, #bottomLine {
+    width: 90%;
   }
 }
 @keyframes rollOutaa1 {

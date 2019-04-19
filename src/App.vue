@@ -56,24 +56,25 @@ export default {
   -webkit-filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));
 } */
 footer {
-position: absolute;
+/* position: absolute; */
 background-color: rgb(243, 243, 243);
 height: 15em;
 width: 97%;
-bottom: 0px;
+bottom: 10px;
 color: #3e3830;
-margin: .67em .7em;
+margin: 0 auto;
 padding: 16px;
-border-radius: 5px;
+border-radius: 3px;
 display: block;
 }
 #logoLink {
   z-index: 777;
   position: relative;
   top: .3em;
-  right: -10.7em;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
-	-webkit-filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+  float: right;
+
+  filter: drop-shadow(0 2px 3px rgba(26, 47, 136, 0.46));
+	-webkit-filter: drop-shadow(0 2px 3px rgba(26, 47, 136, 0.46));
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70)*/
 }
@@ -100,12 +101,12 @@ html {
   margin-bottom: 5em;
   text-align: center;
   /* box-shadow from Domenico on https://codepen.io/ryandom/pen/ALQkWq*/
-  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, .17), 0 0.8rem 0.8rem rgba(0, 0, 0, .1), 0 1.6rem 1.5rem rgba(0, 0, 0, .1), 0 3.2rem 3.2rem rgba(0, 0, 0, .1);
+  box-shadow: 0 0.4rem 0.4rem rgba(102, 111, 214, 0.17), 0 0.8rem 0.8rem rgba(18, 35, 72, 0.1), 0 1.6rem 1.5rem rgba(4, 15, 58, 0.1), 0 3.2rem 3.2rem rgba(65, 67, 111, 0.1);
   /* padding: 10px 24px; */
   min-height: 52em;
   position: relative;
   border-radius: 3px;
-  padding-bottom: 15.5em;
+  padding-bottom: 9px;
 }
 
 .hotBod {
@@ -271,28 +272,48 @@ input, input:focus {
  transform: scale(0.3) translateY(24px);
 }
 @media only screen and (max-width: 750px) {
-    #app {
-      width: 100vw;
-      min-height: 100vh !important;
-      padding-bottom: 0px;
-      margin-bottom: 0px !important;
-      margin-top: 0px;
-      box-shadow: 0 0 0 0 rgba(0,0,0, .0)
-    }
-    .simple-navigation-header {
-      width: 85vw;
-    }
-    #overviewNoticeWrapper {
-      height: 250px;
-    }
-    #overviewMarquee {
-      font-size: 250%;
-      margin-bottom: .3em;
-    }
-    #overviewNotice {
-      padding-right: 3em;
-      padding-left: .2em;
-    }
-
+  #app {
+    width: 100vw;
+    min-height: 100vh !important;
+    padding-bottom: 2.3%;
+    margin-bottom: 0px !important;
+    margin-top: 0px;
+    box-shadow: 0 0 0 0 rgba(0,0,0, .0);
+    border-radius: 0px;
+  }
+  .simple-navigation-header {
+    width: 85vw;
+  }
+  #overviewNoticeWrapper {
+    height: 225px;
+  }
+  #overviewMarquee {
+    font-size: 250%;
+    margin-bottom: .3em;
+  }
+  #overviewNotice {
+    padding-right: 3em;
+    padding-left: .2em;
+  }
+  #logoLink {
+    right: -2.7em;
+  }
+  footer {
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 2.5%
+  }
+}
+@media only screen and (max-width: 375px) {
+  footer {
+    width: 95%;
+  }
+  #logoLink {
+    top: .7em;
+  }
+  #overviewNoticeWrapper {
+    height: 175px;
+  }
 }
 </style>

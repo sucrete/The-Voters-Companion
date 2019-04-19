@@ -184,13 +184,14 @@ export default {
 #additionalResources {
   background-color: rgba(204, 219, 242, .3);
   /* position: absolute; */
-  min-height: 15em;
+  min-height: 10em;
   width: 97%;
   bottom: 0px;
   color: #3e3830;
-  margin: .67em .7em;
+  margin: 0 auto;
+  margin-bottom: 10px;
   padding: 16px;
-  border-radius: 5px;
+  border-radius: 3px;
   display: block;
 }
 /* the toolkit tabs container */
@@ -288,7 +289,26 @@ li:before {
 em {
   color: grey;
 }
+#find-my-trolling-place i {
+  padding-right: .3em;
+}
 @media screen and (max-width: 750px) {
-
+  #additionalResources {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 375px) {
+  button#find-my-trolling-place {
+    width: 90%;
+    left: 2.5%;
+  }
+  .v-tabs.knowledgeTabs .v-window {
+    width: 90vw;
+    left: -1em;
+  }
+  #additionalResources {
+    width: 95%;
+  }
 }
 </style>

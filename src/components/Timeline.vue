@@ -289,9 +289,7 @@ export default {
   position: relative;
   top: 1em;
 }
-#app {
-  padding-bottom: 15.5em;
-}
+
 .timelineContainer {
   padding-top: 0px;
 }
@@ -310,15 +308,6 @@ footer {
   padding-bottom: .5rem;
   font-weight: 500;
   font-size: 140%;
-}
-#timelineBod:not(.heading) {
-  font-family: 'Karla', sans-serif;
-  font-weight: 400;
-  color: #353839;
-}
-#timelineBod {
-  top: auto;
-  margin-left: .75rem;
 }
 .tag-past {
   background-color: #b60000;
@@ -505,12 +494,16 @@ ul>li {
   color: white;
   font-weight: 500;
 }
-#app {
-  margin-bottom: 10em;
+
+@media screen and (max-width: 600px) {
+  /* works 600px and smaller including on the iPhone 5,6,7, and X */
+  .timelineContainer {
+    padding-right: calc(20vw/3.2);
+  }
 }
-@media screen and (max-width: 700px) {
-  #timelineBod {
-    margin-left: -1rem;
+@media only screen and (max-width: 375px) {
+  .v-timeline--dense .v-timeline-item__body {
+      max-width: calc(100% - 53px) !important;
   }
 }
 </style>

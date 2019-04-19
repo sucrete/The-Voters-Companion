@@ -79,4 +79,18 @@ a .flagLogo {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+@media only screen and (max-width: 750px) {
+  .v-tabs {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px; 
+  }
+}
+@media only screen and (max-width: 375px) {
+  .v-tabs__item {
+    padding: 6px 6px !important;
+  }
+  .v-tabs__div {
+    margin-right: 0px !important;
+  }
+}
 </style>
