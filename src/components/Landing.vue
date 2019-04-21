@@ -8,10 +8,8 @@
     </div>
 
     <hr noshade  size="1" id="topLine"/>
+    <img id="usVotersIcon" :src=" usVotersIcon "/>
     <h1 id="siteTitle" >The<br />Voter's<br /> Companion</h1>
-    <div id="subtitle" hidden>
-      FOR U.S. VOTERS
-    </div>
     <div id="inputEverything">
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
       <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
@@ -50,6 +48,7 @@ import carpet from '../assets/yellow_star.svg'
 import star1 from '../assets/starOneLight.svg'
 import star2 from '../assets/starTwoLight.svg'
 import star3 from '../assets/starThreeLight.svg'
+import lagoc from '../assets/united-states.svg'
 
 export default {
   name: 'landing',
@@ -59,6 +58,7 @@ export default {
       starOne: star1,
       starTwo: star2,
       starThree: star3,
+      usVotersIcon: lagoc,
       stateID: '',
       googvotekey: process.env.GOOGLE_API_KEY,
       voterAPI: '',
@@ -238,7 +238,12 @@ a#usvLink {
   border-top: 1px solid #f5f4f4;
   padding: 0;
 }
-
+#usVotersIcon {
+  height: 75px;
+  position: absolute;
+  top: 15em;
+  right: 12em;
+}
 #siteTitle {
   z-index: 99;
   font-family: 'Roboto', sans-serif;
@@ -255,14 +260,7 @@ a#usvLink {
   /* text-shadow: 0.08em 0.08em 0 white; */
   /* -webkit-text-stroke: 3px #343434; */
 }
-#subtitle {
-  position: relative;
-  font-family: 'Karla', sans-serif;
-  margin-top: 1.6em;
-  text-align: center;
-  letter-spacing: .1em;
-  font-size: 1.2em;
-}
+
 #inputEverything {
   margin-top: 11em;
   margin-left: auto;
@@ -313,7 +311,11 @@ input:focus::-webkit-input-placeholder {
 .ap-input {
   border: none !important;
 }
+.ap-input:hover ~ .ap-input-icon svg {
+  fill: #8e8883 !important;
+}
 .ap-input-icon svg {
+  fill: #98938f !important;
   border: 0;
   background: transparent;
   position: relative;
@@ -321,7 +323,7 @@ input:focus::-webkit-input-placeholder {
   transform: translateY(7%);
   outline: none;
   right: 5em;
-  top: .09em;
+  top: .13em;
 }
 .ap-icon-clear {
   right: 1.5em;
@@ -532,17 +534,35 @@ img.star {
     right: 1rem;
   }
 }
+/* below for screens on iPhone 5-8 */
 @media screen and (max-width: 375px) and (max-height: 700px) {
   #siteTitle {
     font-size: 4em;
     padding-left: .7em;
     letter-spacing: .02em;
-    margin-top: 2.1em;
-    margin-bottom: 1.3em;
+    margin-top: .7em;
+    margin-bottom: 1.4em;
+  }
+  #infoAndStarsWrapper, .buttonWrapper, .button.spin3d span {
+    width: unset;
+  }
+  #inputEverything {
+    margin-top: 2.5em;
+    margin-bottom: 5.2em;
+  }
+  #address-input {
+    padding-top: 4px !important;
+  }
+  #usVotersIcon {
+    top: 14em;
+    right: 5em;
+  }
+  .ap-input-icon svg {
+    right: 12.2em;
   }
   #USVoteHeader {
-    padding-top: 2.5em;
-    font-size: .95em;
+    font-size: 1.2em;
+    padding-top: 5em;
   }
   #address-input {
     width: 85vw !important;
@@ -552,16 +572,13 @@ img.star {
     margin-left: .75em;
   }
   #starsWrapper {
-    display: flex;
-    width: 78vw;
-    margin-left: 2.9em;
-    margin-top: 3em;
-    justify-content: space-between;
+    visibility: hidden;
+    right: unset;
   }
 }
 @media screen and (max-width: 692px) {
   #logoLink {
-    visibility: hidden;
+    display: none;
   }
   * {
   -webkit-font-smoothing: antialiased;
@@ -573,7 +590,7 @@ img.star {
 }
 @media screen and (max-width: 750px) {
   #address-input {
-    width: 76vw !important;
+    width: 82vw !important;
     padding-top: 6px;
     /* padding-bottom: .4em; */
   }
