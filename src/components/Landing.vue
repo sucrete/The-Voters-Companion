@@ -213,8 +213,9 @@ footer {
 }
 
 #USVoteHeader {
-  font-family: 'Karla', sans-serif;
-  letter-spacing: .1em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  letter-spacing: .07em;
   color: #c5bfb9;
   padding-top: 5em;
   margin-bottom: .5em;
@@ -239,7 +240,7 @@ a#usvLink {
   padding: 0;
 }
 #usVotersIcon {
-  height: 75px;
+  height: 100px;
   position: absolute;
   top: 15em;
   right: 12em;
@@ -362,11 +363,12 @@ input::placeholder {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   display: block;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
   font-size: 1.2em;
   margin: 0 10px;
   position: relative;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
 }
 #aa, #bb, #cc {
   font-smoothing: antialiased !important;
@@ -413,7 +415,6 @@ img.star {
   right: .8em;
   top: 0.5em;
 }
-
 #landing {
   position: relative;
 }
@@ -429,21 +430,15 @@ img.star {
     padding-left: 9px;
     position: absolute;
   }
-  #landingInfo {
-    width: 95vw;
-    right: 1rem;
-  }
   .ap-dropdown-menu {
     left: -1vw !important;
   }
-
   .logoBlock {
     width: 14.6rem;
     height: 11rem;
     left: 0px;
     top: 1rem;
   }
-
 }
 @media screen and (min-width:320px) and (max-width:374px) {
   .logoBlock {
@@ -461,34 +456,12 @@ img.star {
     right: -34vw !important;
   }
 }
-@media screen and (min-width:375px) and (max-width: 413px) {
-  #inputEverything {
-    font-size: 100%;
-    margin-top: 2.5rem;
-  }
-  .logoBlock {
-    top: 2rem;
-    left: -2px;
-    width: 18.5rem;
-  }
-}
-@media screen and (min-width:414px) and (max-width: 500px) {
-  .logoBlock {
-    top: 2.5rem;
-    left: -2px;
-  }
-  #inputEverything {
-    margin-top: 4rem;
-  }
-}
+
 @media screen and (min-width: 365px) and (max-width: 413px) {
   .ap-dropdown-menu {
     left: 6vw !important;
   }
-  #brownType {
-    top: -10rem;
-    left: 3px;
-  }
+
   .ap-input-icon {
     right: -34vw !important;
   }
@@ -528,18 +501,28 @@ img.star {
     left: 9vw !important;
   }
 }
-@media screen and (max-width: 480px) {
-  #landingInfo {
-    width: 95vw;
-    right: 1rem;
+@media screen and (max-width: 450px) {
+  #infoAndStarsWrapper, .buttonWrapper, .spin3d > span {
+    width: unset;
   }
 }
-/* below for screens on iPhone 5-8 */
+/* below for screens widths on iPhone 5-8 */
+@media screen and (max-width: 375px) {
+  .ap-dropdown-menu {
+    width: 80vw !important;
+    left: 10vw !important;
+  }
+  .ap-input-icon svg {
+    right: 12.2em;
+  }
+  #siteTitle {
+    letter-spacing: .02em;
+    font-size: 4em;
+    padding-left: .6em;
+  }
+}
 @media screen and (max-width: 375px) and (max-height: 700px) {
   #siteTitle {
-    font-size: 4em;
-    padding-left: .7em;
-    letter-spacing: .02em;
     margin-top: .7em;
     margin-bottom: 1.4em;
   }
@@ -552,20 +535,16 @@ img.star {
   }
   #address-input {
     padding-top: 4px !important;
+    width: 85vw !important;
+
   }
   #usVotersIcon {
     top: 14em;
     right: 5em;
   }
-  .ap-input-icon svg {
-    right: 12.2em;
-  }
   #USVoteHeader {
     font-size: 1.2em;
     padding-top: 5em;
-  }
-  #address-input {
-    width: 85vw !important;
   }
   .buttonWrapper {
     font-size: .95em;
@@ -574,6 +553,32 @@ img.star {
   #starsWrapper {
     visibility: hidden;
     right: unset;
+  }
+  #address-input {
+    padding-top: 4px !important;
+  }
+}
+
+/* iPhone X below */
+@media screen and (max-width: 375px) and (min-height: 701px) and (max-height: 812px) {
+  #USVoteHeader {
+    font-size: 1.2em;
+    padding-top: 6em;
+  }
+  #siteTitle {
+    margin-top: .9em;
+    margin-bottom: .7em;
+  }
+  #usVotersIcon {
+    top: 15em;
+    right: 4em;
+  }
+  #starsWrapper {
+    display: none;
+  }
+  #inputEverything {
+    margin-top: 5.5em;
+    margin-bottom: 7em;
   }
 }
 @media screen and (max-width: 692px) {
@@ -584,18 +589,16 @@ img.star {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   }
-  #landingInfo {
-    font-size: 1.2rem;
-  }
+
 }
 @media screen and (max-width: 750px) {
   #address-input {
-    width: 82vw !important;
+    width: 82vw;
     padding-top: 6px;
     /* padding-bottom: .4em; */
   }
   .ap-dropdown-menu {
-    width: 73vw !important;
+    width: 73vw;
   }
   .ap-input-icon {
     right: -35.5vw;
