@@ -275,14 +275,10 @@ input, input:focus {
   #app {
     width: 100vw;
     min-height: 100vh !important;
-    padding-bottom: 2.3%;
     margin-bottom: 0px !important;
     margin-top: 0px;
     box-shadow: 0 0 0 0 rgba(0,0,0, .0);
     border-radius: 0px;
-  }
-  .simple-navigation-header {
-    width: 85vw;
   }
   #overviewNoticeWrapper {
     height: 225px;

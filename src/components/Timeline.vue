@@ -27,7 +27,7 @@
           </v-timeline-item>
 
           <v-timeline-item
-            v-for="votable in dummyInfo"
+            v-for="votable in electionTimelineObject"
             class="mt-2 eachItem"
             v-bind:color="votable.color"
             small
@@ -432,7 +432,9 @@ p {
     width: 1rem;
     z-index: 3;
 }
-
+.v-list__tile {
+  height: 100% !important;
+}
 
 .timeline .timeline-item .timeline-marker.is-primary {
     background-color: #588937 !important;

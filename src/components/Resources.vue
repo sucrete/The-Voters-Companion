@@ -295,7 +295,13 @@ em {
 @media screen and (max-width: 750px) {
   #additionalResources {
     width: 95%;
-    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (min-width: 413px) and (max-width: 432px) {
+  .v-tabs.knowledgeTabs .v-window {
+    width: 90vw;
+    left: -2.2em;
   }
 }
 @media only screen and (max-width: 375px) {

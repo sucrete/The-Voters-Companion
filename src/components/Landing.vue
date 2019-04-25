@@ -218,7 +218,7 @@ footer {
   letter-spacing: .07em;
   color: #c5bfb9;
   padding-top: 5em;
-  margin-bottom: .5em;
+  margin-bottom: .3em;
   position: relative;
   text-align: center;
   font-size: 1.2em;
@@ -236,14 +236,13 @@ a#usvLink {
   margin: 0 auto;
   display: block;
   border: 0;
-  border-top: 1px solid #f5f4f4;
+  border-top: 2px solid #f5f4f4;
   padding: 0;
 }
 #usVotersIcon {
-  height: 100px;
+  height: 120px;
   position: absolute;
-  top: 15em;
-  right: 12em;
+  top: 13em;
 }
 #siteTitle {
   z-index: 99;
@@ -271,9 +270,10 @@ a#usvLink {
 }
 #address-input {
   padding-left: 15px;
+  padding-top: 2px;
   display:block;
   color: #807b77;
-  background-color: #d2d1d0;
+  background-color: #e0e0e0;
   position: relative;
   width: 35em;
   margin: 0 auto;
@@ -285,7 +285,7 @@ a#usvLink {
   transition: all 300ms ease-in-out;
   height: 34px;
   border-radius: .3em;
-  box-shadow: inset 0px 2px 6px 0px rgb(150, 153, 158), inset 0px 1px 19px -7px rgb(146, 153, 167), 0 1px 1px 0px rgb(227, 229, 236);
+  box-shadow: inset 0px 2px 6px 0px rgb(150, 153, 158), inset 0px 3px 12px -7px rgba(115, 117, 119, 0.65), 0 1px 1px 0px rgb(227, 229, 236);
 }
 
 input:focus {
@@ -300,11 +300,11 @@ input:focus::-webkit-input-placeholder {
   color: #605c59 !important;
 }
 #address-input:hover {
-  background-color: #dad7d5 !important;
+  background-color: #ececec !important;
 }
 #address-input:focus {
   color: #605c59 !important;
-  background-color: #dad7d5 !important;
+  background-color: #ececec !important;
 }
 /* #address-input:focus, #address-input:hover {
   box-shadow: inset 0 1px 1px 0px rgb(249, 249, 249);
@@ -313,7 +313,7 @@ input:focus::-webkit-input-placeholder {
   border: none !important;
 }
 .ap-input:hover ~ .ap-input-icon svg {
-  fill: #8e8883 !important;
+  fill: #6f6b68 !important;
 }
 .ap-input-icon svg {
   fill: #98938f !important;
@@ -353,7 +353,7 @@ input::placeholder {
   margin-right: auto;
   position: relative;
   height: 45px;
-  margin-top: 1.5em;
+  margin-top: 1.7em;
 }
 
 .buttonWrapper {
@@ -440,20 +440,31 @@ img.star {
     top: 1rem;
   }
 }
-@media screen and (min-width:320px) and (max-width:374px) {
+/* for iPhone 5 below */
+@media screen and (min-width:315px) and (max-width:374px) {
   .logoBlock {
     top: 1.3rem;
     left: -1px;
   }
+  #siteTitle {
+    font-size: 3.6em !important;
+  }
+  #USVoteHeader {
+    padding-top: 3em;
+    margin: 0 7vw;
+  }
+  #USVoteHeader, .button {
+    font-size: 1em !important;
+  }
   #inputEverything {
     font-size: 100%;
-    margin-top: 3.1rem;
+    margin-bottom: 4em !important;
   }
   #address-input {
     padding-left: 9px;
   }
-  .ap-input-icon {
-    right: -34vw !important;
+  #usVotersIcon {
+    height: 90px;
   }
 }
 
@@ -462,8 +473,8 @@ img.star {
     left: 6vw !important;
   }
 
-  .ap-input-icon {
-    right: -34vw !important;
+  .ap-input-icon.ap-icon-clear {
+    right: -34.5vw !important;
   }
 }
 @media screen and (min-width: 414px) and (max-width: 433px) {
@@ -508,12 +519,16 @@ img.star {
 }
 /* below for screens widths on iPhone 5-8 */
 @media screen and (max-width: 375px) {
+  #app, body, #landing {
+    width: 100vw;
+    height: 100vw;
+  }
   .ap-dropdown-menu {
     width: 80vw !important;
     left: 10vw !important;
   }
   .ap-input-icon svg {
-    right: 12.2em;
+    right: 6vw;
   }
   #siteTitle {
     letter-spacing: .02em;
@@ -536,11 +551,10 @@ img.star {
   #address-input {
     padding-top: 4px !important;
     width: 85vw !important;
-
   }
   #usVotersIcon {
-    top: 14em;
-    right: 5em;
+    top: 12.3em;
+    right: 2.7em;
   }
   #USVoteHeader {
     font-size: 1.2em;
@@ -578,7 +592,17 @@ img.star {
   }
   #inputEverything {
     margin-top: 5.5em;
-    margin-bottom: 7em;
+    margin-bottom: 5.5em;
+  }
+}
+@media screen and (min-width: 400px) {
+  #usVotersIcon {
+    right: 15vw;
+  }
+}
+@media screen and (min-width: 450px) {
+  #siteTitle {
+    padding-left: 12.5vw;
   }
 }
 @media screen and (max-width: 692px) {
@@ -591,19 +615,63 @@ img.star {
   }
 
 }
+
+/* below for iPhone 6/7/8 plus  */
+@media screen and (min-width: 413px) and (max-width: 432px) {
+  #siteTitle {
+    padding-left: 8vw !important;
+  }
+  .ap-input-icon svg {
+    right: 7vw;
+  }
+  #inputEverything {
+    margin-top: 6em !important;
+    margin-bottom: 6em !important;
+  }
+  #USVoteHeader {
+    width: 91%;
+    margin: 0 auto;
+  }
+  #infoAndStarsWrapper {
+    margin-left: 4vw;
+  }
+}
+@media screen and (min-width: 430) and (max-width: 750px) {
+  #siteTitle {
+    padding-right: 14vw;
+  }
+  .ap-input-icon {
+    right: calc(2vw - 3vw*.9) !important;
+    left: unset;
+  }
+}
+@media screen and (min-width: 418px) and (max-width: 515px) {
+  #infoAndStarsWrapper {
+    padding-left: 6.3vw !important;
+  }
+  #USVoteHeader {
+    padding-top: 4em;
+    padding-left: 9vw;
+    width: 92%;
+  }
+  #siteTitle {
+    padding-left: 10vw !important;
+  }
+}
+@media screen and (max-width: 515px) {
+  #starsWrapper {
+    display: none;
+  }
+
+}
 @media screen and (max-width: 750px) {
   #address-input {
     width: 82vw;
-    padding-top: 6px;
-    /* padding-bottom: .4em; */
   }
   .ap-dropdown-menu {
     width: 73vw;
   }
-  .ap-input-icon {
-    right: -35.5vw;
-    left: unset;
-  }
+
   #topLine, #bottomLine {
     width: 90%;
   }
