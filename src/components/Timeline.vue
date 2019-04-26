@@ -184,7 +184,7 @@ export default {
   },
   methods: {
     returnRelativeTime (date) {
-      return hdate.relativeTime(date)
+      return hdate.relativeTime(date, {futureSuffix: 'from TODAY'})
     },
     returnPrettyDate (date) {
       return hdate.prettyPrint(date)

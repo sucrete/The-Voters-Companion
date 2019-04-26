@@ -209,6 +209,7 @@ export default {
 .repTitle {
   line-height: 125%;
   color: grey;
+  padding-right: 0px;
 }
 .buttonWrapper {
   margin-left: .5em;
@@ -244,16 +245,21 @@ footer {
 .layout.row {
   /* height: 160px; */
 }
+.sectionHeader:first-of-type {
+  margin-top: 1em;
+}
 .sectionHeader {
   color: #343434;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Roboto', sans-serif;
   border-bottom: 1px solid #d1cccc;
   text-align: left;
   /* position: relative; */
   font-size: 130%;
   padding-left: 2em;
+  font-weight: 400;
   letter-spacing: .08em;
   padding-bottom: .65em;
+  margin-bottom: .3em !important;
 }
 
 h1, h2 {
@@ -314,7 +320,8 @@ h1, h2 {
   .repTopText {
     position: relative;
     top: .5em;
-    left: -.3em;
+    padding-left: 0px !important;
+    left: -6px;
   }
   .v-card {
     margin: 0 auto;
@@ -330,11 +337,22 @@ h1, h2 {
   .container.grid-list-lg .layout .flex {
     margin: 0 17px;
   }
+
+}
+@media screen and (max-width: 330px) {
+  .v-responsive.v-image {
+    left: -1.3em !important;
+  }
   .repTitle {
-    font-size: 140%;
+    font-size: 95% !important;
   }
   .repName {
-    font-size: 150%;
+    font-size: 105% !important;
+  }
+}
+@media screen and (min-width: 350px) and (max-width: 380px) {
+  .v-responsive.v-image {
+    left: -.6em !important;
   }
 }
 @media only screen and (max-width: 375px) {
@@ -345,12 +363,7 @@ h1, h2 {
     bottom: -.5em;
     font-size: 90%;
   }
-  .repName {
-    font-size: 125%;
-  }
-  .repTitle {
-    font-size: 105%;
-  }
+
   .v-card__title {
     padding-top: 7px !important;
   }
@@ -361,21 +374,26 @@ h1, h2 {
   .v-responsive.v-image {
     height: 125px;
     width: 125px;
-    left: -.9em;
-  }
-  .sectionHeader {
   }
 }
-@media only screen and (min-width: 350px) and (max-width: 432) {
+@media screen and (min-width: 400px) and (max-width: 432) {
+  .v-responsive.v-image {
+    left: -.2em !important;
+  }
+  .repTopText {
+    top: 0em !important;
+  }
+  .v-card__title--primary {
+    font-size: 110% !important;
+  }
+  .v-card__title {
+    font-size: 105% !important;
+  }
+}
+@media screen and (min-width: 350px) and (max-width: 432) {
   .repButton {
     bottom: -.5em;
     font-size: 90%;
-  }
-  .repName {
-    font-size: 125%;
-  }
-  .repTitle {
-    font-size: 105%;
   }
   .v-card__title {
     padding-top: 7px !important;

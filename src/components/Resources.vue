@@ -7,13 +7,13 @@
     <v-tabs
       class="knowledgeTabs"
       v-model="active"
-      style="margin: 0 auto; width: 21.1em; margin-bottom: 1.5em;"
+      style="margin: 0 auto; margin-bottom: 1.5em;"
       hide-slider
       centered>
       <v-tab :key="i">{{ i }}</v-tab>
       <v-tab :key="ii">{{ ii }}</v-tab>
       <v-tab  :key="iii">{{ iii }}</v-tab>
-      <v-tabs-items>
+      <v-tabs-items style="margin: 0 auto;">
         <v-tab-item :key="i" v-html="generalInfo">  </v-tab-item>
         <v-tab-item :key="ii" v-html="IDRequirements">  </v-tab-item>
         <v-tab-item :key="iii" v-html="eligibility">  </v-tab-item>
@@ -203,6 +203,9 @@ export default {
   height: 36px;
   text-align: left;
 }
+.v-tabs.knowledgeTabs {
+  width: 21.1em;
+}
 .v-tabs.knowledgeTabs .v-window {
   font-family: 'Roboto', sans-serif;
   position: relative;
@@ -292,10 +295,64 @@ em {
 #find-my-trolling-place i {
   padding-right: .3em;
 }
+@media screen and (max-width: 321px) {
+  .v-tabs.knowledgeTabs .v-window {
+    left: 0em !important;
+  }
+}
 @media screen and (max-width: 750px) {
   #additionalResources {
     width: 95%;
     margin-bottom: 20px;
+  }
+  .v-tabs.knowledgeTabs .v-window {
+    width: 90vw;
+  }
+}
+@media screen and (min-width: 430px) and (max-width: 470px) {
+  .v-tabs.knowledgeTabs .v-window {
+    left: -12vw;
+  }
+}
+@media screen and (min-width: 470px) and (max-width: 500px) {
+  .v-tabs.knowledgeTabs .v-window {
+    left: -14vw;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 550px) {
+  .v-tabs.knowledgeTabs .v-window {
+    left: -16vw;
+  }
+}
+@media screen and (min-width: 550px) and (max-width: 580px) {
+  .v-tabs.knowledgeTabs .v-window {
+    left: -18vw;
+  }
+}
+@media screen and (min-width: 580px) and (max-width: 650px) {
+  .v-tabs.knowledgeTabs .v-window {
+    left: -20vw;
+  }
+}
+@media screen and (min-width: 650px) and (max-width: 700px) {
+  .v-tabs.knowledgeTabs .v-window {
+    left: -22vw;
+  }
+}
+@media screen and (min-width: 700px) and (max-width: 750px) {
+  .v-tabs.knowledgeTabs .v-window {
+    left: -24vw;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 503px) {
+  button#find-my-trolling-place {
+    width: 90%;
+    left: 2.5%
+  }
+}
+@media screen and (max-width: 700px) {
+  .v-tabs.knowledgeTabs {
+    width: 20.7em !important;
   }
 }
 @media screen and (min-width: 413px) and (max-width: 432px) {
@@ -311,7 +368,7 @@ em {
   }
   .v-tabs.knowledgeTabs .v-window {
     width: 90vw;
-    left: -1em;
+    left: -1.5em;
   }
   #additionalResources {
     width: 95%;

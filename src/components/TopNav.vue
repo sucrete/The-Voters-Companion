@@ -63,7 +63,7 @@ export default {
 .v-tabs__item {
   color: white !important;
   letter-spacing: .065em;
-  font-weight: 400;
+  font-weight: 500;
 }
 .v-tabs__container {
   height: 55px;
@@ -71,9 +71,9 @@ export default {
 a .flagLogo {
   margin: 0;
   position: absolute;
-  left: .6em;
+  left: .7em;
   top: 50%;
-  height: 2.7em;
+  height: 2.5em;
   width: auto;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -82,10 +82,15 @@ a .flagLogo {
 @media only screen and (max-width: 750px) {
   .v-tabs {
     border-top-left-radius: 0px;
-    border-top-right-radius: 0px; 
+    border-top-right-radius: 0px;
   }
 }
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 330px) {
+  .v-tabs__item {
+    font-size: .9em;
+  }
+}
+@media only screen and (max-width: 700px) {
   .v-tabs__item {
     padding: 6px 6px !important;
   }

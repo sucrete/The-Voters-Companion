@@ -80,7 +80,7 @@ display: block;
 }
 html {
   background: linen url( "https://cl.ly/image/381U2k0A3L3S/bg.png" );
-  height: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
@@ -106,15 +106,8 @@ html {
   min-height: 52em;
   position: relative;
   border-radius: 3px;
-  padding-bottom: 9px;
+  padding-bottom: 4px;
 }
-
-.hotBod {
-  position: relative;
-  top: 1rem;
-  padding-bottom: 1rem;
-}
-
 #overviewNotice {
   color: rgb(94, 94, 90);
   font-size: 130%;
@@ -156,7 +149,7 @@ body {
   margin: 0;
   padding: 0;
   /* 👇 the color behind the 'page' element */
-  height: 100%;
+  min-height: 100vh;
   display: block;
 }
 
@@ -298,7 +291,12 @@ input, input:focus {
     width: 95%;
     margin: 0 auto;
     position: relative;
-    margin-top: 2.5%
+  }
+}
+@media only screen and (max-width: 380px) {
+  html, body {
+    background: rgb(253, 253, 253) !important;
+    min-height: 100vh;
   }
 }
 @media only screen and (max-width: 375px) {

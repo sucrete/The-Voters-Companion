@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style>
-#app {
+#app, body::after, body::before, html::after, html::before {
   background-color: rgb(253, 253, 253);
 }
 </style>
