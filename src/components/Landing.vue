@@ -536,6 +536,11 @@ img.star {
     padding-left: .6em;
   }
 }
+@media screen and (max-width: 415px) and (max-width: 450px) {
+  #usVotersIcon {
+    right: 11vw;
+  }
+}
 @media screen and (max-width: 375px) and (max-height: 700px) {
   #siteTitle {
     margin-top: .7em;
@@ -554,7 +559,6 @@ img.star {
   }
   #usVotersIcon {
     top: 12.3em;
-    right: 2.7em;
   }
   #USVoteHeader {
     font-size: 1.2em;
@@ -595,14 +599,17 @@ img.star {
     margin-bottom: 5.5em;
   }
 }
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 750px) {
   #usVotersIcon {
-    right: 15vw;
+    right: 8em;
   }
 }
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 450px) and (max-width: 750px) {
   #siteTitle {
     padding-left: 12.5vw;
+  }
+  #usVotersIcon {
+    right: 15vw;
   }
 }
 @media screen and (max-width: 692px) {
@@ -636,10 +643,12 @@ img.star {
     margin-left: 4vw;
   }
 }
-@media screen and (min-width: 430) and (max-width: 750px) {
-  #siteTitle {
-    padding-right: 14vw;
+@media screen and (min-width: 319px) and (max-width: 415px) {
+  #usVotersIcon {
+    right: 10vw;
   }
+}
+@media screen and (min-width: 430) and (max-width: 750px) {
   .ap-input-icon {
     right: calc(2vw - 3vw*.9) !important;
     left: unset;
