@@ -1,8 +1,6 @@
 <template>
 <!-- eslint-disable -->
   <div id="landing">
-    <!-- example of syntax needed to insert image with vue -->
-    <!-- <div :style="{ 'background-image': 'url(' + secondTester + ')' }"></div> -->
     <div id="USVoteHeader">
       MADE WITH SUPPORT FROM THE <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. VOTE FOUNDATION</a>
     </div>
@@ -12,7 +10,7 @@
     <h1 id="siteTitle" >The<br />Voter's<br /> Companion</h1>
     <div id="inputEverything">
       <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
-      <input type="search" id="address-input" @input="updateValue($event.target.value)" @keyup.enter="searchEvent" placeholder="What is your address?" />
+      <input type="search" id="address-input" @input="updateValue($event.target.value)" placeholder="What is your address?" />
     </div>
     <hr noshade size="1" id="bottomLine"/>
     <div id="infoAndStarsWrapper">
@@ -34,7 +32,7 @@
         <div class="image">
           <img style="width: 23px; height: auto;" :src=" lightYellowStar "/>
         </div>
-        <span style="font-family: Karla; color: cornsilk; text-align: center;"> LOADING... </span>
+        <span style="font-family: 'Roboto', sans-serif; color: white; text-align: center;"> LOADING... </span>
     </modal>
 
   </div>
@@ -83,8 +81,6 @@ export default {
       this.$modal.hide('v--modal-box')
     },
     setUsersAddress (val) {
-      var $address2 = document.querySelector('#address-value2')
-      $address2.textContent = this.addy
       this.$store.commit('setUsersAddress', val)
     },
     searchEvent () {
@@ -170,7 +166,7 @@ export default {
   },
   mounted () {
     var placesAutocomplete = places({
-      container: document.querySelector('#address-input'),
+      container: document.getElementById('address-input'),
       type: 'address',
       countries: ['us'],
       autoselect: true,
@@ -183,16 +179,13 @@ export default {
       this.updateValue(e.suggestion.value)
       this.updatePostcode(e.suggestion.postcode)
       this.updateSuggestion(e.suggestion)
+      this.searchEvent()
     })
 
     placesAutocomplete.on('clear', function () {
       var blank = null
       this.updateValue(blank)
       this.updatePostcode(blank)
-    })
-    placesAutocomplete.on('autocomplete:selected', function (e, suggestion, dataset) {
-      this.updateValue(e.suggestion.value)
-      this.updatePostcode(e.suggestion.postcode)
     })
   },
   beforeDestroy () {
@@ -205,6 +198,7 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
+
 footer {
   display: none;
 }

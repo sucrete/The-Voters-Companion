@@ -3,7 +3,6 @@
   <div id="app">
     <router-view></router-view>
     <footer>
-      a bunch of stuff
       <a id="logoLink" href="https://www.usvotefoundation.org/" target="_blank">
         <img :src=" logFin "/>
       </a>
@@ -66,6 +65,7 @@ margin: 0 auto;
 padding: 16px;
 border-radius: 3px;
 display: block;
+margin-bottom: 5.5px;
 }
 #logoLink {
   z-index: 777;
@@ -101,7 +101,7 @@ html {
   margin-bottom: 5em;
   text-align: center;
   /* box-shadow from Domenico on https://codepen.io/ryandom/pen/ALQkWq*/
-  box-shadow: 0 0.4rem 0.4rem rgba(102, 111, 214, 0.17), 0 0.8rem 0.8rem rgba(18, 35, 72, 0.1), 0 1.6rem 1.5rem rgba(4, 15, 58, 0.1), 0 3.2rem 3.2rem rgba(65, 67, 111, 0.1);
+  box-shadow:  0 0.4rem 0.8rem rgba(0, 0, 0, 0.2), 0 0.8rem 1.6rem rgba(0, 0, 0, 0.1);;
   /* padding: 10px 24px; */
   min-height: 52em;
   position: relative;
@@ -216,7 +216,7 @@ input, input:focus {
 }
 
 /* The loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN  */
-@keyframes rotate{
+@keyframes rotate {
   0% {
     transform: rotate(90deg);
   }
@@ -246,8 +246,11 @@ input, input:focus {
 .v--modal-overlay .v--modal-box {
   overflow: visible !important;
   position: relative !important;
-  background-color: #888888;
+  background-color: #acb4c5;
   box-shadow: 0px 8px 12px rgba(58, 68, 41, 0.2), 0px 12px 20px rgba(0, 0, 0, .1), 0px 0px 17px rgba(0, 0, 0, .14)!important;
+  border-color: white;
+  border-style: solid;
+  border-width: 5px;
 }
 
 .v--modal-overlay {
