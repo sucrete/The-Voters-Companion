@@ -42,7 +42,7 @@ export default {
   name: 'Resources',
   data () {
     return {
-      generalInfo: '<span>all kinds of great shi</span>',
+      generalInfo: '<span>NO INFO</span><br><a href="/">return to landing page</a>',
       eligibility: '',
       IDRequirements: '',
       resources: '<div>nothing to see here</div>',

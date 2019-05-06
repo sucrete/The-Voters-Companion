@@ -267,6 +267,16 @@ input, input:focus {
  opacity: 0;
  transform: scale(0.3) translateY(24px);
 }
+@media screen and (min-width: 376px) and (max-width: 432px) {
+  footer {
+    bottom: 8px !important;
+  }
+}
+@media screen and (min-width: 432px) and (max-width: 750px) {
+  footer {
+    margin-bottom: 2.5px !important;
+  }
+}
 @media only screen and (max-width: 750px) {
   #app {
     width: 100vw;
@@ -288,7 +298,7 @@ input, input:focus {
     padding-left: .2em;
   }
   #logoLink {
-    right: -2.7em;
+
   }
   footer {
     width: 95%;
@@ -305,6 +315,7 @@ input, input:focus {
 @media only screen and (max-width: 375px) {
   footer {
     width: 95%;
+    margin-bottom: 8px;
   }
   #logoLink {
     top: .7em;
