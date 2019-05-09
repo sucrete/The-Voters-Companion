@@ -97,7 +97,6 @@ export default {
       var newGeneralInfo = generalInfo.replace(pollingPlaceRegex, 'HOCKUM')
       var coolShi = generalInfo.match(pollingPlaceRegex)
       var testCoolShi = generalInfo.match(testRegex)
-      console.log('polling Place Regex test ' + '\n' + newGeneralInfo + '\n' + ' 🛢️ 🛢️ 🛢️ type of === ' + typeof (newGeneralInfo) + '\n' + 'cool shi === ' + coolShi + '\n test cool shi ==' + testCoolShi)
       this.generalInfo = marked(generalInfo)
       this.stateName = voterInfo.state.name
       voterInfo.eligibility_requirements.forEach(headly => {

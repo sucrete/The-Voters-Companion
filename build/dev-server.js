@@ -109,7 +109,6 @@ var VoterAPI = {karuthers: 'all that\'s fit to print',
 
 // GET INFORMATION FROM THE U.S. VOTE API
 app.post('/api/postVoterAPI', function(req, res, next) {
-  console.log('\n' + '\t' + '+----------- postVoterAPI started -----------+' + '\n')
   const hardUP = req.body.data.USVoteKey
   var stateName = req.body.data.voterStateName
   console.log('\n' + '\t' + '+----------- stateName = ' + stateName + ' -----------+' + '\n')
@@ -126,18 +125,30 @@ app.post('/api/postVoterAPI', function(req, res, next) {
     },
     json: true
   }
+  var electionTypesOptions = {
+    uri: 'https://api.usvotefoundation.org/elections/v1/election_types',
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token ' + hardUP,
+      'Content-Type': 'application/json, text/plain, */*'
+    },
+    qs: {
+      limit: 56
+    },
+    json: true
+  }
+  rp(electionTypesOptions)
+    .then(response => {
+      console.log('😍  electionTypes  😍' + '\n' + JSON.stringify(response, null, '\t'))
+    })
   rp(statesOptions)
     .then(response => {
       VoterAPI.stateIDs = response
-      console.log('\n' + '\n' + 'working' + '\n' + '\n' + '...thank god' + '\n' + '\n')
-      console.log(response)
       response.objects.forEach(where => {
         if (where.name === stateName) {
-          console.log(where.name)
           stateID = where.id
         }
       })
-      console.log('\n' + '\n' + '\t' + '+------- stateID = ' + stateID + ' -------+' + '\n')
       var electionsOptions = {
         uri: 'https://api.usvotefoundation.org/elections/v1/elections',
         headers: {
@@ -152,8 +163,6 @@ app.post('/api/postVoterAPI', function(req, res, next) {
       rp(electionsOptions)
         .then(response => {
           VoterAPI.electionInfo = response
-          console.log('\n' + '\n' + 'twerking' + '\n' + '\n' + '...thank god' + '\n' + '\n')
-          console.log(response)
           var voterInfoOptions = {
             uri: 'https://api.usvotefoundation.org/elections/v1/state_voter_information',
             headers: {
@@ -167,9 +176,6 @@ app.post('/api/postVoterAPI', function(req, res, next) {
           rp(voterInfoOptions)
             .then(response => {
               VoterAPI.voterInfo = response
-              console.log('\n' + '\n' + 'borking' + '\n' + '\n' + '...thank god' + '\n' + '\n')
-              console.log(response)
-              console.log('\n' + '\n' + 'U.S. Vote Info LOGGED to API')
               res.status(200).end('the res.end() worked on postVoterAPI method on server')
             })
             .catch(err => {
@@ -187,10 +193,9 @@ app.post('/api/postVoterAPI', function(req, res, next) {
 })
 
 app.get('/api/getVoterAPI', function(req, res) {
-  console.log('GETVOTERAPI method fired on server' + '\n' + '\n' + JSON.stringify(VoterAPI, null, '\t'))
   // res.send({info: stateInfo})
   // make some calls to database, fetch some data, information, check state, etc...
-  // convert whatever we want to send (preferably should be an object) to JSON
+  // convert whatever we want to send ( should be an object preferably ) to JSON
   res.json(VoterAPI)
   res.status(200).end('the res.end() worked on getVoterAPI method on server')
 })
