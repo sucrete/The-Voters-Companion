@@ -264,6 +264,7 @@ export default {
 }
 .govResourcesList {
   background-color: transparent !important;
+  font-family: 'Roboto', sans-serif;
 }
 
 ul {

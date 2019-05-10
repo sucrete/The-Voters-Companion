@@ -206,6 +206,9 @@ export default {
 </script>
 
 <style >
+#officialsBody:not(.infoButton) {
+  font-family: 'Roboto', sans-serif;
+}
 .repTitle {
   line-height: 125%;
   color: grey;

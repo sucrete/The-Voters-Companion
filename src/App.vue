@@ -36,8 +36,8 @@ export default {
 </script>
 
 <style>
-
 @import url('https://fonts.googleapis.com/css?family=Karla:400|Roboto:400,500,700,900');
+
 .v-tabs__div {
   cursor: pointer;
 }
@@ -55,24 +55,23 @@ export default {
   -webkit-filter: drop-shadow(1px 14px 14px rgba(15, 13, 2, 0.2)) drop-shadow(1px 8px 10px rgba(15, 13, 2, 0.25));
 } */
 footer {
-/* position: absolute; */
-background-color: rgb(243, 243, 243);
-height: 15em;
-width: 97%;
-bottom: 10px;
-color: #3e3830;
-margin: 0 auto;
-padding: 16px;
-border-radius: 3px;
-display: block;
-margin-bottom: 5.5px;
+  /* position: absolute; */
+  background-color: rgb(243, 243, 243);
+  height: 15em;
+  width: 97%;
+  bottom: 10px;
+  color: #3e3830;
+  margin: 0 auto;
+  padding: 16px;
+  border-radius: 3px;
+  display: block;
+  margin-bottom: 5.5px;
 }
 #logoLink {
   z-index: 777;
   position: relative;
   top: .3em;
   float: right;
-
   filter: drop-shadow(0 2px 3px rgba(26, 47, 136, 0.46));
 	-webkit-filter: drop-shadow(0 2px 3px rgba(26, 47, 136, 0.46));
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
@@ -183,7 +182,6 @@ input, input:focus {
   font-size: 1.5rem;
   font-family: 'Karla', sans-serif;
 }
-
 /* loading modal below this line ================================= */
 /* The modal-loader below created by Alex Rutherford >>> https://codepen.io/Ruddy/pen/RNRybN */
 .v--modal {

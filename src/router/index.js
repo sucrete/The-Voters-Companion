@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Officials = () => import('@/components/Officials')
-const Resources = () => import('@/components/Resources')
-const Timeline = () => import('@/components/Timeline')
-const Landing = () => import('@/components/Landing')
-const Main = () => import('@/components/Main')
+import Officials from '@/components/Officials'
+import Resources from '@/components/Resources'
+import Timeline from '@/components/Timeline'
+import Landing from '@/components/Landing'
+import Main from '@/components/Main'
 Vue.use(Router)
 
 // standard route configuration:

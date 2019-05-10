@@ -1,90 +1,89 @@
 <template>
-  <!-- eslint-disable -->
   <div id="Timeline">
-
-    <div class="fullwidth">
-
-      <div id="overviewNoticeWrapper">
-        <div id="overviewMarquee">
-        </div>
-        <div id="overviewNotice">
-
-        </div>
-      </div>
-      <!-- body -->
-
-      <v-container class="timelineContainer pb-0" style="max-width: 42em;">
-        <v-timeline align-top dense>
-          <v-timeline-item
-            class="mb-4"
-            small
-            color="orange"
-          >
-            <v-layout justify-space-between class="subheading">
-              <v-flex xs7 text-xs-left class="todayElement">{{ returnPrettyDate(todaysDate) }}</v-flex>
-              <v-flex xs5 text-xs-right class="todayElement">TODAY</v-flex>
-            </v-layout>
-          </v-timeline-item>
-
-          <v-timeline-item
-            v-for="votable in electionsTimelineObject"
-            class="mt-2 eachItem"
-            v-bind:class="{ dummyInfo: useDummyInfo }"
-            v-bind:color="votable.color"
-            small
-          >
-            <v-layout justify-space-between class="subheading mb-2">
-              <v-flex xs7 text-xs-left>{{ returnPrettyDate(votable.electionDate) }}</v-flex>
-              <v-flex xs5 text-xs-right>{{ returnRelativeTime(votable.electionDate) }}</v-flex>
-            </v-layout>
-            <div class="text-xs-left mb-2 subheading font-weight-bold">{{ votable.electionTitle }}</div>
-            <div class="text-xs-left font-italic subheading">
-              {{ votable.additionalInformation }}
-            </div>
-            <v-list
-              class="timelineList"
-              v-bind:class="{ dummyInfo: useDummyInfo }"
-            >
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>New Voter Registration Dates</v-list-tile-title>
-                  <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }" v-for="info in votable.newVoterRegistrationDates">{{ info }}</v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>Absentee Ballot Request Dates</v-list-tile-title>
-                  <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }" v-for="info in votable.newVoterRegistrationDates">{{ info }}</v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>Absentee Ballot Return Dates</v-list-tile-title>
-                  <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }" v-for="info in votable.absenteeBallotReturnDates">{{ info }}</v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>Window for In-Person Absentee Voting</v-list-tile-title>
-                  <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }">{{ votable.inPersonAbsenteeVotingToFrom }}</v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>Window for Early Voting</v-list-tile-title>
-                  <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }">{{ votable.earlyVotingToFrom }}</v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-
-            </v-list>
-          </v-timeline-item>
-        </v-timeline>
-      </v-container>
+    <div id="overviewNoticeWrapper">
+      <div id="overviewMarquee"></div>
+      <div id="overviewNotice"></div>
     </div>
+    <v-container class="timelineContainer pb-0" style="max-width: 42em;">
+      <v-timeline align-top dense>
+        <v-timeline-item
+          class="mb-4"
+          small
+          color="orange"
+          v-bind:class="{ dummyInfo: useDummyInfo }"
+        >
+          <v-layout justify-space-between class="subheading">
+            <v-flex xs7 text-xs-left class="todayElement">{{ returnPrettyDate(todaysDate) }}</v-flex>
+            <v-flex xs5 text-xs-right class="todayElement">TODAY</v-flex>
+          </v-layout>
+        </v-timeline-item>
+
+        <v-timeline-item
+          v-for="votable in electionsTimelineObject"
+          class="mt-2 eachItem"
+          v-bind:class="{ dummyInfo: useDummyInfo }"
+          v-bind:color="votable.color"
+          small
+        >
+          <v-layout justify-space-between class="subheading mb-2">
+            <v-flex xs7 text-xs-left>{{ returnPrettyDate(votable.electionDate) }}</v-flex>
+            <v-flex xs5 text-xs-right>{{ returnRelativeTime(votable.electionDate) }}</v-flex>
+          </v-layout>
+          <div class="text-xs-left mb-2 subheading font-weight-bold">
+            {{ votable.electionTitle }}
+            <v-tooltip top v-if="votable.electionType !== null">
+              <template v-slot:activator="{ on }">
+                <v-btn color="#008c61" round depressed small fab class="infoTooltip" style="height: 27px; width: 27px;" v-on="on">?</v-btn>
+              </template>
+              <span v-html="electionTypes[votable.electionType]"></span>
+            </v-tooltip>
+          </div>
+          <div class="text-xs-left font-italic subheading">
+            {{ votable.additionalInformation }}
+          </div>
+          <v-list
+            class="timelineList"
+            v-bind:class="{ dummyInfo: useDummyInfo }"
+          >
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-title>New Voter Registration Dates</v-list-tile-title>
+                <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }" v-for="info in votable.newVoterRegistrationDates">{{ info }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-title>Absentee Ballot Request Dates</v-list-tile-title>
+                <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }" v-for="info in votable.newVoterRegistrationDates">{{ info }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-title>Absentee Ballot Return Dates</v-list-tile-title>
+                <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }" v-for="info in votable.absenteeBallotReturnDates">{{ info }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-title>Window for In-Person Absentee Voting</v-list-tile-title>
+                <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }">{{ votable.inPersonAbsenteeVotingToFrom }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-title>Window for Early Voting</v-list-tile-title>
+                <v-list-tile-sub-title v-bind:class="{ dummyInfo: useDummyInfo }">{{ votable.earlyVotingToFrom }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+          </v-list>
+        </v-timeline-item>
+      </v-timeline>
+    </v-container>
   </div>
 </template>
 
@@ -101,7 +100,7 @@ export default {
       electionsTimelineObject: [],
       useDummyInfo: false,
       electionTypes: {
-        'General': '<p>From Wikipedia:<br /><q>A <em>general election</em> is an election in which all or most members of a given political body are chosen. These are usually held for a nation\'s primary legislative body...as distinguished from local elections. <br />...In U.S. politics, general elections are elections held at any level (e.g. city, county, congressional district, state) that typically involve competition between at least two parties. General elections occur every two to six years (depending on the positions being filled with most positions good for four years) and include the presidential election...</q></p>'
+        'General': '<p>From Wikipedia:<br /><q>A <em>general election</em> is an election in which all or most members of a given political body are chosen. These are usually held for a nation\'s primary legislative body...as distinguished from local elections. <br />...In U.S. politics, general elections are elections held at any level (e.g. city, county, congressional district, state) that typically involve competition between at least two parties. General elections occur every two to six years...and include the presidential election...</q></p>'
         ,
         'Runoff':
           '<p>From Wikipedia:<br /><q>The two-round system is known as run-off voting in the United States, where the second round is known as a <em>run-off election</em>. Run-off voting is also sometimes used as a generic term to describe any method involving a number of rounds of voting, with eliminations after each round...</q></p>'
@@ -113,7 +112,7 @@ export default {
           '<p>From Wikipedia:<br /><q> [<em>special elections</em>] are used to fill elected offices that have become vacant between general elections. <br />In most cases these elections occur after the incumbent dies or resigns, but they also occur when the incumbent becomes ineligible to continue in office (because of a recall, ennoblement, criminal conviction, or failure to maintain a minimum attendance)...</q></p>'
         ,
         'Regular':
-          '<p>Also known as a <em>general election</em> a <em>regular election</em> is <q>...an election in which all or most members of a given political body are chosen. These are usually held for a nation\'s primary legislative body...as distinguished from local elections. ...In U.S. politics, general elections are elections held at any level (e.g. city, county, congressional district, state) that typically involve competition between at least two parties. General elections occur every two to six years (depending on the positions being filled with most positions good for four years) and include the presidential election...</q>(https://en.wikipedia.org/wiki/General_election)</p>'
+          '<p>Also known as a <em>general election</em>, a <em>regular election</em> is <q>...an election in which all or most members of a given political body are chosen. These are usually held for a nation\'s primary legislative body...as distinguished from local elections. <br />...In U.S. politics, general elections are elections held at any level (e.g. city, county, congressional district, state) that typically involve competition between at least two parties. General elections occur every two to six years...and include the presidential election...</q>(https://en.wikipedia.org/wiki/General_election)</p>'
       },
       dummyInfo: [
         {
@@ -131,7 +130,7 @@ export default {
       		],
       		"inPersonAbsenteeVotingToFrom": "none on record",
       		"earlyVotingToFrom": "Thu Apr 11, 2019 - Sat Apr 27, 2019",
-      		"electionType": "Special Primary",
+      		"electionType": null,
       		"color": "#cedcf1"
       	},
       	{
@@ -149,7 +148,7 @@ export default {
       		],
       		"inPersonAbsenteeVotingToFrom": "none on record",
       		"earlyVotingToFrom": "Thu Apr 25, 2019 - Sat May 11, 2019",
-      		"electionType": "Special Primary",
+      		"electionType": null,
       		"color": "#adb5c4"
       	},
       	{
@@ -167,26 +166,8 @@ export default {
       		],
       		"inPersonAbsenteeVotingToFrom": "none on record",
       		"earlyVotingToFrom": "Thu Jun 20, 2019 - Sat Jul 6, 2019",
-      		"electionType": "Special General",
+      		"electionType": null,
       		"color": "#29417e"
-      	},
-      	{
-      		"electionDate": "09/10/2019",
-      		"electionTitle": "North Carolina District 9 New Election",
-      		"additionalInformation": "New Election for Congressional District 9",
-      		"newVoterRegistrationDates": [
-      			"Fri Aug 16, 2019"
-      		],
-      		"absenteeBallotReturnDates": [
-      			"Tue Sep 10, 2019"
-      		],
-      		"absenteeBallotRequestDates": [
-      			"Tue Sep 3, 2019"
-      		],
-      		"inPersonAbsenteeVotingToFrom": "none on record",
-      		"earlyVotingToFrom": "Thu Aug 22, 2019 - Sat Sep 7, 2019",
-      		"electionType": "Special",
-      		"color": "#cedcf1"
       	}
       ],
       timelineColors: {
@@ -246,7 +227,25 @@ export default {
         timelineItemSaver.absenteeBallotRequestDates = []
         timelineItemSaver.inPersonAbsenteeVotingToFrom = 'none on record'
         timelineItemSaver.earlyVotingToFrom = 'none on record'
-        timelineItemSaver.electionType = tally.election_type.name || null
+        switch (tally.election_type.name) {
+          case 'General':
+            timelineItemSaver.electionType = tally.election_type.name;
+            break;
+          case 'Runoff':
+            timelineItemSaver.electionType = tally.election_type.name;
+            break;
+          case 'Primary':
+             timelineItemSaver.electionType = tally.election_type.name;
+            break;
+          case 'Special':
+            timelineItemSaver.electionType = tally.election_type.name;
+            break;
+          case 'Regular':
+            timelineItemSaver.electionType = tally.election_type.name;
+            break;
+          default:
+            timelineItemSaver.electionType = null
+        }
         tally.dates.forEach(booger => {
           if (booger.kind === 'DRD') {
             timelineItemSaver.newVoterRegistrationDates.push(booger.date_human_readable)
@@ -306,7 +305,6 @@ export default {
 </script>
 
 <style >
-
 .eachItem:last-child {
   padding-bottom: 60px;
 }
@@ -322,26 +320,35 @@ footer {
   display: block;
 }
 /* below BOUNCE animation to be implemented every 15-20 seconds on timeline question mark */
-badge.badge--exclusive {
-    background: #008c61;
-    right: 36px;
-    top: 5px;
-    width: 55px;
-    padding: 25px 0px;
-    transform: scale(0.8) rotate(-10deg);
-    animation: bounce 0.5s infinite;
+.infoTooltip.v-btn.v-btn--floating.v-btn--depressed.v-btn--round.v-btn--small.theme--light .v-btn__content {
+  color: white;
+  font-size: 160%;
 }
-@@keyframes bounce {
+.infoTooltip {
+  color: white;
+  height: 20px;
+  width: 20px;
+  transform: scale(0.8) rotate(7deg);
+  animation: sklonse 15s infinite;
+  animation-delay: 2s;
+}
+@@keyframes sklonse {
   0%, 100% {
-    transform: scale(0.8) rotate(-10deg);
+    transform: scale(0.8) rotate(7deg);
     animation-timing-function: ease-out;
   }
-  50% {
-    transform: translateY(-5px) scale(0.8) rotate(-10deg);
+  1.666666667% {
+    transform: translateY(-5px) scale(0.8) rotate(7deg);
     animation-timing-function: ease-in;
   }
+  3.333333333% {
+    transform: scale(0.8) rotate(7deg);
+    animation-timing-function: ease-out;
+  }
 }
-
+#Timeline * {
+  font-family: 'Roboto', sans-serif;
+}
 .votableHeader {
   text-align: left;
   margin-top: -.75rem;
@@ -554,9 +561,9 @@ ul>li {
       max-width: calc(100% - 53px) !important;
   }
 }
-.dummyInfo, .dummyInfo > *, .timelineList.dummyInfo {
+/* .dummyInfo, .dummyInfo > *, .timelineList.dummyInfo {
   color: rgb(169, 173, 177) !important;
-}
+} */
 </style>
 
 <!-- alert.vue -->

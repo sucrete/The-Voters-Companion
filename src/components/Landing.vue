@@ -254,7 +254,9 @@ a#usvLink {
   /* text-shadow: 0.08em 0.08em 0 white; */
   /* -webkit-text-stroke: 3px #343434; */
 }
-
+.ap-dataset-places * {
+  font-family: 'Roboto', sans-serif;
+}
 #inputEverything {
   margin-top: 11em;
   margin-left: auto;

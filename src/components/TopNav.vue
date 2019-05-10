@@ -3,6 +3,7 @@
   <v-tabs
     right
     color="#acb4c5"
+    class="topNavvy"
   >
     <a href="/">
       <img class="flagLogo" :src=" flagLogo ">
@@ -61,6 +62,7 @@ export default {
 
 <style>
 .v-tabs__item {
+  font-family: 'Roboto', sans-serif;
   color: white !important;
   letter-spacing: .065em;
   font-weight: 500;
