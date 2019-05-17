@@ -91,12 +91,7 @@ export default {
     },
     fillItUp () {
       var voterInfo = this.$store.getters.getVoterInfo.objects[0]
-      var pollingPlaceRegex = /\[Find\smy\spolling\splace\](.*?)\\r/is
       var generalInfo = voterInfo.voting_general_info
-      var testRegex = /[Find my polling place]/
-      var newGeneralInfo = generalInfo.replace(pollingPlaceRegex, 'HOCKUM')
-      var coolShi = generalInfo.match(pollingPlaceRegex)
-      var testCoolShi = generalInfo.match(testRegex)
       this.generalInfo = marked(generalInfo)
       this.stateName = voterInfo.state.name
       voterInfo.eligibility_requirements.forEach(headly => {
@@ -257,7 +252,6 @@ export default {
 .v-tabs__container.v-tabs__container--centered.v-tabs__container--overflow {
   transform: translateX(0px) !important;
 }
-
 .tabItem {
   position: relative;
   cursor: pointer;

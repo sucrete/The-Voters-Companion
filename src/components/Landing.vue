@@ -30,7 +30,7 @@
 
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
         <div class="image">
-          <img style="width: 23px; height: auto;" :src=" lightYellowStar "/>
+          <img style="width: 35px; height: auto;" :src=" lightYellowStar "/>
         </div>
         <span style="font-family: 'Roboto', sans-serif; color: white; text-align: center;"> LOADING... </span>
     </modal>

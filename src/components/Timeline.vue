@@ -31,12 +31,10 @@
           </v-layout>
           <div class="text-xs-left mb-2 subheading font-weight-bold">
             {{ votable.electionTitle }}
-            <v-tooltip top v-if="votable.electionType !== null">
-              <template v-slot:activator="{ on }">
-                <v-btn color="#008c61" round depressed small fab class="infoTooltip" style="height: 27px; width: 27px;" v-on="on">?</v-btn>
-              </template>
-              <span v-html="electionTypes[votable.electionType]"></span>
-            </v-tooltip>
+            <span class="infoTooltip" v-if="votable.electionType !== null">
+              <span class="infoTooltipText">?</span>
+              <span class="tooltiptext" v-html="electionTypes[votable.electionType]"></span>
+            </span>
           </div>
           <div class="text-xs-left font-italic subheading">
             {{ votable.additionalInformation }}
@@ -100,19 +98,20 @@ export default {
       electionsTimelineObject: [],
       useDummyInfo: false,
       electionTypes: {
-        'General': '<p>From Wikipedia:<br /><q>A <em>general election</em> is an election in which all or most members of a given political body are chosen. These are usually held for a nation\'s primary legislative body...as distinguished from local elections. <br />...In U.S. politics, general elections are elections held at any level (e.g. city, county, congressional district, state) that typically involve competition between at least two parties. General elections occur every two to six years...and include the presidential election...</q></p>'
+        'General':
+          '<p>"A <u>general election</u> is an election in which all or most members of a given political body are chosen...</p><p class="secondP">...In U.S. politics, general elections are elections held at any level (e.g. city, county, congressional district, state) that typically involve competition between at least two parties. General elections occur every two to six years...and include the presidential election..."</p><p class="wikiCitation">Wikipedia contributors. (2019, February 25). General election. In Wikipedia, The Free Encyclopedia. Retrieved 00:44, May 16, 2019, from https://en.wikipedia.org/w/index.php?title=General_election&oldid=884941090</p>'
         ,
         'Runoff':
-          '<p>From Wikipedia:<br /><q>The two-round system is known as run-off voting in the United States, where the second round is known as a <em>run-off election</em>. Run-off voting is also sometimes used as a generic term to describe any method involving a number of rounds of voting, with eliminations after each round...</q></p>'
+          '<q>The two-round system is known as run-off voting in the United States, where the second round is known as a <u>run-off election</u>. Run-off voting is also sometimes used as a generic term to describe any method involving a number of rounds of voting, with eliminations after each round...</q><p class="wikiCitation">Wikipedia contributors. (2019, May 8). Two-round system. In Wikipedia, The Free Encyclopedia. Retrieved 00:49, May 16, 2019, from https://en.wikipedia.org/w/index.php?title=Two-round_system&oldid=896105269</p>'
         ,
         'Primary':
-          '<p>From Wikipedia:<br /><q>A <em>primary election</em> is the process by which voters, either the general public (open primary) or members of a political party (closed primary), can indicate their preference for a candidate in an upcoming general election or by-election, thus narrowing the field of candidates...</q></p>'
+          '<q>A <u>primary election</u> is the process by which voters, either the general public (open primary) or members of a political party (closed primary), can indicate their preference for a candidate in an upcoming general election or by-election, thus narrowing the field of candidates...</q><p class="wikiCitation">Wikipedia contributors. (2019, April 16). Primary election. In Wikipedia, The Free Encyclopedia. Retrieved 00:50, May 16, 2019, from https://en.wikipedia.org/w/index.php?title=Primary_election&oldid=892689977</p>'
         ,
         'Special':
-          '<p>From Wikipedia:<br /><q> [<em>special elections</em>] are used to fill elected offices that have become vacant between general elections. <br />In most cases these elections occur after the incumbent dies or resigns, but they also occur when the incumbent becomes ineligible to continue in office (because of a recall, ennoblement, criminal conviction, or failure to maintain a minimum attendance)...</q></p>'
+          '<q>[<u>Special elections</u>] are used to fill elected offices that have become vacant between general elections...In most cases these elections occur after the incumbent dies or resigns, but they also occur when the incumbent becomes ineligible to continue in office (because of a recall, ennoblement, criminal conviction, or failure to maintain a minimum attendance)...</q><p class="wikiCitation">Wikipedia contributors. (2019, May 11). By-election. In Wikipedia, The Free Encyclopedia. Retrieved 00:58, May 16, 2019, from https://en.wikipedia.org/w/index.php?title=By-election&oldid=896529062</p>'
         ,
         'Regular':
-          '<p>Also known as a <em>general election</em>, a <em>regular election</em> is <q>...an election in which all or most members of a given political body are chosen. These are usually held for a nation\'s primary legislative body...as distinguished from local elections. <br />...In U.S. politics, general elections are elections held at any level (e.g. city, county, congressional district, state) that typically involve competition between at least two parties. General elections occur every two to six years...and include the presidential election...</q>(https://en.wikipedia.org/wiki/General_election)</p>'
+          '<p>Also known as a general election, a <u>regular election</u> is "...an election in which all or most members of a given political body are chosen...</p><p class="secondP">...In U.S. politics, general elections are elections held at any level (e.g. city, county, congressional district, state) that typically involve competition between at least two parties. General elections occur every two to six years...and include the presidential election..."</p><p class="wikiCitation">Wikipedia contributors. (2019, February 25). General election. In Wikipedia, The Free Encyclopedia. Retrieved 00:44, May 16, 2019, from https://en.wikipedia.org/w/index.php?title=General_election&oldid=884941090</p>'
       },
       dummyInfo: [
         {
@@ -305,6 +304,7 @@ export default {
 </script>
 
 <style >
+
 .eachItem:last-child {
   padding-bottom: 60px;
 }
@@ -312,7 +312,6 @@ export default {
   position: relative;
   top: 1em;
 }
-
 .timelineContainer {
   padding-top: 0px;
 }
@@ -320,29 +319,85 @@ footer {
   display: block;
 }
 /* below BOUNCE animation to be implemented every 15-20 seconds on timeline question mark */
-.infoTooltip.v-btn.v-btn--floating.v-btn--depressed.v-btn--round.v-btn--small.theme--light .v-btn__content {
-  color: white;
-  font-size: 160%;
-}
+
 .infoTooltip {
+  cursor: default;
   color: white;
-  height: 20px;
-  width: 20px;
-  transform: scale(0.8) rotate(7deg);
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  height: 22px;
+  background-color: #008c61;
+  width: 22px;
+  bottom: 5px;
+  position: relative; right: 2px;
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+}
+span.tooltiptext p, span.tooltiptext q {
+  margin-bottom: 10px !important;
+}
+.infoTooltipText {
+  position: absolute;
+  transform: rotate(7deg);
+  color: white;
+  font-size: 120%;
+  left: 6px;
+}
+
+.infoTooltip:not(.tooltiptext) {
   animation: sklonse 15s infinite;
   animation-delay: 2s;
 }
+.tooltiptext {
+  visibility: hidden;
+  width: 500px;
+  max-width: 90vw;
+  background-color: #555555e6;
+  color: #fff;
+  text-align: left;
+  border-radius: 3px;
+  padding: 16px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -250px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: .8em;
+  padding-top: 18px;
+  padding-left: 18px;
+  padding-bottom: 5px;
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+}
+.infoTooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555555e6 transparent transparent transparent;
+}
+.wikiCitation {
+  color: rgb(186, 186, 186);
+  font-size: .85em
+}
+.infoTooltip:hover .tooltiptext {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
 @@keyframes sklonse {
   0%, 100% {
-    transform: scale(0.8) rotate(7deg);
     animation-timing-function: ease-out;
   }
   1.666666667% {
-    transform: translateY(-5px) scale(0.8) rotate(7deg);
+    transform: translateY(-5px);
     animation-timing-function: ease-in;
   }
   3.333333333% {
-    transform: scale(0.8) rotate(7deg);
+    transform: translateY(5px);
     animation-timing-function: ease-out;
   }
 }
@@ -561,9 +616,9 @@ ul>li {
       max-width: calc(100% - 53px) !important;
   }
 }
-/* .dummyInfo, .dummyInfo > *, .timelineList.dummyInfo {
+.dummyInfo, .dummyInfo > *, .timelineList.dummyInfo {
   color: rgb(169, 173, 177) !important;
-} */
+}
 </style>
 
 <!-- alert.vue -->

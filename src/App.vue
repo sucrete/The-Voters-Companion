@@ -56,7 +56,7 @@ export default {
 } */
 footer {
   /* position: absolute; */
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(222, 222, 222);
   height: 15em;
   width: 97%;
   bottom: 10px;
@@ -72,8 +72,8 @@ footer {
   position: relative;
   top: .3em;
   float: right;
-  filter: drop-shadow(0 2px 3px rgba(26, 47, 136, 0.46));
-	-webkit-filter: drop-shadow(0 2px 3px rgba(26, 47, 136, 0.46));
+  filter: drop-shadow(0 2px 3px rgba(60, 63, 76, 0.46));
+	-webkit-filter: drop-shadow(0 2px 3px rgba(60, 63, 76, 0.46));
   /* -webkit-filter: drop-shadow(4px 4px 0 #A57F70);
     filter:drop-shadow(4px 4px 0 #A57F70)*/
 }
@@ -259,11 +259,11 @@ input, input:focus {
   border-style: none;
 }
 .scale-enter-active, .scale-leave-active {
- transition: all 0.5s;
+ /* transition: all 0.5s; */
 }
 .scale-enter, .scale-leave-active {
  opacity: 0;
- transform: scale(0.3) translateY(24px);
+ /* transform: scale(0.3) translateY(24px); */
 }
 @media screen and (min-width: 376px) and (max-width: 432px) {
   footer {
