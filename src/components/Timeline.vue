@@ -4,6 +4,9 @@
       <div id="overviewMarquee"></div>
       <div id="overviewNotice"></div>
     </div>
+    <div class="dummyInfoThingy elevation-19" v-if="useDummyInfo">
+      There are no upcoming elections for your region.
+    </div>
     <v-container class="timelineContainer pb-0" style="max-width: 42em;">
       <v-timeline align-top dense>
         <v-timeline-item
@@ -300,11 +303,25 @@ export default {
     this.getTodaysDate()
   }
 }
-
 </script>
 
 <style >
-
+.dummyInfoThingy {
+  position: absolute;
+  border-radius: 2px;
+  border: #cccccc solid 2px;
+  width: 400px;
+  height: 500px;
+  font-size: 145%;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  background-color: white;
+  z-index: 70;
+}
 .eachItem:last-child {
   padding-bottom: 60px;
 }
@@ -318,20 +335,15 @@ export default {
 footer {
   display: block;
 }
-/* below BOUNCE animation to be implemented every 15-20 seconds on timeline question mark */
-
 .infoTooltip {
   cursor: default;
-  color: white;
   position: relative;
   display: inline-block;
   border-radius: 50%;
   height: 22px;
-  background-color: #008c61;
+  background-color: transparent;
   width: 22px;
-  bottom: 5px;
-  position: relative; right: 2px;
-  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  position: relative;
 }
 span.tooltiptext p, span.tooltiptext q {
   margin-bottom: 10px !important;
@@ -339,14 +351,39 @@ span.tooltiptext p, span.tooltiptext q {
 .infoTooltipText {
   position: absolute;
   transform: rotate(7deg);
-  color: white;
+  color: black;
   font-size: 120%;
-  left: 6px;
+  animation: shake 17.82s cubic-bezier(.36,.07,.19,.97) both infinite;
+  animation-delay: 2.5s;
 }
-
-.infoTooltip:not(.tooltiptext) {
-  animation: sklonse 15s infinite;
-  animation-delay: 2s;
+@keyframes shake {
+  .46015713% {
+    transform: rotate(6deg);
+  }
+  .92031425% {
+    transform: rotate(9deg);
+  }
+  1.38047138% {
+    transform: rotate(3deg);
+  }
+  1.84062851% {
+    transform: rotate(11deg);
+  }
+  2.30078563% {
+    transform: rotate(3deg);
+  }
+  2.76094276% {
+    transform: rotate(11deg);
+  }
+  3.22109989% {
+    transform: rotate(3deg);
+  }
+  3.68125701% {
+    transform: rotate(9deg);
+  }
+  4.14141414% {
+    transform: rotate(6deg);
+  }
 }
 .tooltiptext {
   visibility: hidden;
@@ -361,7 +398,7 @@ span.tooltiptext p, span.tooltiptext q {
   z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -250px;
+  margin-left: -256px;
   opacity: 0;
   transition: opacity 0.3s;
   font-size: .8em;
@@ -388,19 +425,7 @@ span.tooltiptext p, span.tooltiptext q {
   visibility: visible !important;
   opacity: 1 !important;
 }
-@@keyframes sklonse {
-  0%, 100% {
-    animation-timing-function: ease-out;
-  }
-  1.666666667% {
-    transform: translateY(-5px);
-    animation-timing-function: ease-in;
-  }
-  3.333333333% {
-    transform: translateY(5px);
-    animation-timing-function: ease-out;
-  }
-}
+
 #Timeline * {
   font-family: 'Roboto', sans-serif;
 }
