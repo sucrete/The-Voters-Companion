@@ -198,7 +198,7 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
-
+@import url('https://fonts.googleapis.com/css?family=Caudex:700|Gentium+Book+Basic:700|Lusitana:700|Neuton:700,800|Old+Standard+TT:700');
 footer {
   display: none;
 }
@@ -239,20 +239,20 @@ a#usvLink {
   top: 13em;
 }
 #siteTitle {
-  z-index: 99;
-  font-family: 'Roboto', sans-serif;
+  z-index: 9;
+  /* Lusitana is just servicable. Not able to rule it out yet */
+  /* font-family: 'Lusitana', serif;  */
+  font-family: 'Neuton', serif;
+  /* font-family: 'Gentium Book Basic', serif; */
   color: #374584;
   text-align: left;
-  font-size: 4.5em;
-  line-height: 100%;
-  font-weight: 900;
-  margin-top: .9em;
-  padding-left: 1.6em;
+  font-size: 6em;
+  line-height: 90%;
+  font-weight:700;
+  margin-top: .4em;
+  padding-left: 1.05em;
   position: relative;
-  letter-spacing: .05em;
   top: .8em;
-  /* text-shadow: 0.08em 0.08em 0 white; */
-  /* -webkit-text-stroke: 3px #343434; */
 }
 .ap-dataset-places * {
   font-family: 'Roboto', sans-serif;
@@ -275,8 +275,8 @@ a#usvLink {
   margin: 0 auto;
   outline: none;
   font-size: 100%;
-  letter-spacing: .08em;
-  font-family: 'Karla', sans-serif;
+  letter-spacing: .05em;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   transition: all 300ms ease-in-out;
   height: 34px;
@@ -414,7 +414,18 @@ img.star {
 #landing {
   position: relative;
 }
+@media screen and (max-width: 750px) {
+  #address-input {
+    width: 82vw;
+  }
+  .ap-dropdown-menu {
+    width: 73vw;
+  }
 
+  #topLine, #bottomLine {
+    width: 90%;
+  }
+}
 
 @media screen and (min-width:250px) and (max-width:320px) {
 
@@ -437,38 +448,13 @@ img.star {
   }
 }
 /* for iPhone 5 below */
-@media screen and (min-width:315px) and (max-width:374px) {
-  .logoBlock {
-    top: 1.3rem;
-    left: -1px;
-  }
-  #siteTitle {
-    font-size: 3.6em !important;
-  }
-  #USVoteHeader {
-    padding-top: 3em;
-    margin: 0 7vw;
-  }
-  #USVoteHeader, .button {
-    font-size: 1em !important;
-  }
-  #inputEverything {
-    font-size: 100%;
-    margin-bottom: 4em !important;
-  }
-  #address-input {
-    padding-left: 9px;
-  }
-  #usVotersIcon {
-    height: 90px;
-  }
-}
+
 
 @media screen and (min-width: 365px) and (max-width: 413px) {
   .ap-dropdown-menu {
-    left: 6vw !important;
+    left: 8vw !important;
+    width: 84vw !important;
   }
-
   .ap-input-icon.ap-icon-clear {
     right: -34.5vw !important;
   }
@@ -519,17 +505,38 @@ img.star {
     width: 100vw;
     height: 100vw;
   }
-  .ap-dropdown-menu {
-    width: 80vw !important;
-    left: 10vw !important;
-  }
   .ap-input-icon svg {
     right: 6vw;
   }
   #siteTitle {
-    letter-spacing: .02em;
     font-size: 4em;
     padding-left: .6em;
+  }
+}
+@media screen and (min-width:315px) and (max-width:374px) {
+  .logoBlock {
+    top: 1.3rem;
+    left: -1px;
+  }
+  #siteTitle {
+    font-size: 2.9em !important;
+  }
+  #USVoteHeader {
+    padding-top: 3em;
+    margin: 0 7vw;
+  }
+  #USVoteHeader, .button {
+    font-size: 1em !important;
+  }
+  #inputEverything {
+    font-size: 100%;
+    margin-bottom: 4em !important;
+  }
+  #address-input {
+    padding-left: 9px;
+  }
+  #usVotersIcon {
+    height: 90px;
   }
 }
 @media screen and (max-width: 415px) and (max-width: 450px) {
@@ -623,13 +630,17 @@ img.star {
 @media screen and (min-width: 413px) and (max-width: 432px) {
   #siteTitle {
     padding-left: 8vw !important;
+    font-size: 5em;
+  }
+  .ap-dataset-places .ap-suggestions .ap-suggestion.ap-cursor {
+    padding-left: .8vw;
   }
   .ap-input-icon svg {
     right: 7vw;
   }
   #inputEverything {
-    margin-top: 6em !important;
-    margin-bottom: 6em !important;
+    margin-top: 6.5em !important;
+    margin-bottom: 7em !important;
   }
   #USVoteHeader {
     width: 91%;
@@ -637,6 +648,10 @@ img.star {
   }
   #infoAndStarsWrapper {
     margin-left: 4vw;
+  }
+  .ap-dropdown-menu {
+    width: 81.5vw !important;
+    left: 2.7em !important;
   }
 }
 @media screen and (min-width: 319px) and (max-width: 415px) {
@@ -669,18 +684,7 @@ img.star {
   }
 
 }
-@media screen and (max-width: 750px) {
-  #address-input {
-    width: 82vw;
-  }
-  .ap-dropdown-menu {
-    width: 73vw;
-  }
 
-  #topLine, #bottomLine {
-    width: 90%;
-  }
-}
 @keyframes rollOutaa1 {
   0% {
     -webkit-transform: rotateX(0deg);

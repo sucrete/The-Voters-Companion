@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Karla:400|Roboto:400,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
 
 .v-tabs__div {
   cursor: pointer;

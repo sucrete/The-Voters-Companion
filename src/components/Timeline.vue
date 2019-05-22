@@ -2,10 +2,10 @@
   <div id="Timeline">
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee"></div>
-      <div id="overviewNotice"></div>
+      <div id="overviewNotice">Timeline of elections in your region.</div>
     </div>
     <div class="dummyInfoThingy elevation-19" v-if="useDummyInfo">
-      There are no upcoming elections for your region.
+      There are no upcoming elections for your region on record. Please, revisit your Timeline at a later date. In the meantime, information on your state's voting regulations and a list of your officials are accessible from the tabs at the top of the page.
     </div>
     <v-container class="timelineContainer pb-0" style="max-width: 42em;">
       <v-timeline align-top dense>
@@ -152,24 +152,6 @@ export default {
       		"earlyVotingToFrom": "Thu Apr 25, 2019 - Sat May 11, 2019",
       		"electionType": null,
       		"color": "#adb5c4"
-      	},
-      	{
-      		"electionDate": "07/09/2019",
-      		"electionTitle": "North Carolina District 3 Special Election",
-      		"additionalInformation": "Special Election for Congressional District 3",
-      		"newVoterRegistrationDates": [
-      			"Fri Jun 14, 2019"
-      		],
-      		"absenteeBallotReturnDates": [
-      			"Tue Jul 9, 2019"
-      		],
-      		"absenteeBallotRequestDates": [
-      			"Tue Jul 2, 2019"
-      		],
-      		"inPersonAbsenteeVotingToFrom": "none on record",
-      		"earlyVotingToFrom": "Thu Jun 20, 2019 - Sat Jul 6, 2019",
-      		"electionType": null,
-      		"color": "#29417e"
       	}
       ],
       timelineColors: {
@@ -307,20 +289,25 @@ export default {
 
 <style >
 .dummyInfoThingy {
+  color: #1168da;
   position: absolute;
-  border-radius: 2px;
-  border: #cccccc solid 2px;
+  border-radius: 6px;
   width: 400px;
-  height: 500px;
-  font-size: 145%;
+  max-width: 63vw;
+  min-height: 100px;
+  font-size: 170%;
   text-align: center;
   left: 0;
+  font-weight: 400;
+  font-style: italic;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
-  background-color: white;
+  margin-top: 100px;
+  background-color: #ffffffd9;
   z-index: 70;
+  padding: 40px;
+  letter-spacing: .05em;
 }
 .eachItem:last-child {
   padding-bottom: 60px;
@@ -361,25 +348,25 @@ span.tooltiptext p, span.tooltiptext q {
     transform: rotate(6deg);
   }
   .92031425% {
-    transform: rotate(9deg);
+    transform: rotate(9.25deg);
   }
   1.38047138% {
-    transform: rotate(3deg);
+    transform: rotate(2.5deg);
   }
   1.84062851% {
-    transform: rotate(11deg);
+    transform: rotate(12.5deg);
   }
   2.30078563% {
-    transform: rotate(3deg);
+    transform: rotate(2.25deg);
   }
   2.76094276% {
-    transform: rotate(11deg);
+    transform: rotate(12.5deg);
   }
   3.22109989% {
-    transform: rotate(3deg);
+    transform: rotate(2.5deg);
   }
   3.68125701% {
-    transform: rotate(9deg);
+    transform: rotate(9.25deg);
   }
   4.14141414% {
     transform: rotate(6deg);
@@ -643,6 +630,11 @@ ul>li {
 }
 .dummyInfo, .dummyInfo > *, .timelineList.dummyInfo {
   color: rgb(169, 173, 177) !important;
+}
+@media only screen and (max-width: 700px) {
+  .infoTooltip {
+      visibility: hidden;
+  }
 }
 </style>
 

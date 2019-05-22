@@ -2,7 +2,9 @@
   <div id="Resources">
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee"></div>
-      <div id="overviewNotice"></div>
+      <div id="overviewNotice">
+        Learn the rules and requirements to vote, before you vote.
+      </div>
     </div>
     <v-tabs
       class="knowledgeTabs"
