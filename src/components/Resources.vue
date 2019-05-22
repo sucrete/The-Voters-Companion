@@ -3,7 +3,7 @@
     <div id="overviewNoticeWrapper">
       <div id="overviewMarquee"></div>
       <div id="overviewNotice">
-        Learn the rules and requirements to vote, before you vote.
+        Understand your eligibility and what you need to vote.
       </div>
     </div>
     <v-tabs
