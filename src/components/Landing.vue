@@ -1,33 +1,21 @@
 <template>
 <!-- eslint-disable -->
   <div id="landing">
-    <div id="USVoteHeader">
-      MADE WITH SUPPORT FROM THE <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. VOTE FOUNDATION</a>
-    </div>
-
-    <hr noshade  size="1" id="topLine"/>
     <img id="usVotersIcon" :src=" usVotersIcon "/>
     <h1 id="siteTitle" >The<br />Voter's<br /> Companion</h1>
-    <div id="inputEverything">
-      <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
-      <input type="search" id="address-input" @input="updateValue($event.target.value)" placeholder="What is your address?" />
-    </div>
-    <hr noshade size="1" id="bottomLine"/>
-    <div id="infoAndStarsWrapper">
-      <div class="buttonWrapper">
-        <div class="button spin3d">
-          <span id="aa">REGISTER TO VOTE</span>
-          <span id="bb">CONNECT WITH YOUR REPRESENTATIVES</span>
-          <span id="cc">STAY INFORMED</span>
-        </div>
-      </div>
-      <div id="starsWrapper">
-        <img class="star" :src=" starOne "/>
-        <img class="star" :src=" starTwo "/>
-        <img class="star" :src=" starThree "/>
-      </div>
-    </div>
 
+    <div id="informationWrapper">
+      <div id="inputEverything">
+        <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
+        <input type="search" id="address-input" @input="updateValue($event.target.value)" placeholder="What is your address?" />
+      </div>
+      <div id="infoForTheUser">
+        Register to vote. Connect with your representatives. Stay informed.
+      </div>
+      <div id="USVoteHeader">
+        Made with generous support from the <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>
+      </div>
+    </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
         <div class="image">
           <img style="width: 35px; height: auto;" :src=" lightYellowStar "/>
@@ -43,9 +31,6 @@
 import axios from 'axios'
 import places from 'places.js'
 import carpet from '../assets/yellow_star.svg'
-import star1 from '../assets/starOneLight.svg'
-import star2 from '../assets/starTwoLight.svg'
-import star3 from '../assets/starThreeLight.svg'
 import lagoc from '../assets/united-states.svg'
 
 export default {
@@ -198,26 +183,30 @@ export default {
 </script>
 <!-- if you add "scoped" next to your <style> tag your modal will not be a circle -->
 <style >
-@import url('https://fonts.googleapis.com/css?family=Caudex:700|Gentium+Book+Basic:700|Lusitana:700|Neuton:700,800|Old+Standard+TT:700');
+
 footer {
   display: none;
 }
 #app {
   background-color: #acb4c5;
 }
-
+#infoForTheUser {
+  padding: 25px 30px 5px;
+  color: orange;
+}
 #USVoteHeader {
+  padding: 5px 30px 40px;
+  color: white;
+}
+#USVoteHeader, #infoForTheUser {
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  letter-spacing: .07em;
-  color: #c5bfb9;
-  padding-top: 5em;
+  font-weight: 400;
   margin-bottom: .3em;
   position: relative;
-  text-align: center;
-  font-size: 1.2em;
+  text-align: left;
+  font-size: 1.5em;
 }
-#USVoteHeader, a#usvLink, a#usvLink:visited, #subtitle, .button {
+a#usvLink, a#usvLink:visited {
   color: #fff !important;
 }
 a#usvLink {
@@ -237,28 +226,34 @@ a#usvLink {
   height: 120px;
   position: absolute;
   top: 13em;
+  visibility: hidden;
 }
 #siteTitle {
   z-index: 9;
-  /* Lusitana is just servicable. Not able to rule it out yet */
-  /* font-family: 'Lusitana', serif;  */
-  font-family: 'Neuton', serif;
-  /* font-family: 'Gentium Book Basic', serif; */
-  color: #374584;
+  font-family: 'Eczar', serif;
+  color: white;
   text-align: left;
-  font-size: 6em;
+  font-size: 5.5em;
   line-height: 90%;
-  font-weight:700;
-  margin-top: .4em;
+  font-weight: 500;
+  margin-top: .6em;
   padding-left: 1.05em;
+  padding-top: .3em;
   position: relative;
   top: .8em;
+}
+#informationWrapper {
+  background-color: rgb(229, 233, 241);
+  width: 35em;
+  height: 22.6em;
+  border-radius: .5em;
+  margin: 0 auto;
 }
 .ap-dataset-places * {
   font-family: 'Roboto', sans-serif;
 }
 #inputEverything {
-  margin-top: 11em;
+  margin-top: 8em;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -269,19 +264,22 @@ a#usvLink {
   padding-top: 2px;
   display:block;
   color: #807b77;
-  background-color: #e0e0e0;
+  background-color: #fbfbfb;
   position: relative;
-  width: 35em;
+  /* width: 35em !important; */
   margin: 0 auto;
   outline: none;
-  font-size: 100%;
+  font-size: 1.15em;
   letter-spacing: .05em;
   font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   transition: all 300ms ease-in-out;
-  height: 34px;
-  border-radius: .3em;
-  box-shadow: inset 0px 2px 6px 0px rgb(150, 153, 158), inset 0px 3px 12px -7px rgba(115, 117, 119, 0.65), 0 1px 1px 0px rgb(227, 229, 236);
+  height: 38px;
+  border-top-left-radius: .5em;
+  border-top-right-radius: .5em;
+  border-bottom-left-radius: 0em;
+  border-bottom-right-radius: 0em;
+  /* box-shadow: inset 0px 2px 6px 0px rgb(150, 153, 158), inset 0px 3px 12px -7px rgba(115, 117, 119, 0.65), 0 1px 1px 0px rgb(227, 229, 236); */
 }
 
 input:focus {
@@ -296,12 +294,18 @@ input:focus::-webkit-input-placeholder {
   color: #605c59 !important;
 }
 #address-input:hover {
-  background-color: #ececec !important;
+  background-color: white !important;
 }
 #address-input:focus {
   color: #605c59 !important;
-  background-color: #ececec !important;
+  background-color: white !important;
 }
+#address-input:focus {
+  border-color: rgba(230, 134, 23, 0.9);
+  /* box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6); */
+  outline: 1 none;
+}
+
 /* #address-input:focus, #address-input:hover {
   box-shadow: inset 0 1px 1px 0px rgb(249, 249, 249);
 } */
@@ -370,37 +374,7 @@ input::placeholder {
   font-smoothing: antialiased !important;
   font-smooth: always;
 }
-.button.spin3d {
-  height: 40px;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-.button.spin3d span {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  transition: all cubic-bezier(0, 0, 0.2, 1);
-  text-align: left;
-  line-height: 40px;
-  left: 0;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
-}
-.button.spin3d #aa {
-  -webkit-animation: rollOutaa1 8s, rollOutaa2 8s 8s infinite;
-  animation: rollOutaa1 8s, rollOutaa2 8s 8s infinite;
-}
-.button.spin3d #bb {
-  -webkit-animation: rollOutbb 8s infinite;
-  animation: rollOutbb 8s infinite;
-}
-.button.spin3d #cc {
-  -webkit-animation: rollOutcc 8s infinite;
-  animation: rollOutcc 8s infinite;
-}
+
 img.star {
   height: 23px;
   width: auto;
@@ -549,9 +523,6 @@ img.star {
     margin-top: .7em;
     margin-bottom: 1.4em;
   }
-  #infoAndStarsWrapper, .buttonWrapper, .button.spin3d span {
-    width: unset;
-  }
   #inputEverything {
     margin-top: 2.5em;
     margin-bottom: 5.2em;
@@ -579,7 +550,6 @@ img.star {
     padding-top: 4px !important;
   }
 }
-
 /* iPhone X below */
 @media screen and (max-width: 375px) and (min-height: 701px) and (max-height: 812px) {
   #USVoteHeader {
@@ -623,7 +593,6 @@ img.star {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   }
-
 }
 
 /* below for iPhone 6/7/8 plus  */
@@ -682,131 +651,6 @@ img.star {
   #starsWrapper {
     display: none;
   }
-
 }
-
-@keyframes rollOutaa1 {
-  0% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-  }
-  25% {
-    -webkit-transform: rotateX(0deg) translateZ(20px);
-            transform: rotateX(0deg) translateZ(20px);
-    opacity: 1;
-  }
-  26% {
-    opacity: 0;
-  }
-  27% {
-    -webkit-transform: rotateX(-90deg) translateZ(20px);
-            transform: rotateX(-90deg) translateZ(20px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateX(-90deg) translateZ(20px);
-            transform: rotateX(-90deg) translateZ(20px);
-    opacity: 0;
-  }
-}
-@keyframes rollOutbb {
-  0% {
-    -webkit-transform: rotateX(90deg);
-            transform: rotateX(90deg);
-    opacity: 0;
-    }
-  25% {
-    -webkit-transform: rotateX(90deg) translateZ(20px);
-    transform: rotateX(90deg) translateZ(20px);
-  }
-  26% {
-    opacity: 0;
-  }
-  27% {
-    -webkit-transform: rotateX(0deg) translateZ(20px);
-    transform: rotateX(0deg) translateZ(20px);
-    opacity: 1;
-  }
-  50% {
-    -webkit-transform: rotateX(0deg) translateZ(20px);
-    transform: rotateX(0deg) translateZ(20px);
-    opacity: 1;
-  }
-  51% {
-    opacity: 0;
-  }
-  52% {
-    -webkit-transform: rotateX(-90deg) translateZ(20px);
-    transform: rotateX(-90deg) translateZ(20px);
-  }
-  100% {
-    -webkit-transform: rotateX(-90deg) translateZ(20px);
-    transform: rotateX(-90deg) translateZ(20px);
-  }
-}
-@keyframes rollOutcc {
-  0% {
-    -webkit-transform: rotateX(90deg) translateZ(20px);
-            transform: rotateX(90deg) translateZ(20px);
-  }
-  50% {
-    -webkit-transform: rotateX(90deg) translateZ(20px);
-            transform: rotateX(90deg) translateZ(20px);
-    opacity: 0;
-  }
-  51% {
-    opacity: 0;
-  }
-  52% {
-    -webkit-transform: rotateX(0deg) translateZ(20px);
-    transform: rotateX(0deg) translateZ(20px);
-    opacity: 1;
-  }
-  97% {
-    -webkit-transform: rotateX(0deg) translateZ(20px);
-    transform: rotateX(0deg) translateZ(20px);
-    opacity: 1;
-  }
-  98.1% {
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateX(-90deg) translateZ(20px);
-    transform: rotateX(-90deg) translateZ(20px);
-    opacity: 0;
-  }
-}
-@keyframes rollOutaa2 {
-  0% {
-    -webkit-transform: rotateX(90deg) translateZ(20px);
-            transform: rotateX(90deg) translateZ(20px);
-    opacity: 0;
-  }
-  1% {
-    opacity: 0;
-  }
-  2% {
-    -webkit-transform: rotateX(0deg) translateZ(20px);
-            transform: rotateX(0deg) translateZ(20px);
-    opacity: 1;
-  }
-  25% {
-    -webkit-transform: rotateX(0deg) translateZ(20px);
-            transform: rotateX(0deg) translateZ(20px);
-    opacity: 1;
-  }
-  26% {
-    opacity: 0;
-  }
-  27% {
-    -webkit-transform: rotateX(-90deg) translateZ(20px);
-            transform: rotateX(-90deg) translateZ(20px);
-  }
-  100% {
-    -webkit-transform: rotateX(-90deg) translateZ(20px);
-            transform: rotateX(-90deg) translateZ(20px);
-  }
-}
-
 
 </style>
