@@ -13,7 +13,7 @@
         Register to vote. Connect with your representatives. Stay informed.
       </div>
       <div id="USVoteHeader">
-        Made with generous support from the <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>
+        Made with generous support from the <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>.
       </div>
     </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
@@ -188,7 +188,7 @@ footer {
   display: none;
 }
 #app {
-  background-color: #acb4c5;
+  background-color: #668ee4;
 }
 #infoForTheUser {
   padding: 25px 30px 5px;
@@ -243,7 +243,7 @@ a#usvLink {
   top: .8em;
 }
 #informationWrapper {
-  background-color: rgb(229, 233, 241);
+  background-color:rgb(255, 234, 226);
   width: 35em;
   height: 22.6em;
   border-radius: .5em;
@@ -315,16 +315,19 @@ input:focus::-webkit-input-placeholder {
 .ap-input:hover ~ .ap-input-icon svg {
   fill: #6f6b68 !important;
 }
+.ap-input:focus ~ .ap-input-icon svg {
+  fill: #6f6b68 !important;
+}
 .ap-input-icon svg {
   fill: #98938f !important;
   border: 0;
   background: transparent;
   position: relative;
-  -webkit-transform: translateY(7%);
-  transform: translateY(7%);
+  -webkit-transform: translateY(6%);
+  transform: translateY(6%);
   outline: none;
-  right: 5em;
-  top: .13em;
+  /* right: 5em; */
+  /* top: .13em; */
 }
 .ap-icon-clear {
   right: 1.5em;
