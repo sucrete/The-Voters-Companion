@@ -10,10 +10,11 @@
         <input type="search" id="address-input" @input="updateValue($event.target.value)" placeholder="What is your address?" />
       </div>
       <div id="infoForTheUser">
-        Register to vote. Connect with your representatives. Stay informed.
+        A voting utility to keep you engaged, The Voter's Companion keeps you clued-in to elections happening in your region, how to vote, and who your representatives are. Enter your address. Get registered. Stay informed.
       </div>
       <div id="USVoteHeader">
-        Made with generous support from the <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>.
+        Made with generous support from the <br />
+        <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>.
       </div>
     </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
@@ -191,42 +192,51 @@ footer {
   background-color: #668ee4;
 }
 #infoForTheUser {
-  padding: 25px 30px 5px;
+  padding: 15px 35px 0px;
   color: orange;
 }
 #USVoteHeader {
-  padding: 5px 30px 40px;
-  color: white;
+  padding: 0px 35px 40px;
+  color: #9cacce;
 }
 #USVoteHeader, #infoForTheUser {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  margin-bottom: .3em;
   position: relative;
   text-align: left;
   font-size: 1.5em;
 }
 a#usvLink, a#usvLink:visited {
-  color: #fff !important;
+  color: #9cacce !important;
 }
-a#usvLink {
-  text-decoration:none;
+#usvLink {
+  text-decoration: none;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
 }
-#topLine, #bottomLine {
-  position: relative;
-  width: 36em;
-  top: 1em;
-  margin: 0 auto;
+#usvLink::before {
+  content: " ";
   display: block;
-  border: 0;
-  border-top: 2px solid #f5f4f4;
-  padding: 0;
+  position: absolute;
+  border-bottom: solid 2px #dadee6;
+  bottom: 38px;
+  width: 39.7%;
+  left: 6.3%;
+  margin: 0 auto;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  /* z-index:-1; */
+}
+a#usvLink:hover {
+  color: #668ee4 !important;
+}
+#usvLink:hover::before {
+  border-bottom:solid 2px #668ee4;
 }
 #usVotersIcon {
   height: 120px;
   position: absolute;
   top: 13em;
-  visibility: hidden;
 }
 #siteTitle {
   z-index: 9;
@@ -243,7 +253,7 @@ a#usvLink {
   top: .8em;
 }
 #informationWrapper {
-  background-color:rgb(255, 234, 226);
+  background-color: rgb(249, 244, 237);
   width: 35em;
   height: 22.6em;
   border-radius: .5em;
@@ -373,10 +383,6 @@ input::placeholder {
   position: relative;
   letter-spacing: .06em;
 }
-#aa, #bb, #cc {
-  font-smoothing: antialiased !important;
-  font-smooth: always;
-}
 
 img.star {
   height: 23px;
@@ -398,14 +404,11 @@ img.star {
   .ap-dropdown-menu {
     width: 73vw;
   }
-
   #topLine, #bottomLine {
     width: 90%;
   }
 }
-
 @media screen and (min-width:250px) and (max-width:320px) {
-
   #inputEverything {
     font-size: 100%;
     margin-top: 3.1rem;
@@ -424,9 +427,8 @@ img.star {
     top: 1rem;
   }
 }
+
 /* for iPhone 5 below */
-
-
 @media screen and (min-width: 365px) and (max-width: 413px) {
   .ap-dropdown-menu {
     left: 8vw !important;
@@ -650,10 +652,6 @@ img.star {
     padding-left: 10vw !important;
   }
 }
-@media screen and (max-width: 515px) {
-  #starsWrapper {
-    display: none;
-  }
-}
+
 
 </style>
