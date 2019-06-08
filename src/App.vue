@@ -104,7 +104,7 @@ html {
   /* padding: 10px 24px; */
   min-height: 52em;
   position: relative;
-  border-radius: .5em;
+  border-radius: 3px;
   padding-bottom: 4px;
 }
 #overviewNotice {

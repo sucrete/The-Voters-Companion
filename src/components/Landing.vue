@@ -10,7 +10,7 @@
         <input type="search" id="address-input" @input="updateValue($event.target.value)" placeholder="What is your address?" />
       </div>
       <div id="infoForTheUser">
-        A voting utility to keep you engaged, The Voter's Companion keeps you clued-in to elections happening in your region, how to vote, and who your representatives are. Enter your address. Get registered. Stay informed.
+        A voting utility to spark engagement, The Voter's Companion keeps you clued-in to elections happening in your region, how to vote, and who your representatives are. Enter your address. Get registered. Stay informed.
       </div>
       <div id="USVoteHeader">
         Made with generous support from the <br />
@@ -43,6 +43,7 @@ export default {
       starTwo: star2,
       starThree: star3,
       usVotersIcon: lagoc,
+      paperNPencils: pen15,
       stateID: '',
       googvotekey: process.env.GOOGLE_API_KEY,
       voterAPI: '',
@@ -190,6 +191,8 @@ footer {
 }
 #app {
   background-color: #668ee4;
+  background-image: url('../assets/paperAndPencils.svg');
+  background-repeat: no-repeat;
 }
 #infoForTheUser {
   padding: 15px 35px 0px;
@@ -220,8 +223,8 @@ a#usvLink, a#usvLink:visited {
   position: absolute;
   border-bottom: solid 2px #dadee6;
   bottom: 38px;
-  width: 39.7%;
-  left: 6.3%;
+  width: 39.9%;
+  /* left: 6.3%; */
   margin: 0 auto;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -253,7 +256,7 @@ a#usvLink:hover {
   top: .8em;
 }
 #informationWrapper {
-  background-color: rgb(249, 244, 237);
+  background-color: rgb(249, 245, 240);
   width: 35em;
   height: 22.6em;
   border-radius: .5em;
