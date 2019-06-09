@@ -258,7 +258,7 @@ a#usvLink:hover {
 #informationWrapper {
   background-color: rgb(249, 245, 240);
   width: 35em;
-  height: 22.6em;
+  height: 24em;
   border-radius: .5em;
   margin: 0 auto;
 }
@@ -266,7 +266,7 @@ a#usvLink:hover {
   font-family: 'Roboto', sans-serif;
 }
 #inputEverything {
-  margin-top: 8em;
+  margin-top: 6.5em;
   margin-left: auto;
   margin-right: auto;
   position: relative;
