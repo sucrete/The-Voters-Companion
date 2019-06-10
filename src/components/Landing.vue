@@ -1,7 +1,7 @@
 <template>
-<!-- eslint-disable -->
+
   <div id="landing">
-    <img id="usVotersIcon" :src=" usVotersIcon "/>
+    <img id="usVotersIcon" src=""/>
     <h1 id="siteTitle" >The<br />Voter's<br /> Companion</h1>
 
     <div id="informationWrapper">
@@ -10,7 +10,7 @@
         <input type="search" id="address-input" @input="updateValue($event.target.value)" placeholder="What is your address?" />
       </div>
       <div id="infoForTheUser">
-        A voting utility to spark engagement, The Voter's Companion keeps you clued-in to elections happening in your region, how to vote, and who your representatives are. Enter your address. Get registered. Stay informed.
+        A voting utility designed to spark engagement, The Voter's Companion keeps you clued-in to elections happening in your region, how to vote, and who your representatives are. Enter your address. Get registered. Stay informed.
       </div>
       <div id="USVoteHeader">
         Made with generous support from the <br />
@@ -19,7 +19,7 @@
     </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
         <div class="image">
-          <img style="width: 35px; height: auto;" :src=" lightYellowStar "/>
+          <img style="width: 35px; height: auto;" src="../assets/tumblr_inline_ml8fq8GKH11roozkr.gif"/>
         </div>
         <span style="font-family: 'Roboto', sans-serif; color: white; text-align: center;"> LOADING... </span>
     </modal>
@@ -31,7 +31,7 @@
 /* eslint-disable */
 import axios from 'axios'
 import places from 'places.js'
-import carpet from '../assets/yellow_star.svg'
+import carpet from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
 import lagoc from '../assets/united-states.svg'
 
 export default {
@@ -349,7 +349,9 @@ input:focus::-webkit-input-placeholder {
   margin-top: 0px;
   width: 35em;
   top: 2.8em !important;
-  left: 5.45em !important;
+  /* left: 5.45em !important; */
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
 }
 input:focus {
   outline: none;

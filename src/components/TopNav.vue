@@ -2,7 +2,7 @@
 <template>
   <v-tabs
     right
-    color="#acb4c5"
+    color="#668ee4"
     class="topNavvy"
   >
     <a href="/">
