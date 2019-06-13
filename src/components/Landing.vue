@@ -1,9 +1,11 @@
 <template>
 
   <div id="landing">
-    <img id="usVotersIcon" src=""/>
-    <h1 id="siteTitle" >The<br />Voter's<br /> Companion</h1>
-
+    <div id="siteTitleWrapper">
+      <h1 class="siteTitle" title="The">The</h1><br />
+      <h1 class="siteTitle" title="Voter's">Voter's</h1><br />
+      <h1 class="siteTitle" title="Companion">Companion</h1>
+    </div>
     <div id="informationWrapper">
       <div id="inputEverything">
         <!-- DO NOT CHANGE THE ID OF THIS INPUT! -->
@@ -16,6 +18,7 @@
         Made with generous support from the <br />
         <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>.
       </div>
+      <img id="USSign" style="width: 65px; height: auto;" src="../assets/united-states2.svg"/>
     </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
         <div class="image">
@@ -189,6 +192,11 @@ export default {
 footer {
   display: none;
 }
+#USSign {
+  position: absolute;
+  right: 7.1em;
+  bottom: 1.2em;
+}
 #app {
   background-color: #668ee4;
   background-image: url('../assets/paperAndPencils.svg');
@@ -241,24 +249,40 @@ a#usvLink:hover {
   position: absolute;
   top: 13em;
 }
-#siteTitle {
+#siteTitleWrapper {
+  padding-bottom: .8em;
+  position: relative;
+  top: .5em;
+}
+.siteTitle:first-of-type {
+  margin-top: .6em;
+}
+.siteTitle {
   z-index: 9;
   font-family: 'Eczar', serif;
   color: white;
   text-align: left;
   font-size: 5.5em;
-  line-height: 90%;
+  line-height: 75%;
   font-weight: 500;
-  margin-top: .6em;
   padding-left: 1.05em;
-  padding-top: .3em;
+  /* padding-top: .3em; */
   position: relative;
   top: .8em;
+}
+.siteTitle::before {
+  content: attr(title);
+  position: absolute;
+  -webkit-text-stroke: 0.1em #668ee4;
+  left: 0;
+  top: 0;
+  padding-left: 1.05em;
+  z-index: -1;
 }
 #informationWrapper {
   background-color: rgb(249, 245, 240);
   width: 35em;
-  height: 24em;
+  height: 25em;
   border-radius: .5em;
   margin: 0 auto;
 }
@@ -325,6 +349,9 @@ input:focus::-webkit-input-placeholder {
 .ap-input {
   border: none !important;
 }
+.ap-input-icon.ap-icon-pin {
+  right: 10px;
+}
 .ap-input:hover ~ .ap-input-icon svg {
   fill: #6f6b68 !important;
 }
@@ -343,7 +370,7 @@ input:focus::-webkit-input-placeholder {
   /* top: .13em; */
 }
 .ap-icon-clear {
-  right: 1.5em;
+  right: 15px;
 }
 .ap-dropdown-menu {
   margin-top: 0px;
@@ -492,7 +519,7 @@ img.star {
   .ap-input-icon svg {
     right: 6vw;
   }
-  #siteTitle {
+  .siteTitle {
     font-size: 4em;
     padding-left: .6em;
   }
@@ -502,7 +529,7 @@ img.star {
     top: 1.3rem;
     left: -1px;
   }
-  #siteTitle {
+  .siteTitle {
     font-size: 2.9em !important;
   }
   #USVoteHeader {
@@ -529,7 +556,7 @@ img.star {
   }
 }
 @media screen and (max-width: 375px) and (max-height: 700px) {
-  #siteTitle {
+  .siteTitle {
     margin-top: .7em;
     margin-bottom: 1.4em;
   }
@@ -566,7 +593,7 @@ img.star {
     font-size: 1.2em;
     padding-top: 6em;
   }
-  #siteTitle {
+  .siteTitle {
     margin-top: .9em;
     margin-bottom: .7em;
   }
@@ -588,7 +615,7 @@ img.star {
   }
 }
 @media screen and (min-width: 450px) and (max-width: 750px) {
-  #siteTitle {
+  .siteTitle {
     padding-left: 12.5vw;
   }
   #usVotersIcon {
@@ -607,7 +634,7 @@ img.star {
 
 /* below for iPhone 6/7/8 plus  */
 @media screen and (min-width: 413px) and (max-width: 432px) {
-  #siteTitle {
+  .siteTitle {
     padding-left: 8vw !important;
     font-size: 5em;
   }
@@ -653,7 +680,7 @@ img.star {
     padding-left: 9vw;
     width: 92%;
   }
-  #siteTitle {
+  .siteTitle {
     padding-left: 10vw !important;
   }
 }
