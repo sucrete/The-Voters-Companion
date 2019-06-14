@@ -15,7 +15,7 @@
         A voting utility designed to spark engagement, The Voter's Companion keeps you clued-in to elections happening in your region, how to vote, and who your representatives are. Enter your address. Get registered. Stay informed.
       </div>
       <div id="USVoteHeader">
-        Made with support from the <br />
+        Made with<span id="generous"> generous</span> support from the <br />
         <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>.
       </div>
       <img id="USSign" src="../assets/flag.svg" hidden>
@@ -205,7 +205,7 @@ footer {
   height: auto;
   position: absolute;
   right: 7.1em;
-  bottom: 2em;
+  bottom: 1.5em;
 }
 #app {
   background-color: #668ee4;
@@ -239,7 +239,7 @@ a#usvLink, a#usvLink:visited {
   position: absolute;
   border-bottom: solid 2px #dadee6;
   bottom: 38px;
-  width: 39.9%;
+  width: 41.2%;
   /* left: 6.3%; */
   margin: 0 auto;
   -webkit-transition: all 0.5s;
@@ -440,6 +440,9 @@ img.star {
   background-repeat: no-repeat;
 }
 @media screen and (max-width: 750px) {
+  .siteTitle::before {
+    content: unset;
+  }
   #address-input {
     width: inherit;
     border-top-left-radius: .3em;
@@ -450,10 +453,10 @@ img.star {
     border-radius: .3em;
   }
   #landing {
-    background-size: 110vw;
+    background-image: unset;
   }
   .ap-dropdown-menu {
-    width: 73vw;
+    width: 88vw;
   }
   #topLine, #bottomLine {
     width: 90%;
@@ -471,7 +474,7 @@ img.star {
     position: absolute;
   }
   .ap-dropdown-menu {
-    left: -1vw !important;
+    /* left: -1vw !important; */
   }
   .logoBlock {
     width: 14.6rem;
@@ -482,6 +485,9 @@ img.star {
 }
 /* for iPhone 5 below for widths on iPhone 5-X (not "plus" sizes)*/
 @media screen and (min-width: 365px) and (max-width: 413px) {
+  #generous {
+    display: none;
+  }
   #informationWrapper {
     height: 27em;
   }
@@ -516,9 +522,6 @@ img.star {
     bottom: -16em;
     width: 50px;
   }
-  .siteTitle::before {
-    content: unset;
-  }
   .siteTitle {
     line-height: 70%;
   }
@@ -536,37 +539,37 @@ img.star {
 }
 @media screen and (min-width: 414px) and (max-width: 433px) {
   .ap-dropdown-menu {
-    left: 6.5vw !important;
+    /* left: 6.5vw !important; */
   }
 }
 @media screen and (min-width: 434px) and (max-width: 467px) {
   .ap-dropdown-menu {
-    left: 7vw !important;
+    /* left: 7vw !important; */
   }
 }
 @media screen and (min-width: 468px) and (max-width: 524px) {
   .ap-dropdown-menu {
-    left: 7.5vw !important;
+    /* left: 7.5vw !important; */
   }
 }
 @media screen and (min-width: 525px) and (max-width: 557px) {
   .ap-dropdown-menu {
-    left: 8vw !important;
+    /* left: 8vw !important; */
   }
 }
 @media screen and (min-width: 558px) and (max-width: 597px) {
   .ap-dropdown-menu {
-    left: 8.25vw !important;
+    /* left: 8.25vw !important; */
   }
 }
 @media screen and (min-width: 598px) and (max-width: 635px) {
   .ap-dropdown-menu {
-    left: 8.5vw !important;
+    /* left: 8.5vw !important; */
   }
 }
 @media screen and (min-width: 636px) and (max-width: 750px) {
   .ap-dropdown-menu {
-    left: 9vw !important;
+    /* left: 9vw !important; */
   }
 }
 @media screen and (max-width: 450px) {
@@ -616,22 +619,8 @@ img.star {
   }
 }
 @media screen and (max-width: 375px) and (max-height: 700px) {
-  .siteTitle {
-
-  }
   #inputEverything {
     margin-top: 4.8em;
-  }
-  #address-input {
-    /* padding-top: 4px !important;
-    width: 85vw !important; */
-  }
-
-  #USVoteHeader {
-
-  }
-  #address-input {
-    /* padding-top: 4px !important; */
   }
 }
 /* iPhone X below */
@@ -673,8 +662,20 @@ img.star {
 /* below for iPhone 6/7/8 plus  */
 @media screen and (min-width: 413px) and (max-width: 432px) {
   .siteTitle {
-    padding-left: 8vw !important;
-    font-size: 5em;
+    padding-left: 8.5vw !important;
+    font-size: 4.7em;
+  }
+  .ap-input-icon.ap-icon-pin {
+    right: -20px;
+  }
+  .ap-input-icon.ap-icon-clear {
+    right: -17px;
+  }
+  #generous {
+    display: none;
+  }
+  #siteTitleWrapper {
+    top: 20px;
   }
   .ap-dataset-places .ap-suggestions .ap-suggestion.ap-cursor {
     padding-left: .8vw;
@@ -682,20 +683,27 @@ img.star {
   .ap-input-icon svg {
     right: 7vw;
   }
+  #usvLink::before {
+    width: 57%;
+  }
+  #informationWrapper {
+    height: 28em;
+  }
+  #voteWithThis {
+    width: 95px;
+    right: 3.4em;
+    bottom: 36em;
+  }
   #inputEverything {
-    margin-top: 6.5em !important;
-    margin-bottom: 7em !important;
+    margin-bottom: 1em !important;
   }
-  #USVoteHeader {
-    width: 91%;
+  #USVoteHeader, #infoForTheUser {
     margin: 0 auto;
-  }
-  #infoAndStarsWrapper {
-    margin-left: 4vw;
+    font-size: 1.6em;
   }
   .ap-dropdown-menu {
-    width: 81.5vw !important;
-    left: 2.7em !important;
+    width: 88vw !important;
+    left: 0em !important;
   }
 }
 @media screen and (min-width: 319px) and (max-width: 415px) {
