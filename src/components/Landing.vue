@@ -501,8 +501,8 @@ img.star {
     right: 3.5em;
     bottom: 17.5em;
     width: 80px;
-    -webkit-filter: drop-shadow( 3px 3px 2px rgba(28, 84, 43, 0.7));
-    filter: drop-shadow( 0px 0px 6px rgba(28, 84, 43, 0.7));
+    -webkit-filter: drop-shadow( 0px 0px 5px rgba(0, 0, 0, 0.45));
+    filter: drop-shadow( 0px 0px 5px rgba(0, 0, 0, 0.45));
   }
   .siteTitle::before {
     content: unset;

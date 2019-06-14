@@ -258,6 +258,7 @@ footer {
   text-align: left;
   /* position: relative; */
   font-size: 130%;
+  padding-right: 2em;
   padding-left: 2em;
   font-weight: 400;
   letter-spacing: .08em;
@@ -351,6 +352,10 @@ h1, h2 {
   }
   .repName {
     font-size: 105% !important;
+  }
+  .sectionHeader {
+    padding-right: 1em;
+    padding-left: 1em;
   }
 }
 @media screen and (min-width: 350px) and (max-width: 380px) {
