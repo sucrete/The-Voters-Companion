@@ -23,9 +23,9 @@
     </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
         <div class="image">
-          <img style="width: 35px; height: auto;" src="../assets/tumblr_inline_ml8fq8GKH11roozkr.gif"/>
+          <img style="width: 35px; height: auto; position: relative; top: 10px;" src="../assets/yellow_star.svg"/>
         </div>
-        <span style="font-family: 'Roboto', sans-serif; color: white; text-align: center;"> LOADING... </span>
+        <span style="font-family: 'Roboto', sans-serif; color: white; text-align: center; font-weight: 500; font-size: 140%;"> LOADING... </span>
     </modal>
 
   </div>
@@ -35,7 +35,7 @@
 /* eslint-disable */
 import axios from 'axios'
 import places from 'places.js'
-import carpet from '../assets/tumblr_inline_ml8fq8GKH11roozkr.gif'
+import carpet from '../assets/yellow_star.svg'
 import lagoc from '../assets/united-states.svg'
 
 export default {
