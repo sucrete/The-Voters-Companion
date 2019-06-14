@@ -15,7 +15,7 @@
         A voting utility designed to spark engagement, The Voter's Companion keeps you clued-in to elections happening in your region, how to vote, and who your representatives are. Enter your address. Get registered. Stay informed.
       </div>
       <div id="USVoteHeader">
-        Made with generous support from the <br />
+        Made with support from the <br />
         <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>.
       </div>
       <img id="USSign" src="../assets/flag.svg" hidden>
@@ -483,7 +483,7 @@ img.star {
 /* for iPhone 5 below for widths on iPhone 5-X (not "plus" sizes)*/
 @media screen and (min-width: 365px) and (max-width: 413px) {
   #informationWrapper {
-    height: 28em;
+    height: 27em;
   }
   .ap-dropdown-menu {
     width: 88vw !important;
@@ -495,7 +495,7 @@ img.star {
     right: -13px;
   }
   #USVoteHeader, #infoForTheUser {
-    font-size: 1.4em;
+    font-size: 1.5em;
   }
   #USVoteHeader {
     padding: 0px 25px 0px;
@@ -508,7 +508,7 @@ img.star {
   }
   #voteWithThis {
     width: 95px;
-    right: 3em;
+    right: 3.4em;
     bottom: 17.5em;
   }
   #USSign {
@@ -526,7 +526,8 @@ img.star {
     margin-bottom: .7em;
   }
   #usvLink::before {
-    width: 59.2%;
+    width: 59.7%;
+    bottom: -2px;
   }
   #siteTitleWrapper {
     top: unset;
