@@ -205,7 +205,7 @@ footer {
   height: auto;
   position: absolute;
   right: 7.1em;
-  bottom: 21.8em;
+  bottom: 2em;
 }
 #app {
   background-color: #668ee4;
