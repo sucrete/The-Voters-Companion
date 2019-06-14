@@ -483,7 +483,7 @@ img.star {
 /* for iPhone 5 below for widths on iPhone 5-X (not "plus" sizes)*/
 @media screen and (min-width: 365px) and (max-width: 413px) {
   #informationWrapper {
-    height: 30em;
+    height: 28em;
   }
   .ap-dropdown-menu {
     width: 88vw !important;
@@ -495,7 +495,7 @@ img.star {
     right: -13px;
   }
   #USVoteHeader, #infoForTheUser {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
   #USVoteHeader {
     padding: 0px 25px 40px;
