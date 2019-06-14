@@ -18,7 +18,7 @@
         Made with generous support from the <br />
         <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>.
       </div>
-      <img id="USSign" style="width: 65px; height: auto;" src="../assets/united-states2.svg"/>
+      <img id="USSign" src="../assets/united-states2.svg"/>
     </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
         <div class="image">
@@ -193,17 +193,17 @@ footer {
   display: none;
 }
 #USSign {
+  width: 65px;
+  height: auto;
   position: absolute;
   right: 7.1em;
   bottom: 1.2em;
 }
 #app {
   background-color: #668ee4;
-  background-image: url('../assets/paperAndPencils.svg');
-  background-repeat: no-repeat;
 }
 #infoForTheUser {
-  padding: 15px 35px 0px;
+  padding: 5px 35px 0px;
   color: orange;
 }
 #USVoteHeader {
@@ -428,10 +428,22 @@ img.star {
 }
 #landing {
   position: relative;
+  background-image: url('../assets/paperAndPencils.svg');
+  background-repeat: no-repeat;
 }
 @media screen and (max-width: 750px) {
   #address-input {
-    width: 82vw;
+    width: inherit;
+    border-top-left-radius: .3em;
+    border-top-right-radius: .3em;
+  }
+  #informationWrapper {
+    width: 88vw;
+    height: 60vh;
+    border-radius: .3em;
+  }
+  #landing {
+    background-size: 110vw;
   }
   .ap-dropdown-menu {
     width: 73vw;
@@ -439,11 +451,13 @@ img.star {
   #topLine, #bottomLine {
     width: 90%;
   }
+  .siteTitle:first-of-type {
+    margin-top: unset;
+  }
 }
 @media screen and (min-width:250px) and (max-width:320px) {
   #inputEverything {
     font-size: 100%;
-    margin-top: 3.1rem;
   }
   #address-input {
     padding-left: 9px;
@@ -460,14 +474,47 @@ img.star {
   }
 }
 
-/* for iPhone 5 below */
+/* for iPhone 5 below for widths on iPhone 5-X (not "plus" sizes)*/
 @media screen and (min-width: 365px) and (max-width: 413px) {
   .ap-dropdown-menu {
-    left: 8vw !important;
-    width: 84vw !important;
+    width: 88vw !important;
   }
   .ap-input-icon.ap-icon-clear {
-    right: -34.5vw !important;
+    right: -10px !important;
+  }
+  .ap-input-icon.ap-icon-pin {
+    right: -13px;
+  }
+  #USVoteHeader, #infoForTheUser {
+    font-size: 1.6em;
+  }
+  #USVoteHeader {
+    padding: 0px 25px 40px;
+  }
+  #infoForTheUser {
+    padding: 5px 25px 0px;
+  }
+  #landing {
+    background-image: unset;
+  }
+  #USSign {
+    right: 3.5em;
+    bottom: 17.5em;
+    width: 80px;
+    -webkit-filter: drop-shadow( 3px 3px 2px rgba(28, 84, 43, 0.7));
+    filter: drop-shadow( 0px 0px 6px rgba(28, 84, 43, 0.7));
+  }
+  .siteTitle::before {
+    content: unset;
+  }
+  .siteTitle {
+    line-height: 70%;
+  }
+  #inputEverything {
+    margin-bottom: .7em;
+  }
+  #usvLink::before {
+    width: 63.9%;
   }
 }
 @media screen and (min-width: 414px) and (max-width: 433px) {
@@ -533,80 +580,57 @@ img.star {
     font-size: 2.9em !important;
   }
   #USVoteHeader {
-    padding-top: 3em;
-    margin: 0 7vw;
+
   }
   #USVoteHeader, .button {
-    font-size: 1em !important;
+    /* font-size: 1em !important; */
   }
   #inputEverything {
-    font-size: 100%;
-    margin-bottom: 4em !important;
+    /* font-size: 100%;
+    margin-bottom: 4em !important; */
   }
   #address-input {
-    padding-left: 9px;
-  }
-  #usVotersIcon {
-    height: 90px;
+    /* padding-left: 9px; */
   }
 }
 @media screen and (max-width: 415px) and (max-width: 450px) {
   #usVotersIcon {
-    right: 11vw;
+
   }
 }
 @media screen and (max-width: 375px) and (max-height: 700px) {
   .siteTitle {
-    margin-top: .7em;
-    margin-bottom: 1.4em;
+
   }
   #inputEverything {
-    margin-top: 2.5em;
-    margin-bottom: 5.2em;
+    margin-top: 4.8em;
   }
   #address-input {
-    padding-top: 4px !important;
-    width: 85vw !important;
+    /* padding-top: 4px !important;
+    width: 85vw !important; */
   }
-  #usVotersIcon {
-    top: 12.3em;
-  }
+
   #USVoteHeader {
-    font-size: 1.2em;
-    padding-top: 5em;
-  }
-  .buttonWrapper {
-    font-size: .95em;
-    margin-left: .75em;
-  }
-  #starsWrapper {
-    visibility: hidden;
-    right: unset;
+
   }
   #address-input {
-    padding-top: 4px !important;
+    /* padding-top: 4px !important; */
   }
 }
 /* iPhone X below */
 @media screen and (max-width: 375px) and (min-height: 701px) and (max-height: 812px) {
   #USVoteHeader {
-    font-size: 1.2em;
-    padding-top: 6em;
+    /* font-size: 1.2em;
+    padding-top: 6em; */
   }
   .siteTitle {
-    margin-top: .9em;
-    margin-bottom: .7em;
+    /* margin-top: .9em;
+    margin-bottom: .7em; */
   }
-  #usVotersIcon {
-    top: 15em;
-    right: 4em;
-  }
-  #starsWrapper {
-    display: none;
-  }
+
   #inputEverything {
-    margin-top: 5.5em;
-    margin-bottom: 5.5em;
+    /* margin-top: 5.5em;
+    margin-bottom: 5.5em; */
   }
 }
 @media screen and (min-width: 750px) {
@@ -623,9 +647,6 @@ img.star {
   }
 }
 @media screen and (max-width: 692px) {
-  #logoLink {
-    display: none;
-  }
   * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -661,9 +682,7 @@ img.star {
   }
 }
 @media screen and (min-width: 319px) and (max-width: 415px) {
-  #usVotersIcon {
-    right: 10vw;
-  }
+
 }
 @media screen and (min-width: 430) and (max-width: 750px) {
   .ap-input-icon {
