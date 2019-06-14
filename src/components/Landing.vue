@@ -498,7 +498,7 @@ img.star {
     font-size: 1.4em;
   }
   #USVoteHeader {
-    padding: 0px 25px 40px;
+    padding: 0px 25px 0px;
   }
   #infoForTheUser {
     padding: 5px 25px 0px;
