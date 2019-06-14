@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg30"
+   version="1.1"
+   width="506.39258"
+   viewBox="0 -2 380.51149 244.1001"
+   height="325.4668">
+  <metadata
+     id="metadata36">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs34" />
+  <path
+     style="fill:#f0bc5e"
+     id="path2"
+     d="M 160.57007,8.0802494 H 10.257573 V 136.08026 H 178.25757 V 8.0802494 Z m 0,0" />
+  <path
+     id="path4"
+     d="m 2.254248,0.02806652 c 1.202e-4,0.017801 0.00301,0.035009 0.00301,0.052832 V 239.79288 H 144.76505 v 0.28765 H 378.25723 V 0.08090082 H 18.257064 c 0,-0.017726 -0.0015,-0.035121 -0.0015,-0.052832 z M 18.257064,16.080778 H 362.25735 V 32.080655 H 178.2573 V 48.080532 H 362.25735 V 64.080409 H 178.2573 V 80.080287 H 362.25735 V 96.080165 H 178.2573 v 15.999885 h 184.00005 v 15.99987 H 18.257064 Z m 0,127.999012 H 362.25735 v 15.99988 H 18.257064 Z m 0,31.99976 H 362.25735 v 16.00134 H 18.257064 Z m 0,32.00122 H 362.25735 v 15.99988 H 18.257064 Z"
+     style="stroke-width:1" />
+  <path
+     id="path6"
+     d="m 34.257573,32.08025 h 16 v 16 h -16 z m 0,0" />
+  <path
+     id="path8"
+     d="m 74.257573,32.08025 h 16 v 16 h -16 z m 0,0" />
+  <path
+     id="path10"
+     d="m 114.25757,32.08025 h 16 v 16 h -16 z m 0,0" />
+  <path
+     id="path12"
+     d="m 34.257573,64.08025 h 16 v 16.000004 h -16 z m 0,0" />
+  <path
+     id="path14"
+     d="m 74.257573,64.08025 h 16 v 16.000004 h -16 z m 0,0" />
+  <path
+     id="path16"
+     d="m 114.25757,64.08025 h 16 v 16.000004 h -16 z m 0,0" />
+  <path
+     id="path18"
+     d="m 34.257573,96.080254 h 16 v 16.000006 h -16 z m 0,0" />
+  <path
+     id="path20"
+     d="m 74.257573,96.080254 h 16 v 16.000006 h -16 z m 0,0" />
+  <path
+     id="path22"
+     d="m 114.25757,96.080254 h 16 v 16.000006 h -16 z m 0,0" />
+  <path
+     id="path24"
+     d="m 146.25757,32.08025 h 16 v 16 h -16 z m 0,0" />
+  <path
+     id="path26"
+     d="m 146.25757,64.08025 h 16 v 16.000004 h -16 z m 0,0" />
+  <path
+     id="path28"
+     d="m 146.25757,96.080254 h 16 v 16.000006 h -16 z m 0,0" />
+</svg>

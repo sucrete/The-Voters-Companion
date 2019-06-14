@@ -18,7 +18,8 @@
         Made with generous support from the <br />
         <a id="usvLink" href="https://www.usvotefoundation.org/" target="_blank">U.S. Vote Foundation</a>.
       </div>
-      <img id="USSign" src="../assets/united-states2.svg"/>
+      <img id="USSign" src="../assets/flag.svg" hidden>
+      <img id="voteWithThis" src="../assets/pencil2.svg" />
     </div>
     <modal name="v--modal-box" class="v--modal-box" :width="200" :height="200" :delay="100" transition="scale">
         <div class="image">
@@ -198,6 +199,13 @@ footer {
   position: absolute;
   right: 7.1em;
   bottom: 1.2em;
+}
+#voteWithThis {
+  width: 65px;
+  height: auto;
+  position: absolute;
+  right: 7.1em;
+  bottom: 21.8em;
 }
 #app {
   background-color: #668ee4;
@@ -439,7 +447,6 @@ img.star {
   }
   #informationWrapper {
     width: 88vw;
-    height: 60vh;
     border-radius: .3em;
   }
   #landing {
@@ -473,9 +480,11 @@ img.star {
     top: 1rem;
   }
 }
-
 /* for iPhone 5 below for widths on iPhone 5-X (not "plus" sizes)*/
 @media screen and (min-width: 365px) and (max-width: 413px) {
+  #informationWrapper {
+    height: 30em;
+  }
   .ap-dropdown-menu {
     width: 88vw !important;
   }
@@ -486,7 +495,7 @@ img.star {
     right: -13px;
   }
   #USVoteHeader, #infoForTheUser {
-    font-size: 1.6em;
+    font-size: 1.5em;
   }
   #USVoteHeader {
     padding: 0px 25px 40px;
@@ -497,12 +506,15 @@ img.star {
   #landing {
     background-image: unset;
   }
+  #voteWithThis {
+    width: 95px;
+    right: 3em;
+    bottom: 17.5em;
+  }
   #USSign {
     right: 3.5em;
-    bottom: 17.5em;
-    width: 80px;
-    -webkit-filter: drop-shadow( 0px 0px 5px rgba(0, 0, 0, 0.45));
-    filter: drop-shadow( 0px 0px 5px rgba(0, 0, 0, 0.45));
+    bottom: -16em;
+    width: 50px;
   }
   .siteTitle::before {
     content: unset;
@@ -514,7 +526,11 @@ img.star {
     margin-bottom: .7em;
   }
   #usvLink::before {
-    width: 63.9%;
+    width: 59.2%;
+  }
+  #siteTitleWrapper {
+    top: unset;
+    padding-bottom: .2em;
   }
 }
 @media screen and (min-width: 414px) and (max-width: 433px) {
