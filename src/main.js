@@ -20,7 +20,8 @@ new Vue({
   store,
   el: '#app',
   router,
-  template: '<App/>',
-  components: { App }
+  render: h => h(App)
+  // template: '<App/>',
+  // components: { App }
 })
 /* eslint-enable */
