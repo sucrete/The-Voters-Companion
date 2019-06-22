@@ -10,13 +10,13 @@ var compression = require('compression');
 
 app = express();
 
+app.use(compression());
+
 app.use(serveStatic(__dirname)); //middleware
 
 app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use(bodyParser.json());
-
-app.use(compression());
 
 app.use(function(err, req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
