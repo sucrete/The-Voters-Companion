@@ -30,7 +30,7 @@
           target="_blank"
         >U.S. Vote Foundation</a>.
       </div>
-      <img id="USSign" src="../assets/flag.svg" hidden />
+      <!-- <img id="USSign" src="../assets/flag.svg" hidden /> -->
       <img id="voteWithThis" src="../assets/pencil2.svg" />
     </div>
     <modal
@@ -2758,6 +2758,10 @@ input:focus::-webkit-input-placeholder {
 }
 .ap-input-icon.ap-icon-pin {
   right: 10px;
+
+}
+.ap-input-icon {
+  transform: translateY(-18px);
 }
 .ap-input:hover ~ .ap-input-icon svg {
   fill: #6f6b68 !important;
@@ -2938,41 +2942,7 @@ img.star {
     padding-bottom: 0.2em;
   }
 }
-@media screen and (min-width: 414px) and (max-width: 433px) {
-  .ap-dropdown-menu {
-    /* left: 6.5vw !important; */
-  }
-}
-@media screen and (min-width: 434px) and (max-width: 467px) {
-  .ap-dropdown-menu {
-    /* left: 7vw !important; */
-  }
-}
-@media screen and (min-width: 468px) and (max-width: 524px) {
-  .ap-dropdown-menu {
-    /* left: 7.5vw !important; */
-  }
-}
-@media screen and (min-width: 525px) and (max-width: 557px) {
-  .ap-dropdown-menu {
-    /* left: 8vw !important; */
-  }
-}
-@media screen and (min-width: 558px) and (max-width: 597px) {
-  .ap-dropdown-menu {
-    /* left: 8.25vw !important; */
-  }
-}
-@media screen and (min-width: 598px) and (max-width: 635px) {
-  .ap-dropdown-menu {
-    /* left: 8.5vw !important; */
-  }
-}
-@media screen and (min-width: 636px) and (max-width: 750px) {
-  .ap-dropdown-menu {
-    /* left: 9vw !important; */
-  }
-}
+
 @media screen and (max-width: 450px) {
   #infoAndStarsWrapper,
   .buttonWrapper,
