@@ -22,11 +22,12 @@
         </v-timeline-item>
 
         <v-timeline-item
-          v-for="votable in electionsTimelineObject"
+          v-for="{votable,index} in electionsTimelineObject"
           class="mt-2 eachItem"
           v-bind:class="{ dummyInfo: useDummyInfo }"
           v-bind:color="votable.color"
           small
+          key="index"
         >
           <v-layout justify-space-between class="subheading mb-2">
             <v-flex xs7 text-xs-left>{{ returnPrettyDate(votable.electionDate) }}</v-flex>

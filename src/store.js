@@ -624,10 +624,6 @@ export const store = new Vuex.Store({
     },
     setVoterInformation(state, payload) {
       state.voterInformation = payload;
-      console.log("voter info shoved in to the STORE");
-      Object.keys(payload).forEach(vlooty => {
-        console.log(vlooty + "\n");
-      });
     }
   },
   actions: {},

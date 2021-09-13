@@ -2455,7 +2455,7 @@ export default {
       this.setInfoAndPush();
       // const axiosUSVotePost = axios.create();
       // var state = this.$store.getters.showMeDatState;
-      // // var allStates = state.allStatesResponse.data.objects
+      // var allStates = state.allStatesResponse.data.objects
       // var stateName = state.algoliaResponse.administrative;
       // axiosUSVotePost
       //   .post("/api/postVoterAPI", {

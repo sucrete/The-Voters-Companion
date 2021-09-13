@@ -37,7 +37,7 @@
 </template>
 
 <script>
-/* eslint-disable */
+
 var marked = require('marked')
 
 export default {
